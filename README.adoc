@@ -28,11 +28,6 @@ The portal reference documentation, based on quarkus
     </dependency>
 ----
 
-=== Credentials
-
-
-A sonar token can be derived from https://sonarcloud.io/account/security
-
 === Further Steps
 
 * `pom.xml`: Adjust `name` and `description` elements
