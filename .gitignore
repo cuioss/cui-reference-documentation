@@ -2,6 +2,7 @@
 **/target
 **/bin
 **/.idea
+**/.quarkus
 **/src/main/gen
 *.iml
 *.classpath

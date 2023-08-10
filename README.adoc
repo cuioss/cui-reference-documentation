@@ -28,9 +28,13 @@ The portal reference documentation, based on quarkus
     </dependency>
 ----
 
+=== Running locally
+
+`mvn quarkus:dev`
+
 === Further Steps
 
-* `pom.xml`: Adjust `name` and `description` elements
+
 * `src/site/asciidoc/about.adoc`: Adjust content
 * Review / Enable the elements under 'Security' Tab
 * Review / Add Collaborators

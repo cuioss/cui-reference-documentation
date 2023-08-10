@@ -13,7 +13,7 @@
     <artifactId>cui-reference-documentation</artifactId>
     <name>Cui Reference Documentation</name>
     <version>1.0.0-SNAPSHOT</version>
-    <description>TQuarkus powered Reference documentation
+    <description>Quarkus powered Reference documentation
     </description>
     <packaging>jar</packaging>
     <url>https://github.com/cuioss/cui-reference-documentation/</url>
@@ -34,13 +34,22 @@
         <version.cui.jsf.components>1.0.0-SNAPSHOT</version.cui.jsf.components>
         <version.cui.portal.core>1.0.0-SNAPSHOT</version.cui.portal.core>
         <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
-        <!-- To be moved later on-->
+        <!-- To be moved later on -->
+        <!-- Older version needed because of quarkus version -->
+        <version.slf4j>1.7.36</version.slf4j>
         <version.myfaces.quarkus>2.3-next-M8</version.myfaces.quarkus>
+        <primefaces-quarkus.version>2.12.2</primefaces-quarkus.version>
         <omnifaces-quarkus.version>3.14.3</omnifaces-quarkus.version>
         <quarkus.version>2.16.9.Final</quarkus.version>
     </properties>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${version.slf4j}</version>
+                <scope>compile</scope>
+            </dependency>
             <dependency>
                 <groupId>de.cuioss.portal.ui</groupId>
                 <artifactId>bom</artifactId>
@@ -48,14 +57,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Incoming-->
-            <dependency>
-                <groupId>de.cuioss</groupId>
-                <artifactId>java-ee-8-bom</artifactId>
-                <version>${version.cui.parent}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+            <!-- Incoming -->
+            <!-- <dependency> -->
+            <!-- <groupId>de.cuioss</groupId> -->
+            <!-- <artifactId>java-ee-8-bom</artifactId> -->
+            <!-- <version>${version.cui.parent}</version> -->
+            <!-- <type>pom</type> -->
+            <!-- <scope>import</scope> -->
+            <!-- </dependency> -->
             <dependency>
                 <groupId>de.cuioss</groupId>
                 <artifactId>java-ee-orthogonal</artifactId>
@@ -92,7 +101,17 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!-- Runtime, to be defined at module level-->
+
+        <dependency>
+            <groupId>de.cuioss.portal.ui</groupId>
+            <artifactId>portal-ui-quarkus-extension</artifactId>
+        </dependency>
+        <!-- This is needed, because otherwise undertow fails -->
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+        </dependency>
+        <!-- Runtime, to be defined at module level -->
         <dependency>
             <groupId>de.cuioss.portal.ui</groupId>
             <artifactId>portal-ui-bootstrap-page-templates</artifactId>
@@ -110,7 +129,7 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
         </dependency>
-        <!-- Test-->
+        <!-- Test -->
         <dependency>
             <groupId>de.cuioss.portal.test</groupId>
             <artifactId>portal-core-unit-testing</artifactId>
@@ -121,8 +140,8 @@
         </dependency>
         <!-- -->
 
-        <!-- To be moved to parent pom-->
-        <!-- Portal-UI-->
+        <!-- To be moved to parent pom -->
+        <!-- Portal-UI -->
         <dependency>
             <groupId>de.cuioss.portal.ui</groupId>
             <artifactId>portal-ui-api</artifactId>
@@ -142,7 +161,7 @@
 
 
         <!-- Portal-Core -->
-        <!-- Configuration-->
+        <!-- Configuration -->
         <dependency>
             <groupId>de.cuioss.portal.configuration</groupId>
             <artifactId>portal-configuration-api</artifactId>
@@ -155,7 +174,7 @@
             <groupId>de.cuioss.portal.configuration</groupId>
             <artifactId>portal-configuration-impl</artifactId>
         </dependency>
-        <!-- Authentication-->
+        <!-- Authentication -->
         <dependency>
             <groupId>de.cuioss.portal.authentication</groupId>
             <artifactId>portal-authentication-api</artifactId>
@@ -165,12 +184,12 @@
             <artifactId>portal-authentication-dummy</artifactId>
         </dependency>
 
-        <!-- Portal-Core-Servlet-->
+        <!-- Portal-Core-Servlet -->
         <dependency>
             <groupId>de.cuioss.portal.core</groupId>
             <artifactId>portal-core</artifactId>
         </dependency>
-        <!-- Mirco-Profile-->
+        <!-- Mirco-Profile -->
         <dependency>
             <groupId>de.cuioss.portal.mirco-profile</groupId>
             <artifactId>portal-mp-rest-client</artifactId>
@@ -179,7 +198,7 @@
             <groupId>de.cuioss.portal.mirco-profile</groupId>
             <artifactId>portal-metrics-api</artifactId>
         </dependency>
-        <!-- Client-->
+        <!-- Client -->
         <dependency>
             <groupId>de.cuioss.portal.client</groupId>
             <artifactId>portal-client-tracing</artifactId>
@@ -189,7 +208,7 @@
             <artifactId>portal-tracing-reporter-zipkin</artifactId>
         </dependency>
 
-        <!-- Cui JSF Components-->
+        <!-- Cui JSF Components -->
         <dependency>
             <groupId>de.cuioss.jsf</groupId>
             <artifactId>cui-jsf-api</artifactId>
@@ -224,6 +243,11 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-health</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.primefaces</groupId>
+            <artifactId>quarkus-primefaces-extensions</artifactId>
+            <version>${primefaces-quarkus.version}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkiverse.omnifaces</groupId>
