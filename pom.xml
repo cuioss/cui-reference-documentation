@@ -40,7 +40,7 @@
         <version.myfaces.quarkus>2.3-next-M8</version.myfaces.quarkus>
         <primefaces-quarkus.version>2.12.2</primefaces-quarkus.version>
         <omnifaces-quarkus.version>3.14.3</omnifaces-quarkus.version>
-        <quarkus.version>2.16.9.Final</quarkus.version>
+        <quarkus.version>3.2.4.Final</quarkus.version>
     </properties>
     <dependencyManagement>
         <dependencies>
