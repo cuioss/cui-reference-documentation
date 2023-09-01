@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:dev="https://cuioss.de/jsf/dev"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap">
+
+<ui:composition template="/templates/master_centered.xhtml">
+
+    <ui:define name="title">Icon Components</ui:define>
+    <ui:define name="content">
+
+        <h:outputStylesheet library="any-icon-lib" name="icons.css"/>
+
+        <h2>boot:icon</h2>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode description="Default usage"
+                                source="&lt;boot:icon icon=&quot;cui-icon-alarm&quot; %ntitleValue=&quot;Some Title&quot; /&gt;"/>
+            </boot:column>
+            <boot:column size="6">
+                <boot:icon icon="cui-icon-alarm" titleValue="Some Title"/>
+            </boot:column>
+        </boot:row>
+        <hr/>
+        <h2>Live Demo</h2>
+        <p>
+            This form demonstrate the possibilities of cui icon. <br/>
+            OnChange event trigger rerender the current icon.<br/>
+            External icon library is provided as css file resource <em>"any-icon-lib/icons.css"</em>,
+            that is included as stylesheet in this page.
+        </p>
+        <h:form id="icoLiveDemo" styleClass="form-horizontal">
+            <boot:row>
+                <boot:column size="6">
+
+                    <boot:labeledContainer labelValue="Icon Name">
+                        <h:inputText id="input" value="#{cuiIconComponentsPageBean.iconName}">
+                            <p:ajax update="@form:demoIcon:playGround"/>
+                        </h:inputText>
+                    </boot:labeledContainer>
+
+                    <boot:labeledContainer labelValue="Icon State">
+                        <h:selectOneMenu id="input" value="#{cuiIconComponentsPageBean.iconState}">
+                            <f:selectItem itemLabel="default" itemValue="default"/>
+                            <f:selectItem itemLabel="primary" itemValue="primary"/>
+                            <f:selectItem itemLabel="success" itemValue="success"/>
+                            <f:selectItem itemLabel="info" itemValue="info"/>
+                            <f:selectItem itemLabel="warning" itemValue="warning"/>
+                            <f:selectItem itemLabel="danger" itemValue="danger"/>
+                            <p:ajax update="@form:demoIcon"/>
+                        </h:selectOneMenu>
+                    </boot:labeledContainer>
+
+                    <boot:labeledContainer labelValue="Icon Size">
+                        <h:selectOneMenu id="input" value="#{cuiIconComponentsPageBean.iconSize}">
+                            <f:selectItem itemLabel="default" itemValue=""/>
+                            <f:selectItem itemLabel="LG" itemValue="lg"/>
+                            <f:selectItem itemLabel="XL" itemValue="xl"/>
+                            <f:selectItem itemLabel="XXL" itemValue="xxl"/>
+                            <f:selectItem itemLabel="XXXL" itemValue="xxxl"/>
+                            <p:ajax update="@form:demoIcon"/>
+                        </h:selectOneMenu>
+                    </boot:labeledContainer>
+
+                    <boot:labeledContainer labelValue="Icon Style class">
+                        <h:inputText id="input" value="#{cuiIconComponentsPageBean.iconStyleClass}">
+                            <p:ajax update="@form:demoIcon"/>
+                        </h:inputText>
+                    </boot:labeledContainer>
+
+                    <boot:labeledContainer labelValue="Icon Library">
+                        <h:inputText id="input" value="#{cuiIconComponentsPageBean.iconLibrary}">
+                            <p:ajax update="@form:demoIcon"/>
+                        </h:inputText>
+                    </boot:labeledContainer>
+
+                </boot:column>
+
+                <boot:column id="demoIcon" size="6">
+                    <boot:icon id="playGround"
+                              icon="#{cuiIconComponentsPageBean.iconName}"
+                              state="#{cuiIconComponentsPageBean.iconState}"
+                              size="#{cuiIconComponentsPageBean.iconSize}"
+                              styleClass="#{cuiIconComponentsPageBean.iconStyleClass}"
+                              library="#{cuiIconComponentsPageBean.iconLibrary}"  />
+                </boot:column>
+            </boot:row>
+        </h:form>
+
+        <hr/>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode description="Size and State"
+                                source="&lt;boot:icon icon=&quot;cui-icon-alarm&quot; size=&quot;xxxl&quot; %nstate=&quot;info&quot; titleValue=&quot;Some Title&quot; /&gt;"/>
+            </boot:column>
+            <boot:column size="6">
+                <boot:icon icon="cui-icon-alarm" size="xxxl" state="info" titleValue="Some Title"/>
+            </boot:column>
+        </boot:row>
+        <h2>boot:mimeTypeIcon</h2>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode description="Default usage"
+                    source="&lt;boot:mimeTypeIcon mimeTypeIcon=&quot;AUDIO_MPEG&quot; %ntitleValue=&quot;Mime-Type Title&quot;/&gt;" />
+            </boot:column>
+            <boot:column size="6">
+                <boot:mimeTypeIcon mimeTypeIcon="AUDIO_MPEG" titleValue="Mime-Type Title" />
+            </boot:column>
+        </boot:row>
+        <hr />
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode description="Sizing"
+                    source="&lt;boot:mimeTypeIcon mimeTypeIcon=&quot;AUDIO_MPEG&quot; size=&quot;xxxl&quot; %ntitleValue=&quot;Mime-Type Title&quot;/&gt;" />
+            </boot:column>
+            <boot:column size="6">
+                <boot:mimeTypeIcon mimeTypeIcon="AUDIO_MPEG" size="xxxl" titleValue="Mime-Type Title" />
+            </boot:column>
+        </boot:row>
+        <h2>boot:genderIcon</h2>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode description="Default usage" source="&lt;boot:genderIcon genderString=&quot;m&quot; /&gt;" />
+            </boot:column>
+            <boot:column size="6">
+                <boot:genderIcon genderString="m" />
+            </boot:column>
+        </boot:row>
+        <hr />
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode description="Size and State"
+                    source="&lt;boot:genderIcon genderString=&quot;f&quot; size=&quot;xxxl&quot; %nstate=&quot;info&quot; /&gt;" />
+            </boot:column>
+            <boot:column size="6">
+                <boot:genderIcon genderString="f" size="xxxl" state="info" />
+            </boot:column>
+        </boot:row>
+        <h2>boot:labeledIcon</h2>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode description="Default usage"
+                    source="&lt;boot:labeledIcon icon=&quot;cui-icon-alarm&quot; labelValue=&quot;Rrrring&quot; %ntitleValue=&quot;Some Title&quot; /&gt;" />
+            </boot:column>
+            <boot:column size="6">
+                <boot:labeledIcon icon="cui-icon-alarm" labelValue="Rrrring" titleValue="Some Title" />
+            </boot:column>
+        </boot:row>
+        <hr />
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode description="iconAlign=right"
+                    source="&lt;boot:labeledIcon icon=&quot;cui-icon-alarm&quot; labelValue=&quot;Rrrring&quot; %ntitleValue=&quot;Some Title&quot; iconAlign=&quot;right&quot; /&gt;" />
+            </boot:column>
+            <boot:column size="6">
+                <boot:labeledIcon icon="cui-icon-alarm" labelValue="Rrrring" iconAlign="right" titleValue="Some Title" />
+            </boot:column>
+        </boot:row>
+
+    </ui:define>
+
+</ui:composition>
+
+</html>

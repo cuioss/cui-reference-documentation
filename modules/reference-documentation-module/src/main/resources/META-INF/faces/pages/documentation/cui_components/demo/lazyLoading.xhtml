@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite/components/cc"
+      xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development"
+      xmlns:cui-composite="http://xmlns.jcp.org/jsf/composite/cui-composite"
+      xmlns:dev="https://cuioss.de/jsf/dev">
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">Lazy Loading</ui:define>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewAction action="#{lazyLoadingPageBean.initViewAction}"/>
+            <f:viewAction action="#{encapsulateLazyLoadingPageBean.initViewAction}"/>
+        </f:metadata>
+    </ui:define>
+    <ui:define name="content">
+        <h2>
+            Lazy Loading
+            <boot:icon icon="cui-icon-refresh"/>
+        </h2>
+        <ref_dev:cui_comp_meta name="lazyLoading"/>
+        <h3>Sample with lazy loading page</h3>
+
+        <boot:row>
+            <boot:column size="6">
+                <boot:panel headerValue="Source" collapsible="true" collapsed="true">
+                    <dev:sourceCode sourceContainerId="sample"/>
+                    <dev:sourceCode sourcePath="lazyLoadingPageBean.sample"
+                                    type="lang-java" description="Bean:"/>
+                </boot:panel>
+            </boot:column>
+            <boot:column size="6">
+                <h:panelGroup id="sample" layout="block">
+                    <boot:lazyLoading id="test" viewModel="#{lazyLoadingPageBean.viewModel}">
+                        <ul>
+                            <ui:repeat value="#{lazyLoadingPageBean.content}" var="line">
+                                <li><h:outputText value="#{line}"/></li>
+                            </ui:repeat>
+                        </ul>
+                    </boot:lazyLoading>
+                </h:panelGroup>
+            </boot:column>
+        </boot:row>
+
+        <h3>Sample lazy loading structures encapsulates in CC</h3>
+
+        <boot:row>
+            <boot:column size="6">
+                <boot:panel headerValue="Source" collapsible="true" collapsed="true">
+                    <dev:sourceCode sourceContainerId="lazyLoadingColumn"/>
+                    <dev:sourceCode sourcePath="encapsulateLazyLoadingPageBean.sample"
+                                    type="lang-java" description="Bean:"/>
+                </boot:panel>
+            </boot:column>
+            <boot:column id="lazyLoadingColumn" size="4">
+                <cc:list_example id="shouldBeHide"
+                                 list="#{encapsulateLazyLoadingPageBean.content}"
+                                 rendered="#{encapsulateLazyLoadingPageBean.parentContainerRendered}"/>
+
+                <h:panelGroup id="alternativeText" layout="block"
+                              rendered="#{not encapsulateLazyLoadingPageBean.parentContainerRendered}">
+                    <h:outputText value="LazyLoading component in CC is hidden"/>
+                </h:panelGroup>
+            </boot:column>
+
+            <boot:column size="2" id="lazyLoadingCommands" >
+                <h:commandLink value="Display Composite Component" rendered="#{not encapsulateLazyLoadingPageBean.parentContainerRendered}"
+                               actionListener="#{encapsulateLazyLoadingPageBean.switchOverParentContainerRendered}">
+                    <p:ajax process="@this" update="lazyLoadingColumn lazyLoadingCommands"/>
+                </h:commandLink>
+
+                <h:commandLink value="Hide Composite Component" rendered="#{encapsulateLazyLoadingPageBean.parentContainerRendered}"
+                               actionListener="#{encapsulateLazyLoadingPageBean.switchOverParentContainerRendered}">
+                    <p:ajax process="@this" update="lazyLoadingColumn lazyLoadingCommands"/>
+                </h:commandLink>
+            </boot:column>
+        </boot:row>
+
+        <h3>Sample with multiple lazy loading structures</h3>
+
+        <boot:row>
+            <boot:column size="6">
+                <boot:panel headerValue="Source" collapsible="true" collapsed="true">
+                    <dev:sourceCode sourceContainerId="sampleMultiple"/>
+                    <dev:sourceCode sourcePath="multipleLazyLoadingPageBean.sample"
+                                    type="lang-java" description="Bean:"/>
+                </boot:panel>
+            </boot:column>
+            <boot:column size="6">
+                <h:panelGroup id="sampleMultiple" layout="block">
+                    <boot:lazyLoading id="testMultiple" viewModel="#{multipleLazyLoadingPageBean.viewModel}"
+                                     startInitialize="#{multipleLazyLoadingPageBean.initViewAction()}">
+                        <h:form>
+                            <boot:row>
+                                <boot:column size="6">
+                                    <ul>
+                                        <ui:repeat value="#{multipleLazyLoadingPageBean.content}" var="line">
+                                            <li><h:commandLink value="#{line}">
+                                                <f:setPropertyActionListener value="#{line}"
+                                                                             target="#{multipleLazyLoadingPageBean.selected}"/>
+                                                <p:ajax update="@form:lazyLoading"/>
+                                            </h:commandLink></li>
+                                        </ui:repeat>
+                                    </ul>
+                                </boot:column>
+                                <boot:column size="6">
+                                    <boot:lazyLoading id="lazyLoading"
+                                                     initialized="#{multipleLazyLoadingPageBean.selected eq null}">
+                                        <h:outputText value="#{multipleLazyLoadingPageBean.selected}"
+                                                      rendered="#{multipleLazyLoadingPageBean.selected ne null}"/>
+                                        <hr/>
+                                        <h:commandLink value="Reset">
+                                            <p:ajax update="@form:lazyLoading"/>
+                                            <f:setPropertyActionListener value="#{null}"
+                                                                         target="#{multipleLazyLoadingPageBean.selected}"/>
+                                        </h:commandLink>
+                                    </boot:lazyLoading>
+                                </boot:column>
+                            </boot:row>
+                        </h:form>
+                    </boot:lazyLoading>
+                </h:panelGroup>
+            </boot:column>
+        </boot:row>
+
+        <h3>Sample with lazy loading page without backend call</h3>
+
+        <boot:row>
+            <boot:column size="6">
+                <boot:panel headerValue="Source" collapsible="true" collapsed="true">
+                    <dev:sourceCode sourceContainerId="sampleWithoutBackend"/>
+                    <dev:sourceCode sourcePath="lazyLoadingWithoutBackendPageBean.sample"
+                                    type="lang-java" description="Bean:"/>
+                </boot:panel>
+            </boot:column>
+            <boot:column size="6">
+                <h:form>
+                    <h:panelGroup id="sampleWithoutBackend" layout="block">
+                        <boot:lazyLoading id="testWithoutBackend"
+                                         actionListener="#{lazyLoadingWithoutBackendPageBean.initialize}">
+                            <h:panelGroup id="content">
+                                <ul>
+                                    <ui:repeat value="#{lazyLoadingWithoutBackendPageBean.content}"
+                                               var="line">
+                                        <li><h:outputText value="#{line}"/></li>
+                                    </ui:repeat>
+                                </ul>
+                            </h:panelGroup>
+                            <boot:commandButton labelValue="Refresh">
+                                <p:ajax update="@form:testWithoutBackend:content"/>
+                            </boot:commandButton>
+                        </boot:lazyLoading>
+                    </h:panelGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>Sample with lazy loading widget</h3>
+        <boot:row>
+            <boot:column size="6">
+                <boot:panel headerValue="Source" collapsible="true" collapsed="true">
+                    <dev:sourceCode sourcePath="widget.sample"/>
+                    <dev:sourceCode type="lang-java" sourcePath="widgetBean.sample"/>
+                </boot:panel>
+            </boot:column>
+            <boot:column size="6">
+                <cui-composite:widget model="#{widgetBean}">
+                    <ui:repeat begin="0" end="#{widgetBean.repeats}">
+                        <h:outputText value="#{widgetBean.content}"/>
+                        <hr />
+                    </ui:repeat>
+                </cui-composite:widget>
+            </boot:column>
+        </boot:row>
+
+        <h3>Sample with lazy loading text filter</h3>
+
+        <boot:row>
+            <boot:column size="6">
+                <boot:panel headerValue="Source" collapsible="true" collapsed="true">
+                    <dev:sourceCode sourceContainerId="lazyLoadingTextFilterForm"/>
+                </boot:panel>
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="lazyLoadingTextFilterForm">
+                    <boot:lazyLoadingTextFilter id="lazyLoadingTextFilter"
+                                               searchAction="#{textFilterBean.initEntries()}"
+                                               clearFilterAction="#{textFilterBean.clearFilter()}"
+                                               update="@form:lazyLoadingContent"
+                                               value="#{textFilterBean.filter}"
+                                               labelKey="page.textFilterDemo.filter"/>
+                    <boot:lazyLoading id="lazyLoadingContent" actionListener="#{textFilterBean.initEntries()}">
+                        <h:panelGroup id="content">
+                            <ul class="list-group">
+                                <ui:repeat value="#{textFilterBean.content}" var="entry">
+                                    <li class="list-group-item"><h:outputText value="#{entry}"/></li>
+                                </ui:repeat>
+                            </ul>
+                        </h:panelGroup>
+                    </boot:lazyLoading>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>Sample with selection</h3>
+
+        <boot:row>
+            <boot:column size="6">
+                <boot:panel headerValue="Source" collapsible="true" collapsed="true">
+                    <dev:sourceCode sourceContainerId="lazyLoadingSelection"/>
+                </boot:panel>
+            </boot:column>
+            <boot:column size="6">
+                <h:panelGroup id="lazyLoadingSelection">
+                    <h:form id="lazyLoadingSelectionForm">
+                        <h:selectOneMenu id="input" styleClass="form-control" value="#{textFilterBean.filter}">
+                            <f:selectItem itemValue="a" itemLabel="a"/>
+                            <f:selectItem itemValue="b" itemLabel="b"/>
+                            <f:selectItem itemValue="c" itemLabel="c"/>
+
+                            <p:ajax process="@this" update="@form" resetValues="true"
+                                    listener="#{textFilterBean.initEntries()}"/>
+
+                        </h:selectOneMenu>
+
+                        <boot:lazyLoading id="lazyLoadingContent" actionListener="#{textFilterBean.initEntries()}">
+                            <h:panelGroup id="content">
+                                <ul class="list-group">
+                                    <ui:repeat value="#{textFilterBean.content}" var="entry">
+                                        <li class="list-group-item"><h:outputText value="#{entry}"/></li>
+                                    </ui:repeat>
+                                </ul>
+                            </h:panelGroup>
+                        </boot:lazyLoading>
+                    </h:form>
+                </h:panelGroup>
+            </boot:column>
+        </boot:row>
+
+    </ui:define>
+</ui:composition>
+</html>

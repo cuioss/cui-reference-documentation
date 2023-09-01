@@ -1,0 +1,24 @@
+1)
+as is:
+<div class="item" data-value="_client_created_Otto">Otto
+	<a title="Remove" tabindex="-1" class="remove" href="javascript:void(0)">×</a>
+</div>
+
+should be:
+<div class="item" data-value="_client_created_Otto">Otto
+	<a title="Remove" tabindex="-1" class="remove" href="javascript:void(0)">
+		<span class="cui-icon cui-tag-dispose-button"></span>
+	</a>
+</div>
+
+
+
+
+2)
+<boot:tagInput styleClass="form-group"...
+add #styleClass to wrapper <div class="selectize-control... 
+--> <div class="selectize-control form-group ... 
+or --> <div class="form-group"><div class="selectize-control...
+
+is defined in selectize.js/src/defaults.js
+	wrapperClass: 'selectize-control',

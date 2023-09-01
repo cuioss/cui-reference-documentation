@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:dev="https://cuioss.de/jsf/dev"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<ui:composition template="/templates/layout_portal_core.xhtml">
+
+   <ui:define name="title">Basic Concepts</ui:define>
+
+   <ui:define name="content">
+      <h1>Basic Concepts</h1>
+      <h2>Summary</h2>
+      <p>There are some basic concepts implemented that are used by most of the portal components and should therefore be
+         known.</p>
+      <h2>CDI Everywhere</h2>
+      <p>
+         All wiring is done using CDI. If you have no experience with CDI it is strongly recommended to learn the basic
+         concepts, e.g. from <a href="http://docs.jboss.org/weld/reference/latest/en-US/html/">Jboss Weld Page</a>. The
+         documentation on this page is not about the CDI-basics that are covered at various places but provides some best
+         practices / known pitfalls that are usually not part of the standard documentation.
+      </p>
+      <p></p>
+      <p>
+         All objects can be injected directly as member without the using the keyword
+         <code>transient</code>
+         . This is because CDI wraps all managed Objects into Serializable Proxies.
+      </p>
+      <h2>Scope Annotations</h2>
+      <p>You need to ensure that you use CDI scopes only. Eclipse auto-completion may introduce JSF-Managed Bean Scopes that
+         are problematic within the CDI-context.</p>
+      <h3>Allowed Scopes</h3>
+      <dev:sourceCode enableClipboard="false" type="lang-java"
+         source="import javax.enterprise.context.ApplicationScoped;%nimport javax.enterprise.context.ConversationScoped;%nimport javax.enterprise.context.Dependent;%nimport javax.enterprise.context.RequestScoped;%nimport javax.enterprise.context.SessionScoped;%nimport javax.faces.view.ViewScoped;%n%nimport org.apache.deltaspike.core.api.scope.GroupedConversationScoped;%nimport org.apache.deltaspike.core.api.scope.WindowScoped;"></dev:sourceCode>
+      <h3>Discouraged Scopes</h3>
+      <dev:sourceCode enableClipboard="false" type="lang-java"
+         source="import javax.faces.bean.ApplicationScoped;%nimport javax.faces.bean.NoneScoped;%nimport javax.faces.bean.RequestScoped;%nimport javax.faces.bean.SessionScoped;%nimport javax.faces.bean.ViewScoped;"></dev:sourceCode>
+      <h2>Pitfalls with CDI</h2>
+      <p>While the scoping with CDI works quite intuitive there are some cases where unexpected things happen.</p>
+      <h3>Invalid nesting</h3>
+      <p>It is not allowed to inject beans with a lesser scope than the injection target: If a bean requestBean is
+         Request-Scoped you must not be injected into a Session-Scoped bean.</p>
+      <dev:sourceCode description="Wrong. Will lead to unexpected results" type="lang-java" enableClipboard="false"
+         source="@Named%n@SessionScoped%npublic class SessionBean {%n   @Inject%n   private FacesContext facesContext;" />
+      <p>For Problems like this CDI has the concept of javax.inject.Provider. In essence the evaluation will be done while
+         calling the provider.get() method. This decouples the state of the object from the client</p>
+      <dev:sourceCode type="lang-java" enableClipboard="false"
+         source="@Named%n@SessionScoped%npublic class SessionBean {%n   @Inject%n   private Provider&lt;FacesContext&gt; facesContextProvider;%n%n   @PostConstruct%n   public void init() {%n      FacesContext facesContext = facesContextProvider.get();%n   }%n}" />
+      <h3>Dependent Scope</h3>
+      <p>The dependent scope is similar to import javax.faces.bean.NoneScoped. For each injection point a new instance of
+         the object will be created</p>
+      <h3>Multiple Instances</h3>
+      <p>The example above assumes that there is always one instance of the corresponding bean available. For some types of
+         objects there may be multiple instance available at runtime. Therefore you can use javax.enterprise.inject.Instance
+         which is an Iterable. With this you can inject / access all instances in a convenient way:</p>
+      <dev:sourceCode type="lang-java" enableClipboard="false"
+         source="@Inject%n@PortalResourceBundleDescriptor%nprivate Instance&lt;ResourceBundleDescripor&gt; descriptorList;" />
+      <h2>Ordering and overwriting</h2>
+      <p>The design of the portal allows that many services can be overwritten in other modules / applications. CDI provides
+         different ways to achieve this: javax.enterprise.inject.Alternative, javax.enterprise.inject.Specializes and
+         javax.annotation.Priority. We use Alternative combined with Priority throughout the portal. As a starting point take a
+         look at PortalPriorities.java:</p>
+      <dev:sourceCode sourcePath="PortalPriorities.java" type="lang-java" enableClipboard="false" />
+      <p>A concrete Example: The navigation within the portal is dynamic: You can add individual navigation items or replace
+         the NavigationMenuProvider completely:</p>
+      <dev:sourceCode type="lang-java" enableClipboard="false"
+         description="com.icw.ehf.cui.portal.application.menu.NavigationMenuProviderImpl form Portal-Core"
+         source="@PortalNavigationMenuProvider%n@Priority(PortalPriorities.PORTAL_CORE_LEVEL)%npublic class NavigationMenuProviderImpl implements NavigationMenuProvider {" />
+      <p>Will be replaced by the ReferenceMenuProvider</p>
+      <dev:sourceCode type="lang-java" enableClipboard="false"
+         description="de.cuioss.portal.reference.portal.navigation.ReferenceMenuProvider"
+         source="@PortalNavigationMenuProvider%n@Alternative%n@Priority(PortalPriorities.PORTAL_MODULE_LEVEL)%npublic class ReferenceMenuProvider implements NavigationMenuProvider {" />
+      <p>In case you want a different provider for the application / assembly you would define one with a higher priority:</p>
+      <dev:sourceCode type="lang-java" enableClipboard="false"
+         source="@PortalNavigationMenuProvider%n@Alternative%n@Priority(PortalPriorities.PORTAL_ASSEMBLY_LEVEL)%npublic class AssemblyMenuProvider implements NavigationMenuProvider {" />
+
+      <p>
+         More information on the Dynamic Navigation can be found here:
+         <h:link outcome="portal_dynamic_navigation">Dynamic Navigation Concept</h:link>
+      </p>
+
+   </ui:define>
+
+</ui:composition>
+</html>

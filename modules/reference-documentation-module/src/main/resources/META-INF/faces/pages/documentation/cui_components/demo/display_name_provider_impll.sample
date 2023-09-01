@@ -1,0 +1,24 @@
+/**
+ * Instance of IDisplayNameProvider which indicates to provide 
+ * display key that has a mapping to resource bundle key.
+ */
+@ToString
+@EqualsAndHashCode
+public class LabeledKey implements IDisplayNameProvider<String> {
+
+    private final String keyId;
+
+    /**
+     * @param value must not be null.
+     */
+    public LabeledKey(final String value) {
+        keyId = checkNotNull(emptyToNull(value), 
+            "Key identifier must not be null");
+    }
+
+    @Override
+    public String getContent() {
+        return keyId;
+    }
+
+}

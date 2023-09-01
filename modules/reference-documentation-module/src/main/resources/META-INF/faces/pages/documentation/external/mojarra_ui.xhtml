@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:taglib="http://xmlns.jcp.org/jsf/composite/taglib">
+<ui:composition template="/templates/master_centered.xhtml">
+    <ui:define name="title">Mojarra Ui - Facelets</ui:define>
+    <ui:define name="content">
+        <boot:column size="12">
+            <h2>Mojarra Ui - Facelets</h2>
+            <p>
+                The namespace is:
+                <h:outputText value="#{cuiTagResolver.mojarraUiTagLib.namespace}" />
+            </p>
+            <ui:repeat var="cuiMetadata" id="metadataRepeat"
+                value="#{cuiTagResolver.mojarraUiTagLib.componentMetadata.data}">
+                <boot:panel headerValue="ui:#{cuiMetadata.name}" collapsible="true" id="componentPanel" collapsed="true">
+                    <p>
+                        <h:outputText value="#{cuiMetadata.description}" escape="false" />
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><h:outputText value="Component-Type: #{cuiMetadata.componentType}" /></li>
+                        <li><h:outputText value="Renderer-Type: #{cuiMetadata.rendererType}" /></li>
+                    </ul>
+                    <taglib:attributes attributeList="#{cuiMetadata.attributes}" />
+                </boot:panel>
+            </ui:repeat>
+        </boot:column>
+    </ui:define>
+</ui:composition>
+</html>

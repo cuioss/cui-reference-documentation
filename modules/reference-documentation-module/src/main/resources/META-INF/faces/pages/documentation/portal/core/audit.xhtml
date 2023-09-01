@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:dev="https://cuioss.de/jsf/dev">
+
+<ui:composition template="/templates/layout_portal_core.xhtml">
+
+    <ui:define name="title">Audit</ui:define>
+
+    <ui:define name="content">
+        <h1>Audit</h1>
+        <h2>Overview</h2>
+        <p>The portal supported logging of audit events via ATNA. Some basic events like Application Startup/
+            Application Shutdown / Login and Logout and generated out of the box, additional events can be triggered
+            via a well documented API:</p>
+        <dev:sourceCode sourcePath="audit.sample" enableClipboard="true" type="lang-java"/>
+    </ui:define>
+</ui:composition>
+</html>

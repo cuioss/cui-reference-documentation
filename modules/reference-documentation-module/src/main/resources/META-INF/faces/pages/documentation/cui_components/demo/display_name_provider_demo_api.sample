@@ -1,0 +1,16 @@
+/**
+ * Implementation should provide a stripped information for documents
+ */
+public interface DocumentInfo extends IdentifierProvider {
+
+    // ... some additional properties
+ 
+    /**
+     * LabeledKey("document.info.unknown.title") if no title
+     * available. DisplayName(titleValue) otherwise. 
+     * 
+     * @return The corresponding IDisplayNameProvider
+     */
+    IDisplayNameProvider<?> getTitle();
+
+}

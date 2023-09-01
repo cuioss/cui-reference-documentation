@@ -1,0 +1,10 @@
+public void executeRemove(final AjaxBehaviorEvent event) {                                     
+    
+    final CloseCommandButton source = (CloseCommandButton) event.getSource();                   
+
+    final Serializable model = ((TagComponent) source.getParent()).getModel();                  
+
+    firstNames.remove(model);                              
+   
+    messageProducer.addGlobalMessage("Disposed=" + model, FacesMessage.SEVERITY_INFO);                 
+}

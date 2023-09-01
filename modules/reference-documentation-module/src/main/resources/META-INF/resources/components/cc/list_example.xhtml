@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:boot="https://cuioss.de/jsf/bootstrap"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:composite="http://xmlns.jcp.org/jsf/composite">
+
+
+<!-- INTERFACE -->
+<composite:interface
+        shortDescription="Contains lazyLoading component, which should not be rendered if CC is not rendered">
+
+    <composite:attribute name="list" required="true"
+                         type="java.util.List"/>
+</composite:interface>
+
+<!-- IMPLEMENTATION -->
+<composite:implementation>
+    <h:panelGroup id="sampleHide" layout="block">
+        <boot:lazyLoading id="lazyLoadingToHide" actionListener="#{encapsulateLazyLoadingPageBean.initialize}"
+                         initialized="#{encapsulateLazyLoadingPageBean.initialized}">
+            <ul>
+                <ui:repeat value="#{cc.attrs.list}" var="line">
+                    <li><h:outputText value="#{line}"/></li>
+                </ui:repeat>
+            </ul>
+        </boot:lazyLoading>
+    </h:panelGroup>
+</composite:implementation>
+
+</ui:component>

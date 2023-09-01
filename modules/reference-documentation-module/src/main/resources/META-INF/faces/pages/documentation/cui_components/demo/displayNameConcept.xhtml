@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:cui="https://cuioss.de/jsf/core"
+    xmlns:dev="https://cuioss.de/jsf/dev">
+<ui:composition template="/templates/master_centered.xhtml">
+    <ui:define name="title">Display-Name-Modeling-Concept</ui:define>
+    <ui:define name="content">
+        <h1>Display Name Modeling Concept</h1>
+        <h2>Presentation of problem</h2>
+        <p>
+            In most cases there is a need to provide a text
+            representation of complex Object. JSF concept therefore is
+            named <b>Converter</b>.<br /> So there is no need to
+            resolve the text representation inside a model class. It
+            also <b>not</b> the responsibility of the model at all.<br />
+            Instead the model could provide a type safe property and JSF
+            Converter care about fitting text transformation.
+        </p>
+        <h3>Benefits</h3>
+        <ul>
+            <li>Model Class stay clean</li>
+            <li>High model abstraction possible</li>
+            <li>Lose coupling. Model should not care about the
+                presentation</li>
+            <li>Reuse of logic for object <em>type to text</em>
+                representation is possible
+            </li>
+            <li>Reduce Maintenance, because converter is the
+                central place for resolving</li>
+            <li>Prevent resource bundle injection / usage inside
+                model or view because it's not belongs to business logic</li>
+            <li>Reuse of resolving also possible outside UI module</li>
+            <li>I18n is not a problem. Because resolving will be
+                done each time. So language switch has no effect on
+                model. (BE call saved)</li>
+        </ul>
+        <h3>Contra</h3>
+        <ul>
+            <li>Increase complexity of domain object</li>
+            <li>May is slower, because resolving will be done each
+                time on rendering. (For expensive operations some cache
+                is recommended)</li>
+            <li>Lose coupling. Harder to find the fitting
+                converter. More effort for documentation</li>
+        </ul>
+        <h2>Proposal</h2>
+        <h3>Design Pattern: Chain of Responsibility</h3>
+        <h4>(The model does not care how it will be displayed -
+            concept)</h4>
+        <p>
+            The idea of IDisplayNameProvider is, to indicate any entity
+            that provides content which need to be presented as text on
+            UI. The resolving of the display name (text presentation) is
+            <b>not</b> part of the entity itself.<br /> <b>The
+                object has no need to know how it will be displayed at
+                all!</b><br /> It's provide just the information that it
+            should be resolved somehow and deliver the content which
+            should to be resolved. If for example the source data is
+            distributed over several attributes but needed as compound
+            object it could be solved by creating a additional compound
+            object which implements the interface IDisplayNameProvider.
+            How this content should be displayed is a decision of
+            converter which is registered for the compound type. In this
+            way a lose coupling is reached by using standard mechanism
+            of JSF.
+        </p>
+
+        <h3>Interface IDisplayNameProvider</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_api.sample" />
+            </boot:column>
+            <boot:column size="6">
+                <cui:fieldset id="sde" legendValue="Explanation">
+                    <p>The interface define that each implementation
+                        of it retrieve come content.</p>
+                </cui:fieldset>
+            </boot:column>
+        </boot:row>
+        <hr />
+        <h3>Some finish implementations</h3>
+        <boot:row>
+            <boot:column size="6">
+                <cui:fieldset legendValue="DisplayName">
+                </cui:fieldset>
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_impls.sample" />
+            </boot:column>
+            <boot:column size="6">
+                <cui:fieldset id="imps"
+                    legendValue="DisplayNameConverter">
+                </cui:fieldset>
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_impls_con.sample" />
+            </boot:column>
+        </boot:row>
+        <hr />
+        <boot:row>
+            <boot:column size="6">
+                <cui:fieldset legendValue="LabeledKey">
+                </cui:fieldset>
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_impll.sample" />
+            </boot:column>
+            <boot:column size="6">
+                <cui:fieldset legendValue="LabeledKeyConverter">
+                </cui:fieldset>
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_impll_con.sample" />
+            </boot:column>
+        </boot:row>
+        <hr />
+        <boot:row>
+            <boot:column size="6">
+                <cui:fieldset legendValue="I18nDisplayNameProvider">
+                </cui:fieldset>
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_impli.sample" />
+            </boot:column>
+            <boot:column size="6">
+                <cui:fieldset
+                    legendValue="I18nDisplayNameProviderConverter">
+                </cui:fieldset>
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_impli_con.sample" />
+            </boot:column>
+        </boot:row>
+        <hr />
+        <p>Follow example shows the collaborations</p>
+        <boot:row>
+            <boot:column size="6">
+                <cui:fieldset legendValue="Usage Demo API">
+                </cui:fieldset>
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_demo_api.sample" />
+            </boot:column>
+            <boot:column size="6">
+                <cui:fieldset legendValue="Demo API Impl">
+                </cui:fieldset>
+                <dev:sourceCode type="lang-java"
+                    sourcePath="display_name_provider_demo_impl.sample" />
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

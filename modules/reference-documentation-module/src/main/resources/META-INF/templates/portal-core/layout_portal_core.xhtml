@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<!--
+<documentation>
+	<body>The default master for the runtime-configuration. It displays a second level navigation provided by runtimeConfigItemsRegistry
+	</body>
+	<section>
+		<title>Standard Extension Points</title>
+		<body>
+			<ul>
+				<li>&lt;ui:define name="metadata"&gt; The view Metadata. Caution: It
+					is an empty placeholder, therefore
+					the client must define its own
+					&lt;f:metadata /&gt;</li>
+				<li>&lt;ui:define name="title"&gt; Concrete Page Title
+					&lt;/ui:define&gt;
+					defaults to msgs['portal.runtime.configuration.default.title']
+				</li>
+				<li>&lt;ui:define name="content"&gt; The actual content of the
+					page.&lt;/ui:define&gt;
+				</li>
+			</ul>
+		</body>
+	</section>
+</documentation>
+ -->
+<ui:composition template="/templates/master.xhtml">
+   <ui:define name="sidebarLeft">
+      <h:outputStylesheet library="com.icw.portal.css" name="reference_docu.css" />
+      <nav class="sidebar">
+         <h3>Basics</h3>
+         <ul class="sidebar-nav">
+            <li><h:link outcome="portal_architecture">Architecture And Design</h:link></li>
+            <li><h:link outcome="portal_basic_concepts" value="Basic Concepts" /></li>
+            <li><h:link outcome="portal_common_objects" value="Common Objects and Services" /></li>
+            <li><h:link outcome="portal_locale_handling" value="Locale-Handling" /></li>
+            <li><h:link outcome="portal_i18n_messages">i18n, Message Bundle and Message Producer</h:link></li>
+            <li><h:link outcome="portal_resource_bundles">Standard ResourceBundles</h:link></li>
+         </ul>
+         <h3>Advanced Concepts</h3>
+         <ul class="sidebar-nav">
+            <li><h:link outcome="portal_multi_templating" value="Multi-Templating" /></li>
+            <li><h:link outcome="portal_standard_pages">Standard Pages</h:link></li>
+            <li><h:link outcome="portal_dynamic_navigation">Dynamic Navigation Menu</h:link></li>
+            <li><h:link outcome="portal_configuration">Configuration, Customization</h:link></li>
+            <li><h:link outcome="portal_theming_branding">Theming, Branding</h:link></li>
+            <li><h:link outcome="portal_connection_metadata">Connection Metadata</h:link></li>
+            <li><h:link outcome="portal_audit">Audit</h:link></li>
+            <li><h:link outcome="portal_error_handling">Error Handling</h:link></li>
+            <!--             <li>Resource-Handling</li> -->
+            <!--             <li>User Management</li> -->
+            <!--             <li>View Access Control</li> -->
+            <!--             <li>Server Side History</li> -->
+            <!--             <li>Storage Abstraction: Server and client</li> -->
+            <!--             <li>Extended Application Security</li> -->
+            <!--             <li>Test Framework</li> -->
+            <!--             <li>Little Helper</li> -->
+         </ul>
+      </nav>
+   </ui:define>
+   <ui:define name="title">
+		Portal Core
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
+<ui:composition
+    template="/templates/layout_portal_labeledContainer.xhtml">
+    <ui:define name="title">Labeled Container Demo</ui:define>
+    <ui:define name="content">
+
+        <boot:column size="12">
+
+            <h2>
+                Labeled Container Demo
+                <boot:icon icon="cui-icon-edit" />
+            </h2>
+
+            <ref_dev:cui_comp_meta name="labeledContainer" />
+
+            <h3>Form vertical</h3>
+            <h:form id="form1" styleClass="well">
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="l1vertial" />
+                    </boot:column>
+                    <boot:column size="6" id="l1vertial">
+                        <boot:labeledContainer layoutMode="formgroup"
+                            labelValue="Email address">
+                            <h:inputText id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" />
+                            <f:facet name="append">
+                                <h:outputText value="Append" />
+                            </f:facet>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="l1_1vertial" />
+                    </boot:column>
+                    <boot:column size="6" id="l1_1vertial">
+                        <boot:labeledContainer layoutMode="formgroup"
+                            labelValue="Email address">
+                            <h:selectOneMenu id="input" disabled="true">
+                                <f:selectItem itemLabel="First element"
+                                    itemValue="f1" />
+                                <f:selectItem itemLabel="Second element"
+                                    itemValue="f2" />
+                            </h:selectOneMenu>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="l2vertial" />
+                    </boot:column>
+                    <boot:column size="6" id="l2vertial">
+                        <boot:labeledContainer labelValue="Remember me"
+                            layoutMode="formgroup">
+                            <h:selectBooleanCheckbox id="input"
+                                value="true"
+                                requiredMessage="You must agree!">
+                                <f:validator
+                                    validatorId="omnifaces.RequiredCheckboxValidator" />
+                            </h:selectBooleanCheckbox>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="radioDemoPageDirection" />
+                    </boot:column>
+                    <boot:column size="6" id="radioDemoPageDirection">
+                        <boot:labeledContainer
+                            labelValue="Radio PageDirection"
+                            layoutMode="formgroup">
+                            <h:selectOneRadio id="input"
+                                layout="pageDirection">
+                                <f:selectItem itemValue="Red"
+                                    itemLabel="Color1 - Red" />
+                                <f:selectItem itemValue="Green"
+                                    itemLabel="Color1 - Green" />
+                                <f:selectItem itemValue="Blue"
+                                    itemLabel="Color1 - Blue" />
+                            </h:selectOneRadio>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="radioDemoLineDirection" />
+                    </boot:column>
+                    <boot:column size="6" id="radioDemoLineDirection">
+                        <boot:labeledContainer
+                            labelValue="Radio LineDirection"
+                            layoutMode="formgroup">
+                            <h:selectOneRadio id="input"
+                                layout="lineDirection">
+                                <f:selectItem itemValue="Red"
+                                    itemLabel="Color1 - Red" />
+                                <f:selectItem itemValue="Green"
+                                    itemLabel="Color1 - Green" />
+                                <f:selectItem itemValue="Blue"
+                                    itemLabel="Color1 - Blue" />
+                            </h:selectOneRadio>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="radioDemoLineDirectionCondensed" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="radioDemoLineDirectionCondensed">
+                        <!-- use styleClass="form-check-inline" if condensed style is needed -->
+                        <boot:labeledContainer
+                            labelValue="Radio LineDirection Condensed"
+                            layoutMode="formgroup"
+                            styleClass="form-check-inline">
+                            <h:selectOneRadio id="input"
+                                layout="lineDirection">
+                                <f:selectItem itemValue="yes"
+                                    itemLabel="Yes" />
+                                <f:selectItem itemValue="unk"
+                                    itemLabel="Unknown" />
+                                <f:selectItem itemValue="no"
+                                    itemLabel="No" />
+                            </h:selectOneRadio>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="selectManyCheckboxDemoPageDirection" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="selectManyCheckboxDemoPageDirection">
+                        <boot:labeledContainer
+                            labelValue="Checkboxes PageDirection"
+                            layoutMode="formgroup">
+                            <h:selectManyCheckbox id="input"
+                                layout="pageDirection">
+                                <f:selectItem itemValue="Red"
+                                    itemLabel="Color1 - Red" />
+                                <f:selectItem itemValue="Green"
+                                    itemLabel="Color1 - Green" />
+                                <f:selectItem itemValue="Blue"
+                                    itemLabel="Color1 - Blue" />
+                            </h:selectManyCheckbox>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="selectManyCheckboxDemoLineDirection" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="selectManyCheckboxDemoLineDirection">
+                        <boot:labeledContainer
+                            labelValue="Checkboxes LineDirection"
+                            layoutMode="formgroup">
+                            <h:selectManyCheckbox id="input"
+                                layout="lineDirection">
+                                <f:selectItem itemValue="Red"
+                                    itemLabel="Color1 - Red" />
+                                <f:selectItem itemValue="Green"
+                                    itemLabel="Color1 - Green" />
+                                <f:selectItem itemValue="Blue"
+                                    itemLabel="Color1 - Blue" />
+                            </h:selectManyCheckbox>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="selectManyCheckboxDemoLineDirectionCondensed" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="selectManyCheckboxDemoLineDirectionCondensed">
+                        <boot:labeledContainer
+                            labelValue="Checkboxes LineDirection Condensed"
+                            layoutMode="formgroup"
+                            styleClass="form-check-inline">
+                            <h:selectManyCheckbox id="input"
+                                layout="lineDirection">
+                                <f:selectItem itemValue="yes"
+                                    itemLabel="Yes" />
+                                <f:selectItem itemValue="unk"
+                                    itemLabel="Unknown" />
+                                <f:selectItem itemValue="no"
+                                    itemLabel="No" />
+                            </h:selectManyCheckbox>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="calendarVertical" />
+                    </boot:column>
+                    <boot:column size="6" id="calendarVertical">
+                        <boot:labeledContainer
+                            labelValue="Calender vertial"
+                            layoutMode="formgroup">
+                            <p:calendar id="input" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="calendarVerticalDateTime" />
+                    </boot:column>
+                    <boot:column size="6" id="calendarVerticalDateTime">
+                        <boot:labeledContainer
+                            labelValue="Date Time vertial"
+                            layoutMode="formgroup">
+                            <p:calendar id="input"
+                                pattern="dd.MM.yyyy HH:mm:ss"
+                                value="#{labeledContainerDemoPage.dateTime}" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="calendarVerticalDateTimeButtonOnly" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="calendarVerticalDateTimeButtonOnly">
+                        <boot:labeledContainer
+                            labelValue="Date Time vertial with button"
+                            layoutMode="formgroup">
+                            <p:calendar id="input"
+                                pattern="dd.MM.yyyy HH:mm:ss"
+                                showOn="button"
+                                value="#{labeledContainerDemoPage.dateTime}" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="calendarVerticalTime" />
+                    </boot:column>
+                    <boot:column size="6" id="calendarVerticalTime">
+                        <boot:labeledContainer
+                            labelValue="Time only vertial"
+                            layoutMode="formgroup">
+                            <p:calendar id="input" timeOnly="true"
+                                pattern="HH:mm"
+                                value="#{labeledContainerDemoPage.dateTime}" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="l3output" />
+                    </boot:column>
+                    <boot:column size="6" id="l3output">
+                        <boot:labeledContainer layoutMode="formgroup"
+                            labelValue="Output"
+                            contentValue="Output Text" />
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="labelFacet" />
+                    </boot:column>
+                    <boot:column size="6" id="labelFacet">
+                        <boot:labeledContainer layoutMode="formgroup">
+                            <f:facet name="label">
+                                <h:outputLink value="http://www.icw.de">www.icw.de</h:outputLink>
+                            </f:facet>
+                            <h:inputText id="input" required="true" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="l1sronlyvertial" />
+                    </boot:column>
+                    <boot:column size="6" id="l1sronlyvertial">
+                        <boot:labeledContainer layoutMode="label_sr_only"
+                            labelValue="Email address">
+                            <h:inputText id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" />
+                            <f:facet name="append">
+                                <h:outputText value="Append" />
+                            </f:facet>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                                sourceContainerId="autocompletevertial" />
+                    </boot:column>
+                    <boot:column size="6" id="autocompletevertial">
+                        <boot:labeledContainer layoutMode="formgroup"
+                                              labelValue="Email address">
+                            <p:autoComplete id="input" value="#{labeledContainerDemoPage.email}" forceSelection="true"
+                                            required="true"
+                                            completeMethod="#{labeledContainerDemoPage.autocomplete}"
+                                            scrollHeight="250"/>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6" styleClass="col-md-offset-6">
+                        <boot:commandButton labelValue="Submit" />
+                    </boot:column>
+                </boot:row>
+            </h:form>
+
+            <h3>Form horizontal</h3>
+            <h:form id="form2" styleClass="well form-horizontal">
+                <boot:row id="r2">
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="l1horizontal" />
+                    </boot:column>
+                    <boot:column size="6" id="l1horizontal">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9" labelValue="Email address">
+                            <h:inputText id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" />
+                            <f:facet name="prepend">
+                                <h:outputText value="Prepend" />
+                            </f:facet>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="l2horizontal" />
+                    </boot:column>
+                    <boot:column size="6" id="l2horizontal">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9" labelValue="Remember me">
+                            <h:selectBooleanCheckbox id="input"
+                                value="true"
+                                requiredMessage="You must agree!">
+                                <f:validator
+                                    validatorId="omnifaces.RequiredCheckboxValidator" />
+                            </h:selectBooleanCheckbox>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="radioDemoPageDirection2" />
+                    </boot:column>
+                    <boot:column size="6" id="radioDemoPageDirection2">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9"
+                            labelValue="Radio PageDirection">
+                            <h:selectOneRadio id="input"
+                                layout="pageDirection">
+                                <f:selectItem itemValue="Red"
+                                    itemLabel="Color1 - Red" />
+                                <f:selectItem itemValue="Green"
+                                    itemLabel="Color1 - Green" />
+                                <f:selectItem itemValue="Blue"
+                                    itemLabel="Color1 - Blue" />
+                            </h:selectOneRadio>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="radioDemoLineDirection2" />
+                    </boot:column>
+                    <boot:column size="6" id="radioDemoLineDirection2">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9"
+                            labelValue="Radio LineDirection">
+                            <h:selectOneRadio id="input"
+                                layout="lineDirection">
+                                <f:selectItem itemValue="Red"
+                                    itemLabel="Color1 - Red" />
+                                <f:selectItem itemValue="Green"
+                                    itemLabel="Color1 - Green" />
+                                <f:selectItem itemValue="Blue"
+                                    itemLabel="Color1 - Blue" />
+                            </h:selectOneRadio>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="radioDemoLineDirection2Condensed" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="radioDemoLineDirection2Condensed">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9"
+                            labelValue="Radio LineDirection"
+                            styleClass="form-check-inline">
+                            <h:selectOneRadio id="input"
+                                layout="lineDirection">
+                                <f:selectItem itemValue="yes"
+                                    itemLabel="Yes" />
+                                <f:selectItem itemValue="unk"
+                                    itemLabel="Unknown" />
+                                <f:selectItem itemValue="no"
+                                    itemLabel="No" />
+                            </h:selectOneRadio>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="selectManyCheckboxDemoPageDirection2" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="selectManyCheckboxDemoPageDirection2">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9"
+                            labelValue="Checkboxes PageDirection">
+                            <h:selectManyCheckbox id="input"
+                                layout="pageDirection">
+                                <f:selectItem itemValue="Red"
+                                    itemLabel="Color1 - Red" />
+                                <f:selectItem itemValue="Green"
+                                    itemLabel="Color1 - Green" />
+                                <f:selectItem itemValue="Blue"
+                                    itemLabel="Color1 - Blue" />
+                            </h:selectManyCheckbox>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="selectManyCheckboxDemoLineDirection2" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="selectManyCheckboxDemoLineDirection2">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9"
+                            labelValue="Checkboxes LineDirection">
+                            <h:selectManyCheckbox id="input"
+                                layout="lineDirection">
+                                <f:selectItem itemValue="Red"
+                                    itemLabel="Color1 - Red" />
+                                <f:selectItem itemValue="Green"
+                                    itemLabel="Color1 - Green" />
+                                <f:selectItem itemValue="Blue"
+                                    itemLabel="Color1 - Blue" />
+                            </h:selectManyCheckbox>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="calendarHorizontal" />
+                    </boot:column>
+                    <boot:column size="6" id="calendarHorizontal">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9"
+                            labelValue="Calender horizonal">
+                            <p:calendar id="input" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="calendarHorizontalDateTime" />
+                    </boot:column>
+                    <boot:column size="6" id="calendarHorizontalDateTime">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9"
+                            labelValue="Date Time horizontal with button">
+                            <p:calendar id="input"
+                                pattern="dd.MM.yyyy HH:mm:ss"
+                                showOn="button" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="l3outputHorizontal" />
+                    </boot:column>
+                    <boot:column size="6" id="l3outputHorizontal">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9" labelValue="Output"
+                            contentValue="Output Text" />
+                    </boot:column>
+                </boot:row>
+                <boot:row id="r3">
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="l1inlinehorizontal" />
+                    </boot:column>
+                    <boot:column size="6" id="l1inlinehorizontal">
+                        <boot:labeledContainer layoutMode="label_sr_only"
+                            labelValue="Email address">
+                            <h:inputText id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" />
+                            <f:facet name="prepend">
+                                <h:outputText value="Prepend" />
+                            </f:facet>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="l3outputHorizontalWithInputRenderedFalse" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="l3outputHorizontalWithInputRenderedFalse">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9" labelValue="Output"
+                            contentValue="Output Text">
+                            <h:inputText id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" rendered="false" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                            sourceContainerId="l3outputHorizontalWithInputTypeHidden" />
+                    </boot:column>
+                    <boot:column size="6"
+                        id="l3outputHorizontalWithInputTypeHidden">
+                        <boot:labeledContainer labelSize="3"
+                            contentSize="9" labelValue="Output"
+                            contentValue="Output Text">
+                            <h:inputHidden id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" />
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode
+                                sourceContainerId="autocompleteHorizontal" />
+                    </boot:column>
+                    <boot:column size="6" id="autocompleteHorizontal">
+                        <boot:labeledContainer labelSize="3"
+                                              contentSize="9"
+                                              labelValue="Email address">
+                            <p:autoComplete id="input" value="#{labeledContainerDemoPage.email}" forceSelection="true"
+                                            required="true"
+                                            completeMethod="#{labeledContainerDemoPage.autocomplete}"
+                                            scrollHeight="250"/>
+                        </boot:labeledContainer>
+                    </boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="6" styleClass="col-md-offset-6">
+                        <boot:commandButton labelValue="Submit" />
+                    </boot:column>
+                </boot:row>
+            </h:form>
+
+            <h3>Form inline</h3>
+            <boot:row id="r4">
+                <boot:column size="6">
+                    <dev:sourceCode
+                        sourceContainerId="labeledContainerInline" />
+                </boot:column>
+                <boot:column size="6" id="labeledContainerInline">
+                    <h:form id="form3" styleClass="well form-inline">
+                        <boot:labeledContainer id="l1"
+                            layoutMode="formgroup"
+                            labelValue="Email address">
+                            <h:inputText id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" />
+                            <f:facet name="append">
+                                <h:outputText value="Append" />
+                            </f:facet>
+                        </boot:labeledContainer>
+                        <boot:labeledContainer id="l2"
+                            labelValue="Remember me"
+                            layoutMode="formgroup">
+                            <h:selectBooleanCheckbox id="input"
+                                value="true"
+                                requiredMessage="You must agree!">
+                                <f:validator
+                                    validatorId="omnifaces.RequiredCheckboxValidator" />
+                            </h:selectBooleanCheckbox>
+                        </boot:labeledContainer>
+
+                        <boot:labeledContainer id="l3"
+                            layoutMode="formgroup" labelValue="Output"
+                            contentValue="Output Text" />
+                        <boot:commandButton labelValue="Submit" />
+                    </h:form>
+                </boot:column>
+            </boot:row>
+
+        </boot:column>
+    </ui:define>
+</ui:composition>
+</html>

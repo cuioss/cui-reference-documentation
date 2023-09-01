@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<ui:composition template="/templates/master_centered.xhtml">
+
+    <ui:define name="title">#{msgs['page.portal.clients_module.title']}</ui:define>
+
+    <ui:define name="content">
+        <h1>#{msgs['page.portal.clients_module.header']}</h1>
+        <h2>Summary</h2>
+        <p>The Portal Clients Module provides all clients that define what the portal is all about.
+            It deals with all aspects that define an Application Framework.</p>
+        <ul>
+        <li><h:link outcome="portal_restclient">MicroProfile Rest Client</h:link></li>
+        </ul>
+
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,16 @@
+/**
+ * Converter for implementation of {@link IDisplayNameProvider}
+ * {@link DisplayName}
+ */
+public class DisplayNameConverter extends AbstractConverter<DisplayName>{
+
+    @Override
+    protected String convertToString(
+        final FacesContext context, 
+        final UIComponent component, 
+        final DisplayName value) throws ConverterException {
+        
+        return SanitizingHelper.HTML.clean(value.getContent());
+    }
+
+}

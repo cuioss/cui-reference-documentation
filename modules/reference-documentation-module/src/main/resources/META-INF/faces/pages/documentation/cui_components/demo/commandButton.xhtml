@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+>
+<ui:composition template="/templates/master.xhtml">
+	<ui:define name="title">boot:commandButton</ui:define>
+	<ui:define name="content">
+
+		<h2>
+			<boot:icon icon="cui-icon-check" />
+			boot:commandButton
+		</h2>
+		<p>The boot:commandButton is a replacement for h:commandButton,
+			features:</p>
+		<ul>
+			<li>Bootstrap based styling</li>
+			<li>Cui based i18n for label and title</li>
+			<li>Optional Icon to be displayed</li>
+			<li>Bootstrap States and Sizes</li>
+			<li>KeyBinding for Simple keyboard Control</li>
+		</ul>
+		<h3>Labels and Titles</h3>
+		<boot:row>
+			<boot:column size="6">
+				<dev:sourceCode sourceContainerId="labelsAndTitles" />
+			</boot:column>
+			<boot:column size="6">
+				<h:form id="labelsAndTitles">
+					<boot:quickControlGroup align="left">
+						<boot:commandButton labelValue="Save (labelValue)">
+							<f:ajax render="@form" execute="@form" />
+						</boot:commandButton>
+						<boot:commandButton labelKey="common.button.save" />
+						<boot:commandButton labelValue="With Title Key"
+							titleKey="common.button.save" />
+						<boot:commandButton labelValue="With Title Value"
+							titleValue="Title from titleValue" />
+					</boot:quickControlGroup>
+				</h:form>
+			</boot:column>
+		</boot:row>
+
+		<h3>Icons</h3>
+		<boot:row>
+			<boot:column size="6">
+				<dev:sourceCode sourceContainerId="icons" />
+			</boot:column>
+			<boot:column size="6">
+				<h:form id="icons">
+					<boot:quickControlGroup align="left">
+						<boot:commandButton labelValue="Icon Left"
+							icon="cui-icon-circle_arrow_left" />
+						<boot:commandButton icon="cui-icon-user_add" titleValue="Icon Only" />
+						<boot:commandButton icon="cui-icon-circle_arrow_right"
+							iconAlign="right" labelValue="Icon Right" />
+					</boot:quickControlGroup>
+				</h:form>
+			</boot:column>
+		</boot:row>
+
+		<h3>States</h3>
+		<boot:row>
+			<boot:column size="6">
+				<dev:sourceCode sourceContainerId="states" />
+			</boot:column>
+			<boot:column size="6">
+				<h:form id="states">
+					<boot:quickControlGroup align="left">
+						<boot:commandButton labelValue="default" />
+						<boot:commandButton labelValue="primary" state="primary" />
+                        <boot:commandButton labelValue="success" state="success"
+                            actionListener="#{commandButtonsDemoPage.executeActionWithSuccess}">
+                            <f:ajax immediate="true" render="@form"/>
+                        </boot:commandButton>
+						<boot:commandButton labelValue="info" state="info" />
+						<boot:commandButton labelValue="warning" state="warning" />
+						<boot:commandButton labelValue="danger" state="danger" />
+					</boot:quickControlGroup>
+					<boot:quickControlGroup align="left">
+						<boot:commandButton labelValue="link" state="link" />
+						<boot:commandButton state="link" icon="cui-icon-check" size="lg"
+							titleValue="Simple Clickable Icon Button" />
+					</boot:quickControlGroup>
+				</h:form>
+			</boot:column>
+		</boot:row>
+
+		<h3>Sizes</h3>
+		<boot:row>
+			<boot:column size="6">
+				<dev:sourceCode sourceContainerId="sizes" />
+			</boot:column>
+			<boot:column size="6">
+				<h:form id="sizes">
+					<boot:quickControlGroup align="left">
+						<boot:commandButton labelValue="small: sm" size="sm" />
+						<boot:commandButton labelValue="default" />
+						<boot:commandButton labelValue="large: lg" size="lg" />
+					</boot:quickControlGroup>
+				</h:form>
+			</boot:column>
+		</boot:row>
+
+		<h3>KeyBinding</h3>
+		<boot:row>
+			<boot:column size="6">
+				<dev:sourceCode sourceContainerId="keyBinding" />
+			</boot:column>
+			<boot:column size="6">
+				<h:form id="keyBinding">
+					<p>
+						Time:
+						<h:outputText value="#{now}" id="timeOut" />
+					</p>
+					<boot:quickControlGroup align="left">
+						<boot:commandButton labelValue="Press Escape to update"
+							keyBinding="esc">
+							<f:ajax render="timeOut" />
+						</boot:commandButton>
+					</boot:quickControlGroup>
+				</h:form>
+			</boot:column>
+		</boot:row>
+
+		<h3>Disabled</h3>
+		<boot:row>
+			<boot:column size="6">
+				<dev:sourceCode sourceContainerId="disabled" />
+			</boot:column>
+			<boot:column size="6">
+				<h:form id="disabled">
+					<boot:quickControlGroup align="left">
+						<boot:commandButton labelValue="Disabled Button" disabled="true"
+							state="primary" />
+					</boot:quickControlGroup>
+				</h:form>
+			</boot:column>
+		</boot:row>
+		<h3>Block Level Buttons</h3>
+		<boot:row>
+			<boot:column size="6">
+				<dev:sourceCode sourceContainerId="blockButton" />
+			</boot:column>
+			<boot:column size="3">
+				<h:form id="blockButton">
+					<boot:commandButton labelValue="Block Level Button"
+						styleClass="btn-block" state="success" />
+				</h:form>
+			</boot:column>
+		</boot:row>
+
+	</ui:define>
+</ui:composition>
+</html>

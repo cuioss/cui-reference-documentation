@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.3"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+    <name>CuiPortalReferenceNavigation</name>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/faces/pages/documentation/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/faces/guest/error.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_icons</from-outcome>
+            <to-view-id>/faces/pages/documentation/icons/cui_icons.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_icon_components</from-outcome>
+            <to-view-id>/faces/pages/documentation/icons/icon_components.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_mime_type_icons</from-outcome>
+            <to-view-id>/faces/pages/documentation/icons/mime_types.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>primefaces_icon_mapping</from-outcome>
+            <to-view-id>/faces/pages/documentation/icons/primefaces_icon_mapping.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_components</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/components.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_converter</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/converter.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_validator</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/validator.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_behavior</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/behavior.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_miscellaneous</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/miscellaneous.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_layout</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/layout.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_tag</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/tag.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_editable_data_list</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/editableDataList.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_text_filter</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/textFilter.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_lazy_loading</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/lazyLoading.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_panel</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/panel.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_dashboard</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/dashboard.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>external_omnifaces</from-outcome>
+            <to-view-id>/faces/pages/documentation/external/omnifaces.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>external_primefaces</from-outcome>
+            <to-view-id>/faces/pages/documentation/external/primefaces.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>external_mojarra_html</from-outcome>
+            <to-view-id>/faces/pages/documentation/external/mojarra_html.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>external_mojarra_core</from-outcome>
+            <to-view-id>/faces/pages/documentation/external/mojarra_core.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>external_mojarra_ui</from-outcome>
+            <to-view-id>/faces/pages/documentation/external/mojarra_ui.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_labeled_container</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/labeledContainerDemo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_labeled_container_inputguard</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/inputGuardDemo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_labeled_container_helpText</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/labeledContainerHelpTextDemo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>bootstrap_grid_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/demo/bootstrap_grid_demo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_templates</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/portal_templates.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_clients_module</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/portal_clients.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_configuration</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/configuration.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_standard_pages</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/standard_pages.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_core_module</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/portal_core.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_multi_templating</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/multi_templating.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_i18n_messages</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/i18n_message_bundle.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_architecture</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/architecture_and_design.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_resource_bundles</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/portal_resource_bundles.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_dynamic_navigation</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/dynamic_navigation.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_audit</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/audit.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_error_handling</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/error_handling.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_common_objects</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/common_objects.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_locale_handling</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/locale_handling.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_theming_branding</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/theming_branding.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_connection_metadata</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/connection_metadata.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_basic_concepts</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/core/basic_concepts.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal_mp_rest_client</from-outcome>
+            <to-view-id>/faces/pages/documentation/portal/clients/mp_rest_client.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>dialog_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/dialog.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>displayNameConcept_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/displayNameConcept.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>bootstrap_form_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/demo/bootstrap_form_demo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>cui_inputGuardedDemo</from-outcome>
+            <to-view-id>/faces/pages/documentation/cui_components/demo/inputGuardDemo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>prime_table_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/prime/prime_table_demo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>prime_tree_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/prime/prime_tree_demo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>prime_picklist_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/prime/prime_picklist_demo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>prime_scheduler_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/prime/prime_scheduler_demo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>prime_textEditor_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/prime/prime_textEditor_demo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>prime_wizard_demo</from-outcome>
+            <to-view-id>/faces/pages/documentation/prime/prime_wizard_demo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

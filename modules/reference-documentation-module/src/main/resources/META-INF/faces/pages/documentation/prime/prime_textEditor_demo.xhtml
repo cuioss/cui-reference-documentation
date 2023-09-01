@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap"
+      xmlns:dev="https://cuioss.de/jsf/dev">
+
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">PrimeFaces Text Editor DEMO</ui:define>
+
+    <ui:define name="content">
+
+        <h:outputStylesheet>
+
+        </h:outputStylesheet>
+
+        <h:form id="simple">
+
+            <h1>Demo of PrimeFaces Text Editor</h1>
+            <p>Basic demo of the PrimeFaces Text Editor</p>
+
+
+
+            <boot:row>
+                <boot:column size="6">
+                    <dev:sourceCode sourceContainerId="simpleSample"/>
+                </boot:column>
+                <boot:column size="6" id="simpleSample" styleClass="simple">
+
+                    <boot:labeledContainer id="reqSimpleTextEdit" labelValue="Required simple html input"
+                                          layoutMode="formgroup">
+                        <ui:remove>
+                            Attention !!!
+
+                            Primefaces text editor doesn't define own root style class.
+                            'sample-text-editor' is own defined one!
+
+                        </ui:remove>
+
+                        <p:textEditor value="#{textEditorDemoPageBean.simpleTextSample}" id="input"
+                                      placeholder="Please enter some text"
+                                      styleClass="sal,sdömsdömsödns-editor"
+                                      converter="com.icw.ehf.cui.core.api.converter.StringIdentConverter"
+                                      height="250"
+                                      required="true">
+                            <f:facet name="toolbar">
+                                <span class="ql-formats">
+                                    <select class="ql-size"></select>
+                                    <select class="ql-header"></select>
+                                </span>
+                                <span class="ql-formats">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                    <button class="ql-strike"></button>
+                                </span>
+                                <span class="ql-formats">
+                                    <select class="ql-color"></select>
+                                    <select class="ql-background"></select>
+                                </span>
+                                <span class="ql-formats">
+                                    <select class="ql-align"></select>
+                                    <button class="ql-indent" value="-1"></button>
+                                    <button class="ql-indent" value="+1"></button>
+                                </span>
+                                <span class="ql-formats">
+                                    <button class="ql-clean" type="button"></button>
+                                </span>
+                            </f:facet>
+                        </p:textEditor>
+
+                    </boot:labeledContainer>
+
+
+                    <boot:labeledContainer id="resultPlain" labelValue="Result as plain text" layoutMode="formgroup">
+
+                        <h:inputTextarea id="input" readonly="true"
+                                         converter="com.icw.ehf.cui.core.api.converter.StringIdentConverter"
+                                         value="#{textEditorDemoPageBean.simpleTextSample}"/>
+
+                    </boot:labeledContainer>
+
+                    <div class="form-group">
+                        <label class="control-label">Result not escaped</label>
+                        <h:outputText value="#{textEditorDemoPageBean.simpleTextSample}" escape="false" converter="com.icw.ehf.cui.core.api.converter.StringIdentConverter"/>
+
+                    </div>
+
+                    <boot:commandButton labelValue="Save">
+                        <p:ajax process="@form" update="@form:simpleSample"/>
+                    </boot:commandButton>
+                </boot:column>
+            </boot:row>
+        </h:form>
+
+        <h:form styleClass="form-horizontal">
+            <h1>Demo of PrimeFaces Text Editor</h1>
+            <p>Horizontal usage for PrimeFaces Text Editor</p>
+
+            <boot:row>
+                <boot:column size="6">
+                    <dev:sourceCode sourceContainerId="horizontalExample"/>
+                </boot:column>
+                <boot:column size="6" id="horizontalExample">
+                    <boot:labeledContainer id="sTe" labelValue="Horizontal layout" contentSize="10" labelSize="2">
+                        <p:textEditor styleClass="someEditor" id="input" required="true"
+                                      value="#{textEditorDemoPageBean.otherTextSample}"/>
+                    </boot:labeledContainer>
+
+                    <boot:commandButton labelValue="Save">
+                        <p:ajax process="@form" update="@form:horizontalExample"/>
+                    </boot:commandButton>
+                </boot:column>
+            </boot:row>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:cui="https://cuioss.de/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">Modal-Dialog</ui:define>
+    <ui:define name="content">
+        <h1>Modal-Dialog</h1>
+        <ref_dev:cui_comp_meta name="modalDialog" />
+        <h3>cui:modalControl</h3>
+        <ref_dev:cui_comp_meta name="modalControl" />
+
+        <boot:row>
+            <boot:column size="7">
+                <dev:sourceCode sourceContainerId="modal_control" />
+            </boot:column>
+            <boot:column size="5">
+                <cui:fieldset id="modal_control"
+                    legendValue="Modal Control">
+                    <boot:button state="primary" labelValue="Show Modal"
+                        id="openModal1">
+                        <cui:modalControl for="defaultDialog" />
+                    </boot:button>
+                    <br />
+                    <h2>
+                        Click the Icon:
+                        <boot:icon icon="cui-icon-more_windows"
+                            titleValue="Click me to show">
+                            <cui:modalControl for="defaultDialog" />
+                        </boot:icon>
+                    </h2>
+                    <h2>
+                        <h:outputText value="Click the text">
+                            <cui:modalControl for="defaultDialog" />
+                        </h:outputText>
+                    </h2>
+                    <h:form class="form-horizotal">
+                        <boot:labeledContainer id="first"
+                            layoutMode="plain">
+                            <h:inputText value="Focus Me" id="input">
+                                <cui:modalControl for="defaultDialog"
+                                    event="focus" />
+                            </h:inputText>
+                        </boot:labeledContainer>
+                    </h:form>
+                    <br />
+					Invalid binding results in an console-error
+					<boot:button state="primary" labelValue="Invalid For"
+                        id="openModal2">
+                        <cui:modalControl for="invalidDialogId" />
+                    </boot:button>
+                    <cui:modalDialog id="defaultDialog"
+                        headerValue="Default Dialog" animation="fade">
+                        <h:outputText value="Some Child Content" />
+                        <f:facet name="footer">
+                            <boot:button labelValue="Close Dialog"
+                                state="default">
+                                <cui:modalControl for="defaultDialog"
+                                    action="hide" />
+                            </boot:button>
+                        </f:facet>
+                    </cui:modalDialog>
+                </cui:fieldset>
+            </boot:column>
+        </boot:row>
+
+        <h3>JavaScript Control</h3>
+        <boot:row>
+            <boot:column size="7">
+                <dev:sourceCode sourceContainerId="sde" />
+            </boot:column>
+            <boot:column size="5">
+                <cui:fieldset id="sde"
+                    legendValue="Show with JavaScript">
+                    <boot:button state="primary" labelValue="Show Modal"
+                        onclick="$('[data-modal-dialog-id=defaultDialog]').modal('show');return false;" />
+                </cui:fieldset>
+            </boot:column>
+        </boot:row>
+
+        <h3>Complex Dialog Sample</h3>
+        <boot:row>
+            <boot:column size="7">
+                <dev:sourceCode sourceContainerId="complexSample" />
+            </boot:column>
+            <boot:column size="5">
+                <cui:fieldset id="complexSample"
+                    legendValue="Show with Complex Sample">
+                    <boot:button state="primary" labelValue="Show Modal"
+                        id="openModal3">
+                        <cui:modalControl for="complexDialog" />
+                    </boot:button>
+                    <h:form id="complexForm"
+                        styleClass="form-horizontal">
+                        <cui:modalDialog id="complexDialog"
+                            headerValue="Complex Dialog">
+
+                            <boot:labeledContainer id="first"
+                                labelValue="First Name"
+                                renderMessage="true" titleValue="">
+                                <h:inputText id="input" required="true"
+                                    requiredMessage="First name is required"
+                                    value="#{labeledContainerDemoPage.firstName}" />
+                            </boot:labeledContainer>
+
+                            <boot:labeledContainer id="last"
+                                labelValue="Last Name"
+                                renderMessage="true">
+                                <h:inputText id="input"
+                                    value="#{labeledContainerDemoPage.lastName}" />
+                            </boot:labeledContainer>
+                            <f:facet name="footer">
+                                <boot:commandButton id="saveButt"
+                                    state="primary" type="submit"
+                                    labelValue="Save"
+                                    styleClass="pull-right"
+                                    actionListener="#{labeledContainerDemoPage.storeData}">
+                                    <p:ajax process="@form"
+                                        update="first last"
+                                        oncomplete="ajaxStatusHandler(xhr, status, args)" />
+                                </boot:commandButton>
+                                <script type="text/javascript">
+					   function ajaxStatusHandler(xhr, status, args) {
+
+						   if(args == null || null == args.validationFailed){
+							   $('[data-modal-dialog-id=complexDialog]').modal('hide');
+							   return false;
+ 						   }
+
+
+						}
+					</script>
+                            </f:facet>
+                        </cui:modalDialog>
+                    </h:form>
+                </cui:fieldset>
+            </boot:column>
+        </boot:row>
+
+        <h3>Lazy loaded dialog content</h3>
+        <boot:row>
+            <boot:column size="7">
+                <dev:sourceCode sourceContainerId="lazyLoadDialogDemo" />
+            </boot:column>
+            <boot:column size="5">
+                <h:panelGroup id="lazyLoadDialogDemo">
+                    <h:form id="lazyLoadedDialogTriggerForm">
+                        <boot:commandButton state="primary"
+                            id="showDialog" labelValue="Show Modal"
+                            type="button"
+                            actionListener="#{dialogDemoPageBean.showLazyLoadingDialog}">
+                            <p:ajax update="lazyLoadedDialogForm"
+                                oncomplete="$('[data-modal-dialog-id=lazyLoadedDialog]').modal('show');" />
+                        </boot:commandButton>
+                    </h:form>
+
+                    <h:form id="lazyLoadedDialogForm">
+                        <cui:modalDialog id="lazyLoadedDialog"
+                            closable="false" dialogSize="md"
+                            headerTextValue="Lazy Loaded Content">
+
+                            <h:panelGroup id="dialogContent"
+                                rendered="#{dialogDemoPageBean.renderLazyLoadingDialogContent}">
+                                <h:panelGroup id="dialogData">
+                                    <h:panelGroup id="data"
+                                        rendered="#{dialogDemoPageBean.lazyLoadingDialogContentAvailable}"
+                                        layout="block">
+                                        <boot:row>
+                                            <boot:column size="12">
+                                                That paid off!
+                                            </boot:column>
+                                        </boot:row>
+                                    </h:panelGroup>
+                                    <h:panelGroup id="no-data"
+                                        rendered="#{not dialogDemoPageBean.lazyLoadingDialogContentAvailable}"
+                                        layout="block">
+                                        <boot:row>
+                                            <boot:column size="12">
+                                                Wait 5 seconds...
+                                                <div
+                                                    class="waiting-indicator waiting-indicator-size-md">
+                                                    <div
+                                                        class="item-1 item-size-md"></div>
+                                                    <div
+                                                        class="item-2 item-size-md"></div>
+                                                    <div
+                                                        class="item-3 item-size-md"></div>
+                                                    <div
+                                                        class="item-4 item-size-md"></div>
+                                                    <div
+                                                        class="item-5 item-size-md"></div>
+                                                </div>
+                                            </boot:column>
+                                        </boot:row>
+                                    </h:panelGroup>
+                                </h:panelGroup>
+
+                                <boot:commandButton state="primary"
+                                    id="hideDialog" labelValue="Close"
+                                    actionListener="#{dialogDemoPageBean.hideLazyLoadingDialog}">
+                                    <p:ajax process="@this"
+                                        update="@form:lazyLoadedDialog"
+                                        onsuccess="$('[data-modal-dialog-id=lazyLoadedDialog]').modal('hide');" />
+                                </boot:commandButton>
+
+                                <p:remoteCommand autoRun="true"
+                                    id="lazyLoading"
+                                    name="loadDialogData"
+                                    update="@form:dialogContent:dialogData"
+                                    actionListener="#{dialogDemoPageBean.initLazyLoadingDialogContent}" />
+                            </h:panelGroup>
+                        </cui:modalDialog>
+                    </h:form>
+                </h:panelGroup>
+            </boot:column>
+        </boot:row>
+
+    </ui:define>
+</ui:composition>
+</html>

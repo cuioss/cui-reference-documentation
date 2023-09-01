@@ -1,0 +1,6 @@
+<cui-composite:widget model="#{widgetBean}">
+    <ui:repeat begin="0" end="#{widgetBean.repeats}">
+        <h:outputText value="#{widgetBean.content}"/>
+        <hr />
+    </ui:repeat>
+</cui-composite:widget>

@@ -1,0 +1,42 @@
+@SuppressWarnings("javadoc")
+@ViewScoped
+@Named
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class MultipleLazyLoadingPageBean extends BaseLazyLoadingRequest<List<String>> implements Serializable {
+
+    private static final long serialVersionUID = 3231631758524048548L;
+
+    private static final CuiLogger log = new CuiLogger(MultipleLazyLoadingPageBean.class);
+
+    @Inject
+    private LazyLoadingViewController viewController;
+
+    @Getter
+    private List<String> content;
+
+    @Getter
+    @Setter
+    private String selected;
+
+    public String initViewAction() {
+        viewController.startRequest(this);
+        return null;
+    }
+
+    @Override
+    public ResultObject<List<String>> backendRequest() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            log.error("interrupted: ", e);
+            Thread.currentThread().interrupt();
+        }
+        return new ResultObject<>(mutableList("A", "B", "C"), ResultState.VALID);
+    }
+
+    @Override
+    public void handleResult(List<String> result) {
+        content = result;
+    }
+}

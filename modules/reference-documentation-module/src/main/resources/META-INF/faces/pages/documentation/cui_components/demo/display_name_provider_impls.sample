@@ -1,0 +1,24 @@
+/**
+ * Instance of IDisplayNameProvider which 
+ * indicates to provide display name without need of resolving.
+ */
+@ToString
+@EqualsAndHashCode
+public class DisplayName implements IDisplayNameProvider<String> {
+ 
+    private final String displayName;
+ 
+    /**
+     * @param value
+     */
+    public DisplayName(final String value) {
+        displayName = checkNotNull(value, 
+            "Display name must not be null");
+    }
+ 
+    @Override
+    public String getContent() {
+        return displayName;
+    }
+
+}

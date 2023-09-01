@@ -1,0 +1,31 @@
+public class I18nDisplayNameProviderConverter 
+    extends AbstractConverter<I18nDisplayNameProvider> {
+
+    private final LocaleProducerAccessor localeProducerAccessor 
+        = new LocaleProducerAccessor();
+ 
+    @Override
+    protected String convertToString(
+        final FacesContext context, 
+        final UIComponent component,
+        final I18nDisplayNameProvider value) throws ConverterException {
+
+        final Locale locale = 
+            localeProducerAccessor.getValue().getLocale();
+
+        String text = value.lookupTextFor(locale);
+
+        
+        if (isNullOrEmpty(text)) {
+            text = value.
+                lookupTextWithFallbackFirstFittingLanguageOnly(locale);
+        }
+
+        if (!isNullOrEmpty(text)) {
+            return SanitizingHelper.HTML.clean(text);
+        }
+
+        return "";
+    }
+
+}

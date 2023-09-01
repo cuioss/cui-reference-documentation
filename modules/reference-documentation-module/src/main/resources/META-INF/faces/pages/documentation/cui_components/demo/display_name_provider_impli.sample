@@ -1,0 +1,51 @@
+public class I18nDisplayNameProvider 
+    implements IDisplayNameProvider<Map<Locale, String>> {
+ 
+    private final Map<Locale, String> storage;
+ 
+    @Override
+    public Map<Locale, String> getContent() {
+        return storage;
+    }
+ 
+    /**
+     * Shortcut method provide lookup to localized text in storage
+     *
+     * @param locale {@linkplain Locale} must not be {@code null}
+     * @return corresponding localized text if exists, 
+     *         {@code null} otherwise
+     * @throws IllegalArgumentException if locale is {@code null}
+     */
+    public String lookupTextFor(final Locale locale) {
+
+        checkArgument(null != locale, LOCALE_MUST_NOT_BE_NULL);
+
+        return storage.get(locale);
+
+    }
+ 
+    /**
+     * Shortcut method provide lookup to localized text 
+     * in storage with fall-back strategy where only
+     * language is required for match
+     *
+     * @param locale {@linkplain Locale} must not be {@code null}
+     * @return corresponding localized text if exists, 
+     *         {@code null} otherwise
+     * @throws IllegalArgumentException if locale is {@code null}
+     */
+    public String lookupTextWithFallbackFirstFittingLanguageOnly(
+        final Locale locale) {
+
+        checkArgument(null != locale, LOCALE_MUST_NOT_BE_NULL);
+
+        for (final Entry<Locale, String> entry : storage.entrySet()) {
+         if (entry.getKey().getLanguage().equals(locale.getLanguage())){
+                return entry.getValue();
+         }
+        }
+ 
+        return null;
+    }
+     
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:dev="https://cuioss.de/jsf/dev">
+
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">Primefaces Wizard DEMO</ui:define>
+    <ui:define name="content">
+
+        <style type="text/css">
+            .prettyprint {
+                max-height: 400px;
+            }
+        </style>
+
+        <h1>Demo of PrimeFaces Wizard</h1>
+        <p>Basic demo of the PrimeFaces Wizard</p>
+
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="wizarddemo"/>
+            </boot:column>
+
+            <boot:column id="wizarddemo" size="6">
+                <h:form id="wizardform" styleClass="form-horizontal">
+                    <p:wizard id="wizard-default" flowListener="#{wizardDemoBean.onFlowProcess}">
+                        <p:tab id="personal" title="Personal">
+                            <boot:panel headerValue="Personal Details" collapsible="false">
+                                <boot:row>
+                                    <boot:labeledContainer id="firstname"
+                                                          labelSize="2"
+                                                          contentSize="6"
+                                                          labelValue="Firstname">
+                                        <h:inputText id="input"
+                                                     required="true"
+                                                     value="#{wizardDemoBean.user.firstname}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="lastname"
+                                                          labelSize="2"
+                                                          contentSize="6"
+                                                          labelValue="Lastname">
+                                        <h:inputText id="input"
+                                                     required="true"
+                                                     value="#{wizardDemoBean.user.lastname}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="age" labelSize="2" contentSize="6" labelValue="Age">
+                                        <h:inputText id="input" value="#{wizardDemoBean.user.age}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="skipPerson"
+                                                          labelSize="2"
+                                                          contentSize="6"
+                                                          labelValue="Skip to last">
+                                        <h:selectBooleanCheckbox value="#{wizardDemoBean.skip}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                            </boot:panel>
+                        </p:tab>
+
+                        <p:tab id="address" title="Address">
+                            <boot:panel headerValue="Address Details" collapsible="false">
+                                <boot:row>
+                                    <boot:labeledContainer id="street" labelSize="2" contentSize="6"
+                                                          labelValue="Street">
+                                        <h:inputText id="input" value="#{wizardDemoBean.user.street}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="postalCode" labelSize="2" contentSize="6"
+                                                          labelValue="Postal Code">
+                                        <h:inputText id="input"
+                                                     value="#{wizardDemoBean.user.postalCode}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="city" labelSize="2" contentSize="6"
+                                                          labelValue="City">
+                                        <h:inputText id="input" value="#{wizardDemoBean.user.city}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="skipAddr"
+                                                          labelSize="2"
+                                                          contentSize="6"
+                                                          labelValue="Skip to last">
+                                        <h:selectBooleanCheckbox value="#{wizardDemoBean.skip}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                            </boot:panel>
+                        </p:tab>
+
+                        <p:tab id="confirm" title="Confirmation">
+                            <boot:panel headerValue="Confirmation" collapsible="false">
+                                <boot:row>
+                                    <boot:labeledContainer id="firstnameConfirm" labelSize="2" contentSize="6"
+                                                          labelValue="Firstname"
+                                                          contentValue="#{wizardDemoBean.user.firstname}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="lastnameConfirm" labelSize="2" contentSize="6"
+                                                          labelValue="Lastname"
+                                                          contentValue="#{wizardDemoBean.user.lastname}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="ageConfirm" labelSize="2" contentSize="6"
+                                                          labelValue="Age"
+                                                          contentValue="#{wizardDemoBean.user.age}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="streetConfirm" labelSize="2" contentSize="6"
+                                                          labelValue="Street"
+                                                          contentValue="#{wizardDemoBean.user.street}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="postalcodeConfirm" labelSize="2" contentSize="6"
+                                                          labelValue="Postal Code"
+                                                          contentValue="#{wizardDemoBean.user.postalCode}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="cityConfirm" labelSize="2" contentSize="6"
+                                                          labelValue="City"
+                                                          contentValue="#{wizardDemoBean.user.city}"/>
+                                </boot:row>
+
+                                <boot:quickControlGroup>
+                                    <boot:commandButton id="submit" labelValue="Submit" state="primary"
+                                                       actionListener="#{wizardDemoBean.save}">
+                                        <p:ajax process="@this" update="@form"/>
+                                    </boot:commandButton>
+                                </boot:quickControlGroup>
+                            </boot:panel>
+                        </p:tab>
+                    </p:wizard>
+                </h:form>
+            </boot:column>
+        </boot:row>
+        <boot:row>
+           <boot:column size="12"><hr/></boot:column>
+        </boot:row>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="wizzardLight"/>
+            </boot:column>
+            <boot:column id="wizzardLight" size="6">
+                <h:form id="wizardlightform" styleClass="form-horizontal">
+                    <p:wizard id="wizard-light"
+                              styleClass="wizard-light"
+                              flowListener="#{wizardDemoBean.onFlowProcess}">
+                        <p:tab id="personal-light" title="Personal">
+                            <boot:panel collapsible="false">
+                                <boot:row>
+                                    <boot:labeledContainer id="firstname-light"
+                                                          labelSize="2"
+                                                          contentSize="6"
+                                                          labelValue="Firstname">
+                                        <h:inputText id="input"
+                                                     required="true"
+                                                     value="#{wizardDemoBean.user.firstname}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="lastname-light"
+                                                          labelSize="2"
+                                                          contentSize="6"
+                                                          labelValue="Lastname">
+                                        <h:inputText id="input"
+                                                     required="true"
+                                                     value="#{wizardDemoBean.user.lastname}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="age-light" labelSize="2" contentSize="6" labelValue="Age">
+                                        <h:inputText id="input" value="#{wizardDemoBean.user.age}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="skipPerson-light"
+                                                          labelSize="2"
+                                                          contentSize="6"
+                                                          labelValue="Skip to last">
+                                        <h:selectBooleanCheckbox value="#{wizardDemoBean.skip}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                            </boot:panel>
+                        </p:tab>
+
+                        <p:tab id="address-light" title="Address">
+                            <boot:panel collapsible="false">
+                                <boot:row>
+                                    <boot:labeledContainer id="street-light" labelSize="2" contentSize="6"
+                                                          labelValue="Street">
+                                        <h:inputText id="input" value="#{wizardDemoBean.user.street}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="postalCode-light" labelSize="2" contentSize="6"
+                                                          labelValue="Postal Code">
+                                        <h:inputText id="input"
+                                                     value="#{wizardDemoBean.user.postalCode}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="city-light" labelSize="2" contentSize="6"
+                                                          labelValue="City">
+                                        <h:inputText id="input" value="#{wizardDemoBean.user.city}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="skipAddr-light"
+                                                          labelSize="2"
+                                                          contentSize="6"
+                                                          labelValue="Skip to last">
+                                        <h:selectBooleanCheckbox value="#{wizardDemoBean.skip}"/>
+                                    </boot:labeledContainer>
+                                </boot:row>
+                            </boot:panel>
+                        </p:tab>
+
+                        <p:tab id="confirm-light" title="Confirmation">
+                            <boot:panel collapsible="false">
+                                <boot:row>
+                                    <boot:labeledContainer id="firstnameConf" labelSize="2" contentSize="6"
+                                                          labelValue="Firstname"
+                                                          contentValue="#{wizardDemoBean.user.firstname}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="lastnameConf" labelSize="2" contentSize="6"
+                                                          labelValue="Lastname"
+                                                          contentValue="#{wizardDemoBean.user.lastname}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="ageConf" labelSize="2" contentSize="6"
+                                                          labelValue="Age"
+                                                          contentValue="#{wizardDemoBean.user.age}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="streetConf" labelSize="2" contentSize="6"
+                                                          labelValue="Street"
+                                                          contentValue="#{wizardDemoBean.user.street}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="postalcodeConf" labelSize="2" contentSize="6"
+                                                          labelValue="Postal Code"
+                                                          contentValue="#{wizardDemoBean.user.postalCode}"/>
+                                </boot:row>
+                                <boot:row>
+                                    <boot:labeledContainer id="cityConf" labelSize="2" contentSize="6"
+                                                          labelValue="City"
+                                                          contentValue="#{wizardDemoBean.user.city}"/>
+                                </boot:row>
+
+                                <boot:quickControlGroup>
+                                    <boot:commandButton id="submit-wizard-light" labelValue="Submit" state="primary"
+                                                       actionListener="#{wizardDemoBean.save}">
+                                        <p:ajax process="@this" update="@form"/>
+                                    </boot:commandButton>
+                                </boot:quickControlGroup>
+                            </boot:panel>
+                        </p:tab>
+                    </p:wizard>
+                </h:form>
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

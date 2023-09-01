@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:taglib="http://xmlns.jcp.org/jsf/composite/taglib">
+<ui:composition template="/templates/master_centered.xhtml">
+    <ui:define name="title">Mojarra Core</ui:define>
+    <ui:define name="content">
+        <boot:column id="colCon" size="12">
+            <h2>Mojarra Core</h2>
+            <p>
+                The namespace is:
+                <h:outputText value="#{cuiTagResolver.mojarraCoreTagLib.namespace}" />
+            </p>
+
+            <taglib:tagLibMetadata metaDataTitle="Mojarra Core" id="tagLibMetadata"
+                tagLibData="#{cuiTagResolver.mojarraCoreTagLib}" libPrefix="f" />
+
+        </boot:column>
+    </ui:define>
+</ui:composition>
+</html>

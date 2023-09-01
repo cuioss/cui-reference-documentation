@@ -1,0 +1,14 @@
+@ViewScoped
+@Named
+@ToString
+@EqualsAndHashCode
+@Slf4j
+public class LazyLoadingWithoutBackendPageBean implements Serializable {
+
+    @Getter
+    private List<String> content;
+
+    public void initialize() {
+        content = Lists.newArrayList("A", "B", "C");
+    }
+}

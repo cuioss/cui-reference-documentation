@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:dev="https://cuioss.de/jsf/dev"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<ui:composition template="/templates/layout_portal_core.xhtml">
+
+   <ui:define name="title">Multi-Templating</ui:define>
+
+   <ui:define name="content">
+      <h1>Multi-Templating</h1>
+      <h2>Summary</h2>
+      <p>Provides structures enabling / extending the portal for (multi-) templating.</p>
+
+      <h2>Multi-templating</h2>
+
+      <p>The idea of multi-templating is to load template (hierarchies) from the class path or a folder in the file system,
+         not by relative path, as within old-school JSF-applications. The JSF 2.2. introduced 'contracts' do not suffice our
+         needs, especially regarding spreading the templates over multiple jars. Therefore we created our own approach, that is
+         similar to contracts.</p>
+      <p>The ability to resolve template paths dynamically allows us to configure something like technical root template in
+         the cui-portal and/or other templates inside of specific modules and / or applications.</p>
+      <h3>Definitions</h3>
+      <ul>
+         <li>Template-Root-Path: All multi-templating artifacts should be located at META-INF/templates (convention)</li>
+         <li>Template-Directory: Within Template-Root-Path are the concrete sub-directories located, containing the actual
+            templates for that directory. e.g. "/META-INF/templates/portal/" for the portal provided templates or
+            "/META-INF/templates/referral/" for the referral provided</li>
+         <li>Templates: Are the actual templates located under the concrete Template-Directory e.g.
+            "/META-INF/templates/portal/root.xhtml"</li>
+      </ul>
+      <h2>Usage</h2>
+      <p>The usage of multi-templating is straight forward. In your facelet template-client you address it like:</p>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode source="&lt;ui:composition template=&quot;/templates/technical_root.xhtml&quot;/&gt;" />
+         </boot:column>
+      </boot:row>
+      <p>The /templates part is used for our our ClasspathResourceHandler to intercept the resolution. The second part
+         identifies the concrete template without the template-directory being part of the path: "Give me that thingy" instead
+         of "Give me the content of that path". This approach let us keep the actual source dynamic. The default implementation
+         will resolve them to "/META-INF/templates/portal/technical_root.xhtml"</p>
+      <h2>Implementation Details</h2>
+      <p>While the ViewResourceHandler takes care regarding the delivery of the template the actual logic of which template
+         to choose is implemented within concrete instances of MultiTemplatingMapper that needs to be registered as CDI-bean
+         with the Qualifier @PortalMultiTemplatingMapper</p>
+      <h2>Overriding Existing Templates</h2>
+      <p>If a concrete web module wants to to overwrite one or more of the templates, e.g "root.xhtml" it needs to:</p>
+      <ul>
+         <li>Create a corresponding file, e.g. "/META-INF/templates/concrete/root.xhtml"</li>
+         <li>Provide either your own implementation of MultiTemplatingMapper resolving the request path "root.xhtml" to
+            classpath:/META-INF/templates/concrete/root.xhtml</li>
+         <li>Or, preferred, configure the default implementation provided by the portal accordingly by registering concrete
+            instances of StaticTemplateDescriptor annotated with @PortalTemplateDescriptor. This mechanism uses The hierarchical
+            resolving mechanism as described at <h:link outcome="portal_basic_concepts" value="Basic Concepts" />
+         </li>
+      </ul>
+
+   </ui:define>
+</ui:composition>
+</html>

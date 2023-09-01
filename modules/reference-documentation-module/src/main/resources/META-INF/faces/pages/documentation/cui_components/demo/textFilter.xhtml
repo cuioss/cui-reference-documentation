@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:cui-comp="http://xmlns.jcp.org/jsf/composite/cui-composite"
+    xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">Text Filter</ui:define>
+    <ui:define name="content">
+        <h2>
+            Text Filter
+            <boot:icon icon="cui-icon-justify" />
+        </h2>
+        <ref_dev:cui_comp_meta name="textFilter" />
+        <h3>Sample</h3>
+
+        <h:form id="textFilterForm">
+            <boot:textFilter action="#{textFilterBean.initEntries()}"
+                clearFilter="#{textFilterBean.clearFilter()}"
+                filterInput="#{textFilterBean.filter}"
+                waitingIndicatorId="textFilterForm:waiting"
+                contentId="textFilterForm:content"
+                updateIds="textFilterForm:content"
+                triggerInitialLoading="true"
+                filterLabelKey="page.textFilterDemo.filter" />
+            <cui-comp:waiting_indicator id="waiting" />
+            <h:panelGroup id="content">
+                <ul class="list-group">
+                    <ui:repeat value="#{textFilterBean.content}"
+                        var="entry">
+                        <li class="list-group-item"><h:outputText
+                                value="#{entry}" /></li>
+                    </ui:repeat>
+                </ul>
+            </h:panelGroup>
+        </h:form>
+        <boot:row>
+            <boot:column size="8">
+                <boot:panel headerValue="Source" collapsible="true"
+                    collapsed="true">
+                    <dev:sourceCode sourceContainerId="textFilterForm" />
+                </boot:panel>
+            </boot:column>
+        </boot:row>
+        <h3>Sample without reset</h3>
+
+        <h:form id="textFilterFormWithoutReset">
+            <boot:textFilter action="#{textFilterBean.initEntries()}"
+                filterInput="#{textFilterBean.filter}"
+                waitingIndicatorId="textFilterFormWithoutReset:waiting"
+                contentId="textFilterFormWithoutReset:content"
+                updateIds="textFilterFormWithoutReset:content"
+                triggerInitialLoading="true"
+                filterLabelKey="page.textFilterDemo.filter" />
+            <cui-comp:waiting_indicator id="waiting" />
+            <h:panelGroup id="content">
+                <ul class="list-group">
+                    <ui:repeat value="#{textFilterBean.content}"
+                        var="entry">
+                        <li class="list-group-item"><h:outputText
+                                value="#{entry}" /></li>
+                    </ui:repeat>
+                </ul>
+            </h:panelGroup>
+        </h:form>
+        <boot:row>
+            <boot:column size="8">
+                <boot:panel headerValue="Source" collapsible="true"
+                    collapsed="true">
+                    <dev:sourceCode
+                        sourceContainerId="textFilterFormWithoutReset" />
+                </boot:panel>
+            </boot:column>
+        </boot:row>
+
+        <h3>Lazy loading Sample</h3>
+
+        <h:form id="lazyLoadingTextFilterForm">
+            <boot:lazyLoadingTextFilter
+                searchAction="#{textFilterBean.initEntries()}"
+                clearFilterAction="#{textFilterBean.clearFilter()}"
+                update="@form:lazyLoadingContent"
+                value="#{textFilterBean.filter}"
+                labelKey="page.textFilterDemo.filter" />
+            <boot:lazyLoading id="lazyLoadingContent"
+                actionListener="#{textFilterBean.initEntries()}">
+                <h:panelGroup id="content">
+                    <ul class="list-group">
+                        <ui:repeat value="#{textFilterBean.content}"
+                            var="entry">
+                            <li class="list-group-item"><h:outputText
+                                    value="#{entry}" /></li>
+                        </ui:repeat>
+                    </ul>
+                </h:panelGroup>
+            </boot:lazyLoading>
+        </h:form>
+        <boot:row>
+            <boot:column size="8">
+                <boot:panel headerValue="Source" collapsible="true"
+                    collapsed="true">
+                    <dev:sourceCode
+                        sourceContainerId="lazyLoadingTextFilterForm" />
+                </boot:panel>
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

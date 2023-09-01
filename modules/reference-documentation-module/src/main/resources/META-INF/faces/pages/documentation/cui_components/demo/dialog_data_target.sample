@@ -1,0 +1,11 @@
+<button type="button" class="btn btn-primary btn-md"
+    data-toggle="modal" 
+    data-target="#complexDialog">Show Complex Dialog</button>
+ 
+<cui:modalDialog id="complexDialog"
+    dialogId="complexDialog"
+    styleClass="fade" headerTextValue="Complex Dialog">
+    <div class="container-fluid">
+        ... some bootstrap content
+    </div>
+</cui:modalDialog>

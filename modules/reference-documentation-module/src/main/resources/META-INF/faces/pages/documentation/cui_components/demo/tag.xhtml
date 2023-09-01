@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:dev="https://cuioss.de/jsf/dev"
+        xmlns:boot="https://cuioss.de/jsf/bootstrap"
+        xmlns:o="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">Tag Components</ui:define>
+    <ui:define name="content">
+        <h1>
+            Tag Components
+            <boot:icon icon="cui-icon-tag" />
+        </h1>
+
+        <h2 id="cui_tag_input">boot:tagInput</h2>
+
+        <h3 id="simple_sample">Simple Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="inputSimpleSample" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="inputSimpleSampleForm">
+                    <fieldset class="well" id="inputSimpleSample">
+                        <boot:labeledContainer labelValue="Select a tag" id="tagSelectSimple"
+                                layoutMode="formgroup">
+                            <boot:tagInput id="input"
+                                    value="#{tagDataProvider.simpleValueSample}"
+                                    letUserCreateTags="false"
+                                    sourceSet="#{tagDataProvider.firstNamesTypes}">
+                            </boot:tagInput>
+                        </boot:labeledContainer>
+                        <boot:quickControlGroup id="buttonGroupSimpleSample">
+                            Last update: <h:outputText value="#{o:formatDate(now, 'HH:mm:ss')}"/>
+                            <boot:commandButton icon="cui-icon-tag" labelValue="Save">
+                                <f:ajax execute="@form" render="@form"/>
+                            </boot:commandButton>
+                        </boot:quickControlGroup>
+                    </fieldset>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3 id="complex_sample">Complex Sample</h3>
+        <p>In this example an AJAX event is used to submit a value change.</p>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="inputRequiredSample" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="tagInputRequiredForm">
+                    <fieldset class="well" id="inputRequiredSample">
+                        <boot:labeledContainer labelValue="Select a tag" id="tagSelect"
+                                layoutMode="formgroup">
+                            <boot:tagInput id="input"
+                                    value="#{tagDataProvider.requiredValueSample}"
+                                    sourceSet="#{tagDataProvider.firstNamesTypes}"
+                                    letUserCreateTags="true"
+                                    required="true"
+                                    displayRemoveButton="false"
+                                    valueChangeListener="#{tagDataProvider.valueChange}"
+                                    maxItems="4"
+                                    validator="#{tagDataProvider.validate}">
+                                <p:ajax process="@this" update="tagSelect @form:buttonGroup" event="change" />
+                            </boot:tagInput>
+                        </boot:labeledContainer>
+                        <boot:quickControlGroup id="buttonGroup">
+                            Last update: <h:outputText value="#{o:formatDate(now, 'HH:mm:ss')}"/>
+                            <boot:commandButton icon="cui-icon-tag" labelValue="Save">
+                                <f:ajax execute="@form" render="@form"/>
+                            </boot:commandButton>
+                        </boot:quickControlGroup>
+                    </fieldset>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3 id="converter_sample">Converter Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="inputConverterSample" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="inputConverterSampleForm">
+                    <fieldset class="well" id="inputConverterSample">
+                        <boot:labeledContainer labelValue="Select a tag" id="tagSelectConverter"
+                                layoutMode="formgroup">
+                            <boot:tagInput id="input"
+                                    value="#{tagDataProvider.selectedAddress}"
+                                    styleClass="specific"
+                                    letUserCreateTags="true"
+                                    maxItems="1"
+                                    delimiter=";"
+                                    required="true"
+                                    sourceSet="#{tagDataProvider.addresses}"
+                                    itemConverterId="cui.AddressConceptKeyConverter">
+                            </boot:tagInput>
+                        </boot:labeledContainer>
+                        <boot:quickControlGroup id="buttonGroupConverterSample">
+                            Last update: <h:outputText value="#{o:formatDate(now, 'HH:mm:ss')}"/>
+                            <boot:commandButton icon="cui-icon-tag" labelValue="Save">
+                                <f:ajax execute="@form" render="@form"/>
+                            </boot:commandButton>
+                        </boot:quickControlGroup>
+                    </fieldset>
+                </h:form>
+            </boot:column>
+        </boot:row>
+        
+        <h3 id="disabled_sample">Disabled</h3>
+        <p>Renders a tag list with disabled (non-removable) items.
+            The items can be set by utilizing the <a href="#complex_sample">Complex Sample</a>.</p>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="inputDisabledSample" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="tagInputDisabledForm">
+                    <fieldset class="well" id="inputDisabledSample">
+                        <boot:labeledContainer labelValue="Select a tag" id="tagSelectDisabled"
+                            layoutMode="formgroup">
+                            <boot:tagInput id="input" disabled="true"
+                                sourceSet="#{tagDataProvider.firstNamesTypes}"
+                                value="#{tagDataProvider.requiredValueSample}" />
+                        </boot:labeledContainer>
+                    </fieldset>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h2>boot:tag</h2>
+        <h3>Minimal</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="simpleTag" />
+            </boot:column>
+            <boot:column size="6" id="simpleTag">
+                <h:form>
+                    <boot:tag contentValue="Hello" />
+                </h:form>
+            </boot:column>
+        </boot:row>
+        <h3>Context Sizing</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="tagWithoutSizing" />
+            </boot:column>
+            <boot:column size="6" id="tagWithoutSizing">
+                <h:form>
+                    <h4>
+                        Within
+                        <boot:tag contentValue="Hello" state="success" />
+                        increased font size (H4) and no additional sizing.
+                    </h4>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>Sizing and States</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="tagSizingAndStates" />
+            </boot:column>
+            <boot:column size="6" id="tagSizingAndStates">
+                <h:form>
+                    <ul class="list-inline">
+                        <li><boot:tag contentValue="Hello tag-sm" state="danger"
+                                size="sm" /></li>
+                        <li><boot:tag contentValue="Hello" state="info" /></li>
+                        <li><boot:tag contentValue="Hello tag-lg" state="success"
+                                size="lg" /></li>
+                        <li><boot:tag contentValue="Hello tag-xl" state="warning"
+                                size="xl" /></li>
+                    </ul>
+                </h:form>
+            </boot:column>
+        </boot:row>
+        <h3>Dispose Tag with Ajax Behaviour</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="disposableTagSample" />
+                <dev:sourceCode sourcePath="disposable_tags_java.sample"
+                    type="lang-java" description="Bean:" />
+            </boot:column>
+            <boot:column size="6" id="disposableTagSample">
+                <h:form id="disposableForm" styleClass="well">
+                    <ul class="list-inline">
+                        <ui:repeat var="name" value="#{tagDataProvider.firstNames}" id="firstnames">
+                            <li>
+                                <boot:tag contentValue="#{name}" disposable="true" size="lg"
+                                         id="nameTag" state="info" model="#{name}">
+                                    <p:ajax update="@form" process="@this" listener="#{tagDataProvider.executeRemove}"/>
+                                </boot:tag>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>DisposeListener Tag with Ajax Example</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="disposeListenerTagSample" />
+                <dev:sourceCode sourcePath="disposeListener_tag_java.sample"
+                                type="lang-java" description="Bean:" />
+            </boot:column>
+            <boot:column size="6" id="disposeListenerTagSample">
+                <h:form id="disposeListenerForm" styleClass="well">
+                    <ul class="list-inline">
+                        <ui:repeat var="name" value="#{tagDataProvider.firstNames}" id="firstnames">
+                            <li>
+                                <boot:tag contentValue="#{name}" disposable="true" size="lg"
+                                         id="nameTagItem" state="info" model="#{name}"
+                                         disposeListener="#{tagDataProvider.disposeListener}">
+                                    <p:ajax process="@form" update="@form"/>
+                                </boot:tag>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_tag_list">boot:tagList</h2>
+        <h3>Simple Usage</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="tagListSimple" />
+            </boot:column>
+            <boot:column size="6" id="tagListSimple">
+                <boot:tagList value="#{tagDataProvider.firstNamesTypes}" id="tagsSimple" />
+            </boot:column>
+        </boot:row>
+        <h3>Complete Attributes</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="tagListComplexSample" />
+            </boot:column>
+            <boot:column size="6" id="tagListComplexSample">
+                <boot:tagList value="#{tagDataProvider.firstNamesTypes}" id="tagsComplex"
+                    contentEscape="true" size="lg" state="info" />
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

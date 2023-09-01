@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:dev="https://cuioss.de/jsf/dev">
+
+<ui:composition template="/templates/layout_portal_core.xhtml">
+
+    <ui:define name="title">Connection Metadata</ui:define>
+
+    <ui:define name="content">
+        <h1>Connection Metadata</h1>
+        <p>A Portal mechanism for a consistent definition of connection information. No matter if you like to connect
+            to a web service or a LDAP, via HTTP or a secured connection, you can do it with Connection Metadata. All
+            you need is to provide a configuration key as basis for the Connection Metadata keys.
+        </p>
+        <h2>Keys</h2>
+        <pre>
+id
+description
+url
+authentication: none|token.application|basic|certificate (in order of priority; default=none)
+type: JMX|REST|DATABASE|LDAP|SVS_CLIENT|DSML|UNDEFINED (default=UNDEFINED)
+
+authentication.basic.password
+authentication.basic.username
+
+authentication.certificate.keystore.location
+authentication.certificate.keystore.password
+authentication.certificate.keystore.keypassword
+
+authentication.token.application.key
+authentication.token.application.token
+
+transport.secure.keystore.location
+transport.secure.keystore.password
+transport.secure.keystore.keypassword
+transport.secure.truststore.location
+transport.secure.truststore.password
+
+proxyHost
+proxyPort
+
+config (Any key value pair, e.g.: config.foo=bar)
+        </pre>
+        <h2>Configuration Examples (YAML)</h2>
+
+        <h3>HTTP</h3>
+        <pre>
+my.app.connection:
+  url: "http://localhost:8080/hpd/services/"
+  authentication.basic:
+    username: "uid=pm-system-user,ou=sysusers,dc=identity-directory,dc=users,dc=ID"
+    password: "secret"
+        </pre>
+
+        <h3>LDAP</h3>
+        <pre>
+my.app.connection:
+  url: "ldap://localhost:1389"
+  authentication.basic:
+    username: "uid=pm-system-user,ou=sysusers,dc=identity-directory,dc=users,dc=ID"
+    password: secret
+        </pre>
+
+        <h3>HTTPS</h3>
+        <pre>
+my.app.connection:
+  url: "https://localhost:6666/app/path"
+  type: REST
+  proxyHost: proxy.example.com
+  proxyPort: 123
+  authentication.certificate:
+    keystore:
+      location: "C:\DEV\auth.keystore"
+      password: secret
+      keypassword: secret
+  transport.secure:
+    keystore:
+      location: "C:\DEV\host.keystore"
+      password: initinit
+      keypassword: initinit
+    truststore:
+      location: "C:\DEV\ca.keystore"
+      password: initinit
+        </pre>
+
+        <h2>Usage</h2>
+        <dev:sourceCode sourcePath="connectionMetadataInject.sample" enableClipboard="false" type="lang-java" />
+    </ui:define>
+</ui:composition>
+</html>

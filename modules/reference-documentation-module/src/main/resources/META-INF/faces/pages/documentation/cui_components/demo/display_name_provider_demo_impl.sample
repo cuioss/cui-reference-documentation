@@ -1,0 +1,31 @@
+public class DocumentInfoImpl implements DocumentInfo {
+ 
+    // Fall-back for missing title
+    private static final IDisplayNameProvider<String> MISSING_TITLE =
+        new LabeledKey("document.info.unknown.title");
+        
+    // ... some additional properties
+ 
+    @Getter
+    private final IDisplayNameProvider<?> title;
+    
+   /**
+    * DocumentInfoImpl initialization
+    */
+    public DocumentInfoImpl(final DocumentMetaDataDto documentMetaData) {
+        // other stuff initialization
+        
+        this.title = 
+            createDisplayNameForTitle(documentMetaData.getTitle());
+    }
+ 
+    private static IDisplayNameProvider<?> createDisplayNameForTitle(
+        final String value) {
+        
+        final String cleaned = emptyToNull(value);
+        if (null == cleaned) {
+            return MISSING_TITLE;
+        }
+        return new DisplayName(cleaned);
+    }
+}

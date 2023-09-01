@@ -1,0 +1,3 @@
+<boot:navigationMenu id="demoNavMenu"
+  modelItems="#{navigationMenuDemoBean.navItem}"
+  style="display:block;" />

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap"
+      xmlns:dev="https://cuioss.de/jsf/dev"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/templates/layout_portal_core.xhtml">
+
+   <ui:define name="title">Common Objects</ui:define>
+
+   <ui:define name="content">
+      <style>
+div.row>div.col-md-6 {
+ margin-top: 10px;
+}
+</style>
+
+      <h1>Common Objects</h1>
+      <p>The portal provides a range of useful objects that can be injected into any bean.</p>
+      <h2>Basic Portal Objects</h2>
+      <p>Defines objects used for day-to-day work. More exotic objects / services are documented in the corresponding pages.</p>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode description="Session-Scoped Object that encapsulates the current user specific information"
+               source="@Inject%n@PortalUser%nprivate AuthenticatedUserInfo userInfo;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="Dependent-Scoped Object that represents the client specific locale"
+               source="@Inject%n@PortalLocale%nprivate Locale locale;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="Dependent-Scoped Object that allows dynamically producing JSFMessages"
+               source="@Inject%n@PortalMessageProducer%nprivate MessageProducer messageProducer;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="A (server-side) session based storage. Alternative to {@link SessionScoped}"
+               source="@Inject%n@PortalSessionStorage%nprivate MapStorage&lt;Serializable, Serializable&gt; portalSessionStorage;"
+               type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="Session-Scoped Object that represents runtime information regarding the client"
+               source="@Inject%n@PortalClientInformation%nprivate ClientInformation clientInformation;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="Request-Scoped Object that represents runtime representation of the current view"
+               source="@Inject%n@CuiCurrentView%nprivate ViewDescriptor currentView;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode
+               description="Application-Scoped Object that is used for accessing Project Stage information in a convenient way"
+               source="@Inject%n@PortalProjectStageProducer%nprivate ProjectStageProducer projectStageProducer;"
+               type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="The Application-scoped Map of init-parameter (derived from web.xml)"
+               source="@Inject%n@PortalApplicationConfiguration%nprivate Map&lt;String, String&gt; initParameterMap;"
+               type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode
+               description="Dependent-Scoped Object that is used for storing information to the client. The default implementation uses cookies, but other implementations like LocalStorage are possible"
+               source="@Inject%n@PortalClientStorage%nprivate ClientStorage clientStorage;" type="lang-java" />
+         </boot:column>
+
+      </boot:row>
+
+      <h2>JavaServer Faces Objects</h2>
+      <p>There are many helpful objects that can be injected.</p>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode description="The Request-Scoped FacesContext"
+               source="@Inject%nprivate FacesContext facesContext;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="The Request-Scoped HttpServletRequest"
+               source="@Inject%nprivate HttpServletRequest servletRequest;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="The Application-Scoped NavigationHandler"
+               source="@Inject%n@CuiNavigationHandler%nprivate NavigationHandler navigationHandler;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="The Application-Scoped Application-Object"
+               source="@Inject%nprivate Application application;" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="The Request-Scoped ExternalContext"
+               source="@Inject%nprivate ExternalContext externalContext" type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode description="The Request-Scoped requestParameterMap"
+               source="@Inject%n@RequestParameterMap%nprivate Map&lt;String, String&gt; requestParameterMap;"
+               type="lang-java" />
+         </boot:column>
+         <boot:column size="6">
+            <dev:sourceCode
+               description="The Request-Scoped @RequestParameter. Utilized for Injecting URL-parameter into CDI managed beans
+					Caution: It works only for simple Strings, do not use it for complex objects -> Omnifaces param"
+               source="@Inject%n@RequestParameter(value = &quot;someParameterKey&quot;)%nprivate String parameterValue;"
+               type="lang-java" />
+         </boot:column>
+
+      </boot:row>
+   </ui:define>
+</ui:composition>
+</html>

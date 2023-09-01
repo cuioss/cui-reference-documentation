@@ -1,0 +1,34 @@
+@ViewScoped
+@Named
+@ToString
+@EqualsAndHashCode
+@Slf4j
+public class LazyLoadingPageBean extends BaseLazyLoadingRequest<List<String>> implements Serializable {
+
+    @Inject
+    private LazyLoadingViewController viewController;
+
+    @Getter
+    private List<String> content;
+
+    public String initViewAction() {
+        viewController.startRequest(this);
+        return null;
+    }
+
+    @Override
+    public ResultObject<List<String>> backendRequest() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            log.error("interrupted: ", e);
+            Thread.currentThread().interrupt();
+        }
+        return new ResultObject<>(Lists.newArrayList("A", "B", "C"), ResultState.VALID);
+    }
+
+    @Override
+    public void handleResult(List<String> result) {
+        content = result;
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:taglib="http://xmlns.jcp.org/jsf/composite/taglib"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap">
+<ui:composition template="/templates/master_centered.xhtml">
+    <ui:define name="title">Cui Behavior</ui:define>
+    <ui:define name="content">
+        <boot:column size="12">
+            <h2>Cui Behavior</h2>
+            <p>
+                The namespace is:
+                <h:outputText value="#{cuiTagResolver.cuiTagLib.namespace}" />
+            </p>
+            <ui:repeat var="cuiMetadata" id="metadataRepeat" value="#{cuiTagResolver.cuiTagLib.behaviorMetadata.data}">
+                <boot:panel headerValue="cui:#{cuiMetadata.name}" collapsible="true" id="componentPanel"
+                    collapsed="false">
+                    <p>
+                        <h:outputText value="#{cuiMetadata.description}" escape="false" />
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><h:outputText value="Behavior ID: #{cuiMetadata.behaviorId}" /></li>
+                    </ul>
+                    <taglib:attributes attributeList="#{cuiMetadata.attributes}" />
+                </boot:panel>
+            </ui:repeat>
+        </boot:column>
+    </ui:define>
+</ui:composition>
+</html>

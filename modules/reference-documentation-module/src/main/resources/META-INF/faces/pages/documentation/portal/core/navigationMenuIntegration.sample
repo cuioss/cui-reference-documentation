@@ -1,0 +1,12 @@
+<div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav navbar-right">
+		<ui:insert name="portal_navigation">
+			<ui:repeat var="menuModel" id="navMenu"
+				rendered="#{navigationMenuPageBean.displayMenu}"
+				value="#{navigationMenuPageBean.navigationMenuItems}">
+				<boot:navigationMenu model="#{menuModel}" id="navMenuItem"
+					rendered="#{navigationMenuPageBean.displayMenu}" />
+			</ui:repeat>
+		</ui:insert>
+	</ul>
+</div>

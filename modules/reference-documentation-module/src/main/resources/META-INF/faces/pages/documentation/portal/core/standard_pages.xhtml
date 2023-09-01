@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:dev="https://cuioss.de/jsf/dev"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<ui:composition template="/templates/layout_portal_core.xhtml">
+
+   <ui:define name="title">Standard Pages</ui:define>
+
+   <ui:define name="content">
+      <h1>Standard Pages</h1>
+      <h2>Summary</h2>
+      <p>The portal already provides a number of views. Usually the module developer should not care about them, because
+         they are already there.</p>
+      <p>If needed they can be adapted in multiple ways</p>
+      <ul>
+         <li>Some pages, e.g. the LoginPage provide explicit configuration elements to alter the behavior.</li>
+         <li>Usually there are defined services that will be called by the PageBean and can be overwritten, see <h:link
+               outcome="portal_basic_concepts" value="Basic Concepts" />.
+         </li>
+         <li>If you want to change the PageBean itself they can be overwritten using the standard mechanism. Each of the
+            standard PageBeans has an Interface and a CDI-Type.</li>
+         <li>A page can easily be replaced. All standard pages have outcomes defined at the corresponding Interfaces, e.g.
+            LoginPage.OUTCOME and all navigation should honor this. On replacement of one of the standard views you need to
+            adapt the navigation rules accordingly. <dev:sourceCode
+               description="The default navigation is configured in the module:"
+               source="&lt;dependency&gt;%n    &lt;groupId&gt;com.icw.ehf.cui.portal.cdi&lt;/groupId&gt;%n	   &lt;artifactId&gt;cdi-portal-core-default-navigation&lt;/artifactId&gt;%n	&lt;/dependency&gt;"></dev:sourceCode>
+            In order to prevent classloader problems (all views are loaded from the classpath) you should always provide an
+            unique path.
+         </li>
+      </ul>
+      <h2>Home Page</h2>
+      <p>Although referred to quite often, there is no HomePage defined at portal level. Neither a module nor the default
+         portal defines it. This must be done in the corresponding assembly. It is not part of
+         cdi-portal-core-default-navigation</p>
+      <dev:sourceCode description="Example: Defintion for the reference (this)"
+         source="&lt;navigation-rule&gt;%n		&lt;from-view-id&gt;*&lt;/from-view-id&gt;%n		&lt;navigation-case&gt;%n			&lt;from-outcome&gt;home&lt;/from-outcome&gt;%n			&lt;to-view-id&gt;/faces/pages/documentation/index.xhtml&lt;/to-view-id&gt;%n			&lt;redirect /&gt;%n		&lt;/navigation-case&gt;%n&lt;/navigation-rule&gt;" />
+      <p>
+         <em>Interface</em>:
+         <code>de.icw.cui.portal.ui.pages.HomePage</code>
+      </p>
+      <h2>Login Page</h2>
+
+      <p>
+         <em>Description</em>: Implements Form-based login.
+      </p>
+      <p>
+         <em>Scope</em>:
+         <code>javax.enterprise.context.RequestScoped</code>
+      </p>
+      <p>
+         <em>Interface</em>:
+         <code>de.icw.cui.portal.ui.pages.LoginPage</code>
+      </p>
+      <p>
+         <em>CDI-Type</em>:
+         <code>de.icw.cui.portal.ui.pages.PortalCorePagesLogin</code>
+      </p>
+
+      <p>
+         <em>Default View</em>:
+         <code>/faces/guest/login.xhtml</code>
+      </p>
+      <p>
+         <em>Configuration</em>:
+         <code>cui.cdi.portal.pages.login.logged_in_strategy</code>
+         : Defines the behavior of the login page if called with an already logged-in user. Currently there are two strategies
+         available: 'goto_home' resulting in a redirect to the home page and 'logout' resulting in logging out the current
+         logged in user.
+      </p>
+      <em>Consumed Services (Default Implementation)</em>:
+		<ul>
+         <li><code>com.icw.ehf.cui.portal.cdi.services.api.authentication.PortalAuthenticationFacade</code></li>
+         <li><code>com.icw.ehf.cui.portal.cdi.api.history.PortalHistoryManager</code></li>
+         <li><code>com.icw.ehf.cui.portal.cdi.api.PortalMessageProducer</code></li>
+         <li><code>com.icw.ehf.cui.portal.cdi.api.user.PortalUser</code></li>
+         <li><code>com.icw.ehf.cui.portal.cdi.api.configuration.PortalPagesConfiguration</code></li>
+         <li><code>com.icw.ehf.cui.cdi.api.context.CuiHttpServletRequest</code></li>
+      </ul>
+
+      <h2>Logout Page</h2>
+
+      <p>
+         <em>Description</em>:Executes the logout for the current user / session. After the logout the user will be redirected
+         to the login page
+      </p>
+      <p>
+         <em>Scope</em>:
+         <code>javax.enterprise.context.RequestScoped</code>
+      </p>
+      <p>
+         <em>Interface</em>:
+         <code>de.icw.cui.portal.ui.pages.LogoutPage</code>
+      </p>
+      <p>
+         <em>CDI-Type</em>:
+         <code>de.icw.cui.portal.ui.pages.PortalCorePagesLogout</code>
+      </p>
+      <p>
+         <em>Default View</em>:
+         <code>/faces/guest/logout.xhtml</code>
+      </p>
+      <em>Consumed Services (Default Implementation)</em>:
+		<ul>
+         <li><code>com.icw.ehf.cui.portal.cdi.services.api.authentication.PortalAuthenticationFacade</code></li>
+         <li><code>com.icw.ehf.cui.cdi.api.context.CuiHttpServletRequest</code></li>
+      </ul>
+
+      <h2>Preferences Page</h2>
+
+      <p>
+         <em>Description</em>: Let the user change portal specific preferences like theme and display language
+      </p>
+      <p>
+         <em>Scope</em>:
+         <code>javax.enterprise.context.RequestScoped</code>
+      </p>
+      <p>
+         <em>Interface</em>:
+         <code>de.icw.cui.portal.ui.pages.PreferencesPage</code>
+      </p>
+      <p>
+         <em>CDI-Type</em>:
+         <code>de.icw.cui.portal.ui.pages.PortalCorePagesPreferences</code>
+      </p>
+      <p>
+         <em>Default View</em>:
+         <code>/faces/pages/account/preferences.xhtml</code>
+      </p>
+      <em>Consumed Services (Default Implementation)</em>:
+		<ul>
+         <li><code>@PortalThemeConfiguration</code> which again uses <code>com.icw.ehf.cui.portal.cdi.api.theme.PortalThemePersistencesService</code>
+            what is the default extension point.</li>
+         <li><code>com.icw.ehf.cui.portal.application.locale.PortalLocaleManagerBean</code> which again uses <code>com.icw.ehf.cui.portal.cdi.api.locale.PortalLocaleResolver</code>
+            what is the default extension point.</li>
+         <li><code>com.icw.ehf.cui.portal.cdi.api.theme.PortalThemeConfiguration</code></li>
+         <li><code>com.icw.ehf.cui.portal.cdi.api.bundle.PortalResourceBundle</code></li>
+         <li><code>com.icw.ehf.cui.cdi.api.context.CuiFacesContext</code></li>
+         <li><code>com.icw.ehf.cui.cdi.api.context.CuiNavigationHandler</code></li>
+      </ul>
+
+
+      <h2>Error Page</h2>
+
+      <p>
+         <em>Description</em>: Last line of defense: displays the error message in cases where the system is not to able to
+         recover and display something sensible<br /> <em>Note</em>: It is assumed that the DefaultErrorMessage can be derived
+         from the PortalSessionStorage with the key DefaultErrorMessage.LOOKUP_KEY. While retrieving the DefaultErrorMessage it
+         will implicitly be removed.
+
+      </p>
+      <p>
+         <em>Scope</em>:
+         <code>javax.enterprise.context.RequestScoped</code>
+      </p>
+      <p>
+         <em>Interface</em>:
+         <code>de.icw.cui.portal.ui.pages.ErrorPage</code>
+      </p>
+      <p>
+         <em>CDI-Type</em>:
+         <code>de.icw.cui.portal.ui.pages.PortalCorePagesPreferences</code>
+      </p>
+      <p>
+         <em>Default View</em>:
+         <code>/faces/guest/error.xhtml</code>
+      </p>
+      <em>Consumed Services (Default Implementation)</em>:
+		<ul>
+         <li><code>com.icw.ehf.cui.portal.cdi.api.storage.PortalSessionStorage</code></li>
+      </ul>
+
+      <h2>404</h2>
+
+      <p>
+         <em>Description</em>: Will be called instead of 404. Has no backing bean and redirects to the Home-Page / or LoginPage,
+         depending on the LoginStatus
+      </p>
+      <p>
+         <em>Default View</em>:
+         <code>
+            <code>/faces/guest/404.xhtml</code>
+         </code>
+      </p>
+
+      <p>
+         <em>Configuration</em>: It is configured in the web.xml:
+         <dev:sourceCode
+            source="&lt;error-page&gt;%n    &lt;error-code&gt;404&lt;/error-code&gt;%n    &lt;location&gt;/faces/guest/404.jsf&lt;/location&gt;%n&lt;/error-page&gt;" />
+      </p>
+
+      <h2>About Page</h2>
+
+      <p>
+         <em>Description</em>: Dynamically displays information about the application. Has no backing bean. Outcome is 'about'.
+         The actual content is derived by the HtmlResource with the name 'about'. For Details see
+         <h:link outcome="portal_theming_branding">Theming, Branding</h:link>
+      </p>
+      <p>
+         <em>Default View</em>:
+         <code>/faces/pages/account/about.xhtml</code>
+      </p>
+
+      <p>
+         <em>Interface</em>:
+         <code>de.icw.cui.portal.ui.pages.AboutPage</code>
+      </p>
+      <p>
+         <em>CDI-Type</em>:
+         <code>de.icw.cui.portal.ui.pages.PortalCorePagesAbout</code>
+      </p>
+
+      <h2>Account Page</h2>
+
+      <p>
+         <em>Description</em>:Management of account specific user-data, e.g. change password, add email address,.. . Currently
+         not implemented -> empty page.
+      </p>
+      <p>
+         <em>Scope</em>:
+         <code>javax.enterprise.context.RequestScoped</code>
+      </p>
+      <p>
+         <em>Interface</em>:
+         <code>de.icw.cui.portal.ui.pages.AccountPage</code>
+      </p>
+      <p>
+         <em>CDI-Type</em>:
+         <code>de.icw.cui.portal.ui.pages.PortalCorePagesAccount</code>
+      </p>
+      <p>
+         <em>Default View</em>:
+         <code>/faces/pages/account/about.xhtml</code>
+      </p>
+   </ui:define>
+</ui:composition>
+</html>

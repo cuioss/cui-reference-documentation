@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:dev="https://cuioss.de/jsf/dev">
+
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">Primefaces PickList DEMO</ui:define>
+    <ui:define name="content">
+
+        <h1>Demo of PrimeFaces PickList</h1>
+        <p>Basic demo of the PrimeFaces PickList</p>
+
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="picklistdemo" />
+            </boot:column>
+
+            <boot:column size="6" id="picklistdemo">
+                <h:form id="picklistform" >
+                    <p:pickList id="pickList"
+                                value="#{pickListDemoBean.picklistModel}"
+                                var="item"
+                                itemLabel="#{item}"
+                                itemValue="#{item}"
+                                responsive="true">
+                        <f:facet name="sourceCaption">Source</f:facet>
+                        <f:facet name="targetCaption">Target</f:facet>
+                        <p:ajax event="transfer" update="@this" listener="#{pickListDemoBean.sortListener}" />
+                    </p:pickList>
+                </h:form>
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

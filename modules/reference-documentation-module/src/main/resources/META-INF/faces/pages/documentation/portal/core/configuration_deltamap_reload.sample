@@ -1,0 +1,3 @@
+parent.key=parent.value
+child.key=${parent.key}
+child.child.key=${child.key}

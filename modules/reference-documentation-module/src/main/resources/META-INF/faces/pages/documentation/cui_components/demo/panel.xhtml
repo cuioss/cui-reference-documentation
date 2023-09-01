@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html"
+   xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:dev="https://cuioss.de/jsf/dev"
+   xmlns:boot="https://cuioss.de/jsf/bootstrap" xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
+
+<ui:composition template="/templates/master.xhtml">
+   <ui:define name="title">Panel Components and Accordion</ui:define>
+   <ui:define name="content">
+      <h2>Panel and Accordion</h2>
+
+      <h2 id="cui_panel">
+         boot:panel
+         <boot:icon icon="cui-icon-nameplate_alt" />
+      </h2>
+      <ref_dev:cui_comp_meta name="panel" />
+
+      <h3>Simple Sample</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="simplepanel" />
+         </boot:column>
+         <boot:column size="6" id="simplepanel">
+            <boot:panel collapsible="true" headerValue="Simple Panel">
+					a very simple panel...
+				</boot:panel>
+         </boot:column>
+      </boot:row>
+
+      <h3>States</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="states" />
+         </boot:column>
+         <boot:column size="6" id="states">
+            <boot:panel headerValue="default" collapsed="true">Some Content</boot:panel>
+            <boot:panel headerValue="primary" state="primary" collapsed="true">Some Content</boot:panel>
+            <boot:panel headerValue="success" state="success" collapsed="true">Some Content</boot:panel>
+            <boot:panel headerValue="info" state="info" collapsed="true">Some Content</boot:panel>
+            <boot:panel headerValue="warning" state="warning" collapsed="true">Some Content</boot:panel>
+            <boot:panel headerValue="danger" state="danger" collapsed="true">Some Content</boot:panel>
+            <boot:panel headerValue="light" state="light" collapsed="true">Some Content</boot:panel>
+         </boot:column>
+      </boot:row>
+
+      <h3>Asynchronous Update</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="frm_asynchpanel" />
+         </boot:column>
+         <boot:column size="6" id="frm_asynchpanel">
+            <h:form>
+               <boot:panel id="asyncpanel" asyncUpdate="true" collapsible="true" collapsed="false" headerHtml="h2"
+                  headerValue="Async Update Panel" footerValue="Footer Text">
+					The server component state will be updated
+					by triggering an AJAX request upon toggling.
+					</boot:panel>
+            </h:form>
+         </boot:column>
+      </boot:row>
+
+
+      <h3>Deferred Content Loading</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="frm_deferredpanel" />
+         </boot:column>
+         <boot:column size="6" id="frm_deferredpanel">
+            <h:form>
+               <boot:panel id="deferredpanel" deferred="true" collapsible="true" collapsed="true"
+                  headerValue="Expand me to load content" footerValue="Loading takes 2 seconds">
+                  <h:outputText value="#{panelDemoProvider.data}" />
+               </boot:panel>
+            </h:form>
+         </boot:column>
+      </boot:row>
+
+      <h3>Deferred Content Loading and Expanded</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="frm_deferredpanelexpanded" />
+         </boot:column>
+         <boot:column size="6" id="frm_deferredpanelexpanded">
+            <h:form>
+               <boot:panel id="deferredpanelexpanded" deferred="true" collapsible="true" collapsed="false"
+                  headerValue="Expand me to load content" footerValue="Loading takes 2 seconds">
+                  <h:outputText value="#{panelDemoProvider.data}" />
+               </boot:panel>
+            </h:form>
+         </boot:column>
+      </boot:row>
+
+      <h3>Facets</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="facetpanel" />
+         </boot:column>
+         <boot:column size="6" id="facetpanel">
+            <boot:panel collapsible="false" collapsed="false">
+               <f:facet name="header">
+						Header Facet Text
+					</f:facet>
+               <p>Create your own header/footer style and content by using facets.</p>
+               <p>You can style the header in dependence of the panels collapse state by extending the following CSS
+                  classes:</p>
+               <ul>
+                  <li>.cui-collapsible[aria-expanded="true"]</li>
+                  <li>.cui-collapsible[aria-expanded="false"]</li>
+               </ul>
+               <f:facet name="footer">
+                  <div style="background-color: #5FBBD2; text-align: center;">Footer Facet with DIV</div>
+               </f:facet>
+            </boot:panel>
+         </boot:column>
+      </boot:row>
+
+      <h3>Without header or footer</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="planepanel" />
+         </boot:column>
+         <boot:column size="6" id="planepanel">
+            <boot:panel >Panel without header or footer.</boot:panel>
+         </boot:column>
+      </boot:row>
+
+      <h3>Toggle Switch</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="frm_toggleswitch" />
+         </boot:column>
+         <boot:column size="6" id="frm_toggleswitch">
+            <h:form >
+               <boot:panel id="toggleswitchpanel" collapsible="true" asyncUpdate="true"
+                  collapseSwitch="#{panelDemoProvider.toggleSwitch}" headerValue="Trigger Toggle Switch">
+						The toggle switch is a server-side state holder of the current collapse state.
+						<f:facet name="footer">
+                     <div style="background-color: #5FBBD2;">
+                        <h:outputText value="toggleSwitch.toggled (collapsed): #{panelDemoProvider.toggleSwitch.toggled}" />
+                     </div>
+                  </f:facet>
+               </boot:panel>
+            </h:form>
+         </boot:column>
+      </boot:row>
+      <hr />
+      <h2 id="cui_accordion">boot:accordion</h2>
+      <ref_dev:cui_comp_meta name="accordion" />
+      <h3>Simple</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="frm_accordion" />
+         </boot:column>
+
+         <boot:column size="6" id="frm_accordion">
+            <h:form >
+               <boot:accordion id="accordion" multiselectable="false">
+                  <boot:panel id="accordion-panel-1" headerValue="Panel 1">
+							This panel is open by default.
+						</boot:panel>
+
+                  <boot:panel id="accordion-panel-2" headerValue="Panel 2" collapsed="true">
+							All other panels should be collapsed!
+						</boot:panel>
+
+                  <boot:panel id="accordion-panel-3" headerValue="Panel 3" collapsed="true">
+							All other panels should be collapsed!
+						</boot:panel>
+               </boot:accordion>
+            </h:form>
+         </boot:column>
+      </boot:row>
+
+      <h3>Active Index Manager</h3>
+      <boot:row>
+         <boot:column size="6">
+            <dev:sourceCode sourceContainerId="frm_accordion_idxmngr" />
+         </boot:column>
+
+         <boot:column size="6" id="frm_accordion_idxmngr">
+            <h:form>
+               <boot:accordion id="accordion_idxmngr" multiselectable="false"
+                  activeIndexManager="#{accordionActiveIndexManagerDemoBean.indexManager}">
+
+                  <boot:panel id="accordion_idxmngr-panel-1" headerValue="Panel 1">
+							This panel is open by default.
+						</boot:panel>
+
+                  <boot:panel id="accordion_idxmngr-panel-2" headerValue="Panel 2" collapsed="true">
+							All other panels should be collapsed!
+						</boot:panel>
+
+                  <boot:panel id="accordion_idxmngr-panel-3" headerValue="Panel 3" collapsed="true">
+							All other panels should be collapsed!
+						</boot:panel>
+               </boot:accordion>
+            </h:form>
+         </boot:column>
+      </boot:row>
+
+      <div style="height: 500px;" />
+   </ui:define>
+</ui:composition>
+</html>

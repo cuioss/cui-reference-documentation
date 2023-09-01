@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:dev="https://cuioss.de/jsf/dev">
+
+<ui:composition template="/templates/layout_portal_core.xhtml">
+
+    <ui:define name="title">Error Handling</ui:define>
+
+    <ui:define name="content">
+        <h1>Error Handling</h1>
+        <h2>Overview</h2>
+        <p>The portal supportes assembling a web page of different sections, that can handle errors independently.
+            For example when displaying a dashboard, some sections may not be available due to problems in the communication
+        or in the backend itself. These sections should only display an error message but will not show any content. On the
+        other hand other sections may work properly and should be displayed intact.</p>
+        <p>There exists two different types of templates for this kind of error handling sections: One which is using
+        a lazy loading concept, where loading of the actual content does not block loading of the page itself, and one
+        without lazy loading.</p>
+        <p>In both ways the error handling bases upon the ResultObject.</p>
+        <dev:sourceCode sourcePath="lazyLoading.sample" enableClipboard="true" type="lang-java" />
+        <dev:sourceCode sourcePath="resultContent.sample" enableClipboard="true" type="lang-java" />
+    </ui:define>
+</ui:composition>
+</html>

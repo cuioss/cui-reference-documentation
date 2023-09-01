@@ -1,0 +1,9 @@
+<cui-components:requestResultContent id="test"
+                                     model="#{testPageBean.requestResultContent}"
+                                     renderAsRow="true">
+    <ul>
+        <ui:repeat value="#{lazyLoadingPageBean.content}" var="line">
+            <li><h:outputText value="#{line}"/></li>
+        </ui:repeat>
+    </ul>
+</cui-components:requestResultContent>

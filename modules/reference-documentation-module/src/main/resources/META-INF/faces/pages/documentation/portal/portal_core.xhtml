@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<ui:composition template="/templates/master_centered.xhtml">
+
+    <ui:define name="title">#{msgs['page.portal.core_module.title']}</ui:define>
+
+    <ui:define name="content">
+        <h1>#{msgs['page.portal.core_module.header']}</h1>
+        <h2>Summary</h2>
+        <p>The Portal Core Module provides all services, pages and states that define what the portal is all about.
+            It deals with all aspects that define an Application Framework.</p>
+        <h3>Basics</h3>
+        <ul>
+            <li><h:link outcome="portal_architecture">Architecture And Design</h:link></li>
+            <li><h:link outcome="portal_basic_concepts" value="Basic Concepts" /></li>
+            <li><h:link outcome="portal_common_objects" value="Common Objects and Services" /></li>
+            <li><h:link outcome="portal_locale_handling" value="Locale-Handling" /></li>
+            <li><h:link outcome="portal_i18n_messages">i18n, Message Bundle and Message Producer</h:link></li>
+            <li><h:link outcome="portal_audit" value="Audit" /></li>
+            <li><h:link outcome="portal_resource_bundles">Standard ResourceBundles</h:link></li>
+            <li><h:link value="Standard Templates" outcome="portal_templates" /></li>
+        </ul>
+        <h3>Advanced Concepts</h3>
+        <ul>
+            <li><h:link outcome="portal_multi_templating" value="Multi-Templating" /></li>
+            <li><h:link outcome="portal_standard_pages">Standard Pages</h:link></li>
+            <li><h:link outcome="portal_dynamic_navigation">Dynamic Navigation Menu</h:link></li>
+            <li><h:link outcome="portal_configuration">Configuration, Customization</h:link></li>
+            <li><h:link outcome="portal_theming_branding">Theming, Branding</h:link></li>
+            <li><h:link outcome="portal_error_handling">Error Handling</h:link></li>
+<!--             <li>Resource-Handling</li> -->
+<!--             <li>User Management</li> -->
+<!--             <li>View Access Control</li> -->
+<!--             <li>Server Side History</li> -->
+<!--             <li>Storage Abstraction: Server and client</li> -->
+<!--             <li>Extended Application Security</li> -->
+<!--             <li>Test Framework</li> -->
+<!--             <li>Little Helper</li> -->
+        </ul>
+    </ui:define>
+</ui:composition>
+</html>

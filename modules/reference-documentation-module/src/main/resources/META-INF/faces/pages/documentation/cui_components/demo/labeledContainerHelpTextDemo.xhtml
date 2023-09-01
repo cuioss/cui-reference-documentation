@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
+<ui:composition
+    template="/templates/layout_portal_labeledContainer.xhtml">
+    <ui:define name="title">HelpText for Labeled Container</ui:define>
+    <ui:define name="content">
+
+        <boot:column size="12">
+
+            <h2>
+                HelpText for Labeled Container
+                <boot:icon icon="cui-icon-circle_question_mark" />
+            </h2>
+            <ref_dev:cui_comp_meta name="helpText" />
+            
+            <h3>Simple Help Text with form-horizontal</h3>
+            <boot:row>
+                <boot:column size="6">
+                    <dev:sourceCode
+                        sourceContainerId="labeledContainerHelpText" />
+                </boot:column>
+                <boot:column size="6" id="labeledContainerHelpText">
+                    <h:form id="form4" styleClass="well form-horizontal">
+                        <boot:labeledContainer id="l1"
+                            labelValue="Email address">
+                            <h:inputText id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" />
+                            <boot:helpText
+                                contentValue="Some advisory information as helpTextValue" />
+                        </boot:labeledContainer>
+                        <boot:labeledContainer id="l2"
+                            labelValue="Email address">
+                            <h:selectBooleanCheckbox id="input"
+                                value="true"
+                                requiredMessage="You must agree!">
+                                <f:validator
+                                    validatorId="omnifaces.RequiredCheckboxValidator" />
+                            </h:selectBooleanCheckbox>
+                            <boot:helpText
+                                contentKey="page.labeledContainerDemo.help_text"
+                                contentEscape="false" />
+                        </boot:labeledContainer>
+                        <boot:labeledContainer id="l3"
+                            labelValue="Output"
+                            contentValue="Take care on escaping">
+                            <boot:helpText
+                                contentKey="page.labeledContainerDemo.help_text"
+                                contentEscape="true" />
+                        </boot:labeledContainer>
+                        <boot:commandButton labelValue="Submit">
+                            <f:ajax execute="@form" render="@form" />
+                        </boot:commandButton>
+                    </h:form>
+                </boot:column>
+            </boot:row>
+
+            <h3>Simple Help Text with form-vertical</h3>
+            <boot:row>
+                <boot:column size="6">
+                    <dev:sourceCode
+                        sourceContainerId="labeledContainerHelpTextVertical" />
+                </boot:column>
+                <boot:column size="6"
+                    id="labeledContainerHelpTextVertical">
+                    <h:form id="form5" styleClass="well">
+                        <boot:labeledContainer id="l1"
+                            labelValue="Email address"
+                            layoutMode="formgroup">
+                            <h:inputText id="input"
+                                value="#{labeledContainerDemoPage.email}"
+                                required="true" />
+                            <boot:helpText
+                                contentValue="Some advisory information as helpTextValue" />
+                        </boot:labeledContainer>
+                        <boot:labeledContainer id="l2"
+                            labelValue="Email address"
+                            layoutMode="formgroup">
+                            <h:selectBooleanCheckbox id="input"
+                                value="true"
+                                requiredMessage="You must agree!">
+                                <f:validator
+                                    validatorId="omnifaces.RequiredCheckboxValidator" />
+                            </h:selectBooleanCheckbox>
+                            <boot:helpText
+                                contentKey="page.labeledContainerDemo.help_text"
+                                contentEscape="false" />
+                        </boot:labeledContainer>
+                        <boot:labeledContainer id="l3"
+                            labelValue="Output"
+                            contentValue="Take care on escaping"
+                            layoutMode="formgroup">
+                            <boot:helpText
+                                contentKey="page.labeledContainerDemo.help_text"
+                                contentEscape="true" />
+                        </boot:labeledContainer>
+                        <boot:commandButton labelValue="Submit">
+                            <f:ajax execute="@form" render="@form" />
+                        </boot:commandButton>
+                    </h:form>
+                </boot:column>
+            </boot:row>
+
+            <h3>Complex Help Text with form-horizontal</h3>
+            <boot:row>
+                <boot:column size="6">
+                    <dev:sourceCode
+                        sourceContainerId="labeledContainerInputHelpText" />
+                </boot:column>
+                <boot:column size="6" id="labeledContainerInputHelpText">
+                    <h:form id="inputHelpTextForm"
+                        styleClass="well form-horizontal">
+                        <boot:labeledContainer id="labelWithHelpText"
+                            labelValue="Password">
+                            <boot:helpText renderButton="true">
+                                <ul>
+                                    <li>use both upper-case and
+                                        lower-case letters (case
+                                        sensitivity)</li>
+                                    <li>inclusion of one or more
+                                        numerical digits</li>
+                                    <li>inclusion of special
+                                        characters, such as @, #, $</li>
+                                    <li>prohibition of words found
+                                        in a password blacklist</li>
+                                    <li>prohibition of words found
+                                        in the user's personal
+                                        information</li>
+                                    <li>prohibition of use of
+                                        company name or an abbreviation</li>
+                                    <li>prohibition of passwords
+                                        that match the format of
+                                        calendar dates, license plate
+                                        numbers, telephone numbers, or
+                                        other common numbers</li>
+                                </ul>
+                            </boot:helpText>
+
+                            <h:inputSecret id="input" required="true"
+                                value="" />
+
+                        </boot:labeledContainer>
+
+                        <ui:repeat var="line"
+                            value="#{labeledContainerDemoPage.list}">
+
+                            <boot:labeledContainer id="labelWithHelpText"
+                                labelValue="Password">
+                                <boot:helpText renderButton="true">
+                                    <ul>
+                                        <li><h:outputText
+                                                value="#{line}" /></li>
+                                        <li>use both upper-case and
+                                            lower-case letters (case
+                                            sensitivity)</li>
+                                        <li>inclusion of one or
+                                            more numerical digits</li>
+                                        <li>inclusion of special
+                                            characters, such as @, #, $</li>
+                                        <li>prohibition of words
+                                            found in a password
+                                            blacklist</li>
+                                        <li>prohibition of words
+                                            found in the user's personal
+                                            information</li>
+                                        <li>prohibition of use of
+                                            company name or an
+                                            abbreviation</li>
+                                        <li>prohibition of
+                                            passwords that match the
+                                            format of calendar dates,
+                                            license plate numbers,
+                                            telephone numbers, or other
+                                            common numbers</li>
+                                    </ul>
+                                </boot:helpText>
+
+                                <h:inputSecret id="input"
+                                    required="true" value="" />
+
+                            </boot:labeledContainer>
+                        </ui:repeat>
+
+                        <boot:commandButton labelValue="Submit">
+                            <f:ajax execute=":inputHelpTextForm"
+                                render=":inputHelpTextForm" />
+                        </boot:commandButton>
+
+                    </h:form>
+                </boot:column>
+            </boot:row>
+
+            <h3>Complex Help Text with form-vertical</h3>
+            <boot:row>
+                <boot:column size="6">
+                    <dev:sourceCode
+                        sourceContainerId="labeledContainerInputHelpTextVertical" />
+                </boot:column>
+                <boot:column size="6"
+                    id="labeledContainerInputHelpTextVertical">
+                    <h:form id="inputHelpTextFormVertical"
+                        styleClass="well">
+                        <boot:labeledContainer id="labelWithHelpText"
+                            labelValue="Password" layoutMode="formgroup">
+                            <boot:helpText renderButton="true">
+                                <ul>
+                                    <li>use both upper-case and
+                                        lower-case letters (case
+                                        sensitivity)</li>
+                                    <li>inclusion of one or more
+                                        numerical digits</li>
+                                    <li>inclusion of special
+                                        characters, such as @, #, $</li>
+                                    <li>prohibition of words found
+                                        in a password blacklist</li>
+                                    <li>prohibition of words found
+                                        in the user's personal
+                                        information</li>
+                                    <li>prohibition of use of
+                                        company name or an abbreviation</li>
+                                    <li>prohibition of passwords
+                                        that match the format of
+                                        calendar dates, license plate
+                                        numbers, telephone numbers, or
+                                        other common numbers</li>
+                                </ul>
+                            </boot:helpText>
+
+                            <h:inputSecret id="input" required="true"
+                                value="" />
+
+                        </boot:labeledContainer>
+
+                        <boot:commandButton labelValue="Submit">
+                            <f:ajax execute=":inputHelpTextForm"
+                                render=":inputHelpTextForm" />
+                        </boot:commandButton>
+
+                    </h:form>
+                </boot:column>
+            </boot:row>
+
+        </boot:column>
+    </ui:define>
+</ui:composition>
+</html>

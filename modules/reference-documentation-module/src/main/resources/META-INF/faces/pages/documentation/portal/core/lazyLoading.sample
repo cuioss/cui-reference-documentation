@@ -1,0 +1,7 @@
+<boot:lazyLoading id="test" viewModel="#{lazyLoadingPageBean.viewModel}">
+    <ul>
+        <ui:repeat value="#{lazyLoadingPageBean.content}" var="line">
+            <li><h:outputText value="#{line}"/></li>
+        </ui:repeat>
+    </ul>
+</boot:lazyLoading>

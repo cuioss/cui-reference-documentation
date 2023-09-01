@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/master_centered.xhtml">
+    <ui:define name="title">Form Demo</ui:define>
+    <ui:define name="content">
+
+        <div class="container">
+            <h1>Forms Demo</h1>
+            <h2>Label Input</h2>
+            <boot:row>
+                <boot:column size="6">
+                    <h3>Basic example (vertical)</h3>
+                    <div class="well clearfix">
+                        <form>
+                            <div class="form-group has-error">
+                                <label>Email address</label> <input type="email" class="form-control"
+                                    placeholder="Email" />
+                                <p id="helpBlock" class="help-block">A block of help text that breaks onto a new
+                                    line and may extend beyond one line.</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label> <input type="password" class="form-control"
+                                    placeholder="Password" />
+                            </div>
+                            <div class="form-group">
+                                <label>Checkbox</label>
+                                <div class="checkbox">
+                                    <label> <input type="checkbox" /> Checkbox and radio code are the same for
+                                        vertical as well as horizontal forms
+                                    </label>
+                                </div>
+                                <div class="checkbox disabled">
+                                    <label> <input type="checkbox" disabled="true" />Can't check this
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="quick-control-group-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </boot:column>
+                <boot:column size="6">
+                    <h3>Horizontal form</h3>
+                    <div class="well clearfix">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Please select</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                    <p id="helpBlock" class="help-block">A block of help text that breaks onto a new
+                                        line and may extend beyond one line.</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <input type="text" class="form-control" placeholder="no label :-)" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Disabled input</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Disabled input" disabled="true" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Your choice</label>
+                                <div class="col-sm-9">
+                                    <div class="radio">
+                                        <label> <input type="radio" name="optionsRadios" id="optionsRadios1"
+                                            value="option1" checked="true" /> Option one is this and that&mdash;be sure
+                                            to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label> <input type="radio" name="optionsRadios" id="optionsRadios2"
+                                            value="option2" /> Option two can be something else and selecting it will
+                                            deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio disabled">
+                                        <label> <input type="radio" name="optionsRadios" id="optionsRadios3"
+                                            value="option3" disabled="true" /> Option three is disabled
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Inline radios</label>
+                                <div class="col-sm-9">
+                                    <label class="radio-inline"> <input type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1" />1
+                                    </label> <label class="radio-inline"> <input type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2" />2
+                                    </label> <label class="radio-inline"> <input type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio3" value="option3" />3
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="quick-control-group-right">
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </div>
+                        </form>
+                    </div>
+                </boot:column>
+            </boot:row>
+            <boot:row>
+                <boot:column size="6">
+                    <h3>Form inline</h3>
+                    <div class="well clearfix">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="exampleInputName2">Name</label> <input type="text" class="form-control"
+                                    id="exampleInputName2" placeholder="Jane Doe" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Email</label> <input type="email" class="form-control"
+                                    id="exampleInputEmail2" placeholder="jane.doe@example.com" />
+                            </div>
+                            <button type="submit" class="btn btn-default">Send invitation</button>
+                        </form>
+                    </div>
+                </boot:column>
+            </boot:row>
+            <h2>Label Output (static control)</h2>
+            <boot:row>
+                <boot:column size="6">
+                    <h3>Vertical</h3>
+                    <div class="well">
+                        <form>
+                            <div class="form-group">
+                                <label class="">Adresse</label>
+                                <p class="form-control-static">Freiheit 1 89000 München, Deutschland</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="">Email address</label>
+                                <p class="form-control-static">email@example.com</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="">Geschlecht</label>
+                                <p class="form-control-static">Männlich</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="">Familienstand</label>
+                                <p class="form-control-static">Verheiratet</p>
+                            </div>
+                        </form>
+                    </div>
+                </boot:column>
+                <boot:column size="6">
+                    <h3>Horizontal</h3>
+                    <div class="well clearfix">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Adresse</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static">Freiheit 1 89000 München, Deutschland</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static">email@example.com</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Geschlecht</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static">Männlich</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Familienstand</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static">Verheiratet</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Geburtsdatum</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static">31.03.1935</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Alter</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static">80 Jahre</p>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </boot:column>
+            </boot:row>
+
+            <h2>Height sizing</h2>
+            <boot:row>
+                <boot:column size="6">
+                    <h3>Vertical</h3>
+                    <div class="well">
+                        <form>
+                            <div class="form-group form-group-lg">
+                                <label>Vertical labels are not sized by bootstrap</label> <input type="email"
+                                    class="form-control" placeholder=".form-group .form-group-lg" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Default input" />
+                            </div>
+                            <div class="form-group">
+                                <label>Vertical labels are not sized by bootstrap</label> <input type="email"
+                                    class="form-control input-sm" placeholder=".form-control .input-sm" />
+                            </div>
+                        </form>
+                    </div>
+                </boot:column>
+                <boot:column size="6">
+                    <h3>Horizontal</h3>
+                    <div class="well">
+                        <form class="form-horizontal">
+                            <div class="form-group form-group-lg">
+                                <label class="col-sm-3 control-label">Large label</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" placeholder="Large input"
+                                        data-placement="bottom" data-original-title="Help Text" data-toggle="tooltip" />
+                                    <script>$(function () {
+											$('[data-toggle="tooltip"]').tooltip()
+										})</script>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Default label</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" placeholder="Default input" />
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label class="col-sm-3 control-label">Small label</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" placeholder="Small input" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </boot:column>
+            </boot:row>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>

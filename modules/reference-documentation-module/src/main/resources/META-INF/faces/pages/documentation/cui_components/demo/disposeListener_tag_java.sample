@@ -1,0 +1,8 @@
+public void disposeListener(final ModelPayloadEvent disposeEvent) {
+
+        log.info("Dispose : {}", disposeEvent.getModel());
+
+        firstNames.remove(disposeEvent.getModel());
+
+        messageProducer.addGlobalMessage("Disposed=" + disposeEvent.getModel(), FacesMessage.SEVERITY_INFO);
+}

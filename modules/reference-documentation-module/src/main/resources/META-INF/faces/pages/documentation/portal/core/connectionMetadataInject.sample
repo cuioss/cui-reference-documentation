@@ -1,0 +1,8 @@
+import javax.inject.Inject;
+import javax.inject.Provider;
+import de.icw.cui.portal.configuration.connections.impl.ConnectionMetadata;
+import de.icw.cui.portal.configuration.types.ConfigAsConnectionMetadata;
+
+@Inject
+@ConfigAsConnectionMetadata(baseName = "my.app.connection", failOnInvalidConfiguration = false)
+private Provider<ConnectionMetadata> connectionMetadataProvider;

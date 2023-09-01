@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:cui="https://cuioss.de/jsf/core"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap">
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">cui:fieldset</ui:define>
+    <ui:define name="content">
+        <h2>
+            <boot:icon icon="cui-icon-justify" />
+            cui:fieldset
+        </h2>
+        <h3>Minimal Fieldset</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="minimalFieldset" />
+            </boot:column>
+            <boot:column size="6" id="minimalFieldset">
+                <h:form styleClass="form-horizontal">
+                    <cui:fieldset>
+                        <boot:labeledContainer id="firstInput"
+                            labelValue="Some Label"
+                            placeholderValue="Some Input">
+                            <h:inputText id="input" value="" />
+                        </boot:labeledContainer>
+                    </cui:fieldset>
+                    <boot:quickControlGroup>
+                        <boot:commandButton
+                            labelKey="common.button.save">
+                            <f:ajax execute="@form" render="@form" />
+                        </boot:commandButton>
+                    </boot:quickControlGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>Fieldset with Legend</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="fieldsetWithLegend" />
+            </boot:column>
+            <boot:column size="6" id="fieldsetWithLegend">
+                <h:form styleClass="form-horizontal">
+                    <cui:fieldset legendValue="First Fieldset">
+                        <boot:labeledContainer id="firstInput"
+                            labelValue="Some Label"
+                            placeholderValue="Some Input">
+                            <h:inputText id="input" value="" />
+                        </boot:labeledContainer>
+                    </cui:fieldset>
+                    <cui:fieldset legendValue="Second Fieldset">
+                        <boot:labeledContainer id="secondInput"
+                            labelValue="Some Label"
+                            placeholderValue="Some Input">
+                            <h:inputText id="input" value="" />
+                        </boot:labeledContainer>
+                    </cui:fieldset>
+                    <boot:quickControlGroup>
+                        <boot:commandButton
+                            labelKey="common.button.save">
+                            <f:ajax execute="@form" render="@form" />
+                        </boot:commandButton>
+                    </boot:quickControlGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+
+
+    </ui:define>
+</ui:composition>
+</html>

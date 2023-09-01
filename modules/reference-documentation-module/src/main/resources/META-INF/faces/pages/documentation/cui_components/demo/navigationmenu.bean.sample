@@ -1,0 +1,2 @@
+NavigationMenuItem navItem = new NavigationMenuItem(){...};
+navItem.getActiveForViewId().add("cui_layout");

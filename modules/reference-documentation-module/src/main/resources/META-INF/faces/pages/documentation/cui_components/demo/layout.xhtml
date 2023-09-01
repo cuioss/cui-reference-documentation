@@ -1,0 +1,367 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:dev="https://cuioss.de/jsf/dev"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap"
+      xmlns:cui-composite="http://xmlns.jcp.org/jsf/composite/cui-composite"
+      xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">Layout Components</ui:define>
+    <ui:define name="sidebarLeft">
+        <nav class="sidebar">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#cui_row" onclick="$('html, body').animate({scrollTop: $('#cui_row').offset().top - 160 }, 'slow');">boot:row</a>
+                </li>
+                <li>
+                    <a href="#cui_column" onclick="$('html, body').animate({scrollTop: $('#cui_column').offset().top - 60 }, 'slow');">boot:column</a>
+                </li>
+                <li>
+                    <a href="#cui_control_group"  onclick="$('html, body').animate({scrollTop: $('#cui_control_group').offset().top - 60 }, 'slow');">boot:controlGroup</a>
+                </li>
+                <li>
+                    <a href="#cui_quickcontrolgroup" onclick="$('html, body').animate({scrollTop: $('#cui_quickcontrolgroup').offset().top - 60 }, 'slow');">boot:quickControlGroup</a>
+                </li>
+                <li>
+                    <a href="#cui_form_group" onclick="$('html, body').animate({scrollTop: $('#cui_form_group').offset().top - 60 }, 'slow');">boot:formGroup</a>
+                </li>
+                <li>
+                    <a href="#cui_input_group"  onclick="$('html, body').animate({scrollTop: $('#cui_input_group').offset().top - 60 }, 'slow');">boot:inputGroup</a>
+                </li>
+                <li>
+                    <a href="#cui_message" onclick="$('html, body').animate({scrollTop: $('#cui_message').offset().top - 60 }, 'slow');">boot:message</a>
+                </li>
+                <li>
+                    <a href="#cui_outputLabel" onclick="$('html, body').animate({scrollTop: $('#cui_outputLabel').offset().top - 60 }, 'slow');">boot:outputLabel</a>
+                </li>
+                <li>
+                    <a href="#cui_navigationmenu" onclick="$('html, body').animate({scrollTop: $('#cui_navigationmenu').offset().top  }, 'slow');">boot:navigationMenu</a>
+                </li>
+                <li>
+                    <a href="#cui_widget" onclick="$('html, body').animate({scrollTop: $('#cui_widget').offset().top }, 'slow');">cui-composite:widget</a>
+                </li>
+            </ul>
+        </nav>
+    </ui:define>
+    <ui:define name="content">
+        <style>
+            .sidebar .sidebar-nav li {
+                cursor:pointer;
+            }
+
+            .highlight-row {
+                background-color: #41B397;
+                text-align: center;
+            }
+
+            .highlight-column {
+                background-color: #f2d3c7;
+                text-align: center;
+            }
+
+            .highlight {
+                background-color: #B8FAEA;
+            }
+
+            li[data-item-active] {
+                border: 1px solid #f00;
+                background-color: #ff0;
+            }
+        </style>
+        <h1>Layout Components</h1>
+        <p>
+            The layout relies completely on the grid-system of twitter-bootstrap,
+            see <a href="http://getbootstrap.com/css/#grid">Bootstrap
+            Documentation</a>
+        </p>
+        <h2 id="cui_row">boot:row</h2>
+        <ref_dev:cui_comp_meta name="row"/>
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="rowSample"/>
+            </boot:column>
+            <boot:column size="6" id="rowSample">
+                <boot:row styleClass="highlight-row">
+                    <span>Row-Content</span>
+                </boot:row>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_column">boot:column</h2>
+        <ref_dev:cui_comp_meta name="column"/>
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="columnLayoutSample"/>
+            </boot:column>
+            <boot:column size="6" id="columnLayoutSample">
+                <boot:row styleClass="highlight-row">
+                    <boot:column size="4" styleClass="highlight-column">
+                        <span class="pull-left">|</span>
+                        <span>Size="4"</span>
+                        <span class="pull-right">|</span>
+                    </boot:column>
+                    <boot:column size="2" styleClass="highlight-column">
+                        <span class="pull-left">|</span>
+                        <span>Size="2"</span>
+                        <span class="pull-right">|</span>
+                    </boot:column>
+                    <boot:column size="4" offsetSize="2" styleClass="highlight-column">
+                        <span class="pull-left">|</span>
+                        <span>Size="3", Offset="4"</span>
+                        <span class="pull-right">|</span>
+                    </boot:column>
+                </boot:row>
+            </boot:column>
+        </boot:row>
+        <h3>Custom Sizing</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="columnBreakpoint"/>
+            </boot:column>
+            <boot:column size="6">
+                <p>Resize your viewport to see the impact on the widths of the
+                    columns.</p>
+                <p>In general grid classes (col-xx-yy) apply to devices with
+                    screen widths greater than or equal to the breakpoint.</p>
+                <p>Thus, if a grid class is not present it will use the
+                    size/width of the next smaller grid class.</p>
+                <p>If no smaller grid class is present it will default to the
+                    size 12.</p>
+                <boot:row>
+                    <boot:column size="3">"col-md-4"</boot:column>
+                    <boot:column size="3">equivalent to</boot:column>
+                    <boot:column size="6">"col-xs-12 col-sm-12 col-md-4 col-lg-4"</boot:column>
+                </boot:row>
+                <boot:row>
+                    <boot:column size="3">"col-sm-6 col-lg-4"</boot:column>
+                    <boot:column size="3">equivalent to</boot:column>
+                    <boot:column size="6">"col-xs-12 col-sm-6 col-md-6 col-lg-4"</boot:column>
+                </boot:row>
+            </boot:column>
+            <boot:column size="6" id="columnBreakpoint">
+                <boot:row styleClass="highlight-row">
+                    <boot:column size="4"
+                                styleClass="highlight-column col-sm-6 col-md-4 col-lg-3">
+                        <span class="pull-left">|</span>
+                        <span class="visible-lg-inline">col-lg-3</span>
+                        <span class="visible-md-inline">col-md-4</span>
+                        <span class="visible-sm-inline">col-sm-6</span>
+                        <span class="visible-xs-inline">col-xs defaults to 12 (if not present)</span>
+                        <span class="pull-right">|</span>
+                    </boot:column>
+                    <boot:column size="4"
+                                styleClass="highlight-column col-sm-6 col-md-4 col-lg-3">
+                        <span class="pull-left">|</span>
+                        <span class="visible-lg-inline">col-lg-3</span>
+                        <span class="visible-md-inline">col-md-4</span>
+                        <span class="visible-sm-inline">col-sm-6</span>
+                        <span class="visible-xs-inline">col-xs defaults to 12 (if not present)</span>
+                        <span class="pull-right">|</span>
+                    </boot:column>
+                    <boot:column size="4"
+                                styleClass="highlight-column col-xs-6 col-sm-6 col-md-4 col-lg-2">
+                        <span class="pull-left">|</span>
+                        <span class="visible-lg-inline">col-lg-2</span>
+                        <span class="visible-md-inline">col-md-4</span>
+                        <span class="visible-sm-inline">col-sm-6</span>
+                        <span class="visible-xs-inline">col-xs-6</span>
+                        <span class="pull-right">|</span>
+                    </boot:column>
+                    <boot:column size="4"
+                                styleClass="highlight-column col-xs-6 col-sm-6 col-md-4">
+                        <span class="pull-left">|</span>
+                        <span class="visible-lg-inline"> col-lg is not present --> it defaults to col-md-</span>
+                        <span class="visible-md-inline">col-md-4</span>
+                        <span class="visible-sm-inline">col-sm-6</span>
+                        <span class="visible-xs-inline">col-xs-6</span>
+                        <span class="pull-right">|</span>
+                    </boot:column>
+                </boot:row>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_control_group">boot:controlGroup</h2>
+        <ref_dev:cui_comp_meta name="controlGroup"/>
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="controlGroupSample"/>
+            </boot:column>
+            <boot:column size="6" id="controlGroupSample">
+                <h:form styleClass="form-horizontal">
+                    <boot:labeledContainer id="l1" labelValue="Some Input">
+                        <h:inputText id="input"/>
+                    </boot:labeledContainer>
+                    <boot:controlGroup offsetSize="4">
+                        <boot:button icon="cui-icon-alarm" labelValue="Some Button"/>
+                    </boot:controlGroup>
+                    <div class="form-group pull-right">
+                        <!-- alt. "form-group pull-left" -->
+                        <div class="col-md-12">
+                            <a class="btn btn-default"
+                               href="/cui-reference-documentation/faces/pages/documentation/cui_components/demo/layout.jsf?dswid=632"><span
+                                    class="cui-icon cui-icon-alarm"></span><span class="btn-text">Some Button</span></a>
+                        </div>
+                    </div>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_quickcontrolgroup">boot:quickControlGroup</h2>
+        <ref_dev:cui_comp_meta name="quickControlGroup"/>
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="quickcontrolgroup-sample"/>
+            </boot:column>
+            <boot:column size="6" id="quickcontrolgroup-sample">
+                <boot:quickControlGroup>
+                    <boot:button labelValue="Btn 1"/>
+                    <boot:button labelValue="Btn 2"/>
+                    <boot:button labelValue="Btn 3"/>
+                </boot:quickControlGroup>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_form_group">boot:formGroup</h2>
+        <ref_dev:cui_comp_meta name="formGroup"/>
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="formGroupSample"/>
+            </boot:column>
+            <boot:column size="6" id="formGroupSample">
+                <h:form id="message" styleClass="form-horizontal">
+                    <boot:formGroup>
+                        <h:inputText id="first" required="true" value="First Element"
+                                     styleClass="form-control"/>
+                    </boot:formGroup>
+                    <boot:formGroup>
+                        <h:inputText id="second" required="true" value="Second Element"
+                                     styleClass="form-control"/>
+                    </boot:formGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_input_group">boot:inputGroup</h2>
+        <ref_dev:cui_comp_meta name="inputGroup"/>
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="inputGroupSample"/>
+            </boot:column>
+            <boot:column size="6" id="inputGroupSample">
+                <h:form id="inputGroup" styleClass="form-horizontal">
+                    <boot:inputGroup>
+                        <h:inputText id="first" required="true" value="First Element"
+                                     styleClass="form-control"/>
+                        <div class="input-group-addon">addOn</div>
+                    </boot:inputGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_message">boot:message</h2>
+        <ref_dev:cui_comp_meta name="message"/>
+        <h3>Simple Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="messageSample"/>
+            </boot:column>
+            <boot:column size="6" id="messageSample">
+                <h:form id="messageSimple" styleClass="form-horizontal">
+                    <h:inputText id="input" required="true" styleClass="form-control">
+                        <f:ajax event="blur" render="@form" execute="@this"/>
+                    </h:inputText>
+                    <boot:message/>
+                </h:form>
+            </boot:column>
+        </boot:row>
+        <h3>Complex Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="messageSampleComplex"/>
+            </boot:column>
+            <boot:column size="6" id="messageSampleComplex">
+                <h:form id="messageComplex" styleClass="form-horizontal">
+                    <h:inputText id="myinput" required="true" styleClass="form-control">
+                        <f:ajax event="blur" render="@form" execute="@this"/>
+                    </h:inputText>
+                    <boot:message forIdentifier="myinput" showSummary="true" showDetail="true"/>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_outputLabel">boot:outputLabel</h2>
+        <ref_dev:cui_comp_meta name="outputLabel"/>
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="outputSample"/>
+            </boot:column>
+            <boot:column size="6" id="outputSample">
+                <h:form id="outputLabel" styleClass="form-horizontal">
+                    <h:inputText id="input" required="true" styleClass="form-control"/>
+                    <boot:outputLabel for="input" labelValue="Test" titleValue="Title"/>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_navigationmenu">boot:navigationMenu</h2>
+        Navigation menu item demo.
+        The menu item is set to an active by adding the current view ID to the components model in the backing bean.
+        The component renderer sets a 'data-item-active' HTML attribute for active components.
+        By defining a CSS rule like 'li[data-item-active] {...}' the 'active' styling can be changed accordingly.
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourcePath="navigationmenu.sample"/>
+                <dev:sourceCode type="lang-java"
+                                sourcePath="navigationmenu.bean.sample"/>
+            </boot:column>
+            <boot:column size="6">
+                <boot:navigationMenu id="demoNavMenu"
+                                    model="#{navigationMenuDemoBean.navDemoItem}"
+                                    style="display:block;"/>
+            </boot:column>
+        </boot:row>
+
+        <h2 id="cui_widget">cui-composite:widget</h2>
+        <h3>Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourcePath="widget.sample"/>
+                <dev:sourceCode type="lang-java" sourcePath="widgetBean.sample"/>
+                <dev:sourceCode sourceContainerId="widgetcss" type="lang-css" description="CSS Structure of content"/>
+                <h:panelGroup id="widgetcss" style="display:none;">
+> .font-title {
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+> time {
+    text-align: right;
+}
+> .widget-footer {
+    margin-top: 10px;
+    text-align: right;
+}
+> * {
+    display: block;
+}
+                </h:panelGroup>
+            </boot:column>
+            <boot:column size="6">
+                <cui-composite:widget model="#{widgetBean}">
+                    <h:outputText value="#{widgetBean.content}"/>
+                </cui-composite:widget>
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,25 @@
+@ApplicationScoped
+@PortalConfigurationStorage
+class AppConfigStore implements ConfigurationStorage {
+  ...
+}
+
+class MyApp {
+    @Inject
+    @PortalConfigurationStorage
+    private ConfigurationStorage configurationStorage;
+
+    public void saveSettings() {
+        final Map<String, String> properties = new HashMap<>();
+        properties.put(ConfigurationKeys.KEY_1, "value 1");
+        properties.put(ConfigurationKeys.KEY_2, "value 2");
+        properties.put(ConfigurationKeys.KEY_3, "value 3");
+
+        try {
+            configurationStorage.setConfigurationMap(properties);
+            log.info("Configuration successfully saved.");
+        } catch (IOException e) {
+            log.error("Could not save config", e);
+        }
+    }
+}

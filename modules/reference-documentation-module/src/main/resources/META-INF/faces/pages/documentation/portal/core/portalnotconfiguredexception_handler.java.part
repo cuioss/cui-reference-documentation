@@ -1,0 +1,12 @@
+/**
+ * Handles {@link PortalNotConfiguredException}. The user will be redirected to SetupBean.OUTCOME.
+ *
+ * @param event
+ */
+@SuppressWarnings("static-method")
+public void handlePortalNotConfiguredException(@Handles final ExceptionEvent<PortalNotConfiguredException> event) {
+    if (!event.handled()) { // optionally redirect to your configuration specific page.
+        navigationHandler.handleNavigation(this.facesContext, null, SetupBean.OUTCOME);
+    }
+    event.handled(); // mandatory
+}

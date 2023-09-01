@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:cui="https://cuioss.de/jsf/core"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap">
+
+<ui:composition template="/templates/master_centered.xhtml">
+
+    <ui:define name="title">Cui Icons</ui:define>
+    <ui:define name="content">
+
+        <style>
+@media print {
+	div.container {
+		margin: 0;
+		padding: 0;
+		width: 1170px;
+	}
+	div.col-xs-4 {
+		page-break-before: always;
+	}
+}
+</style>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $( ".cui-labeled-icon .cui-icon" ).addClass( "cui-icon-xxl" );
+            });
+        </script>
+        <cui:fieldset legendValue="Cui Icons">
+            <boot:row>
+                <ui:repeat var="iconName"
+                    value="#{cuiIconsOverviewPageBean.data}">
+                    <boot:column size="4"
+                        styleClass="col-sm-6 col-lg-3 col-xs-4">
+                        <boot:labeledIcon icon="#{iconName}"
+                            labelValue="#{iconName}" id="icon" />
+                    </boot:column>
+                </ui:repeat>
+            </boot:row>
+
+        </cui:fieldset>
+    </ui:define>
+
+</ui:composition>
+
+</html>

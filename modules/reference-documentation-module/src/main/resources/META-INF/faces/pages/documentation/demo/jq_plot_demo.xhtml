@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:cuic="http://xmlns.jcp.org/jsf/composite/graph-jqplot"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:cui="https://cuioss.de/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">JqPlot - in CUI</ui:define>
+    <ui:define name="content">
+
+        <h3>Minimal Line Chart</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="minimal" />
+            </boot:column>
+            <boot:column size="6" id="minimal">
+                <cui:fieldset id="simpleGraph"
+                    legendValue="Simple Graph">
+                    <cuic:graph id="graph"
+                        plot="#{graphDemoPage.simpleLineChart}"
+                        noDataMessage="No data available" style="" />
+                </cui:fieldset>
+            </boot:column>
+        </boot:row>
+
+        <h3>Showcase dynamic graph</h3>
+        <boot:row>
+
+            <h:form id="graphPlayground" styleClass="form-horizontal">
+
+                <boot:column size="6">
+                    <dev:sourceCode sourceContainerId="minimalFieldset" />
+
+                    <h4>Title Settings</h4>
+                    <hr />
+                    <boot:labeledContainer labelValue="Graph Title">
+                        <h:inputText id="input"
+                            value="#{graphDemoPage.twoLinesGrapTitel}" />
+                    </boot:labeledContainer>
+
+                    <h4>First Seria Settings</h4>
+                    <hr />
+                    <boot:labeledContainer
+                        labelValue="First Seria Title">
+                        <h:inputText id="input"
+                            value="#{graphDemoPage.firstSeriaLabel}" />
+                    </boot:labeledContainer>
+                    <boot:labeledContainer
+                        labelValue="First Seria Color">
+                        <h:inputText id="input"
+                            value="#{graphDemoPage.firstSeriaColor}" />
+                    </boot:labeledContainer>
+
+                    <boot:commandButton labelValue="Update graph Model"
+                        style="float: right;" state="info">
+                        <p:ajax process="@form"
+                            update="@form:twoLinesGraph"
+                            listener="#{graphDemoPage.updateModel}" />
+                    </boot:commandButton>
+                </boot:column>
+                <boot:column size="6" id="minimalFieldset">
+                    <cui:fieldset id="twoLinesGraph"
+                        legendValue="Two Lines Graph">
+                        <cuic:graph id="graph"
+                            plot="#{graphDemoPage.twoLinesChart}"
+                            noDataMessage="No data available" style="" />
+                    </cui:fieldset>
+                </boot:column>
+            </h:form>
+        </boot:row>
+
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap">
+<ui:composition template="/templates/master_centered.xhtml">
+    <ui:define name="title">Getting Started</ui:define>
+
+    <ui:define name="content">
+        <boot:row>
+            <boot:column size="12">
+                <h2>Getting Started</h2>
+                <h3>UI Module</h3>
+                <p>Create an ui module like <a
+                        href="https://git.dev.icw.int/projects/LIB/repos/ehf-common-ui/browse/references/portal-sample-module">portal-sample-module</a>.
+                </p>
+                <p>Take a look at the <h:link outcome="cui_components">UI components library</h:link></p>
+                <p>This ui module can be tested via maven profile -Pwildfly in a mock deployment in wildfly
+                    controlled by you IDE (Eclipse or IntelliJ).</p>
+                <h3>Assembly</h3>
+                <p>Create an assembly like <a
+                        href="https://git.dev.icw.int/projects/LIB/repos/ehf-common-ui/browse/assemblies/cui-portal-module-sample-assembly">cui-portal-module-sample-assembly</a> that contains the ui module.
+                </p>
+                <p>This assembly should contain a CUI portal authentication module, e.g.
+                    portal-authentication-servlet-container.</p>
+                <p>As default a tanuki based stand alone application including latest tomcat will be created. To
+                    create a docker image just call "mvn clean install -P docker".</p>
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:boot="https://cuioss.de/jsf/bootstrap"
+      xmlns:dev="https://cuioss.de/jsf/dev">
+
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">PrimeFaces Tree Table DEMO</ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="pageForm" styleClass="#{dataTreeProvider.formStyle}">
+
+            <h:outputStylesheet id="styling">
+
+                .pages_documentation_prime_prime_tree_demo .container-fluid {
+                    /*height: 100%;*/
+                }
+
+                .full-screen-form {
+                    height: 100%;
+                }
+
+                .full-screen-form .typed-tree-row {
+                    height: calc(100% - 150px);
+                }
+
+                .full-screen-form .typed-tree-col {
+                    height: 100%;
+                }
+
+            </h:outputStylesheet>
+
+            <h1>Adaptation of PrimeFaces DataTable</h1>
+
+            <h:panelGroup layout="block" styleClass="col-sm-6 switch-placing">
+                <label class="switch">
+                    <h:selectBooleanCheckbox value="#{dataTreeProvider.fullScreenFormActive}">
+                        <p:ajax update="@form" immediate="true"/>
+                    </h:selectBooleanCheckbox>
+                    <span class="slider round"></span>
+                </label>
+                <h:outputText styleClass="switch-text"
+                              value="Slide to activate tree in fullscreen"
+                              rendered="#{not dataTreeProvider.fullScreenFormActive}"/>
+                <h:outputText styleClass="switch-text"
+                              value="Slide to deactivate tree in fullscreen"
+                              rendered="#{dataTreeProvider.fullScreenFormActive}"/>
+            </h:panelGroup>
+
+            <h:panelGroup id="simple" rendered="#{not dataTreeProvider.fullScreenFormActive}" layout="block">
+                <boot:row>
+                    <boot:column size="12">
+                        <h2>Simple Tree</h2>
+                    </boot:column>
+                </boot:row>
+
+                <boot:row>
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="simpleTree"/>
+                    </boot:column>
+
+                    <boot:column size="6" id="simpleTree">
+                        <p:tree value="#{dataTreeProvider.root}" var="node">
+                            <p:treeNode>
+                                <h:outputText value="#{node}"/>
+                            </p:treeNode>
+                        </p:tree>
+                    </boot:column>
+                </boot:row>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block">
+                <boot:row>
+                    <boot:column size="12">
+                        <h2>Tree with node types</h2>
+                    </boot:column>
+                </boot:row>
+                <boot:row styleClass="typed-tree-row">
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="typedTree"/>
+                    </boot:column>
+
+                    <boot:column size="6" id="typedTree" styleClass="typed-tree-col">
+                        <p:tree value="#{dataTreeProvider.typedStructure}" var="node">
+                            <p:treeNode type="#{dataTreeProvider.driveType}" icon="cui-icon-hdd">
+                                <h:outputText value="#{node}"/>
+                            </p:treeNode>
+                            <p:treeNode type="#{dataTreeProvider.folderType}" icon="cui-icon-folder_closed">
+                                <h:outputText value="#{node}"/>
+                            </p:treeNode>
+                            <p:treeNode type="#{dataTreeProvider.fileType}" icon="cui-icon-file">
+                                <h:outputText value="#{node}"/>
+                            </p:treeNode>
+                        </p:tree>
+                    </boot:column>
+                </boot:row>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block">
+                <boot:row>
+                    <boot:column size="12">
+                        <h2>Simple TreeTable</h2>
+                    </boot:column>
+                </boot:row>
+
+                <boot:row styleClass="typed-tree-row">
+                    <boot:column size="6">
+                        <dev:sourceCode sourceContainerId="treeTableDemo"/>
+                    </boot:column>
+
+                    <boot:column size="6" id="treeTableDemo" styleClass="typed-tree-col">
+                        <p:treeTable id="treeTable"
+                                value="#{dataTreeProvider.typedStructure}"
+                                selectionMode="single"
+                                var="node"
+                                widgetVar="widget"
+                                styleClass="table-striped">
+
+                            <p:column headerText="Resource">
+                                <h:outputText value="#{node}" />
+                            </p:column>
+                        </p:treeTable>
+                    </boot:column>
+                </boot:row>
+            </h:panelGroup>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

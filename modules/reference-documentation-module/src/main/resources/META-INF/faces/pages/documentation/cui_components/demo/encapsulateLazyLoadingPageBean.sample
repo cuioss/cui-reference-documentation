@@ -1,0 +1,50 @@
+@ViewScoped
+@Named
+@ToString
+@EqualsAndHashCode
+public class EncapsulateLazyLoadingPageBean implements Serializable {
+
+    private static final long serialVersionUID = -1281930098669716629L;
+
+    private static final CuiLogger log = new CuiLogger(EncapsulateLazyLoadingPageBean.class);
+
+    @Getter
+    private boolean parentContainerRendered;
+
+    @Getter
+    private List<String> content;
+
+    @Inject
+    LazyLoadingPageBean anyOtherBean;
+
+    public String initViewAction() {
+        this.parentContainerRendered = false;
+        return null;
+    }
+
+    public boolean isInitialized() {
+        if (!parentContainerRendered){
+            throw new IllegalStateException("In case parent CC isn't rendered, this code shouldn't be invoked, "
+                    + "otherwise wrong behaviour");
+        }
+        return false;
+    }
+
+    public void initialize() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+            if (!parentContainerRendered){
+                throw new IllegalStateException("In case parent CC isn't rendered, this code shouldn't be invoked, "
+                        + "otherwise wrong behaviour");
+            }
+        } catch (InterruptedException e) {
+            log.error("interrupted: ", e);
+            Thread.currentThread().interrupt();
+        }
+        this.content = mutableList("A", "B", "C");
+    }
+
+    public void switchOverParentContainerRendered() {
+        this.parentContainerRendered = !parentContainerRendered;
+    }
+}

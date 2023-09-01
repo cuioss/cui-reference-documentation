@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap"
+    xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
+<ui:composition
+    template="/templates/layout_portal_labeledContainer.xhtml">
+    <ui:define name="title">Guarded Input Demo</ui:define>
+    <ui:define name="content">
+        <h2>
+            Input Guard
+            <boot:icon icon="cui-icon-lock" />
+        </h2>
+        <ref_dev:cui_comp_meta name="inputGuard" />
+
+
+        <h3>Minimal Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="form1" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="form1" styleClass="form-horizontal">
+
+                    <boot:labeledContainer id="container"
+                        labelValue="Some Label">
+                        <h:inputText id="input"
+                            value="#{inputGuardDemoBean.input1}"
+                            required="true" />
+                        <boot:inputGuard />
+                    </boot:labeledContainer>
+
+                    <boot:quickControlGroup>
+                        <boot:commandButton labelValue="Submit"
+                            state="primary">
+                            <f:ajax render="@form" execute="@form" />
+                        </boot:commandButton>
+                    </boot:quickControlGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>Complex Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="form2" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="form2" styleClass="form-horizontal">
+
+                    <boot:labeledContainer id="container"
+                        labelValue="Some Label">
+                        <h:inputText id="input"
+                            value="#{inputGuardDemoBean.input2}"
+                            required="true"
+                            valueChangeListener="#{inputGuardDemoBean.input2ValueChangeListener}" />
+                        <boot:inputGuard
+                            rendered="#{inputGuardDemoBean.guard2Rendered}"
+                            guardIcon="cui-icon-edit"
+                            value="#{inputGuardDemoBean.guarded2State}"
+                            resetGuardIcon="cui-icon-ban"
+                            helpTextValue="Some warning message to be displayed"
+                            buttonAlign="prepend"
+                            renderButtons="#{inputGuardDemoBean.guard2ButtonRendered}"
+                            valueChangeListener="#{inputGuardDemoBean.guard2ValueChangeListener}"
+                            guardButtonTitleValue="Klick me to edit"
+                            resetGuardButtonTitleValue="Klick me to revert to guarded state" />
+                    </boot:labeledContainer>
+
+                    <boot:labeledContainer id="toggle"
+                        labelValue="Toggle Guard Rendered">
+                        <h:selectBooleanCheckbox
+                            value="#{inputGuardDemoBean.guard2Rendered}"
+                            id="input">
+                            <f:ajax render="@form" />
+                        </h:selectBooleanCheckbox>
+                    </boot:labeledContainer>
+
+                    <boot:labeledContainer id="toggle2"
+                        labelValue="Toggle Buttons Rendered">
+                        <h:selectBooleanCheckbox
+                            value="#{inputGuardDemoBean.guard2ButtonRendered}"
+                            id="input">
+                            <f:ajax render="@form" />
+                        </h:selectBooleanCheckbox>
+                    </boot:labeledContainer>
+
+                    <boot:quickControlGroup>
+                        <boot:commandButton labelValue="Submit"
+                            state="primary">
+                            <f:ajax render="@form" execute="@form" />
+                        </boot:commandButton>
+
+                    </boot:quickControlGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>Combine with Prepend</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="form3" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="form3" styleClass="form-horizontal">
+                    <boot:labeledContainer id="container"
+                        labelValue="Some Label">
+                        <f:facet name="prepend">
+                            <h:outputText value="Prepended" />
+                        </f:facet>
+                        <h:inputText id="input"
+                            value="#{inputGuardDemoBean.input1}"
+                            required="true" />
+                        <boot:inputGuard />
+                    </boot:labeledContainer>
+
+
+                    <boot:quickControlGroup>
+                        <boot:commandButton labelValue="Submit"
+                            state="primary">
+                            <f:ajax render="@form" execute="@form" />
+                        </boot:commandButton>
+                    </boot:quickControlGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>Ajaxified Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="form0" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="form0" styleClass="form-horizontal">
+                    <boot:labeledContainer id="ajax-target"
+                        labelValue="Outside Container value"
+                        contentValue="#{now}" />
+
+                    <boot:labeledContainer id="container"
+                        labelValue="Some Label">
+                        <h:inputText id="input"
+                            value="#{inputGuardDemoBean.input1}"
+                            required="true" />
+                        <boot:inputGuard
+                            update="@namingcontainer @parent:@parent:ajax-target" />
+                    </boot:labeledContainer>
+
+                    <boot:quickControlGroup>
+                        <boot:commandButton labelValue="Submit"
+                            state="primary">
+                            <f:ajax render="@form" execute="@form" />
+                        </boot:commandButton>
+                    </boot:quickControlGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+
+        <h3>Dynamic Form Sample</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="form4" />
+            </boot:column>
+            <boot:column size="6">
+                <h:form id="form4" styleClass="form-horizontal">
+                    <ui:repeat var="field" id="dynamic"
+                        value="#{inputGuardDemoBean.inputList}">
+                        <boot:labeledContainer id="container"
+                            labelKey="#{field.labelKey}">
+                            <h:inputText id="input"
+                                value="#{field.value}" required="true"
+                                converter="com.icw.ehf.cui.core.api.converter.StringIdentConverter" />
+                            <boot:inputGuard />
+                        </boot:labeledContainer>
+                    </ui:repeat>
+
+                    <boot:quickControlGroup>
+                        <boot:commandButton labelValue="Submit"
+                            state="primary">
+                            <f:ajax render="@form" execute="@form" />
+                        </boot:commandButton>
+                    </boot:quickControlGroup>
+                </h:form>
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

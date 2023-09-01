@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development"
+    xmlns:dev="https://cuioss.de/jsf/dev"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap">
+<ui:composition template="/templates/master.xhtml">
+    <ui:define name="title">boot:toolbar</ui:define>
+    <ui:define name="content">
+
+        <h2 id="cui_toolbar">boot:toolbar</h2>
+
+
+
+        <ref_dev:cui_comp_meta name="toolbar" />
+
+        <h3>Sample pin to Top</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="simpleToolbar" />
+            </boot:column>
+            <boot:column size="6" id="simpleToolbar">
+                <boot:toolbar pinToTop="true" pinTopOffset="300"
+                    pinBottomOffset="350">
+                    <boot:button labelValue="Top Action 1" />
+                    <boot:button labelValue="Top Action 2" />
+                </boot:toolbar>
+            </boot:column>
+        </boot:row>
+
+
+        <div class="container-fluid" style="height: 1000px">
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+            <h1>Some text to enable scrolling</h1>
+        </div>
+
+        <ui:remove>
+            <h3>Sample pin to Bottom</h3>
+            <h4>!!! Example under Construction !!!</h4>
+            <style>
+nav.affix {
+	bottom: 0;
+}
+
+nav.affix-bottom {
+	position: unset;
+}
+
+/*
+            .affix[data-offset-bottom] {
+                bottom: 0;
+                top: auto;
+            }
+            */
+.container-fluid .affix-bottom[data-offset-bottom] {
+	top: auto;
+	position: unset;
+}
+</style>
+
+            <boot:row>
+                <boot:column size="6">
+                    <dev:sourceCode sourceContainerId="bottmToolbar" />
+                </boot:column>
+                <boot:column size="6" id="bottmToolbar">
+                    <!--boot:toolbar pinToBottom="true" pinBottomOffset="200">
+					<boot:button labelValue="Bottom Action 1" />
+					<boot:button labelValue="Bottom Action 2" />
+				</boot:toolbar-->
+
+                    <nav class="navbar navbar-inverse" data-spy="affix"
+                        data-offset-bottom="200">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Basic
+                                Topnav</a></li>
+                        <li><a href="#">Page 1</a></li>
+                        <li><a href="#">Page 2</a></li>
+                        <li><a href="#">Page 3</a></li>
+                    </ul>
+                    </nav>
+
+                </boot:column>
+            </boot:row>
+        </ui:remove>
+
+
+
+
+    </ui:define>
+</ui:composition>
+</html>

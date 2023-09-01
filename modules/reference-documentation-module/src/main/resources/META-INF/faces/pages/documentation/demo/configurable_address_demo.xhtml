@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+>
+<ui:composition template="/templates/master_centered.xhtml">
+    <ui:define name="title">Configurable Address Format DEMO</ui:define>
+    <ui:define name="content">
+
+        <div id="root">
+            <h:outputText value="Address Format : city, street, line1, line2" />
+            <p:dataTable var="labeledData" value="#{addressPageBean.usFormatedAddress}">
+                <p:column headerText="Label">
+                    <h:outputText value="#{labeledData.label.content}" />
+                </p:column>
+                <p:column headerText="Data">
+                    <h:outputText value="#{labeledData.data}" />
+                </p:column>
+            </p:dataTable>
+
+            <hr />
+
+            <h:outputText value="Address Format : street, line2, line1, city" />
+            <p:dataTable var="labeledData" value="#{addressPageBean.deFormatedAddress}">
+                <p:column headerText="Label">
+                    <h:outputText value="#{labeledData.label.content}" />
+                </p:column>
+                <p:column headerText="Data">
+                    <h:outputText value="#{labeledData.data}" />
+                </p:column>
+            </p:dataTable>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>

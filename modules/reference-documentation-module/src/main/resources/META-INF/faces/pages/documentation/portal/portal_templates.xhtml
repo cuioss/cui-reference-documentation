@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:boot="https://cuioss.de/jsf/bootstrap" xmlns:dev="https://cuioss.de/jsf/dev">
+<ui:composition template="/templates/master_centered.xhtml">
+    <ui:define name="title">#{msgs['page.portal.templates.title']}</ui:define>
+    <ui:define name="content">
+        <boot:row>
+            <boot:column size="12">
+                <h1>#{msgs['page.portal.templates.header']}</h1>
+                <h2>Summary</h2>
+                <p>
+                    The portal core module provides a number of templates. They can be use directly or overwritten using
+                    <h:link outcome="portal_multi_templating" value="Multi-Templating" />
+                    .
+                </p>
+                <h2>Templates</h2>
+                <ui:repeat var="template" value="#{portalTemplateBean.templateDescriptor}" id="templates">
+                    <boot:panel headerValue="#{template.usagePath}" id="panel" collapsible="true" collapsed="true">
+
+                        <h3>
+                            <h:outputText value="#{msgs['page.portal.templates.usage_path.label']}" />
+                        </h3>
+                        <dev:sourceCode source="#{template.usagePath}" id="usageSource" />
+
+                        <h3>
+                            <h:outputText value="#{msgs['page.portal.templates.full_path.label']}" />
+                        </h3>
+                        <h:outputText value="#{template.fullPath}" />
+                        <h2>#{msgs['page.portal.templates.description.label']}</h2>
+                        <p>
+                            <h:outputText value="#{template.description}" escape="false">
+                                <f:converter converterId="com.icw.ehf.cui.core.api.converter.StringIdentConverter" />
+                            </h:outputText>
+                        </p>
+                        <ui:repeat var="section" value="#{template.sections}" id="sections">
+                            <h3>
+                                <h:outputText value="#{section.name}" />
+                            </h3>
+                            <p>
+                                <h:outputText value="#{section.content}" escape="false">
+                                    <f:converter converterId="com.icw.ehf.cui.core.api.converter.StringIdentConverter" />
+                                </h:outputText>
+                            </p>
+                        </ui:repeat>
+                        <boot:panel headerKey="page.portal.templates.source_code" id="sourcePanel" collapsible="true"
+                            collapsed="true">
+                            <dev:sourceCode sourcePath="#{template.fullPath}" id="templateSource"
+                                enableClipboard="false" />
+                        </boot:panel>
+                    </boot:panel>
+                </ui:repeat>
+            </boot:column>
+        </boot:row>
+    </ui:define>
+</ui:composition>
+</html>

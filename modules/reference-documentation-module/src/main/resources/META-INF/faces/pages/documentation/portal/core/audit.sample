@@ -1,0 +1,13 @@
+...
+    @Inject
+    private Provider<AtnaMessageSender> auditMessageSenderProvider;
+...
+    AtnaMessageSender auditMessageSender =
+                auditMessageSenderProvider.get().setCurrentRemoteIp().setCurrentUsername();
+
+    AtnaMessage atnaMessage = new AtnaMessage(AtnaMessageType.ApplicationActivity, changeEvent.isSuccessful() ?
+            AtnaOutcome.Success : AtnaOutcome.MajorFailure, eventType, action, Lists.newArrayList(
+            new AtnaParticipantObjectIdentification(...)));
+
+    auditMessageSender.sendAtnaMessage(atnaMessage);
+...

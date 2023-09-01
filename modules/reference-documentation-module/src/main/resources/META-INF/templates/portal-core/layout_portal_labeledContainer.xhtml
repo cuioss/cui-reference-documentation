@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<!--
+<documentation>
+	<body>The default master for the runtime-configuration. It displays a second level navigation provided by runtimeConfigItemsRegistry
+	</body>
+	<section>
+		<title>Standard Extension Points</title>
+		<body>
+			<ul>
+				<li>&lt;ui:define name="metadata"&gt; The view Metadata. Caution: It
+					is an empty placeholder, therefore
+					the client must define its own
+					&lt;f:metadata /&gt;</li>
+				<li>&lt;ui:define name="title"&gt; Concrete Page Title
+					&lt;/ui:define&gt;
+					defaults to msgs['portal.runtime.configuration.default.title']
+				</li>
+				<li>&lt;ui:define name="content"&gt; The actual content of the
+					page.&lt;/ui:define&gt;
+				</li>
+			</ul>
+		</body>
+	</section>
+</documentation>
+ -->
+<ui:composition template="/templates/master.xhtml">
+   <ui:define name="sidebarLeft">
+      <h:outputStylesheet library="com.icw.portal.css" name="reference_docu.css" />
+      <nav class="sidebar">
+          <h3>Labeled Container</h3>
+         <ul class="sidebar-nav">
+            <li><h:link outcome="cui_labeled_container">General</h:link></li>
+            <li><h:link outcome="cui_labeled_container_inputguard" value="Input Guard" /></li>
+            <li><h:link outcome="cui_labeled_container_helpText" value="Help Text" /></li>
+         </ul>
+      </nav>
+   </ui:define>
+   <ui:define name="title">
+		Portal Core
+	</ui:define>
+</ui:composition>
+</html>
