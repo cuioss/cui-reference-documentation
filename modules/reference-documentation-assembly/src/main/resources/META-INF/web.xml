@@ -7,7 +7,7 @@
     <display-name>Cui Reference Documentation</display-name>
 
     <welcome-file-list>
-        <welcome-file>faces/pages/documentation/index.jsf</welcome-file>
+        <welcome-file>pages/documentation/index.xhtml</welcome-file>
     </welcome-file-list>
 
     <context-param>

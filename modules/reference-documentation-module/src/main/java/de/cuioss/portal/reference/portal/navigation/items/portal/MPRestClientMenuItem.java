@@ -27,7 +27,7 @@ public class MPRestClientMenuItem extends PortalBaseMenuItem {
     /**
      * The icon for this item.
      */
-    public static final String OUTCOME = "/faces/pages/documentation/portal/clients/mp_rest_client.xhtml";
+    public static final String OUTCOME = "/pages/documentation/portal/clients/mp_rest_client.xhtml";
 
     /**
      * The string based id for this menu item.

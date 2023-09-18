@@ -21,7 +21,7 @@ public class AuditMenuItem extends PortalBaseMenuItem {
     public static final String ICON = "cui-icon-log_book";
 
     /** The icon for this item. */
-    public static final String OUTCOME = "/faces/pages/documentation/portal/core/audit.xhtml";
+    public static final String OUTCOME = "/pages/documentation/portal/core/audit.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "portalAudit";

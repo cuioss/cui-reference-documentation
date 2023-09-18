@@ -21,7 +21,7 @@ public class I18nMessagesMenuItem extends PortalBaseMenuItem {
     public static final String ICON = "cui-icon-global";
 
     /** The icon for this item. */
-    public static final String OUTCOME = "/faces/pages/documentation/portal/core/i18n_message_bundle.xhtml";
+    public static final String OUTCOME = "/pages/documentation/portal/core/i18n_message_bundle.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "portali18nMBHandling";

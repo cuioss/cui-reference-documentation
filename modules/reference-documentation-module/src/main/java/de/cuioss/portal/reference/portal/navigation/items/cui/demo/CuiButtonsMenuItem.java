@@ -22,7 +22,7 @@ public class CuiButtonsMenuItem extends NavigationMenuItemSingleImpl {
     public static final String ICON = "cui-icon-play";
 
     /** The outcome for this item. */
-    public static final String OUTCOME = "/faces/pages/documentation/cui_components/demo/button.xhtml";
+    public static final String OUTCOME = "/pages/documentation/cui_components/demo/button.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "cuiButtonsMenuItem";

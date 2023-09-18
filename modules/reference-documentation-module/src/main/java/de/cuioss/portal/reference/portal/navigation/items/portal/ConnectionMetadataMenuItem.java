@@ -26,7 +26,7 @@ public class ConnectionMetadataMenuItem extends PortalBaseMenuItem {
         super(order);
         super.setIconStyleClass("cui-icon-wifi"); // share_alt, conversation
         super.setLabelValue("Connection Metadata");
-        super.setOutcome("/faces/pages/documentation/portal/core/connection_metadata.xhtml");
+        super.setOutcome("/pages/documentation/portal/core/connection_metadata.xhtml");
         super.setId(MENU_ID);
     }
 }

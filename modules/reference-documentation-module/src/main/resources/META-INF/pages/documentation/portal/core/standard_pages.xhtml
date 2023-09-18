@@ -35,7 +35,7 @@
          portal defines it. This must be done in the corresponding assembly. It is not part of
          cdi-portal-core-default-navigation</p>
       <dev:sourceCode description="Example: Defintion for the reference (this)"
-         source="&lt;navigation-rule&gt;%n		&lt;from-view-id&gt;*&lt;/from-view-id&gt;%n		&lt;navigation-case&gt;%n			&lt;from-outcome&gt;home&lt;/from-outcome&gt;%n			&lt;to-view-id&gt;/faces/pages/documentation/index.xhtml&lt;/to-view-id&gt;%n			&lt;redirect /&gt;%n		&lt;/navigation-case&gt;%n&lt;/navigation-rule&gt;" />
+         source="&lt;navigation-rule&gt;%n		&lt;from-view-id&gt;*&lt;/from-view-id&gt;%n		&lt;navigation-case&gt;%n			&lt;from-outcome&gt;home&lt;/from-outcome&gt;%n			&lt;to-view-id&gt;/pages/documentation/index.xhtml&lt;/to-view-id&gt;%n			&lt;redirect /&gt;%n		&lt;/navigation-case&gt;%n&lt;/navigation-rule&gt;" />
       <p>
          <em>Interface</em>:
          <code>de.icw.cui.portal.ui.pages.HomePage</code>
@@ -60,7 +60,7 @@
 
       <p>
          <em>Default View</em>:
-         <code>/faces/guest/login.xhtml</code>
+         <code>/guest/login.xhtml</code>
       </p>
       <p>
          <em>Configuration</em>:
@@ -99,7 +99,7 @@
       </p>
       <p>
          <em>Default View</em>:
-         <code>/faces/guest/logout.xhtml</code>
+         <code>/guest/logout.xhtml</code>
       </p>
       <em>Consumed Services (Default Implementation)</em>:
 		<ul>
@@ -126,7 +126,7 @@
       </p>
       <p>
          <em>Default View</em>:
-         <code>/faces/pages/account/preferences.xhtml</code>
+         <code>/pages/account/preferences.xhtml</code>
       </p>
       <em>Consumed Services (Default Implementation)</em>:
 		<ul>
@@ -164,7 +164,7 @@
       </p>
       <p>
          <em>Default View</em>:
-         <code>/faces/guest/error.xhtml</code>
+         <code>/guest/error.xhtml</code>
       </p>
       <em>Consumed Services (Default Implementation)</em>:
 		<ul>
@@ -180,14 +180,14 @@
       <p>
          <em>Default View</em>:
          <code>
-            <code>/faces/guest/404.xhtml</code>
+            <code>/guest/404.xhtml</code>
          </code>
       </p>
 
       <p>
          <em>Configuration</em>: It is configured in the web.xml:
          <dev:sourceCode
-            source="&lt;error-page&gt;%n    &lt;error-code&gt;404&lt;/error-code&gt;%n    &lt;location&gt;/faces/guest/404.jsf&lt;/location&gt;%n&lt;/error-page&gt;" />
+            source="&lt;error-page&gt;%n    &lt;error-code&gt;404&lt;/error-code&gt;%n    &lt;location&gt;/guest/404.jsf&lt;/location&gt;%n&lt;/error-page&gt;" />
       </p>
 
       <h2>About Page</h2>
@@ -199,7 +199,7 @@
       </p>
       <p>
          <em>Default View</em>:
-         <code>/faces/pages/account/about.xhtml</code>
+         <code>/pages/account/about.xhtml</code>
       </p>
 
       <p>
@@ -231,7 +231,7 @@
       </p>
       <p>
          <em>Default View</em>:
-         <code>/faces/pages/account/about.xhtml</code>
+         <code>/pages/account/about.xhtml</code>
       </p>
    </ui:define>
 </ui:composition>

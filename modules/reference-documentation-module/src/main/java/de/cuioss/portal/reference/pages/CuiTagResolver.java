@@ -29,11 +29,11 @@ public class CuiTagResolver implements Serializable {
 
     private static final String PRIMEFACES = "/META-INF/primefaces-p.taglib.xml";
 
-    private static final String MOJARRA_HTML = "/com/sun/faces/metadata/taglib/html_basic.taglib.xml";
+    private static final String MOJARRA_HTML = "/com/sun/metadata/taglib/html_basic.taglib.xml";
 
-    private static final String MOJARRA_CORE = "/com/sun/faces/metadata/taglib/facelets_jsf_core.taglib.xml";
+    private static final String MOJARRA_CORE = "/com/sun/metadata/taglib/facelets_jsf_core.taglib.xml";
 
-    private static final String MOJARRA_UI = "/com/sun/faces/metadata/taglib/ui.taglib.xml";
+    private static final String MOJARRA_UI = "/com/sun/metadata/taglib/ui.taglib.xml";
 
     @Getter
     private TagLib cuiTagLib;

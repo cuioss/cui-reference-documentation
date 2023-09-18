@@ -22,7 +22,7 @@ public class CuiToolbarMenuItem extends NavigationMenuItemSingleImpl {
     public static final String ICON = "cui-icon-grip_solid_horizontal";
 
     /** The outcome for this item. */
-    public static final String OUTCOME = "/faces/pages/documentation/cui_components/demo/toolbar.xhtml";
+    public static final String OUTCOME = "/pages/documentation/cui_components/demo/toolbar.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "cuiToolbarMenuItem";
