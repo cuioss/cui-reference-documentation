@@ -159,14 +159,14 @@
             <artifactId>portal-metrics-api</artifactId>
         </dependency>
         <!-- Client -->
-<!--        <dependency>-->
-<!--            <groupId>de.cuioss.portal.client</groupId>-->
-<!--            <artifactId>portal-client-tracing</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>de.cuioss.portal.client</groupId>-->
-<!--            <artifactId>portal-tracing-reporter-zipkin</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>de.cuioss.portal.client</groupId>-->
+        <!--            <artifactId>portal-client-tracing</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>de.cuioss.portal.client</groupId>-->
+        <!--            <artifactId>portal-tracing-reporter-zipkin</artifactId>-->
+        <!--        </dependency>-->
 
         <!-- Cui JSF Components -->
         <dependency>

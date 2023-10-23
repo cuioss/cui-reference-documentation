@@ -10,7 +10,6 @@ import javax.inject.Named;
 import org.primefaces.event.FlowEvent;
 
 import de.cuioss.jsf.api.application.message.MessageProducer;
-import de.cuioss.portal.ui.api.message.PortalMessageProducer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,7 +25,6 @@ public class WizardDemoBean implements Serializable {
     private static final long serialVersionUID = 8903424637991951441L;
 
     @Inject
-    @PortalMessageProducer
     MessageProducer messageProducer;
 
     @Getter

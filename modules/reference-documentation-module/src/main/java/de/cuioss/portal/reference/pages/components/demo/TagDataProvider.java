@@ -26,7 +26,6 @@ import de.cuioss.jsf.bootstrap.button.CloseCommandButton;
 import de.cuioss.jsf.bootstrap.tag.TagComponent;
 import de.cuioss.portal.reference.pages.components.demo.support.AddressConceptKey;
 import de.cuioss.portal.reference.pages.components.demo.support.AddressEntry;
-import de.cuioss.portal.ui.api.message.PortalMessageProducer;
 import de.cuioss.test.generator.Generators;
 import de.cuioss.test.generator.domain.NameGenerators;
 import de.cuioss.tools.logging.CuiLogger;
@@ -52,7 +51,6 @@ public class TagDataProvider implements Serializable {
     private static final CuiLogger log = new CuiLogger(TagDataProvider.class);
 
     @Inject
-    @PortalMessageProducer
     MessageProducer messageProducer;
 
     private List<String> firstNames;

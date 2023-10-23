@@ -11,8 +11,7 @@ import javax.faces.application.Application;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.cuioss.portal.configuration.bundles.PortalResourceBundleRegistry;
-import de.cuioss.portal.configuration.bundles.ResourceBundleRegistry;
+import de.cuioss.portal.common.bundle.ResourceBundleRegistry;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -36,7 +35,6 @@ public class ResourceBundleOverview implements Serializable {
     Application application;
 
     @Inject
-    @PortalResourceBundleRegistry
     ResourceBundleRegistry bundleRegistry;
 
     /**

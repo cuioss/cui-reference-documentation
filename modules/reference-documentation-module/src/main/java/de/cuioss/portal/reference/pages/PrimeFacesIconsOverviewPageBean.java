@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.cuioss.jsf.api.application.message.MessageProducer;
-import de.cuioss.portal.ui.api.message.PortalMessageProducer;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -44,7 +43,6 @@ public class PrimeFacesIconsOverviewPageBean implements Serializable {
     FacesContext facesContext;
 
     @Inject
-    @PortalMessageProducer
     MessageProducer messageProducer;
 
     /**

@@ -6,8 +6,8 @@ import java.util.List;
 
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
+import de.cuioss.portal.common.cdi.PortalBeanManager;
 import de.cuioss.portal.configuration.PortalConfigurationKeys;
-import de.cuioss.portal.core.cdi.PortalBeanManager;
 import de.cuioss.portal.ui.api.menu.PortalMenuItem;
 import de.cuioss.portal.ui.api.menu.items.AboutMenuItem;
 import de.cuioss.portal.ui.api.menu.items.AccountMenuItem;

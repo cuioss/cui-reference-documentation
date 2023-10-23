@@ -4,7 +4,7 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <name>CuiPortalReference</name>
-    <factory>
-        <application-factory>org.apache.myfaces.core.extensions.quarkus.runtime.application.QuarkusApplicationFactory</application-factory>
-    </factory>
+<!--     <factory> -->
+<!--         <application-factory>org.apache.myfaces.core.extensions.quarkus.runtime.application.QuarkusApplicationFactory</application-factory> -->
+<!--     </factory> -->
 </faces-config>

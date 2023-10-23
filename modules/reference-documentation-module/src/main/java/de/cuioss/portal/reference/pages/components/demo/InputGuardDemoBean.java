@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.cuioss.jsf.api.application.message.MessageProducer;
-import de.cuioss.portal.ui.api.message.PortalMessageProducer;
 import de.cuioss.uimodel.field.DynamicFieldType;
 import de.cuioss.uimodel.field.LabeledDynamicField;
 import de.cuioss.uimodel.field.impl.BaseLabeledDynamicField;
@@ -31,7 +30,6 @@ public class InputGuardDemoBean implements Serializable {
     private static final long serialVersionUID = 201827856732556695L;
 
     @Inject
-    @PortalMessageProducer
     MessageProducer messageProducer;
 
     @Getter

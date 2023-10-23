@@ -12,7 +12,7 @@ import javax.enterprise.inject.Alternative;
 
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainer;
-import de.cuioss.portal.configuration.common.PortalPriorities;
+import de.cuioss.portal.common.priority.PortalPriorities;
 import de.cuioss.portal.reference.portal.navigation.items.CuiComponentsMenu;
 import de.cuioss.portal.reference.portal.navigation.items.ExternalComponentsMenu;
 import de.cuioss.portal.reference.portal.navigation.items.GettingStartedMenu;

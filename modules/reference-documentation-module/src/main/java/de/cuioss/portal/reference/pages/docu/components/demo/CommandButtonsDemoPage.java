@@ -1,7 +1,6 @@
 package de.cuioss.portal.reference.pages.docu.components.demo;
 
 import java.io.Serializable;
-import java.util.ResourceBundle;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
@@ -10,8 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.cuioss.jsf.api.application.message.MessageProducer;
-import de.cuioss.portal.core.bundle.PortalResourceBundle;
-import de.cuioss.portal.ui.api.message.PortalMessageProducer;
+import de.cuioss.portal.common.bundle.ResourceBundleWrapper;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -24,14 +22,12 @@ public class CommandButtonsDemoPage implements Serializable {
     private static final long serialVersionUID = -6837081477839627383L;
 
     @Inject
-    @PortalResourceBundle
-    ResourceBundle resourceBundle;
+    ResourceBundleWrapper resourceBundle;
 
     @Inject
     FacesContext facesContext;
 
     @Inject
-    @PortalMessageProducer
     MessageProducer messageProducer;
 
     public void executeActionWithSuccess() {
