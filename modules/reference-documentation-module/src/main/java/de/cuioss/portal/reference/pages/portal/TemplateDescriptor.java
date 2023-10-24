@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+
+import javax.xml.XMLConstants;
 
 import org.jdom2.Comment;
 import org.jdom2.Content;
@@ -86,9 +89,10 @@ public class TemplateDescriptor implements Serializable {
 
     private static List<Comment> extractComments(final String fullPath) {
         final var resource = TemplateDescriptor.class.getResource(fullPath);
+        Objects.requireNonNull(resource, fullPath);
         Document document = null;
         try {
-            document = new SAXBuilder().build(resource);
+            document = secureSaxBuilder().build(resource);
         } catch (JDOMException | IOException e) {
             throw new IllegalStateException("Unable to parse file " + fullPath, e);
         }
@@ -104,6 +108,13 @@ public class TemplateDescriptor implements Serializable {
         return found;
     }
 
+    private static SAXBuilder secureSaxBuilder() {
+        var saxBuilder = new SAXBuilder();
+        saxBuilder.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        saxBuilder.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+        return saxBuilder;
+    }
+
     private static Element wrappDescription(final Comment comment) {
         if (null == comment || MoreStrings.isEmpty(comment.getText())) {
             return null;
@@ -113,7 +124,7 @@ public class TemplateDescriptor implements Serializable {
                 && commentString.endsWith(DOCUMENTATION_END_ELEMENT)) {
             Document document = null;
             try (var inputStream = IOStreams.toInputStream(commentString)) {
-                document = new SAXBuilder().build(inputStream);
+                document = secureSaxBuilder().build(inputStream);
             } catch (JDOMException | IOException e) {
                 throw new IllegalStateException("Unable to parse xhtml", e);
             }
