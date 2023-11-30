@@ -20,7 +20,7 @@ public class JqPlotMenuItem extends NavigationMenuItemSingleImpl {
     public static final String ICON = "cui-icon-stats";
 
     /** The outcome for this item. */
-    public static final String OUTCOME = "/pages/documentation/demo/jq_plot_demo.xhtml";
+    public static final String OUTCOME = "/documentation/demo/jq_plot_demo.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "jqPlotMenuItem";

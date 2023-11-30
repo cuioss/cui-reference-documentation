@@ -38,30 +38,30 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <!--        <dependency>-->
-        <!--            <groupId>de.cuioss.portal.ui</groupId>-->
-        <!--            <artifactId>portal-ui-api</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>de.cuioss.portal.ui</groupId>-->
-        <!--            <artifactId>portal-ui-runtime</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>de.cuioss.portal.configuration</groupId>-->
-        <!--            <artifactId>portal-configuration-impl</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>de.cuioss.portal.authentication</groupId>-->
-        <!--            <artifactId>portal-authentication-dummy</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>de.cuioss.portal.core</groupId>-->
-        <!--            <artifactId>portal-core</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>de.cuioss.portal.ui</groupId>-->
-        <!--            <artifactId>portal-ui-default-navigation</artifactId>-->
-        <!--        </dependency>-->
+        <!-- <dependency> -->
+        <!-- <groupId>de.cuioss.portal.ui</groupId> -->
+        <!-- <artifactId>portal-ui-api</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!-- <groupId>de.cuioss.portal.ui</groupId> -->
+        <!-- <artifactId>portal-ui-runtime</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!-- <groupId>de.cuioss.portal.configuration</groupId> -->
+        <!-- <artifactId>portal-configuration-impl</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!-- <groupId>de.cuioss.portal.authentication</groupId> -->
+        <!-- <artifactId>portal-authentication-dummy</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!-- <groupId>de.cuioss.portal.core</groupId> -->
+        <!-- <artifactId>portal-core</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!-- <groupId>de.cuioss.portal.ui</groupId> -->
+        <!-- <artifactId>portal-ui-default-navigation</artifactId> -->
+        <!-- </dependency> -->
         <dependency>
             <groupId>de.cuioss.portal.quarkus</groupId>
             <artifactId>reference-documentation-module</artifactId>

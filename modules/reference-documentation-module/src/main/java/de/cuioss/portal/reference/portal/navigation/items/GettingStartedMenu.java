@@ -26,7 +26,7 @@ public class GettingStartedMenu extends NavigationMenuItemSingleImpl {
     public static final String MENU_ID = "gettingStarted";
 
     /** The icon for this item. */
-    public static final String OUTCOME = "/pages/documentation/getting_started/index.xhtml";
+    public static final String OUTCOME = "/documentation/getting_started/index.xhtml";
 
     /**
      * Constructor.

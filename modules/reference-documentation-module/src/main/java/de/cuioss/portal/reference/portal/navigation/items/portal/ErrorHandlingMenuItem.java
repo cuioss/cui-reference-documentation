@@ -21,7 +21,7 @@ public class ErrorHandlingMenuItem extends PortalBaseMenuItem {
     public static final String ICON = "cui-icon-bomb";
 
     /** The icon for this item. */
-    public static final String OUTCOME = "/pages/documentation/portal/core/error_handling.xhtml";
+    public static final String OUTCOME = "/documentation/portal/core/error_handling.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "portalErrorHandling";

@@ -21,7 +21,7 @@ public class CommonObjectsMenuItem extends PortalBaseMenuItem {
     public static final String ICON = "cui-icon-lightbulb";
 
     /** The icon for this item. */
-    public static final String OUTCOME = "/pages/documentation/portal/core/common_objects.xhtml";
+    public static final String OUTCOME = "/documentation/portal/core/common_objects.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "portalCommonObjects";

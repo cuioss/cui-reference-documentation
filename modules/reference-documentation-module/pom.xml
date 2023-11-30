@@ -141,7 +141,8 @@
         </dependency>
         <dependency>
             <groupId>de.cuioss.portal.authentication</groupId>
-            <artifactId>portal-authentication-dummy</artifactId>
+            <artifactId>portal-authentication-mock</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- Portal-Core-Servlet -->

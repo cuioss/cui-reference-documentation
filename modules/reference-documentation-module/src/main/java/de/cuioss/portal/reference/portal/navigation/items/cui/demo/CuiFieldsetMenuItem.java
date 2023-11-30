@@ -21,7 +21,7 @@ public class CuiFieldsetMenuItem extends NavigationMenuItemSingleImpl {
     public static final String ICON = "cui-icon-justify";
 
     /** The outcome for this item. */
-    public static final String OUTCOME = "/pages/documentation/cui_components/demo/fieldset.xhtml";
+    public static final String OUTCOME = "/documentation/cui_components/demo/fieldset.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "cuiFieldsetMenuItem";

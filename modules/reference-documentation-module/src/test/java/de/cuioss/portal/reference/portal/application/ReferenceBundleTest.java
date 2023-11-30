@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import org.jboss.weld.junit5.auto.ActivateScopes;
 import org.jboss.weld.junit5.auto.AddBeanClasses;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.cuioss.portal.common.bundle.PortalResourceBundleBean;
@@ -28,7 +27,6 @@ class ReferenceBundleTest {
     private ResourceBundleWrapper bundleWrapper;
 
     @Test
-    @Disabled
     void shouldProvideKey() {
         assertTrue(bundleWrapper.keySet().contains("navigation.menue.bootstrap"));
         assertEquals("Twitter Bootstrap", bundleWrapper.getString("navigation.menue.bootstrap"));

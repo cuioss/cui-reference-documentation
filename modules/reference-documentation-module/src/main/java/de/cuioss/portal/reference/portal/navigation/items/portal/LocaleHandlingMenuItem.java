@@ -21,7 +21,7 @@ public class LocaleHandlingMenuItem extends PortalBaseMenuItem {
     public static final String ICON = "cui-icon-globe";
 
     /** The icon for this item. */
-    public static final String OUTCOME = "/pages/documentation/portal/core/locale_handling.xhtml";
+    public static final String OUTCOME = "/documentation/portal/core/locale_handling.xhtml";
 
     /** The string based id for this menu item. */
     public static final String MENU_ID = "portalLocaleHandling";

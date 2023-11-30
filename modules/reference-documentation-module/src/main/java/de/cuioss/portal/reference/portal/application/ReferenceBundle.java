@@ -18,12 +18,8 @@ import lombok.EqualsAndHashCode;
 @Priority(PortalPriorities.PORTAL_MODULE_LEVEL)
 @EqualsAndHashCode
 public class ReferenceBundle implements ResourceBundleLocator {
-
-//    private static final String PATH = "de.portal-messages";
-    private static final String PATH = "de.cuioss.portal.reference.i18n.reference_messages";
-//    private static final String PATH = "de.cuioss.portal.ui.i18n.portal-messages";
-//    private static final String PATH = "de.cuioss.portal.ui.i18n.jsf_messages";
     private static final long serialVersionUID = -570736967563631611L;
+    private static final String PATH = "de.cuioss.portal.reference.i18n.reference-messages";
 
     @Override
     public Optional<String> getBundlePath() {
