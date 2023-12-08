@@ -35,7 +35,7 @@ public class ReferenceTemplates implements StaticTemplateDescriptor {
     private final List<String> handledTemplates = immutableList("layout_portal_core.xhtml",
             "layout_portal_clients.xhtml", "layout_portal_labeledContainer.xhtml");
 
-    private static final String PATH = "classpath:META-INF/templates/portal-core/";
+    private static final String PATH = "classpath:META-INF/templates/reference";
 
     @Override
     public String getTemplatePath() {
