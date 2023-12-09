@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.cuioss</groupId>
-        <artifactId>cui-java-parent</artifactId>
-        <version>0.4.5</version>
+        <artifactId>cui-parent-pom</artifactId>
+        <version>0.4.6</version>
         <relativePath />
     </parent>
     <groupId>de.cuioss.portal.quarkus</groupId>
@@ -15,7 +15,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <description>Quarkus powered Reference documentation
     </description>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <url>https://github.com/cuioss/cui-reference-documentation/</url>
     <scm>
         <url>https://github.com/cuioss/cui-reference-documentation/</url>
@@ -30,7 +30,7 @@
         <system>GitHub Issues</system>
     </issueManagement>
     <properties>
-        <version.cui.parent>0.4.5</version.cui.parent>
+        <version.cui.parent>0.4.6</version.cui.parent>
         <version.cui.jsf.components>1.0.0-SNAPSHOT</version.cui.jsf.components>
         <version.cui.portal.core>1.0.0-SNAPSHOT</version.cui.portal.core>
         <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
@@ -42,9 +42,25 @@
         <version.primefaces>12.0.0</version.primefaces>
         <omnifaces-quarkus.version>3.14.3</omnifaces-quarkus.version>
         <quarkus.version>2.16.9.Final</quarkus.version>
+        <path.module-default-config.unpack>
+            ${project.build.directory}/dependencies/modules-default-config
+        </path.module-default-config.unpack>
+        <path.module-default-config.meta-inf>
+            META-INF/modules-default-config
+        </path.module-default-config.meta-inf>
+        <path.module-default-config.target>
+            ${project.build.directory}/classes/${path.module-default-config.meta-inf}
+        </path.module-default-config.target>
     </properties>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-bom</artifactId>
+                <version>${quarkus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -58,14 +74,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Incoming -->
-            <!-- <dependency> -->
-            <!-- <groupId>de.cuioss</groupId> -->
-            <!-- <artifactId>java-ee-8-bom</artifactId> -->
-            <!-- <version>${version.cui.parent}</version> -->
-            <!-- <type>pom</type> -->
-            <!-- <scope>import</scope> -->
-            <!-- </dependency> -->
             <dependency>
                 <groupId>de.cuioss</groupId>
                 <artifactId>java-ee-orthogonal</artifactId>
@@ -87,10 +95,425 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- Incoming -->
+            <dependency>
+                <groupId>de.cuioss</groupId>
+                <artifactId>java-ee-8-bom</artifactId>
+                <version>${version.cui.parent}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- This is needed, because otherwise undertow fails -->
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.ui</groupId>
+            <artifactId>portal-ui-quarkus-extension</artifactId>
+        </dependency>
+        <!-- Quarkus -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-health</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.primefaces</groupId>
+            <artifactId>quarkus-primefaces-extensions</artifactId>
+            <version>${primefaces-quarkus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.omnifaces</groupId>
+            <artifactId>quarkus-omnifaces</artifactId>
+            <version>${omnifaces-quarkus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.myfaces.core.extensions.quarkus</groupId>
+            <artifactId>myfaces-quarkus</artifactId>
+            <version>${version.myfaces.quarkus}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.myfaces.core</groupId>
+            <artifactId>myfaces-api</artifactId>
+            <scope>compile</scope>
+            <version>${version.myfaces.quarkus}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.myfaces.core</groupId>
+            <artifactId>myfaces-impl</artifactId>
+            <scope>runtime</scope>
+            <version>${version.myfaces.quarkus}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.myfaces.core.extensions.quarkus</groupId>
+            <artifactId>myfaces-quarkus-deployment</artifactId>
+            <version>${version.myfaces.quarkus}</version>
+        </dependency>
+        <!-- Provided jakarta ee -->
+        <!-- needed for unit testing -->
+        <!-- jakarta ee -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.websocket</groupId>
+            <artifactId>jakarta.websocket-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.el</groupId>
+            <artifactId>jakarta.el-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile.config</groupId>
+            <artifactId>microprofile-config-api</artifactId>
+        </dependency>
+        <!-- Module specific -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${version.primefaces}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.ui</groupId>
+            <artifactId>portal-ui-bootstrap-page-templates</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.jsf</groupId>
+            <artifactId>cui-jsf-bootstrap</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.jsf</groupId>
+            <artifactId>cui-jsf-bootstrap-css</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.jsf</groupId>
+            <artifactId>cui-jsf-jqplot</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.test</groupId>
+            <artifactId>cui-test-generator</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
-    <modules>
-        <module>modules</module>
-    </modules>
+        <!-- To be moved to parent pom -->
+        <!-- Portal-UI -->
+        <dependency>
+            <groupId>de.cuioss.portal.ui</groupId>
+            <artifactId>portal-ui-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.ui</groupId>
+            <artifactId>portal-ui-runtime</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.ui</groupId>
+            <artifactId>portal-ui-default-navigation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.ui</groupId>
+            <artifactId>portal-ui-errorpages</artifactId>
+        </dependency>
+
+
+        <!-- Portal-Core -->
+        <!-- Configuration -->
+        <dependency>
+            <groupId>de.cuioss.portal.configuration</groupId>
+            <artifactId>portal-configuration-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.configuration</groupId>
+            <artifactId>portal-configuration-impl</artifactId>
+        </dependency>
+        <!-- Authentication -->
+        <dependency>
+            <groupId>de.cuioss.portal.authentication</groupId>
+            <artifactId>portal-authentication-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.authentication</groupId>
+            <artifactId>portal-authentication-mock</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Portal-Core-Servlet -->
+        <dependency>
+            <groupId>de.cuioss.portal.core</groupId>
+            <artifactId>portal-core</artifactId>
+        </dependency>
+        <!-- Mirco-Profile -->
+        <dependency>
+            <groupId>de.cuioss.portal.mirco-profile</groupId>
+            <artifactId>portal-mp-rest-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.mirco-profile</groupId>
+            <artifactId>portal-metrics-api</artifactId>
+        </dependency>
+        <!-- Client -->
+        <!--        <dependency>-->
+        <!--            <groupId>de.cuioss.portal.client</groupId>-->
+        <!--            <artifactId>portal-client-tracing</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>de.cuioss.portal.client</groupId>-->
+        <!--            <artifactId>portal-tracing-reporter-zipkin</artifactId>-->
+        <!--        </dependency>-->
+
+        <!-- Cui JSF Components -->
+        <dependency>
+            <groupId>de.cuioss.jsf</groupId>
+            <artifactId>cui-jsf-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.cuioss.jsf</groupId>
+            <artifactId>cui-jsf-dev</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.jsf</groupId>
+            <artifactId>cui-jsf-core-components</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.jsf</groupId>
+            <artifactId>cui-javascript</artifactId>
+        </dependency>
+
+        <!-- Unit testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.test</groupId>
+            <artifactId>portal-core-unit-testing</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.portal.ui</groupId>
+            <artifactId>portal-ui-unit-testing</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.test</groupId>
+            <artifactId>cui-jsf-test-basic</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-default-config</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                **/META-INF/microprofile-config.properties,
+                                **/META-INF/microprofile-config.yaml
+                            </includes>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <artifactItems>
+                                <!-- ALL CUI MODULES, FOR PROVIDING THE DEFAULT 
+                                    CONFIG -->
+                                <artifactItem>
+                                    <groupId>de.cuioss.portal.mirco-profile</groupId>
+                                    <artifactId>portal-metrics-api</artifactId>
+                                    <outputDirectory>
+                                        ${path.module-default-config.unpack}/portal-metrics-api
+                                    </outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>de.cuioss.portal.client</groupId>
+                                    <artifactId>portal-client-tracing</artifactId>
+                                    <outputDirectory>
+                                        ${path.module-default-config.unpack}/portal-client-tracing
+                                    </outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>de.cuioss.portal.ui</groupId>
+                                    <artifactId>portal-ui-runtime</artifactId>
+                                    <outputDirectory>
+                                        ${path.module-default-config.unpack}/portal-ui-runtime
+                                    </outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>de.cuioss.portal.authentication</groupId>
+                                    <artifactId>portal-authentication-oauth</artifactId>
+                                    <outputDirectory>
+                                        ${path.module-default-config.unpack}/portal-authentication-oauth
+                                    </outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>de.cuioss.portal.configuration</groupId>
+                                    <artifactId>portal-configuration-impl</artifactId>
+                                    <outputDirectory>
+                                        ${path.module-default-config.unpack}/portal-configuration-impl
+                                    </outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>move-default-config-files</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <copy
+                                    todir="${path.module-default-config.target}">
+                                    <fileset
+                                        dir="${path.module-default-config.unpack}" />
+                                    <!-- Moving file out of META-INF. Also 
+                                        getting rid of modules without config. -->
+                                    <regexpmapper
+                                        handledirsep="true"
+                                        from="^(.*)/META-INF/(.*)$$"
+                                        to="\1/\2" />
+                                </copy>
+                                <!-- write text file with relative folder 
+                                    content. output looks like this:
+                                "/module1/microprofile-config.properties,/module2/microprofile-config.yaml" -->
+                                <fileset
+                                    id="default-config-fileset"
+                                    dir="${path.module-default-config.target}" />
+                                <pathconvert targetos="unix"
+                                    pathsep=","
+                                    property="antrun.result.config-file-list"
+                                    refid="default-config-fileset">
+                                    <!-- prefixing path with "/META-INF" 
+                                        to allow direct access via classloader -->
+                                    <map
+                                        from="${path.module-default-config.target}/"
+                                        to="/${path.module-default-config.meta-inf}/" />
+                                </pathconvert>
+                                <echo
+                                    file="${path.module-default-config.target}/list.txt">
+                                    ${antrun.result.config-file-list}
+                                </echo>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
+                <version>${quarkus.version}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>generate-code</goal>
+                            <goal>generate-code-tests</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/log4j2.xml</exclude>
+                        <!-- Exclude eclipse workspace files -->
+                        <exclude>**/*.jsfdia</exclude>
+                    </excludes>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Build-Time>${maven.build.timestamp}</Build-Time>
+                            <Build-User>${user.name}</Build-User>
+                            <Build-Maven>Maven ${maven.version}</Build-Maven>
+                            <Build-Java>${java.version}</Build-Java>
+                            <Build-OS>${os.name}</Build-OS>
+                            <Build-Number>${buildNumber}</Build-Number>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.apache.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            maven-antrun-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [3.1.0,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>run</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
