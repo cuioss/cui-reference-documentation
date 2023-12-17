@@ -42,7 +42,7 @@
                         <p:textEditor value="#{textEditorDemoPageBean.simpleTextSample}" id="input"
                                       placeholder="Please enter some text"
                                       styleClass="sal,sdömsdömsödns-editor"
-                                      converter="com.icw.ehf.cui.core.api.converter.StringIdentConverter"
+                                      converter="de.cuioss.jsf.api.converter.StringIdentConverter"
                                       height="250"
                                       required="true">
                             <f:facet name="toolbar">
@@ -77,14 +77,14 @@
                     <boot:labeledContainer id="resultPlain" labelValue="Result as plain text" layoutMode="formgroup">
 
                         <h:inputTextarea id="input" readonly="true"
-                                         converter="com.icw.ehf.cui.core.api.converter.StringIdentConverter"
+                                         converter="de.cuioss.jsf.api.converter.StringIdentConverter"
                                          value="#{textEditorDemoPageBean.simpleTextSample}"/>
 
                     </boot:labeledContainer>
 
                     <div class="form-group">
                         <label class="control-label">Result not escaped</label>
-                        <h:outputText value="#{textEditorDemoPageBean.simpleTextSample}" escape="false" converter="com.icw.ehf.cui.core.api.converter.StringIdentConverter"/>
+                        <h:outputText value="#{textEditorDemoPageBean.simpleTextSample}" escape="false" converter="de.cuioss.jsf.api.converter.StringIdentConverter"/>
 
                     </div>
 

@@ -30,7 +30,7 @@
                         <h2>#{msgs['page.portal.templates.description.label']}</h2>
                         <p>
                             <h:outputText value="#{template.description}" escape="false">
-                                <f:converter converterId="com.icw.ehf.cui.core.api.converter.StringIdentConverter" />
+                                <f:converter converterId="de.cuioss.jsf.api.converter.StringIdentConverter" />
                             </h:outputText>
                         </p>
                         <ui:repeat var="section" value="#{template.sections}" id="sections">
@@ -39,7 +39,7 @@
                             </h3>
                             <p>
                                 <h:outputText value="#{section.content}" escape="false">
-                                    <f:converter converterId="com.icw.ehf.cui.core.api.converter.StringIdentConverter" />
+                                    <f:converter converterId="de.cuioss.jsf.api.converter.StringIdentConverter" />
                                 </h:outputText>
                             </p>
                         </ui:repeat>
