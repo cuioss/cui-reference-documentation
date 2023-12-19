@@ -83,7 +83,7 @@ public class ConfigDocuBean {
         if (path.endsWith(".properties")) {
             return "lang-properties";
         }
-        if (path.endsWith(".yaml") | path.endsWith(".yml")) {
+        if (path.endsWith(".yaml") || path.endsWith(".yml")) {
             return "lang-yaml";
         }
         log.warn("Unknown source path: {}", path);

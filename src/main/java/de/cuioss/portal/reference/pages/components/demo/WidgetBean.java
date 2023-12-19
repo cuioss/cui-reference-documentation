@@ -1,6 +1,6 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -24,6 +24,8 @@ public class WidgetBean extends BaseLazyLoadingWidget<String> {
 
     private static final long serialVersionUID = 6027808398818076494L;
 
+    private static SecureRandom random = new SecureRandom();
+
     @Override
     public LabeledKey getTitle() {
         return new LabeledKey("page.portal.widget.title");
@@ -42,7 +44,7 @@ public class WidgetBean extends BaseLazyLoadingWidget<String> {
 
     @Override
     public ResultObject<String> backendRequest() {
-        if (new Random().nextInt() % 3 != 0) {
+        if (random.nextInt() % 3 != 0) {
             return new ResultObject<>("Test", ResultState.VALID);
         }
         return new ResultObject<>("", ResultState.ERROR, new ResultDetail(new DisplayName("error")), null);
@@ -51,6 +53,6 @@ public class WidgetBean extends BaseLazyLoadingWidget<String> {
     @Override
     public void handleResult(String result) {
         content = result;
-        repeats = new Random().nextInt() % 5;
+        repeats = random.nextInt() % 5;
     }
 }
