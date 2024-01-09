@@ -167,24 +167,16 @@
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
-            <from-outcome>external_mojarra_html</from-outcome>
-            <to-view-id>/documentation/external/mojarra_html.xhtml</to-view-id>
+            <from-outcome>external_jsf_html</from-outcome>
+            <to-view-id>/documentation/external/jsf_html.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
-            <from-outcome>external_mojarra_core</from-outcome>
-            <to-view-id>/documentation/external/mojarra_core.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>external_mojarra_ui</from-outcome>
-            <to-view-id>/documentation/external/mojarra_ui.xhtml</to-view-id>
+            <from-outcome>external_jsf_core</from-outcome>
+            <to-view-id>/documentation/external/jsf_core.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>

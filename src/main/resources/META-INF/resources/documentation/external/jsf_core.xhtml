@@ -1,0 +1,19 @@
+<ui:composition template="/templates/master_centered.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:boot="https://cuioss.de/jsf/bootstrap"
+                xmlns:taglib="http://xmlns.jcp.org/jsf/composite/taglib">
+    <ui:define name="title">JSF Core</ui:define>
+    <ui:define name="content"> 
+        <boot:column id="colCon" size="12">
+            <h2>JSF Core</h2>
+            <p>
+                The namespace is:
+                <h:outputText value="#{cuiTagResolver.jsfCoreTagLib.namespace}"/>
+            </p>
+
+            <taglib:tagLibMetadata metaDataTitle="JSF Core" id="tagLibMetadata"
+                                   tagLibData="#{cuiTagResolver.jsfCoreTagLib}" libPrefix="f"/>
+
+        </boot:column>
+    </ui:define>
+</ui:composition>

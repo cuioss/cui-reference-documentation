@@ -4,16 +4,17 @@
     xmlns:boot="https://cuioss.de/jsf/bootstrap"
     xmlns:taglib="http://xmlns.jcp.org/jsf/composite/taglib">
 <ui:composition template="/templates/master_centered.xhtml">
-    <ui:define name="title">Mojarra Html</ui:define>
+    <ui:define name="title">JSF Html</ui:define>
     <ui:define name="content">
         <boot:column size="12">
-            <h2>Mojarra Html</h2>
+            <h2>JSF Html</h2>
             <p>
-                The namespace is:
-                <h:outputText value="#{cuiTagResolver.mojarraHtmlTagLib.namespace}" />
+                The namespace is: 
+                <h:outputText value=""></h:outputText>
+                <h:outputText value="#{cuiTagResolver.jsfHtmlTagLib.namespace}" />
             </p>
             <ui:repeat var="cuiMetadata" id="metadataRepeat"
-                value="#{cuiTagResolver.mojarraHtmlTagLib.componentMetadata.data}">
+                value="#{cuiTagResolver.jsfHtmlTagLib.componentMetadata.data}">
                 <boot:panel headerValue="h:#{cuiMetadata.name}" collapsible="true" id="componentPanel" collapsed="true">
                     <p>
                         <h:outputText value="#{cuiMetadata.description}"

@@ -7,9 +7,8 @@ import java.util.List;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
 import de.cuioss.portal.configuration.PortalConfigurationKeys;
-import de.cuioss.portal.reference.portal.navigation.items.external.MojarraCoreMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.external.MojarraHtmlMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.external.MojarraUIMenuItem;
+import de.cuioss.portal.reference.portal.navigation.items.external.JSFCoreMenuItem;
+import de.cuioss.portal.reference.portal.navigation.items.external.JSFHtmlMenuItem;
 import de.cuioss.portal.reference.portal.navigation.items.external.OmnifacesMenuItem;
 import de.cuioss.portal.reference.portal.navigation.items.external.PrimefacesMenuItem;
 import de.cuioss.tools.collect.CollectionLiterals;
@@ -48,9 +47,8 @@ public class ExternalComponentsMenu extends NavigationMenuItemContainerImpl {
         super.setId(MENU_ID);
         // Create and add the menu children
         List<NavigationMenuItem> children = new ArrayList<>();
-        children.add(new MojarraCoreMenuItem());
-        children.add(new MojarraHtmlMenuItem());
-        children.add(new MojarraUIMenuItem());
+        children.add(new JSFCoreMenuItem());
+        children.add(new JSFHtmlMenuItem());
         children.add(new OmnifacesMenuItem());
         children.add(new PrimefacesMenuItem());
         Collections.sort(children);

@@ -11,28 +11,28 @@ import lombok.ToString;
  */
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class MojarraHtmlMenuItem extends NavigationMenuItemSingleImpl {
+public class JSFHtmlMenuItem extends NavigationMenuItemSingleImpl {
 
     private static final long serialVersionUID = 7187954186034012526L;
 
     private static final Integer ORDER = 20;
 
     /** The label Key for this component. */
-    public static final String LABEL_KEY = "navigation.menue.external.mojarra.html.label";
+    public static final String LABEL_KEY = "navigation.menue.external.jsf.html.label";
 
     /** The icon for this item. */
     public static final String ICON = "cui-icon-brightness_increase";
 
     /** The icon for this item. */
-    public static final String OUTCOME = "external_mojarra_html";
+    public static final String OUTCOME = "external_jsf_html";
 
     /** The string based id for this menu item. */
-    public static final String MENU_ID = "mojarraFacesMenuItem";
+    public static final String MENU_ID = "jsfHtmlMenuItem";
 
     /**
      * Constructor.
      */
-    public MojarraHtmlMenuItem() {
+    public JSFHtmlMenuItem() {
         super(ORDER);
         super.setIconStyleClass(ICON);
         super.setLabelKey(LABEL_KEY);

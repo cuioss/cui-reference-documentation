@@ -23,20 +23,22 @@ public class CuiTagResolver implements Serializable {
 
     private static final long serialVersionUID = 5547311337444854287L;
 
-    private static final String TAGLIB = "/META-INF/commons-webui.taglib.xml";
+    private static final String TAGLIB = "/META-INF/cui-core.taglib.xml";
+    private static final String CUI_BOOTSTRAP = "/META-INF/cui-bootstrap.taglib.xml";
 
     private static final String OMNIFACES = "/META-INF/omnifaces-ui.taglib.xml";
 
     private static final String PRIMEFACES = "/META-INF/primefaces-p.taglib.xml";
 
-    private static final String MOJARRA_HTML = "/com/sun/metadata/taglib/html_basic.taglib.xml";
+    private static final String JSF_HTML = "/META-INF/myfaces_html.tld";
 
-    private static final String MOJARRA_CORE = "/com/sun/metadata/taglib/facelets_jsf_core.taglib.xml";
-
-    private static final String MOJARRA_UI = "/com/sun/metadata/taglib/ui.taglib.xml";
+    private static final String JSF_CORE = "/META-INF/myfaces_core.tld";
 
     @Getter
     private TagLib cuiTagLib;
+
+    @Getter
+    private TagLib cuiBootstrapTagLib;
 
     @Getter
     private TagLib omniTagLib;
@@ -45,26 +47,27 @@ public class CuiTagResolver implements Serializable {
     private TagLib primeTagLib;
 
     @Getter
-    private TagLib mojarraHtmlTagLib;
+    private TagLib jsfHtmlTagLib;
 
     @Getter
-    private TagLib mojarraCoreTagLib;
-
-    @Getter
-    private TagLib mojarraUiTagLib;
+    private TagLib jsfCoreTagLib;
 
     @PostConstruct
     public void initBean() {
         cuiTagLib = new TagLib(TAGLIB, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
+        cuiBootstrapTagLib = new TagLib(CUI_BOOTSTRAP, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
         omniTagLib = new TagLib(OMNIFACES, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
         primeTagLib = new TagLib(PRIMEFACES, TagLib.JSF_2_FACELET_TAGLIB_NAMESPACE);
-        mojarraHtmlTagLib = new TagLib(MOJARRA_HTML, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
-        mojarraCoreTagLib = new TagLib(MOJARRA_CORE, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
-        mojarraUiTagLib = new TagLib(MOJARRA_UI, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
+        jsfHtmlTagLib = new TagLib(JSF_HTML, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
+        jsfCoreTagLib = new TagLib(JSF_CORE, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
 
     }
 
     public UIComponentMetadata getCuiComponentByName(final String name) {
         return cuiTagLib.getComponentMetadata().getByName(name);
+    }
+
+    public UIComponentMetadata getCuiBootstrapByName(final String name) {
+        return cuiBootstrapTagLib.getComponentMetadata().getByName(name);
     }
 }
