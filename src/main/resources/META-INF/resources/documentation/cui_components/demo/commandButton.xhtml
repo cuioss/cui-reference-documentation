@@ -1,15 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:dev="https://cuioss.de/jsf/dev"
-    xmlns:boot="https://cuioss.de/jsf/bootstrap"
->
-<ui:composition template="/templates/master.xhtml">
+<ui:composition template="/templates/master.xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:dev="https://cuioss.de/jsf/dev"
+	xmlns:boot="https://cuioss.de/jsf/bootstrap">
+	
 	<ui:define name="title">boot:commandButton</ui:define>
 	<ui:define name="content">
-
 		<h2>
 			<boot:icon icon="cui-icon-check" />
 			boot:commandButton
@@ -54,7 +51,8 @@
 					<boot:quickControlGroup align="left">
 						<boot:commandButton labelValue="Icon Left"
 							icon="cui-icon-circle_arrow_left" />
-						<boot:commandButton icon="cui-icon-user_add" titleValue="Icon Only" />
+						<boot:commandButton icon="cui-icon-user_add"
+							titleValue="Icon Only" />
 						<boot:commandButton icon="cui-icon-circle_arrow_right"
 							iconAlign="right" labelValue="Icon Right" />
 					</boot:quickControlGroup>
@@ -72,10 +70,10 @@
 					<boot:quickControlGroup align="left">
 						<boot:commandButton labelValue="default" />
 						<boot:commandButton labelValue="primary" state="primary" />
-                        <boot:commandButton labelValue="success" state="success"
-                            actionListener="#{commandButtonsDemoPage.executeActionWithSuccess}">
-                            <f:ajax immediate="true" render="@form"/>
-                        </boot:commandButton>
+						<boot:commandButton labelValue="success" state="success"
+							actionListener="#{commandButtonsDemoPage.executeActionWithSuccess}">
+							<f:ajax immediate="true" render="@form" />
+						</boot:commandButton>
 						<boot:commandButton labelValue="info" state="info" />
 						<boot:commandButton labelValue="warning" state="warning" />
 						<boot:commandButton labelValue="danger" state="danger" />
@@ -155,4 +153,3 @@
 
 	</ui:define>
 </ui:composition>
-</html>
