@@ -36,7 +36,7 @@
         <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
         <!-- To be moved later on -->
         <!-- Older version needed because of quarkus version -->
-        <version.slf4j>1.7.36</version.slf4j>
+        <version.slf4j>2.0.11</version.slf4j>
         <version.myfaces.quarkus>2.3-next-M7</version.myfaces.quarkus>
         <primefaces-quarkus.version>2.12.2</primefaces-quarkus.version>
         <version.primefaces>12.0.0</version.primefaces>
