@@ -1,16 +1,13 @@
-<!--suppress ALL -->
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:boot="https://cuioss.de/jsf/bootstrap"
-      xmlns:cui-internal="http://www.icw.de/commons-webui-internal"
-      xmlns:dev="https://cuioss.de/jsf/dev"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:cui="https://cuioss.de/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-<ui:composition template="/templates/master.xhtml">
+<ui:composition template="/templates/master.xhtml" xmlns:boot="https://cuioss.de/jsf/bootstrap"
+                xmlns:cui-internal="https://cuioss.de/jsf/internal"
+                xmlns:dev="https://cuioss.de/jsf/dev"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:cui="https://cuioss.de/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <ui:define name="title">Miscellaneous Components</ui:define>
     <ui:define name="content">
         <h1>Miscellaneous Components</h1>
@@ -24,9 +21,9 @@
             <boot:column size="6">
                 <h:form id="notificationBox">
                     <boot:notificationBox state="WARNING"
-                                         dismissible="true"
-                                         dismissListener="#{notificationBoxHandler.dismissedListener}"
-                                         contentValue="Attention please"/>
+                                          dismissible="true"
+                                          dismissListener="#{notificationBoxHandler.dismissedListener}"
+                                          contentValue="Attention please"/>
                 </h:form>
                 <p>Dismiss log:</p>
                 <ul>
@@ -50,7 +47,7 @@
                     <boot:labeledContainer layoutMode="label_sr_only" placeholderValue="Hover Me" id="tooltip">
                         <h:inputText id="input" required="true">
                             <boot:tooltip delay="1000" placement="bottom"
-                                         contentValue="Very important tooltip text with delay of 1000 ms"/>
+                                          contentValue="Very important tooltip text with delay of 1000 ms"/>
                         </h:inputText>
                     </boot:labeledContainer>
                 </h:form>
@@ -68,14 +65,14 @@
                 <h:form id="popover-form">
                     <h:outputScript library="javascript.enabler" name="enabler.popover.js"/>
                     <boot:icon id="popover_trigger" icon="cui-icon-circle_info"
-                              size="xxxl"
-                              state="info"
-                              pt:data-toggle="popover"
-                              pt:data-trigger="hover"
-                              pt:data-placement="bottom"
-                              pt:data-html="true"
-                              pt:data-title="Popover Title"
-                              pt:data-contentwrapper="popover-form:popover_content"/>
+                               size="xxxl"
+                               state="info"
+                               pt:data-toggle="popover"
+                               pt:data-trigger="hover"
+                               pt:data-placement="bottom"
+                               pt:data-html="true"
+                               pt:data-title="Popover Title"
+                               pt:data-contentwrapper="popover-form:popover_content"/>
                     <h:panelGroup id="popover_content" styleClass="hidden">
                         <ul>
                             <li>muss mindestens Zeichen lang sein</li>
@@ -105,7 +102,7 @@
             <boot:column size="6">
                 <h:form id="typeWatch">
                     <boot:labeledContainer layoutMode="label_sr_only" placeholderValue="Type at least 3 Characters"
-                                          id="wrapper">
+                                           id="wrapper">
                         <h:inputText id="input" required="true" value="#{typewatchHandlerBean.input}">
                             <cui-internal:typewatch id="typewatchInputBehavior" captureLength="3" highlight="true"
                                                     wait="800"
@@ -139,8 +136,8 @@
                         <h:panelGroup>
                             <p>If you press the button it will ...</p>
                             <boot:commandButton icon="cui-icon-bomb" labelValue="Destroy the world"
-                                               onclick="PF('globalPageMessages').renderMessage({summary: 'boom', severity: 'error'});return false;"
-                                               state="danger"/>
+                                                onclick="PF('globalPageMessages').renderMessage({summary: 'boom', severity: 'error'});return false;"
+                                                state="danger"/>
                         </h:panelGroup>
                     </cui:inlineConfirm>
                 </h:form>
@@ -172,8 +169,8 @@
                         <boot:notificationBox state="danger" contentValue="If you press the button it will ...">
                             <boot:quickControlGroup>
                                 <boot:commandButton icon="cui-icon-bomb" labelValue="Destroy the world"
-                                                   onclick="PF('globalPageMessages').renderMessage({summary: 'boom', severity: 'error'});return false;"
-                                                   state="danger"/>
+                                                    onclick="PF('globalPageMessages').renderMessage({summary: 'boom', severity: 'error'});return false;"
+                                                    state="danger"/>
                                 <boot:button labelValue="Oh no" pt:data-inline-confirm-cancel="cancel"/>
                             </boot:quickControlGroup>
                         </boot:notificationBox>
@@ -193,19 +190,19 @@
                 <h:form id="switchForm">
                     <p>Minimal Example</p>
                     <boot:switch id="switchMinimal"
-                                titleValue="Some Title"
-                                value="#{switchDemoBean.switchMinimal}"
-                                onTextValue="on-text"
-                                offTextValue="off-text"/>
+                                 titleValue="Some Title"
+                                 value="#{switchDemoBean.switchMinimal}"
+                                 onTextValue="on-text"
+                                 offTextValue="off-text"/>
 
                     <br/>
                     <hr/>
                     <p>f:valueChangeListener</p>
                     <boot:switch id="switchAjaxValueChangeListener"
-                                titleValue="Some Title"
-                                value="#{switchDemoBean.switchFValueChangeListener}"
-                                onTextValue="on-text"
-                                offTextValue="off-text">
+                                 titleValue="Some Title"
+                                 value="#{switchDemoBean.switchFValueChangeListener}"
+                                 onTextValue="on-text"
+                                 offTextValue="off-text">
                         <f:valueChangeListener binding="#{switchDemoBean}"/>
                         <f:ajax render=":switchForm:nowFvalueChangeListener"/>
                     </boot:switch>
@@ -215,21 +212,21 @@
                     <hr/>
                     <p>disabled="true"</p>
                     <boot:switch id="switchDisabled"
-                                titleValue="Title for Disabled"
-                                value="false"
-                                disabled="true"
-                                onTextValue="on-text"
-                                offTextValue="off-text"/>
+                                 titleValue="Title for Disabled"
+                                 value="false"
+                                 disabled="true"
+                                 onTextValue="on-text"
+                                 offTextValue="off-text"/>
 
                     <br/>
                     <hr/>
                     <p>ValueChangeListener</p>
                     <boot:switch id="switchValueChangeListener"
-                                titleValue="Trigger ValueChangeEvent via the components valueChangeListener"
-                                value="#{switchDemoBean.switchValueChangeListener}"
-                                valueChangeListener="#{switchDemoBean.valueChangeListener}"
-                                onTextValue="on-text"
-                                offTextValue="off-text">
+                                 titleValue="Trigger ValueChangeEvent via the components valueChangeListener"
+                                 value="#{switchDemoBean.switchValueChangeListener}"
+                                 valueChangeListener="#{switchDemoBean.valueChangeListener}"
+                                 onTextValue="on-text"
+                                 offTextValue="off-text">
                         <f:ajax render=":switchForm:nowValueChangeListener"/>
                     </boot:switch>
                     <h:outputText value="#{now}" id="nowValueChangeListener"/>
@@ -238,9 +235,9 @@
                     <hr/>
                     <p>f:ajax listener</p>
                     <boot:switch titleValue="Trigger value change listener via AjaxBehaviorEvent"
-                                id="switchAjaxListener"
-                                value="#{switchDemoBean.switchFAjaxListener}"
-                                offTextValue="off-text" onTextValue="on-text">
+                                 id="switchAjaxListener"
+                                 value="#{switchDemoBean.switchFAjaxListener}"
+                                 offTextValue="off-text" onTextValue="on-text">
                         <f:ajax listener="#{switchDemoBean.ajaxValueChangeListener}"
                                 render=":switchForm:nowAjaxBehaviorEvent"/>
                     </boot:switch>
@@ -250,9 +247,9 @@
                     <hr/>
                     <p>PrimeFaces Listener</p>
                     <boot:switch titleValue="Trigger PrimeFaces listener"
-                                id="pfListener"
-                                value="#{switchDemoBean.switchPrimeFaces}"
-                                offTextValue="off-text" onTextValue="on-text">
+                                 id="pfListener"
+                                 value="#{switchDemoBean.switchPrimeFaces}"
+                                 offTextValue="off-text" onTextValue="on-text">
                         <p:ajax listener="#{switchDemoBean.pfChangeListener}"
                                 update="@form:nowPf"/>
                     </boot:switch>
@@ -326,4 +323,3 @@
         </boot:row>
     </ui:define>
 </ui:composition>
-</html>

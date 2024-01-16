@@ -1,135 +1,131 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:dev="https://cuioss.de/jsf/dev"
-    xmlns:boot="https://cuioss.de/jsf/bootstrap"
->
-<ui:composition template="/templates/master.xhtml">
-	<ui:define name="title">boot:button</ui:define>
-	<ui:define name="content">
-		<h2>
-			<boot:icon icon="cui-icon-play" />
-			boot:button
-		</h2>
-		<p>The boot:button is a replacement for h:button, features:</p>
-		<ul>
-			<li>Bootstrap based styling</li>
-			<li>Cui based i18n for label and title</li>
-			<li>Optional Icon to be displayed</li>
-			<li>Bootstrap States and Sizes</li>
-			<li>KeyBinding for Simple keyboard Control</li>
-		</ul>
-		<h3>Labels and Titles</h3>
-		<boot:row>
-			<boot:column size="6">
-				<dev:sourceCode sourceContainerId="labelsAndTitles" />
-			</boot:column>
-			<boot:column size="6" id="labelsAndTitles">
-				<boot:quickControlGroup align="left">
-					<boot:button labelValue="Save (labelValue)">
-					</boot:button>
-					<boot:button labelKey="common.button.save" />
-					<boot:button labelValue="With Title Key"
-						titleKey="common.button.save" />
-					<boot:button labelValue="With Title Value"
-						titleValue="Title from titleValue" />
-				</boot:quickControlGroup>
-			</boot:column>
-		</boot:row>
+<ui:composition template="/templates/master.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:dev="https://cuioss.de/jsf/dev"
+                xmlns:boot="https://cuioss.de/jsf/bootstrap">
+    <ui:define name="title">boot:button</ui:define>
+    <ui:define name="content">
+        <h2>
+            <boot:icon icon="cui-icon-play"/>
+            boot:button
+        </h2>
+        <p>The boot:button is a replacement for h:button, features:</p>
+        <ul>
+            <li>Bootstrap based styling</li>
+            <li>Cui based i18n for label and title</li>
+            <li>Optional Icon to be displayed</li>
+            <li>Bootstrap States and Sizes</li>
+            <li>KeyBinding for Simple keyboard Control</li>
+        </ul>
+        <h3>Labels and Titles</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="labelsAndTitles"/>
+            </boot:column>
+            <boot:column size="6" id="labelsAndTitles">
+                <boot:quickControlGroup align="left">
+                    <boot:button labelValue="Save (labelValue)">
+                    </boot:button>
+                    <boot:button labelKey="common.button.save"/>
+                    <boot:button labelValue="With Title Key"
+                                 titleKey="common.button.save"/>
+                    <boot:button labelValue="With Title Value"
+                                 titleValue="Title from titleValue"/>
+                </boot:quickControlGroup>
+            </boot:column>
+        </boot:row>
 
-		<h3>Icons</h3>
-		<boot:row>
-			<boot:column size="6">
-				<dev:sourceCode sourceContainerId="icons" />
-			</boot:column>
-			<boot:column size="6" id="icons">
-				<boot:quickControlGroup align="left">
-					<boot:button labelValue="Icon Left"
-						icon="cui-icon-circle_arrow_left" />
-					<boot:button icon="cui-icon-user_add" titleValue="Icon Only" />
-					<boot:button icon="cui-icon-circle_arrow_right" iconAlign="right"
-						labelValue="Icon Right" />
-				</boot:quickControlGroup>
-			</boot:column>
-		</boot:row>
+        <h3>Icons</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="icons"/>
+            </boot:column>
+            <boot:column size="6" id="icons">
+                <boot:quickControlGroup align="left">
+                    <boot:button labelValue="Icon Left"
+                                 icon="cui-icon-circle_arrow_left"/>
+                    <boot:button icon="cui-icon-user_add" titleValue="Icon Only"/>
+                    <boot:button icon="cui-icon-circle_arrow_right" iconAlign="right"
+                                 labelValue="Icon Right"/>
+                </boot:quickControlGroup>
+            </boot:column>
+        </boot:row>
 
-		<h3>States</h3>
-		<boot:row>
-			<boot:column size="6">
-				<dev:sourceCode sourceContainerId="states" />
-			</boot:column>
-			<boot:column size="6" id="states">
-				<boot:quickControlGroup align="left">
-					<boot:button labelValue="default" />
-					<boot:button labelValue="primary" state="primary" />
-					<boot:button labelValue="success" state="success" />
-					<boot:button labelValue="info" state="info" />
-					<boot:button labelValue="warning" state="warning" />
-					<boot:button labelValue="danger" state="danger" />
-				</boot:quickControlGroup>
-				<boot:quickControlGroup align="left">
-					<boot:button labelValue="link" state="link" />
-					<boot:button state="link" icon="cui-icon-check" size="lg"
-						titleValue="Simple Clickable Icon Button" />
-				</boot:quickControlGroup>
-			</boot:column>
-		</boot:row>
+        <h3>States</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="states"/>
+            </boot:column>
+            <boot:column size="6" id="states">
+                <boot:quickControlGroup align="left">
+                    <boot:button labelValue="default"/>
+                    <boot:button labelValue="primary" state="primary"/>
+                    <boot:button labelValue="success" state="success"/>
+                    <boot:button labelValue="info" state="info"/>
+                    <boot:button labelValue="warning" state="warning"/>
+                    <boot:button labelValue="danger" state="danger"/>
+                </boot:quickControlGroup>
+                <boot:quickControlGroup align="left">
+                    <boot:button labelValue="link" state="link"/>
+                    <boot:button state="link" icon="cui-icon-check" size="lg"
+                                 titleValue="Simple Clickable Icon Button"/>
+                </boot:quickControlGroup>
+            </boot:column>
+        </boot:row>
 
-		<h3>Sizes</h3>
-		<boot:row>
-			<boot:column size="6">
-				<dev:sourceCode sourceContainerId="sizes" />
-			</boot:column>
-			<boot:column size="6" id="sizes">
-				<boot:quickControlGroup align="left">
-					<boot:button labelValue="small: sm" size="sm" />
-					<boot:button labelValue="default" />
-					<boot:button labelValue="large: lg" size="lg" />
-				</boot:quickControlGroup>
-			</boot:column>
-		</boot:row>
+        <h3>Sizes</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="sizes"/>
+            </boot:column>
+            <boot:column size="6" id="sizes">
+                <boot:quickControlGroup align="left">
+                    <boot:button labelValue="small: sm" size="sm"/>
+                    <boot:button labelValue="default"/>
+                    <boot:button labelValue="large: lg" size="lg"/>
+                </boot:quickControlGroup>
+            </boot:column>
+        </boot:row>
 
-		<h3>KeyBinding</h3>
-		<boot:row>
-			<boot:column size="6">
-				<dev:sourceCode sourceContainerId="keyBinding" />
-			</boot:column>
-			<boot:column size="6" id="keyBinding">
-				<p>
-					Time:
-					<h:outputText value="#{now}" id="timeOut" />
-				</p>
-				<boot:quickControlGroup align="left">
-					<boot:button labelValue="Press Escape to Reload Page"
-								keyBinding="esc" />
-				</boot:quickControlGroup>
-			</boot:column>
-		</boot:row>
+        <h3>KeyBinding</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="keyBinding"/>
+            </boot:column>
+            <boot:column size="6" id="keyBinding">
+                <p>
+                    Time:
+                    <h:outputText value="#{now}" id="timeOut"/>
+                </p>
+                <boot:quickControlGroup align="left">
+                    <boot:button labelValue="Press Escape to Reload Page"
+                                 keyBinding="esc"/>
+                </boot:quickControlGroup>
+            </boot:column>
+        </boot:row>
 
-		<h3>Disabled</h3>
-		<boot:row>
-			<boot:column size="6">
-				<dev:sourceCode sourceContainerId="disabled" />
-			</boot:column>
-			<boot:column size="6" id="disabled">
-				<boot:quickControlGroup align="left">
-					<boot:button labelValue="Disabled Button" disabled="true"
-						state="primary" />
-				</boot:quickControlGroup>
-			</boot:column>
-		</boot:row>
-		<h3>Block Level Buttons</h3>
-		<boot:row>
-			<boot:column size="6">
-				<dev:sourceCode sourceContainerId="blockButton" />
-			</boot:column>
-			<boot:column size="3" id="blockButton">
-				<boot:button labelValue="Block Level Button" styleClass="btn-block"
-					state="success" />
-			</boot:column>
-		</boot:row>
+        <h3>Disabled</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="disabled"/>
+            </boot:column>
+            <boot:column size="6" id="disabled">
+                <boot:quickControlGroup align="left">
+                    <boot:button labelValue="Disabled Button" disabled="true"
+                                 state="primary"/>
+                </boot:quickControlGroup>
+            </boot:column>
+        </boot:row>
+        <h3>Block Level Buttons</h3>
+        <boot:row>
+            <boot:column size="6">
+                <dev:sourceCode sourceContainerId="blockButton"/>
+            </boot:column>
+            <boot:column size="3" id="blockButton">
+                <boot:button labelValue="Block Level Button" styleClass="btn-block"
+                             state="success"/>
+            </boot:column>
+        </boot:row>
 
-	</ui:define>
+    </ui:define>
 </ui:composition>
-</html>

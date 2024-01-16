@@ -1,5 +1,6 @@
 package de.cuioss.portal.reference.pages;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +22,7 @@ import lombok.ToString;
 @ToString
 public class CuiTagResolver implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 5547311337444854287L;
 
     private static final String TAGLIB = "/META-INF/cui-core.taglib.xml";
@@ -64,10 +66,6 @@ public class CuiTagResolver implements Serializable {
     }
 
     public UIComponentMetadata getCuiComponentByName(final String name) {
-        return cuiTagLib.getComponentMetadata().getByName(name);
-    }
-
-    public UIComponentMetadata getCuiBootstrapByName(final String name) {
-        return cuiBootstrapTagLib.getComponentMetadata().getByName(name);
+        return cuiTagLib.getComponentMetadata().getByName(name).orElse(cuiBootstrapTagLib.getComponentMetadata().getByName(name).orElse(null));
     }
 }

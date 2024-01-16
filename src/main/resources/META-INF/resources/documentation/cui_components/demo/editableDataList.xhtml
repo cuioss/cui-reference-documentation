@@ -1,178 +1,174 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:dev="https://cuioss.de/jsf/dev"
-    xmlns:boot="https://cuioss.de/jsf/bootstrap"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
-<ui:composition template="/templates/master.xhtml">
+<ui:composition template="/templates/master.xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:dev="https://cuioss.de/jsf/dev"
+                xmlns:boot="https://cuioss.de/jsf/bootstrap"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
     <ui:define name="title">Editable Data List</ui:define>
     <ui:define name="content">
         <h2>
             Editable Data List
-            <boot:icon icon="cui-icon-justify" />
+            <boot:icon icon="cui-icon-justify"/>
         </h2>
-        <ref_dev:cui_comp_meta name="editableDataList" />
+        <ref_dev:cui_comp_meta name="editableDataList"/>
         <h3>Sample</h3>
         <h:form id="toggleFeaturesForm">
             <boot:labeledContainer id="enableEditToggle"
-                layoutMode="plain" labelValue="enableEdit"
-                titleValue="Enable or disable editing of entries">
+                                   layoutMode="plain" labelValue="enableEdit"
+                                   titleValue="Enable or disable editing of entries">
                 <h:selectBooleanCheckbox id="input"
-                    value="#{editableDataListDemoPageBean.enableEdit}">
+                                         value="#{editableDataListDemoPageBean.enableEdit}">
                     <p:ajax update="editableDataListForm"
-                        process="@this" />
+                            process="@this"/>
                 </h:selectBooleanCheckbox>
             </boot:labeledContainer>
 
             <boot:labeledContainer id="enableNewToggle"
-                layoutMode="plain" labelValue="enableNew"
-                titleValue="Enable or disable new entries">
+                                   layoutMode="plain" labelValue="enableNew"
+                                   titleValue="Enable or disable new entries">
                 <h:selectBooleanCheckbox id="input"
-                    value="#{editableDataListDemoPageBean.enableNew}">
+                                         value="#{editableDataListDemoPageBean.enableNew}">
                     <p:ajax update="editableDataListForm"
-                        process="@this" />
+                            process="@this"/>
                 </h:selectBooleanCheckbox>
             </boot:labeledContainer>
 
             <boot:labeledContainer id="enableDeleteToggle"
-                layoutMode="plain" labelValue="enableDelete"
-                titleValue="Enable or disable the deletion of entries">
+                                   layoutMode="plain" labelValue="enableDelete"
+                                   titleValue="Enable or disable the deletion of entries">
                 <h:selectBooleanCheckbox id="input"
-                    value="#{editableDataListDemoPageBean.enableDelete}">
+                                         value="#{editableDataListDemoPageBean.enableDelete}">
                     <p:ajax update="editableDataListForm"
-                        process="@this" />
+                            process="@this"/>
                 </h:selectBooleanCheckbox>
             </boot:labeledContainer>
 
             <boot:labeledContainer id="inlineEditModeToggle"
-                layoutMode="plain" labelValue="inlineEditMode"
-                titleValue="Toggle between inline and non-inline edit mode">
+                                   layoutMode="plain" labelValue="inlineEditMode"
+                                   titleValue="Toggle between inline and non-inline edit mode">
                 <h:selectBooleanCheckbox id="input"
-                    value="#{editableDataListDemoPageBean.inlineEditMode}">
+                                         value="#{editableDataListDemoPageBean.inlineEditMode}">
                     <p:ajax update="editableDataListForm"
-                        process="@this" />
+                            process="@this"/>
                 </h:selectBooleanCheckbox>
             </boot:labeledContainer>
 
             <boot:labeledContainer id="renderAddButtons"
-                layoutMode="plain"
-                labelValue="renderAddonButtonsInAddMode"
-                titleValue="Toggle the rendering of the addon-buttons in add mode">
+                                   layoutMode="plain"
+                                   labelValue="renderAddonButtonsInAddMode"
+                                   titleValue="Toggle the rendering of the addon-buttons in add mode">
                 <h:selectBooleanCheckbox id="input"
-                    value="#{editableDataListDemoPageBean.renderAddonButtonsInAddMode}">
+                                         value="#{editableDataListDemoPageBean.renderAddonButtonsInAddMode}">
                     <p:ajax update="editableDataListForm"
-                        process="@this" />
+                            process="@this"/>
                 </h:selectBooleanCheckbox>
             </boot:labeledContainer>
 
             <boot:labeledContainer id="renderEditButtons"
-                layoutMode="plain"
-                labelValue="renderAddonButtonsInEditMode"
-                titleValue="Toggle the rendering of the addon-buttons in edit mode">
+                                   layoutMode="plain"
+                                   labelValue="renderAddonButtonsInEditMode"
+                                   titleValue="Toggle the rendering of the addon-buttons in edit mode">
                 <h:selectBooleanCheckbox id="input"
-                    value="#{editableDataListDemoPageBean.renderAddonButtonsInEditMode}">
+                                         value="#{editableDataListDemoPageBean.renderAddonButtonsInEditMode}">
                     <p:ajax update="editableDataListForm"
-                        process="@this" />
+                            process="@this"/>
                 </h:selectBooleanCheckbox>
             </boot:labeledContainer>
 
             <boot:labeledContainer id="isRequired" layoutMode="plain"
-                labelValue="required"
-                titleValue="If true, at least one entry is necesarry">
+                                   labelValue="required"
+                                   titleValue="If true, at least one entry is necesarry">
                 <h:selectBooleanCheckbox id="input"
-                    value="#{editableDataListDemoPageBean.required}">
+                                         value="#{editableDataListDemoPageBean.required}">
                     <p:ajax update="editableDataListForm"
-                        process="@this" />
+                            process="@this"/>
                 </h:selectBooleanCheckbox>
             </boot:labeledContainer>
         </h:form>
 
         <h:form id="editableDataListForm"
-            class="#{editableDataListDemoPageBean.formStyleClass}">
+                class="#{editableDataListDemoPageBean.formStyleClass}">
             <boot:editableDataList id="editableDataList"
-                model="#{editableDataListDemoPageBean.addressModel}"
-                enableEdit="#{editableDataListDemoPageBean.enableEdit}"
-                enableNew="#{editableDataListDemoPageBean.enableNew}"
-                enableDelete="#{editableDataListDemoPageBean.enableDelete}"
-                inlineEditMode="#{editableDataListDemoPageBean.inlineEditMode}"
-                renderAddonButtonsInAddMode="#{editableDataListDemoPageBean.renderAddonButtonsInAddMode}"
-                renderAddonButtonsInEditMode="#{editableDataListDemoPageBean.renderAddonButtonsInEditMode}"
-                required="#{editableDataListDemoPageBean.required}"
-                emptyMessageValue="-- No data to display --"
-                modelValidator="demo.EditableDataListValidator">
+                                   model="#{editableDataListDemoPageBean.addressModel}"
+                                   enableEdit="#{editableDataListDemoPageBean.enableEdit}"
+                                   enableNew="#{editableDataListDemoPageBean.enableNew}"
+                                   enableDelete="#{editableDataListDemoPageBean.enableDelete}"
+                                   inlineEditMode="#{editableDataListDemoPageBean.inlineEditMode}"
+                                   renderAddonButtonsInAddMode="#{editableDataListDemoPageBean.renderAddonButtonsInAddMode}"
+                                   renderAddonButtonsInEditMode="#{editableDataListDemoPageBean.renderAddonButtonsInEditMode}"
+                                   required="#{editableDataListDemoPageBean.required}"
+                                   emptyMessageValue="-- No data to display --"
+                                   modelValidator="demo.EditableDataListValidator">
                 <f:facet name="header">
                     <boot:column size="4">
-                        <h:outputText value="City" />
+                        <h:outputText value="City"/>
                     </boot:column>
                     <boot:column size="4">
-                        <h:outputText value="Street" />
+                        <h:outputText value="Street"/>
                     </boot:column>
                     <boot:column size="4">
-                        <h:outputText value="Address Line" />
+                        <h:outputText value="Address Line"/>
                     </boot:column>
                 </f:facet>
 
                 <f:facet name="display">
                     <boot:column size="4">
-                        <h:outputText value="#{item.wrapped.city}" />
+                        <h:outputText value="#{item.wrapped.city}"/>
                     </boot:column>
                     <boot:column size="4">
-                        <h:outputText value="#{item.wrapped.street}" />
+                        <h:outputText value="#{item.wrapped.street}"/>
                     </boot:column>
                     <boot:column size="4">
-                        <h:outputText value="#{item.wrapped.line1}" />
+                        <h:outputText value="#{item.wrapped.line1}"/>
                     </boot:column>
                 </f:facet>
 
                 <boot:labeledContainer id="CityInput"
-                    placeholderValue="City" labelValue="City"
-                    styleClass="#{editableDataListDemoPageBean.inlineEditMode ? 'col-sm-4' : ''}"
-                    layoutMode="#{editableDataListDemoPageBean.layoutModeForEditFields}">
+                                       placeholderValue="City" labelValue="City"
+                                       styleClass="#{editableDataListDemoPageBean.inlineEditMode ? 'col-sm-4' : ''}"
+                                       layoutMode="#{editableDataListDemoPageBean.layoutModeForEditFields}">
                     <h:inputText value="#{item.wrapped.city}" id="input"
-                        required="true" />
+                                 required="true"/>
                 </boot:labeledContainer>
                 <boot:labeledContainer id="StreetInput"
-                    placeholderValue="Street" labelValue="Street"
-                    styleClass="#{editableDataListDemoPageBean.inlineEditMode ? 'col-sm-4' : ''}"
-                    layoutMode="#{editableDataListDemoPageBean.layoutModeForEditFields}">
+                                       placeholderValue="Street" labelValue="Street"
+                                       styleClass="#{editableDataListDemoPageBean.inlineEditMode ? 'col-sm-4' : ''}"
+                                       layoutMode="#{editableDataListDemoPageBean.layoutModeForEditFields}">
                     <h:inputText value="#{item.wrapped.street}"
-                        id="input" required="true" />
+                                 id="input" required="true"/>
                 </boot:labeledContainer>
                 <boot:labeledContainer id="AddressInput"
-                    placeholderValue="Address Line"
-                    labelValue="Address Line"
-                    styleClass="#{editableDataListDemoPageBean.inlineEditMode ? 'col-sm-4' : ''}"
-                    layoutMode="#{editableDataListDemoPageBean.layoutModeForEditFields}">
+                                       placeholderValue="Address Line"
+                                       labelValue="Address Line"
+                                       styleClass="#{editableDataListDemoPageBean.inlineEditMode ? 'col-sm-4' : ''}"
+                                       layoutMode="#{editableDataListDemoPageBean.layoutModeForEditFields}">
                     <h:inputText id="input"
-                        value="#{item.wrapped.line1}" />
+                                 value="#{item.wrapped.line1}"/>
                 </boot:labeledContainer>
             </boot:editableDataList>
 
             <boot:quickControlGroup>
                 <boot:commandButton labelValue="Save"
-                    actionListener="#{editableDataListDemoPageBean.save}"
-                    state="primary">
-                    <f:ajax execute="@form" render="@form" />
+                                    actionListener="#{editableDataListDemoPageBean.save}"
+                                    state="primary">
+                    <f:ajax execute="@form" render="@form"/>
                 </boot:commandButton>
                 <boot:commandButton labelValue="Reset"
-                    actionListener="#{editableDataListDemoPageBean.init}"
-                    immediate="true">
-                    <f:ajax execute="@form" render="@form" />
+                                    actionListener="#{editableDataListDemoPageBean.init}"
+                                    immediate="true">
+                    <f:ajax execute="@form" render="@form"/>
                 </boot:commandButton>
             </boot:quickControlGroup>
         </h:form>
         <boot:row>
             <boot:column size="8">
                 <boot:panel headerValue="Source" collapsible="true"
-                    collapsed="true">
+                            collapsed="true">
                     <dev:sourceCode
-                        sourceContainerId="editableDataListForm" />
+                        sourceContainerId="editableDataListForm"/>
                 </boot:panel>
             </boot:column>
         </boot:row>
     </ui:define>
 </ui:composition>
-</html>

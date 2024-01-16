@@ -2,10 +2,10 @@
     data-toggle="modal" 
     data-target="#complexDialog">Show Complex Dialog</button>
  
-<cui:modalDialog id="complexDialog"
+<boot:modalDialog id="complexDialog"
     dialogId="complexDialog"
     styleClass="fade" headerTextValue="Complex Dialog">
     <div class="container-fluid">
         ... some bootstrap content
     </div>
-</cui:modalDialog>
+</boot:modalDialog>

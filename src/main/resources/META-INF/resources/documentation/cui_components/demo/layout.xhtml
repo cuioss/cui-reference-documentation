@@ -1,45 +1,53 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:dev="https://cuioss.de/jsf/dev"
-      xmlns:boot="https://cuioss.de/jsf/bootstrap"
-      xmlns:cui-composite="http://xmlns.jcp.org/jsf/composite/cui-composite"
-      xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
-<ui:composition template="/templates/master.xhtml">
+<ui:composition template="/templates/master.xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:dev="https://cuioss.de/jsf/dev"
+                xmlns:boot="https://cuioss.de/jsf/bootstrap"
+                xmlns:cui-composite="http://xmlns.jcp.org/jsf/composite/cui-composite"
+                xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
     <ui:define name="title">Layout Components</ui:define>
     <ui:define name="sidebarLeft">
         <nav class="sidebar">
             <ul class="sidebar-nav">
                 <li>
-                    <a href="#cui_row" onclick="$('html, body').animate({scrollTop: $('#cui_row').offset().top - 160 }, 'slow');">boot:row</a>
+                    <a href="#cui_row"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_row').offset().top - 160 }, 'slow');">boot:row</a>
                 </li>
                 <li>
-                    <a href="#cui_column" onclick="$('html, body').animate({scrollTop: $('#cui_column').offset().top - 60 }, 'slow');">boot:column</a>
+                    <a href="#cui_column"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_column').offset().top - 60 }, 'slow');">boot:column</a>
                 </li>
                 <li>
-                    <a href="#cui_control_group"  onclick="$('html, body').animate({scrollTop: $('#cui_control_group').offset().top - 60 }, 'slow');">boot:controlGroup</a>
+                    <a href="#cui_control_group"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_control_group').offset().top - 60 }, 'slow');">boot:controlGroup</a>
                 </li>
                 <li>
-                    <a href="#cui_quickcontrolgroup" onclick="$('html, body').animate({scrollTop: $('#cui_quickcontrolgroup').offset().top - 60 }, 'slow');">boot:quickControlGroup</a>
+                    <a href="#cui_quickcontrolgroup"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_quickcontrolgroup').offset().top - 60 }, 'slow');">boot:quickControlGroup</a>
                 </li>
                 <li>
-                    <a href="#cui_form_group" onclick="$('html, body').animate({scrollTop: $('#cui_form_group').offset().top - 60 }, 'slow');">boot:formGroup</a>
+                    <a href="#cui_form_group"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_form_group').offset().top - 60 }, 'slow');">boot:formGroup</a>
                 </li>
                 <li>
-                    <a href="#cui_input_group"  onclick="$('html, body').animate({scrollTop: $('#cui_input_group').offset().top - 60 }, 'slow');">boot:inputGroup</a>
+                    <a href="#cui_input_group"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_input_group').offset().top - 60 }, 'slow');">boot:inputGroup</a>
                 </li>
                 <li>
-                    <a href="#cui_message" onclick="$('html, body').animate({scrollTop: $('#cui_message').offset().top - 60 }, 'slow');">boot:message</a>
+                    <a href="#cui_message"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_message').offset().top - 60 }, 'slow');">boot:message</a>
                 </li>
                 <li>
-                    <a href="#cui_outputLabel" onclick="$('html, body').animate({scrollTop: $('#cui_outputLabel').offset().top - 60 }, 'slow');">boot:outputLabel</a>
+                    <a href="#cui_outputLabel"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_outputLabel').offset().top - 60 }, 'slow');">boot:outputLabel</a>
                 </li>
                 <li>
-                    <a href="#cui_navigationmenu" onclick="$('html, body').animate({scrollTop: $('#cui_navigationmenu').offset().top  }, 'slow');">boot:navigationMenu</a>
+                    <a href="#cui_navigationmenu"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_navigationmenu').offset().top  }, 'slow');">boot:navigationMenu</a>
                 </li>
                 <li>
-                    <a href="#cui_widget" onclick="$('html, body').animate({scrollTop: $('#cui_widget').offset().top }, 'slow');">cui-composite:widget</a>
+                    <a href="#cui_widget"
+                       onclick="$('html, body').animate({scrollTop: $('#cui_widget').offset().top }, 'slow');">cui-composite:widget</a>
                 </li>
             </ul>
         </nav>
@@ -47,7 +55,7 @@
     <ui:define name="content">
         <style>
             .sidebar .sidebar-nav li {
-                cursor:pointer;
+                cursor: pointer;
             }
 
             .highlight-row {
@@ -144,7 +152,7 @@
             <boot:column size="6" id="columnBreakpoint">
                 <boot:row styleClass="highlight-row">
                     <boot:column size="4"
-                                styleClass="highlight-column col-sm-6 col-md-4 col-lg-3">
+                                 styleClass="highlight-column col-sm-6 col-md-4 col-lg-3">
                         <span class="pull-left">|</span>
                         <span class="visible-lg-inline">col-lg-3</span>
                         <span class="visible-md-inline">col-md-4</span>
@@ -153,7 +161,7 @@
                         <span class="pull-right">|</span>
                     </boot:column>
                     <boot:column size="4"
-                                styleClass="highlight-column col-sm-6 col-md-4 col-lg-3">
+                                 styleClass="highlight-column col-sm-6 col-md-4 col-lg-3">
                         <span class="pull-left">|</span>
                         <span class="visible-lg-inline">col-lg-3</span>
                         <span class="visible-md-inline">col-md-4</span>
@@ -162,7 +170,7 @@
                         <span class="pull-right">|</span>
                     </boot:column>
                     <boot:column size="4"
-                                styleClass="highlight-column col-xs-6 col-sm-6 col-md-4 col-lg-2">
+                                 styleClass="highlight-column col-xs-6 col-sm-6 col-md-4 col-lg-2">
                         <span class="pull-left">|</span>
                         <span class="visible-lg-inline">col-lg-2</span>
                         <span class="visible-md-inline">col-md-4</span>
@@ -171,7 +179,7 @@
                         <span class="pull-right">|</span>
                     </boot:column>
                     <boot:column size="4"
-                                styleClass="highlight-column col-xs-6 col-sm-6 col-md-4">
+                                 styleClass="highlight-column col-xs-6 col-sm-6 col-md-4">
                         <span class="pull-left">|</span>
                         <span class="visible-lg-inline"> col-lg is not present --> it defaults to col-md-</span>
                         <span class="visible-md-inline">col-md-4</span>
@@ -202,8 +210,8 @@
                         <!-- alt. "form-group pull-left" -->
                         <div class="col-md-12">
                             <a class="btn btn-default"
-                               href="/cui-reference-documentation/pages/documentation/cui_components/demo/layout.jsf?dswid=632"><span
-                                    class="cui-icon cui-icon-alarm"></span><span class="btn-text">Some Button</span></a>
+                               href="/documentation/cui_components/demo/layout.jsf?dswid=632"><span
+                                class="cui-icon cui-icon-alarm"></span><span class="btn-text">Some Button</span></a>
                         </div>
                     </div>
                 </h:form>
@@ -325,8 +333,8 @@
             </boot:column>
             <boot:column size="6">
                 <boot:navigationMenu id="demoNavMenu"
-                                    model="#{navigationMenuDemoBean.navDemoItem}"
-                                    style="display:block;"/>
+                                     model="#{navigationMenuDemoBean.navDemoItem}"
+                                     style="display:block;"/>
             </boot:column>
         </boot:row>
 
@@ -338,22 +346,22 @@
                 <dev:sourceCode type="lang-java" sourcePath="widgetBean.sample"/>
                 <dev:sourceCode sourceContainerId="widgetcss" type="lang-css" description="CSS Structure of content"/>
                 <h:panelGroup id="widgetcss" style="display:none;">
-> .font-title {
-    font-size: 15px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-}
-> time {
-    text-align: right;
-}
-> .widget-footer {
-    margin-top: 10px;
-    text-align: right;
-}
-> * {
-    display: block;
-}
+                    > .font-title {
+                    font-size: 15px;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: space-between;
+                    }
+                    > time {
+                    text-align: right;
+                    }
+                    > .widget-footer {
+                    margin-top: 10px;
+                    text-align: right;
+                    }
+                    > * {
+                    display: block;
+                    }
                 </h:panelGroup>
             </boot:column>
             <boot:column size="6">
@@ -364,4 +372,3 @@
         </boot:row>
     </ui:define>
 </ui:composition>
-</html>

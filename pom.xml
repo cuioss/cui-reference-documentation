@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.cuioss</groupId>
         <artifactId>cui-parent-pom</artifactId>
         <version>0.4.6</version>
-        <relativePath />
+        <relativePath/>
     </parent>
     <groupId>de.cuioss.portal.quarkus</groupId>
     <artifactId>cui-reference-documentation</artifactId>
@@ -20,9 +20,11 @@
     <scm>
         <url>https://github.com/cuioss/cui-reference-documentation/</url>
         <connection>
-            scm:git:https://github.com/cuioss/cui-reference-documentation.git</connection>
+            scm:git:https://github.com/cuioss/cui-reference-documentation.git
+        </connection>
         <developerConnection>
-            scm:git:https://github.com/cuioss/cui-reference-documentation/</developerConnection>
+            scm:git:https://github.com/cuioss/cui-reference-documentation/
+        </developerConnection>
         <tag>HEAD</tag>
     </scm>
     <issueManagement>
@@ -213,6 +215,11 @@
         </dependency>
         <dependency>
             <groupId>de.cuioss.jsf</groupId>
+            <artifactId>cui-jsf-core-components</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.cuioss.jsf</groupId>
             <artifactId>cui-jsf-bootstrap-css</artifactId>
         </dependency>
         <dependency>
@@ -305,11 +312,6 @@
         </dependency>
         <dependency>
             <groupId>de.cuioss.jsf</groupId>
-            <artifactId>cui-jsf-core-components</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.jsf</groupId>
             <artifactId>cui-javascript</artifactId>
         </dependency>
 
@@ -349,7 +351,7 @@
                             </includes>
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <artifactItems>
-                                <!-- ALL CUI MODULES, FOR PROVIDING THE DEFAULT 
+                                <!-- ALL CUI MODULES, FOR PROVIDING THE DEFAULT
                                     CONFIG -->
                                 <artifactItem>
                                     <groupId>de.cuioss.portal.mirco-profile</groupId>
@@ -411,29 +413,29 @@
                                 <copy
                                     todir="${path.module-default-config.target}">
                                     <fileset
-                                        dir="${path.module-default-config.unpack}" />
-                                    <!-- Moving file out of META-INF. Also 
+                                        dir="${path.module-default-config.unpack}"/>
+                                    <!-- Moving file out of META-INF. Also
                                         getting rid of modules without config. -->
                                     <regexpmapper
                                         handledirsep="true"
                                         from="^(.*)/META-INF/(.*)$$"
-                                        to="\1/\2" />
+                                        to="\1/\2"/>
                                 </copy>
-                                <!-- write text file with relative folder 
+                                <!-- write text file with relative folder
                                     content. output looks like this:
                                 "/module1/microprofile-config.properties,/module2/microprofile-config.yaml" -->
                                 <fileset
                                     id="default-config-fileset"
-                                    dir="${path.module-default-config.target}" />
+                                    dir="${path.module-default-config.target}"/>
                                 <pathconvert targetos="unix"
-                                    pathsep=","
-                                    property="antrun.result.config-file-list"
-                                    refid="default-config-fileset">
-                                    <!-- prefixing path with "/META-INF" 
+                                             pathsep=","
+                                             property="antrun.result.config-file-list"
+                                             refid="default-config-fileset">
+                                    <!-- prefixing path with "/META-INF"
                                         to allow direct access via classloader -->
                                     <map
                                         from="${path.module-default-config.target}/"
-                                        to="/${path.module-default-config.meta-inf}/" />
+                                        to="/${path.module-default-config.meta-inf}/"/>
                                 </pathconvert>
                                 <echo
                                     file="${path.module-default-config.target}/list.txt">
