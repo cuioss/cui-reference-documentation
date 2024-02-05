@@ -39,7 +39,7 @@
         <!-- To be moved later on -->
         <!-- Older version needed because of quarkus version -->
         <version.slf4j>1.7.36</version.slf4j>
-        <version.myfaces.quarkus>2.3-next-M7</version.myfaces.quarkus>
+        <version.myfaces.quarkus>4.1.0-RC1</version.myfaces.quarkus>
         <primefaces-quarkus.version>2.12.2</primefaces-quarkus.version>
         <version.primefaces>13.0.5</version.primefaces>
         <omnifaces-quarkus.version>3.14.3</omnifaces-quarkus.version>
