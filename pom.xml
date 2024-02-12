@@ -43,7 +43,7 @@
         <primefaces-quarkus.version>2.12.2</primefaces-quarkus.version>
         <version.primefaces>13.0.5</version.primefaces>
         <omnifaces-quarkus.version>3.14.3</omnifaces-quarkus.version>
-        <quarkus.version>2.16.9.Final</quarkus.version>
+        <quarkus.version>3.7.2</quarkus.version>
         <path.module-default-config.unpack>
             ${project.build.directory}/dependencies/modules-default-config
         </path.module-default-config.unpack>
