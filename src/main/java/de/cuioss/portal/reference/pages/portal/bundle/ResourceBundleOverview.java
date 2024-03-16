@@ -1,5 +1,6 @@
 package de.cuioss.portal.reference.pages.portal.bundle;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,6 @@ import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.faces.application.Application;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -28,13 +28,11 @@ import lombok.ToString;
 @ToString
 public class ResourceBundleOverview implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 3479991887955291155L;
 
     @Getter
-    private List<BundleDescripor> descripors;
-
-    @Inject
-    Application application;
+    private List<BundleDescripor> descriptors;
 
     @Inject
     ResourceBundleRegistry bundleRegistry;
@@ -44,10 +42,10 @@ public class ResourceBundleOverview implements Serializable {
      */
     @PostConstruct
     public void init() {
-        descripors = new ArrayList<>();
+        descriptors = new ArrayList<>();
         for (ResourceBundleLocator locator : bundleRegistry.getResolvedPaths()) {
-            descripors.add(new BundleDescripor(locator.getBundlePath().orElse("unknown"),
-                    locator.getBundle(Locale.getDefault()).orElse(null)));
+            descriptors.add(new BundleDescripor(locator.getBundlePath().orElse("unknown"),
+                    locator.getBundle(Locale.getDefault()).orElseThrow(() -> new IllegalStateException("No bundle found for %s".formatted(locator)))));
         }
     }
 }

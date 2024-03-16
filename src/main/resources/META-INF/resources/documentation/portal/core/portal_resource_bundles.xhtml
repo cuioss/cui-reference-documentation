@@ -14,7 +14,7 @@
       <h2>Summary</h2>
       <p>This page acts as a dictionary for the ResouceBundles provided by the portal</p>
       <h2>Available Bundles</h2>
-      <ui:repeat var="descriptor" id="bundles" value="#{resourceBundleOverview.descripors}">
+      <ui:repeat var="descriptor" id="bundles" value="#{resourceBundleOverview.descriptors}">
          <boot:panel collapsed="true" collapsible="true" id="display" headerValue="#{descriptor.name}">
             <ui:repeat var="entry" value="#{descriptor.entries}" id="entries">
                <boot:row>

@@ -1,5 +1,6 @@
 package de.cuioss.portal.reference.portal.application;
 
+import java.io.Serial;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.Optional;
@@ -21,6 +22,7 @@ import lombok.EqualsAndHashCode;
 @Priority(PortalPriorities.PORTAL_MODULE_LEVEL)
 @EqualsAndHashCode
 public class ReferenceBundle implements ResourceBundleLocator {
+    @Serial
     private static final long serialVersionUID = -570736967563631611L;
     private static final String PATH = "de.cuioss.portal.reference.i18n.reference";
 
