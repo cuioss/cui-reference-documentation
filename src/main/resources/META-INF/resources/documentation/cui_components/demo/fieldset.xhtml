@@ -3,13 +3,15 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:dev="https://cuioss.de/jsf/dev"
                 xmlns:cui="https://cuioss.de/jsf/core"
-                xmlns:boot="https://cuioss.de/jsf/bootstrap">
+                xmlns:boot="https://cuioss.de/jsf/bootstrap"
+                xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
     <ui:define name="title">cui:fieldset</ui:define>
     <ui:define name="content">
         <h2>
             <boot:icon icon="cui-icon-justify"/>
             cui:fieldset
         </h2>
+        <ref_dev:cui_comp_meta name="fieldset"/>
         <h3>Minimal Fieldset</h3>
         <boot:row>
             <boot:column size="6">

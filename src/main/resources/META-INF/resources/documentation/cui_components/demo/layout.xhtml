@@ -3,7 +3,6 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:dev="https://cuioss.de/jsf/dev"
                 xmlns:boot="https://cuioss.de/jsf/bootstrap"
-                xmlns:cui-composite="http://xmlns.jcp.org/jsf/composite/cui-composite"
                 xmlns:ref_dev="http://xmlns.jcp.org/jsf/composite/development">
     <ui:define name="title">Layout Components</ui:define>
     <ui:define name="sidebarLeft">
@@ -47,7 +46,7 @@
                 </li>
                 <li>
                     <a href="#cui_widget"
-                       onclick="$('html, body').animate({scrollTop: $('#cui_widget').offset().top }, 'slow');">cui-composite:widget</a>
+                       onclick="$('html, body').animate({scrollTop: $('#cui_widget').offset().top }, 'slow');">boot:widget</a>
                 </li>
             </ul>
         </nav>
@@ -324,6 +323,7 @@
         The menu item is set to an active by adding the current view ID to the components model in the backing bean.
         The component renderer sets a 'data-item-active' HTML attribute for active components.
         By defining a CSS rule like 'li[data-item-active] {...}' the 'active' styling can be changed accordingly.
+        <ref_dev:cui_comp_meta name="navigationMenu"/>
         <h3>Sample</h3>
         <boot:row>
             <boot:column size="6">
@@ -338,7 +338,8 @@
             </boot:column>
         </boot:row>
 
-        <h2 id="cui_widget">cui-composite:widget</h2>
+        <h2 id="cui_widget">boot:widget</h2>
+        <ref_dev:cui_comp_meta name="widget"/>
         <h3>Sample</h3>
         <boot:row>
             <boot:column size="6">
@@ -365,9 +366,9 @@
                 </h:panelGroup>
             </boot:column>
             <boot:column size="6">
-                <cui-composite:widget model="#{widgetBean}">
+                <boot:widget model="#{widgetBean}">
                     <h:outputText value="#{widgetBean.content}"/>
-                </cui-composite:widget>
+                </boot:widget>
             </boot:column>
         </boot:row>
     </ui:define>

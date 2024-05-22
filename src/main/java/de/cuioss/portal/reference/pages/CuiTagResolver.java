@@ -1,17 +1,16 @@
 package de.cuioss.portal.reference.pages;
 
-import java.io.Serial;
-import java.io.Serializable;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-
 import de.cuioss.jsf.dev.metadata.TagLib;
 import de.cuioss.jsf.dev.metadata.model.UIComponentMetadata;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
+import java.io.Serial;
+import java.io.Serializable;
 
 /**
  * @author Oliver Wolff
@@ -60,8 +59,8 @@ public class CuiTagResolver implements Serializable {
         cuiBootstrapTagLib = new TagLib(CUI_BOOTSTRAP, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
         omniTagLib = new TagLib(OMNIFACES, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
         primeTagLib = new TagLib(PRIMEFACES, TagLib.JSF_2_FACELET_TAGLIB_NAMESPACE);
-        jsfHtmlTagLib = new TagLib(JSF_HTML, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
-        jsfCoreTagLib = new TagLib(JSF_CORE, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
+        jsfHtmlTagLib = new TagLib(JSF_HTML, TagLib.JSF_2_FACELET_TAGLIB_NAMESPACE);
+        jsfCoreTagLib = new TagLib(JSF_CORE, TagLib.JSF_2_FACELET_TAGLIB_NAMESPACE);
 
     }
 
