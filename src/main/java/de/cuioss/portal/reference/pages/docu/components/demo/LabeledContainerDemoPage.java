@@ -1,20 +1,18 @@
 package de.cuioss.portal.reference.pages.docu.components.demo;
 
-import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
-
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-
-import org.primefaces.model.DualListModel;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.primefaces.model.DualListModel;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 
 @SuppressWarnings("javadoc")
 @Named

@@ -1,6 +1,6 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.jboss.weld.junit5.auto.AddBeanClasses;
 

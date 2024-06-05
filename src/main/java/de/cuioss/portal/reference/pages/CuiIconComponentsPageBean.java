@@ -1,14 +1,13 @@
 package de.cuioss.portal.reference.pages;
 
-import java.io.Serializable;
-
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
 
 @Named
 @SessionScoped

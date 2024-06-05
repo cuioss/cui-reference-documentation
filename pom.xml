@@ -6,7 +6,7 @@
     <parent>
         <groupId>de.cuioss</groupId>
         <artifactId>cui-parent-pom</artifactId>
-        <version>0.4.9</version>
+        <version>0.6.0</version>
         <relativePath/>
     </parent>
     <groupId>de.cuioss.portal.quarkus</groupId>
@@ -32,18 +32,13 @@
         <system>GitHub Issues</system>
     </issueManagement>
     <properties>
-        <version.cui.parent>0.6.0</version.cui.parent>
+        <version.cui.parent>0.6-SNAPSHOT</version.cui.parent>
         <version.cui.jsf.components>1.0.0-SNAPSHOT</version.cui.jsf.components>
         <version.cui.portal.core>1.0.0-SNAPSHOT</version.cui.portal.core>
         <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
-        <!-- To be moved later on -->
+        <!-- Quarkus -->
+        <version.quarkus>3.10.1</version.quarkus>
         <!-- Older version needed because of quarkus version -->
-        <version.slf4j>1.7.36</version.slf4j>
-        <version.myfaces.quarkus>2.3-next-M8</version.myfaces.quarkus>
-        <primefaces-quarkus.version>2.12.2</primefaces-quarkus.version>
-        <version.primefaces>13.0.8</version.primefaces>
-        <omnifaces-quarkus.version>3.14.3</omnifaces-quarkus.version>
-        <quarkus.version>2.16.9.Final</quarkus.version>
         <path.module-default-config.unpack>
             ${project.build.directory}/dependencies/modules-default-config
         </path.module-default-config.unpack>
@@ -56,19 +51,6 @@
     </properties>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-bom</artifactId>
-                <version>${quarkus.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${version.slf4j}</version>
-                <scope>compile</scope>
-            </dependency>
             <dependency>
                 <groupId>de.cuioss.portal.ui</groupId>
                 <artifactId>bom</artifactId>
@@ -101,7 +83,7 @@
             <!-- Incoming -->
             <dependency>
                 <groupId>de.cuioss</groupId>
-                <artifactId>java-ee-8-bom</artifactId>
+                <artifactId>java-ee-10-bom</artifactId>
                 <version>${version.cui.parent}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -135,38 +117,32 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-health</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.quarkiverse.primefaces</groupId>
-            <artifactId>quarkus-primefaces-extensions</artifactId>
-            <version>${primefaces-quarkus.version}</version>
-        </dependency>
+        <!--     <dependency>
+                <groupId>io.quarkiverse.primefaces</groupId>
+                <artifactId>quarkus-primefaces-extensions</artifactId>
+            </dependency-->
         <dependency>
             <groupId>io.quarkiverse.omnifaces</groupId>
             <artifactId>quarkus-omnifaces</artifactId>
-            <version>${omnifaces-quarkus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.myfaces.core.extensions.quarkus</groupId>
             <artifactId>myfaces-quarkus</artifactId>
-            <version>${version.myfaces.quarkus}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.myfaces.core</groupId>
             <artifactId>myfaces-api</artifactId>
             <scope>compile</scope>
-            <version>${version.myfaces.quarkus}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.myfaces.core</groupId>
             <artifactId>myfaces-impl</artifactId>
             <scope>runtime</scope>
-            <version>${version.myfaces.quarkus}</version>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>org.apache.myfaces.core.extensions.quarkus</groupId>
             <artifactId>myfaces-quarkus-deployment</artifactId>
-            <version>${version.myfaces.quarkus}</version>
-        </dependency>
+        </dependency> !-->
         <!-- Provided jakarta ee -->
         <!-- needed for unit testing -->
         <!-- jakarta ee -->
@@ -202,7 +178,7 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>${version.primefaces}</version>
+            <classifier>jakarta</classifier>
         </dependency>
         <dependency>
             <groupId>de.cuioss.portal.ui</groupId>
@@ -336,6 +312,22 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.openrewrite.maven</groupId>
+                <artifactId>rewrite-maven-plugin</artifactId>
+                <configuration>
+                    <activeRecipes>
+                        <recipe>org.openrewrite.java.migrate.jakarta.JakartaEE10</recipe>
+                    </activeRecipes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.openrewrite.recipe</groupId>
+                        <artifactId>rewrite-migrate-java</artifactId>
+                        <version>2.10.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
@@ -449,7 +441,7 @@
             <plugin>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
-                <version>${quarkus.version}</version>
+                <version>${version.quarkus}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>

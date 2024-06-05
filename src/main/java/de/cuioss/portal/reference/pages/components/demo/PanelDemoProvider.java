@@ -1,18 +1,17 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import de.cuioss.jsf.api.ui.model.ToggleSwitch;
 import de.cuioss.tools.logging.CuiLogger;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Data provider for the panel demo page

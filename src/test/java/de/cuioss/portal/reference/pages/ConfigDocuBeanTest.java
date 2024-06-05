@@ -3,7 +3,7 @@ package de.cuioss.portal.reference.pages;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
 import org.junit.jupiter.api.Disabled;
@@ -18,7 +18,7 @@ import de.cuioss.test.juli.junit5.EnableTestLogger;
 class ConfigDocuBeanTest {
 
     @Inject
-    private ConfigDocuBean underTest;
+    ConfigDocuBean underTest;
 
     @Test
     @Disabled("@Sven: ich habe das ant-Zeugs nicht verstanden")

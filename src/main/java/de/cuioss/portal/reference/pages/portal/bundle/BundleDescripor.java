@@ -1,6 +1,8 @@
 package de.cuioss.portal.reference.pages.portal.bundle;
 
-import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,9 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 
 /**
  * @author Oliver Wolff

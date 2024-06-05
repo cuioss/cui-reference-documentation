@@ -1,26 +1,25 @@
 package de.cuioss.portal.reference.pages;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-
 import de.cuioss.tools.collect.CollectionLiterals;
 import de.cuioss.tools.io.IOStreams;
 import de.cuioss.tools.logging.CuiLogger;
 import de.cuioss.tools.string.Splitter;
+import jakarta.inject.Named;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Reads a text file {@code META-INF/modules-default-config/list.txt}, that
  * contains all relative paths to a module default config file. The file can
  * either be a {@code properties} or {@code yaml} file.
- *
+ * <p>
  * A list of {@link DefaultConfigSource}s is provided, each representing an
  * abstract description of the default config.
  *
@@ -39,6 +38,30 @@ public class ConfigDocuBean {
 
     @Getter
     private List<DefaultConfigSource> defaultConfigSources;
+
+    private static DefaultConfigSource toDefaultConfigSource(String path) {
+        log.info("module default config found: {}", path);
+
+        // path must start with "/" in order to be loaded as classpath resource, see:
+        // com.icw.ehf.cui.dev.ui.components.SourceCodeComponent.resolvePath
+        var moduleName = path.substring(RESOURCE_PATH.length() + 1, path.lastIndexOf("/"));
+
+        return new DefaultConfigSource(path, moduleName, resolveStyle(path));
+    }
+
+    private static String resolveStyle(String path) {
+        if (null == path) {
+            return null;
+        }
+        if (path.endsWith(".properties")) {
+            return "lang-properties";
+        }
+        if (path.endsWith(".yaml") || path.endsWith(".yml")) {
+            return "lang-yaml";
+        }
+        log.warn("Unknown source path: {}", path);
+        return null;
+    }
 
     /**
      * Loads all {@code META-INF/microprofile-config.properties} and
@@ -64,30 +87,6 @@ public class ConfigDocuBean {
         }
 
         defaultConfigSources = CollectionLiterals.immutableList(sources);
-    }
-
-    private static DefaultConfigSource toDefaultConfigSource(String path) {
-        log.info("module default config found: {}", path);
-
-        // path must start with "/" in order to be loaded as classpath resource, see:
-        // com.icw.ehf.cui.dev.ui.components.SourceCodeComponent.resolvePath
-        var moduleName = path.substring(RESOURCE_PATH.length() + 1, path.lastIndexOf("/"));
-
-        return new DefaultConfigSource(path, moduleName, resolveStyle(path));
-    }
-
-    private static String resolveStyle(String path) {
-        if (null == path) {
-            return null;
-        }
-        if (path.endsWith(".properties")) {
-            return "lang-properties";
-        }
-        if (path.endsWith(".yaml") || path.endsWith(".yml")) {
-            return "lang-yaml";
-        }
-        log.warn("Unknown source path: {}", path);
-        return null;
     }
 
     @Value

@@ -1,28 +1,22 @@
 package de.cuioss.portal.reference.pages.portal;
 
+import de.cuioss.tools.io.IOStreams;
+import de.cuioss.tools.string.MoreStrings;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+import org.jdom2.*;
+import org.jdom2.Content.CType;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.XMLOutputter;
+
+import javax.xml.XMLConstants;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
-import javax.xml.XMLConstants;
-
-import org.jdom2.Comment;
-import org.jdom2.Content;
-import org.jdom2.Content.CType;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.XMLOutputter;
-
-import de.cuioss.tools.io.IOStreams;
-import de.cuioss.tools.string.MoreStrings;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * Parses the given xhtml, checks for the first comment. If it starts with

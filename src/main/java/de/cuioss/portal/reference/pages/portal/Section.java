@@ -1,11 +1,11 @@
 package de.cuioss.portal.reference.pages.portal;
 
-import java.io.Serializable;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * @author Oliver Wolff

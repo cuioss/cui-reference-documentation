@@ -1,13 +1,12 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
-
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
-
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 @Named
 @RequestScoped

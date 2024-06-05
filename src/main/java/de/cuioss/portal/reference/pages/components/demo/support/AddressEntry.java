@@ -1,22 +1,16 @@
 package de.cuioss.portal.reference.pages.components.demo.support;
 
-import static de.cuioss.tools.string.MoreStrings.nullToEmpty;
-import static java.util.Objects.isNull;
+import de.cuioss.tools.string.MoreStrings;
+import de.cuioss.uimodel.model.conceptkey.ConceptKeyType;
+import de.cuioss.uimodel.nameprovider.IDisplayNameProvider;
+import lombok.*;
 
 import java.util.Optional;
 import java.util.SortedSet;
 import java.util.UUID;
 
-import de.cuioss.tools.string.MoreStrings;
-import de.cuioss.uimodel.model.conceptkey.ConceptKeyType;
-import de.cuioss.uimodel.nameprovider.IDisplayNameProvider;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import lombok.Singular;
-import lombok.ToString;
-import lombok.Value;
+import static de.cuioss.tools.string.MoreStrings.nullToEmpty;
+import static java.util.Objects.isNull;
 
 /**
  * Represents an Address that can be used in conjunction with provider search

@@ -1,9 +1,8 @@
 package de.cuioss.portal.reference.portal.navigation.items.portal;
 
-import javax.faces.context.FacesContext;
-
 import de.cuioss.jsf.api.application.navigation.NavigationUtils;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingleImpl;
+import jakarta.faces.context.FacesContext;
 import lombok.EqualsAndHashCode;
 
 /**
@@ -13,7 +12,6 @@ import lombok.EqualsAndHashCode;
  * view is active.
  *
  * @author Oliver Wolff
- *
  */
 @EqualsAndHashCode(callSuper = true)
 public class PortalBaseMenuItem extends NavigationMenuItemSingleImpl {

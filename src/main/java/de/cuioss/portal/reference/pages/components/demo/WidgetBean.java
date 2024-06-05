@@ -1,27 +1,28 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.security.SecureRandom;
-
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
-
 import de.cuioss.portal.ui.api.dashboard.BaseLazyLoadingWidget;
 import de.cuioss.uimodel.nameprovider.DisplayName;
 import de.cuioss.uimodel.nameprovider.LabeledKey;
 import de.cuioss.uimodel.result.ResultDetail;
 import de.cuioss.uimodel.result.ResultObject;
 import de.cuioss.uimodel.result.ResultState;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.Serial;
+import java.security.SecureRandom;
+
 @SuppressWarnings("javadoc")
 @Named
 @ViewScoped
-@ToString(of = { "content" }, callSuper = true)
-@EqualsAndHashCode(of = { "content" }, callSuper = true)
+@ToString(of = {"content"}, callSuper = true)
+@EqualsAndHashCode(of = {"content"}, callSuper = true)
 public class WidgetBean extends BaseLazyLoadingWidget<String> {
 
+    @Serial
     private static final long serialVersionUID = 6027808398818076494L;
 
     private static SecureRandom random = new SecureRandom();

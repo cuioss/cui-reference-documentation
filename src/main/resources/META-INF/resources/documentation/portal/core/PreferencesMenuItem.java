@@ -9,7 +9,7 @@ import de.icw.cui.portal.ui.pages.PreferencesPage;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.enterprise.context.Dependent;
+import jakarta.enterprise.context.Dependent;
 
 /**
  * <p>

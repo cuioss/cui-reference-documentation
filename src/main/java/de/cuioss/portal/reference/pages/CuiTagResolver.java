@@ -1,14 +1,15 @@
 package de.cuioss.portal.reference.pages;
 
+import de.cuioss.jsf.dev.metadata.LibraryTagLib;
 import de.cuioss.jsf.dev.metadata.TagLib;
 import de.cuioss.jsf.dev.metadata.model.UIComponentMetadata;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -23,17 +24,6 @@ public class CuiTagResolver implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 5547311337444854287L;
-
-    private static final String TAGLIB = "/META-INF/cui-core.taglib.xml";
-    private static final String CUI_BOOTSTRAP = "/META-INF/cui-bootstrap.taglib.xml";
-
-    private static final String OMNIFACES = "/META-INF/omnifaces-ui.taglib.xml";
-
-    private static final String PRIMEFACES = "/META-INF/primefaces-p.taglib.xml";
-
-    private static final String JSF_HTML = "/META-INF/myfaces_html.tld";
-
-    private static final String JSF_CORE = "/META-INF/myfaces_core.tld";
 
     @Getter
     private TagLib cuiTagLib;
@@ -55,12 +45,12 @@ public class CuiTagResolver implements Serializable {
 
     @PostConstruct
     public void initBean() {
-        cuiTagLib = new TagLib(TAGLIB, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
-        cuiBootstrapTagLib = new TagLib(CUI_BOOTSTRAP, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
-        omniTagLib = new TagLib(OMNIFACES, TagLib.JSF_2_2_FACELET_TAGLIB_NAMESPACE);
-        primeTagLib = new TagLib(PRIMEFACES, TagLib.JSF_2_FACELET_TAGLIB_NAMESPACE);
-        jsfHtmlTagLib = new TagLib(JSF_HTML, TagLib.JSF_2_FACELET_TAGLIB_NAMESPACE);
-        jsfCoreTagLib = new TagLib(JSF_CORE, TagLib.JSF_2_FACELET_TAGLIB_NAMESPACE);
+        cuiTagLib = LibraryTagLib.CUI_CORE.load();
+        cuiBootstrapTagLib = LibraryTagLib.CUI_BOOTSTRAP.load();
+        omniTagLib = LibraryTagLib.OMNI_FACES.load();
+        primeTagLib = LibraryTagLib.PRIME_FACES.load();
+        jsfHtmlTagLib = LibraryTagLib.MY_FACES.load();
+        jsfCoreTagLib = LibraryTagLib.MY_FACES.load();
 
     }
 

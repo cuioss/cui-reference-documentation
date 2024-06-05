@@ -1,13 +1,5 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import de.cuioss.jsf.api.components.model.datalist.EditableDataListModel;
 import de.cuioss.jsf.api.components.model.datalist.impl.AbstractEditableDataListModel;
 import de.cuioss.jsf.bootstrap.CssBootstrap;
@@ -19,6 +11,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("javadoc")
 @Named

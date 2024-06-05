@@ -1,17 +1,17 @@
 package de.cuioss.portal.reference.pages.docu.components.demo;
 
-import java.io.Serializable;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import de.cuioss.jsf.api.application.message.MessageProducer;
 import de.cuioss.portal.common.bundle.ResourceBundleWrapper;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 @Named
 @ApplicationScoped
@@ -19,6 +19,7 @@ import lombok.ToString;
 @ToString
 public class CommandButtonsDemoPage implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -6837081477839627383L;
 
     @Inject

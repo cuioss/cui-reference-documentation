@@ -1,8 +1,8 @@
 package de.cuioss.portal.reference.pages.portal.bundle;
 
-import java.io.Serializable;
-
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * @author Oliver Wolff

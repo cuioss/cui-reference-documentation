@@ -1,23 +1,23 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
-
-import java.io.Serializable;
-import java.util.List;
-
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import de.cuioss.portal.ui.api.ui.lazyloading.BaseLazyLoadingRequest;
 import de.cuioss.portal.ui.api.ui.lazyloading.LazyLoadingViewController;
 import de.cuioss.tools.logging.CuiLogger;
 import de.cuioss.uimodel.result.ResultObject;
 import de.cuioss.uimodel.result.ResultState;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.List;
+
+import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 
 @SuppressWarnings("javadoc")
 @ViewScoped
@@ -26,6 +26,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 public class MultipleLazyLoadingPageBean extends BaseLazyLoadingRequest<List<String>> implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 3231631758524048548L;
 
     private static final CuiLogger log = new CuiLogger(MultipleLazyLoadingPageBean.class);

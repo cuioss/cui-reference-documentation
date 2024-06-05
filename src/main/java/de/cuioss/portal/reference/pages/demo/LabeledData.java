@@ -1,9 +1,9 @@
 package de.cuioss.portal.reference.pages.demo;
 
-import java.io.Serializable;
-
 import de.cuioss.uimodel.nameprovider.IDisplayNameProvider;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * @author Oliver Wolff

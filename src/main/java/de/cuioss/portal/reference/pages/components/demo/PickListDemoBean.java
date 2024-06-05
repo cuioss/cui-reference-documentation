@@ -1,21 +1,19 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import static de.cuioss.tools.collect.CollectionLiterals.immutableList;
-
-import java.io.Serializable;
-import java.util.Collections;
-
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
-import org.primefaces.event.TransferEvent;
-import org.primefaces.model.DualListModel;
-
 import de.cuioss.tools.logging.CuiLogger;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.util.Collections;
+
+import static de.cuioss.tools.collect.CollectionLiterals.immutableList;
 
 @SuppressWarnings("javadoc")
 @Named

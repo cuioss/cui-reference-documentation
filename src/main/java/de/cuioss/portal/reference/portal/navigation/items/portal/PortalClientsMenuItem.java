@@ -1,13 +1,13 @@
 package de.cuioss.portal.reference.portal.navigation.items.portal;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
 import de.cuioss.tools.collect.CollectionLiterals;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents the Portal Core Module menu.

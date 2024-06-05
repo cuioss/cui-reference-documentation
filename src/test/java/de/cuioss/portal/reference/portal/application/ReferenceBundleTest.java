@@ -3,9 +3,9 @@ package de.cuioss.portal.reference.portal.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
 
 import org.jboss.weld.junit5.auto.ActivateScopes;
 import org.jboss.weld.junit5.auto.AddBeanClasses;

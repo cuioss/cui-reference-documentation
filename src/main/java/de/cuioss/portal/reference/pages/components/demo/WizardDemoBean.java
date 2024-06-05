@@ -1,20 +1,15 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.io.Serializable;
-
-import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.inject.Inject;
-import javax.inject.Named;
-
+import de.cuioss.jsf.api.application.message.MessageProducer;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import lombok.*;
 import org.primefaces.event.FlowEvent;
 
-import de.cuioss.jsf.api.application.message.MessageProducer;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import java.io.Serial;
+import java.io.Serializable;
 
 @Named
 @SessionScoped
@@ -22,6 +17,7 @@ import lombok.ToString;
 @ToString
 public class WizardDemoBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 8903424637991951441L;
 
     @Inject
@@ -48,8 +44,9 @@ public class WizardDemoBean implements Serializable {
     }
 
     @Data
-    public class User implements Serializable {
+    public static class User implements Serializable {
 
+        @Serial
         private static final long serialVersionUID = 8730301286307340788L;
 
         private String firstname;

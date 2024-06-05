@@ -1,19 +1,18 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import static de.cuioss.tools.collect.CollectionLiterals.immutableList;
-
-import java.io.Serializable;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import de.cuioss.jsf.api.components.support.ActiveIndexManager;
 import de.cuioss.jsf.api.components.support.ActiveIndexManagerImpl;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+
+import static de.cuioss.tools.collect.CollectionLiterals.immutableList;
 
 @SuppressWarnings("javadoc")
 @Named

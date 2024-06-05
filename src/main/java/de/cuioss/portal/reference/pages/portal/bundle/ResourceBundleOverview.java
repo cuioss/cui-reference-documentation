@@ -1,22 +1,21 @@
 package de.cuioss.portal.reference.pages.portal.bundle;
 
+import de.cuioss.portal.common.bundle.ResourceBundleLocator;
+import de.cuioss.portal.common.bundle.ResourceBundleRegistry;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import de.cuioss.portal.common.bundle.ResourceBundleLocator;
-import de.cuioss.portal.common.bundle.ResourceBundleRegistry;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @author Oliver Wolff

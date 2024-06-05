@@ -1,9 +1,5 @@
 package de.cuioss.portal.reference.portal.navigation.items;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
 import de.cuioss.portal.configuration.PortalConfigurationKeys;
@@ -13,24 +9,14 @@ import de.cuioss.portal.reference.portal.navigation.items.cui.CuiBehaviorMenuIte
 import de.cuioss.portal.reference.portal.navigation.items.cui.CuiConverterMenuItem;
 import de.cuioss.portal.reference.portal.navigation.items.cui.CuiUiComponentsMenuItem;
 import de.cuioss.portal.reference.portal.navigation.items.cui.CuiValidatorMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiButtonsMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiCommandButtonsMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiDashboardMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiEditableDatalistMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiFieldsetMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiInputGuardedMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiLazyLoadingMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiMiscellaneousMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiPanelMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiTagMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiTextFilterMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.CuiToolbarMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.DisplayNameProviderMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.JqPlotMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.cui.demo.ModalDialogDemoMenuItem;
+import de.cuioss.portal.reference.portal.navigation.items.cui.demo.*;
 import de.cuioss.tools.collect.CollectionLiterals;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Represents the Cui-Components top-level menu.

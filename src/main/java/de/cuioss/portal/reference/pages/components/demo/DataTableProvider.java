@@ -1,16 +1,15 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Named
 @SessionScoped

@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
       xmlns:dev="https://cuioss.de/jsf/dev"
       xmlns:boot="https://cuioss.de/jsf/bootstrap">
 
@@ -187,8 +187,8 @@
         <p>
             The portal configuration system defines an interface for overwriting system properties. The portal will
             pick up all corresponding properties and sets them accordingly. For instance setting
-            <code>portal.system_property.javax.net.ssl.trustStore=/config/ca.keystore</code>
-            will result in the system property <code>javax.net.ssl.trustStore</code> being set to
+            <code>portal.system_property.jakarta.net.ssl.trustStore=/config/ca.keystore</code>
+            will result in the system property <code>jakarta.net.ssl.trustStore</code> being set to
             <code>/config/ca.keystore</code>.
             <em>Caution:</em> The intend of this mechanism are corner-cases and tests. Therefore it should always be the
             exception and not the standard way to alter system properties with this mechanism.

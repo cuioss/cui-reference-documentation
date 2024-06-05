@@ -1,21 +1,16 @@
 package de.cuioss.portal.reference.portal.navigation.items;
 
-import static java.util.Collections.sort;
+import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
+import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
+import de.cuioss.portal.reference.portal.navigation.items.prime.*;
+import de.cuioss.tools.collect.CollectionLiterals;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
-import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
-import de.cuioss.portal.reference.portal.navigation.items.prime.PrimefacesPicklistMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.prime.PrimefacesSchedulerMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.prime.PrimefacesTableMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.prime.PrimefacesTextEditorMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.prime.PrimefacesTreeMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.prime.PrimefacesWizardMenuItem;
-import de.cuioss.tools.collect.CollectionLiterals;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import static java.util.Collections.sort;
 
 /**
  * Represents the Primefaces menu container.

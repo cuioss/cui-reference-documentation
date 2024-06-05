@@ -1,15 +1,15 @@
 package de.cuioss.portal.reference.pages.demo;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import de.cuioss.tools.collect.MapBuilder;
 import de.cuioss.tools.string.Splitter;
 import de.cuioss.uimodel.nameprovider.DisplayName;
 import de.cuioss.uimodel.nameprovider.IDisplayNameProvider;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Oliver Wolff

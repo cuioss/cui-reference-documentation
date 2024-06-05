@@ -1,11 +1,5 @@
 package de.cuioss.portal.reference.pages.demo.graph;
 
-import java.io.Serializable;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import de.cuioss.jsf.jqplot.JqPlot;
 import de.cuioss.jsf.jqplot.js.types.JsDouble;
 import de.cuioss.jsf.jqplot.layout.Grid;
@@ -22,6 +16,11 @@ import de.cuioss.jsf.jqplot.renderer.marker.PointStyle;
 import de.cuioss.test.generator.Generators;
 import lombok.Getter;
 import lombok.Setter;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
 
 @Named
 @SessionScoped

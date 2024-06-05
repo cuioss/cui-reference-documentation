@@ -1,9 +1,5 @@
 package de.cuioss.portal.reference.portal.navigation.items;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
 import de.cuioss.portal.configuration.PortalConfigurationKeys;
@@ -14,6 +10,10 @@ import de.cuioss.portal.reference.portal.navigation.items.external.PrimefacesMen
 import de.cuioss.tools.collect.CollectionLiterals;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Represents the Cui-Components top-level menu.

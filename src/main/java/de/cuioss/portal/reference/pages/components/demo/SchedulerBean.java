@@ -1,18 +1,16 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import static de.cuioss.test.generator.Generators.letterStrings;
-
-import java.io.Serializable;
-import java.time.LocalDateTime;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
+import lombok.Getter;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 
-import lombok.Getter;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+import static de.cuioss.test.generator.Generators.letterStrings;
 
 @Named
 @SessionScoped

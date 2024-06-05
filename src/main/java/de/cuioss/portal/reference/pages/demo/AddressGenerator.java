@@ -1,10 +1,10 @@
 package de.cuioss.portal.reference.pages.demo;
 
-import static de.cuioss.test.generator.Generators.fixedValues;
-import static de.cuioss.test.generator.Generators.integers;
-
 import de.cuioss.test.generator.TypedGenerator;
 import de.cuioss.test.generator.internal.net.java.quickcheck.generator.PrimitiveGenerators;
+
+import static de.cuioss.test.generator.Generators.fixedValues;
+import static de.cuioss.test.generator.Generators.integers;
 
 /**
  * Simple Generator for creating {@link Address}es

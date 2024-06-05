@@ -2,7 +2,7 @@ package de.cuioss.portal.reference.pages;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +15,10 @@ class CuiTagResolverTest implements ShouldHandleObjectContracts<CuiTagResolver> 
 
     @Inject
     @Getter
-    private CuiTagResolver underTest;
+    CuiTagResolver underTest;
 
     @Test
-    void shouldProivdeLibraries() {
+    void shouldProvideLibraries() {
         underTest.initBean();
 
         assertNotNull(underTest.getCuiTagLib());

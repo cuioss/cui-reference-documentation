@@ -1,10 +1,5 @@
 package de.cuioss.portal.reference.portal.navigation.items;
 
-import static java.util.Collections.sort;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
 import de.cuioss.portal.reference.portal.navigation.items.bootstrap.BootstrapGridMenuItem;
@@ -12,6 +7,11 @@ import de.cuioss.portal.reference.portal.navigation.items.bootstrap.FormMenuItem
 import de.cuioss.tools.collect.CollectionLiterals;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Collections.sort;
 
 /**
  * Represents the Twitter Bootstrap menu.

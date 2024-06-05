@@ -1,17 +1,16 @@
 package de.cuioss.portal.reference.portal.application;
 
+import de.cuioss.portal.common.bundle.ResourceBundleLocator;
+import de.cuioss.portal.common.priority.PortalPriorities;
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import lombok.EqualsAndHashCode;
+
 import java.io.Serial;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-
-import de.cuioss.portal.common.bundle.ResourceBundleLocator;
-import de.cuioss.portal.common.priority.PortalPriorities;
-import lombok.EqualsAndHashCode;
 
 /**
  * Defines the additional bundle
@@ -46,7 +45,7 @@ public class ReferenceBundle implements ResourceBundleLocator {
     public Optional<ResourceBundle> getBundle(Locale locale) {
         try {
             Optional<ResourceBundle> loadedBundle = Optional
-                    .of(ResourceBundle.getBundle(PATH, locale, Thread.currentThread().getContextClassLoader()));
+                .of(ResourceBundle.getBundle(PATH, locale, Thread.currentThread().getContextClassLoader()));
             LOGGER.debug("Successfully loaded %s '%s' for '%s'", getClass().getName(), PATH, locale);
             return loadedBundle;
         } catch (MissingResourceException e) {

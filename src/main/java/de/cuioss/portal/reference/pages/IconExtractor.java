@@ -1,17 +1,16 @@
 package de.cuioss.portal.reference.pages;
 
+import de.cuioss.jsf.api.application.message.MessageProducer;
+import de.cuioss.tools.logging.CuiLogger;
+import de.cuioss.tools.string.MoreStrings;
+import de.cuioss.tools.string.Splitter;
+import jakarta.faces.context.FacesContext;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.context.FacesContext;
-
-import de.cuioss.jsf.api.application.message.MessageProducer;
-import de.cuioss.tools.logging.CuiLogger;
-import de.cuioss.tools.string.MoreStrings;
-import de.cuioss.tools.string.Splitter;
 
 @SuppressWarnings("javadoc")
 public class IconExtractor {
@@ -29,7 +28,7 @@ public class IconExtractor {
     private final String warnOnDuplicateMessageKey;
 
     public IconExtractor(final String cssBefore, final String cuiIconPrefix, final String warnOnDuplicateMessageKey,
-            final FacesContext facesContext, final MessageProducer messageProducer) {
+                         final FacesContext facesContext, final MessageProducer messageProducer) {
         this.facesContext = facesContext;
         this.messageProducer = messageProducer;
         this.cssBefore = cssBefore;
@@ -39,7 +38,7 @@ public class IconExtractor {
 
     public List<String> fromResource(final String resourceName, final String libraryName) {
         final var resource = facesContext.getApplication().getResourceHandler().createResource(resourceName,
-                libraryName);
+            libraryName);
 
         final List<String> data = new ArrayList<>();
 
@@ -63,7 +62,7 @@ public class IconExtractor {
             if (containsCuiIcon(part)) {
                 final var styleClass = extractStyleClass(part);
                 if (!data.contains(styleClass) && !"cui-icon-white".equals(styleClass)
-                        && !"cui-icon-red".equals(styleClass)) {
+                    && !"cui-icon-red".equals(styleClass)) {
                     data.add(styleClass);
                 } else {
                     warnOnDuplicate(facesContext, styleClass);

@@ -1,17 +1,5 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import static de.cuioss.tools.collect.CollectionLiterals.immutableList;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import de.cuioss.jsf.api.application.navigation.NavigationUtils;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
@@ -20,12 +8,24 @@ import de.cuioss.portal.ui.api.menu.PortalMenuItem;
 import de.cuioss.portal.ui.api.menu.items.AccountMenuItem;
 import de.cuioss.portal.ui.api.menu.items.LogoutMenuItem;
 import de.cuioss.portal.ui.api.menu.items.UserMenuItem;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import static de.cuioss.tools.collect.CollectionLiterals.immutableList;
+
 /**
- * Portal demo navigation menu with nested sub menu.
+ * Portal demo navigation menu with nested submenu.
  *
  * @author Sven Haag
  */
@@ -35,6 +35,7 @@ import lombok.ToString;
 @ToString
 public class NavigationMenuDemoBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -4202668219654666745L;
 
     private static final String MENU_ITEM_ID = "demoMenuId";
@@ -76,13 +77,13 @@ public class NavigationMenuDemoBean implements Serializable {
         container.setId(MENU_ITEM_ID);
         container.setIconStyleClass(MENU_ITEM_ICON);
         container.setActiveForAdditionalViewId(
-                immutableList(NavigationUtils.getCurrentView(FacesContext.getCurrentInstance()).getViewId()));
+            immutableList(NavigationUtils.getCurrentView(FacesContext.getCurrentInstance()).getViewId()));
 
-        List<NavigationMenuItem> subMenues = new ArrayList<>();
+        List<NavigationMenuItem> subMenus = new ArrayList<>();
 
-        subMenues.add(accountMenu);
+        subMenus.add(accountMenu);
 
-        subMenues.add(userMenu);
+        subMenus.add(userMenu);
 
         final var child1 = new NavigationMenuItemContainerImpl(1);
         child1.setId("child1");
@@ -107,9 +108,9 @@ public class NavigationMenuDemoBean implements Serializable {
         child2.getChildren().add(child3);
         child3.getChildren().add(child4);
 
-        subMenues.add(logout);
+        subMenus.add(logout);
 
-        container.setChildren(subMenues);
+        container.setChildren(subMenus);
 
         return container;
     }

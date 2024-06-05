@@ -1,20 +1,14 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import de.cuioss.jsf.api.components.events.ModelPayloadEvent;
 import de.cuioss.tools.logging.CuiLogger;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+import java.util.*;
 
 @SuppressWarnings("javadoc")
 @Named

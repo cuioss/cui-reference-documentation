@@ -1,7 +1,5 @@
 package de.cuioss.portal.reference.pages.components.demo.support;
 
-import java.util.Locale;
-
 import de.cuioss.jsf.api.security.SanitizedIDNInternetAddress;
 import de.cuioss.tools.string.Joiner;
 import de.cuioss.tools.string.MoreStrings;
@@ -15,6 +13,8 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.experimental.Delegate;
+
+import java.util.Locale;
 
 /**
  * Implementation of an {@link ConceptKeyType} which uses the

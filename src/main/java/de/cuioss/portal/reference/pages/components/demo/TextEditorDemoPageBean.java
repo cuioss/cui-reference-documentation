@@ -1,12 +1,11 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import java.io.Serializable;
-
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import lombok.Getter;
 import lombok.Setter;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
 
 @SuppressWarnings("javadoc")
 @Named

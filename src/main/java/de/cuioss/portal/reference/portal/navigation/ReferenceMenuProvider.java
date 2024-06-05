@@ -1,35 +1,30 @@
 package de.cuioss.portal.reference.portal.navigation;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Priority;
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Alternative;
-
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainer;
 import de.cuioss.portal.common.priority.PortalPriorities;
-import de.cuioss.portal.reference.portal.navigation.items.CuiComponentsMenu;
-import de.cuioss.portal.reference.portal.navigation.items.ExternalComponentsMenu;
-import de.cuioss.portal.reference.portal.navigation.items.GettingStartedMenu;
-import de.cuioss.portal.reference.portal.navigation.items.IconMenu;
-import de.cuioss.portal.reference.portal.navigation.items.PagesMenu;
-import de.cuioss.portal.reference.portal.navigation.items.PortalMenu;
+import de.cuioss.portal.reference.portal.navigation.items.*;
 import de.cuioss.portal.reference.portal.navigation.items.portal.PortalCoreMenuItem;
 import de.cuioss.portal.ui.api.menu.NavigationMenuProvider;
 import de.cuioss.tools.collect.CollectionBuilder;
 import de.cuioss.tools.collect.CollectionLiterals;
 import de.cuioss.tools.string.MoreStrings;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.enterprise.inject.Alternative;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.Serial;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
 /**
- * The references creates its own menu
+ * The references create its own menu
  *
  * @author Oliver Wolff
  */
@@ -40,6 +35,7 @@ import lombok.ToString;
 @ToString
 public class ReferenceMenuProvider implements NavigationMenuProvider {
 
+    @Serial
     private static final long serialVersionUID = 8780699386708876208L;
 
     @Getter

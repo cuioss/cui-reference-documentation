@@ -1,26 +1,16 @@
 package de.cuioss.portal.reference.portal.navigation.items;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItem;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainerImpl;
 import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSeparatorImpl;
 import de.cuioss.portal.configuration.PortalConfigurationKeys;
-import de.cuioss.portal.reference.portal.navigation.items.portal.ArchitectureMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.AuditMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.BasicConceptsMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.CommonObjectsMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.ConnectionMetadataMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.ErrorHandlingMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.I18nMessagesMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.LocaleHandlingMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.MPRestClientMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.PortalResourceBundlesMenuItem;
-import de.cuioss.portal.reference.portal.navigation.items.portal.PortalTemplatesMenuItem;
+import de.cuioss.portal.reference.portal.navigation.items.portal.*;
 import de.cuioss.tools.collect.CollectionLiterals;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents the Portal top-level menu.
