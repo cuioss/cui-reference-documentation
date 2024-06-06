@@ -312,22 +312,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.openrewrite.maven</groupId>
-                <artifactId>rewrite-maven-plugin</artifactId>
-                <configuration>
-                    <activeRecipes>
-                        <recipe>org.openrewrite.java.migrate.jakarta.JakartaEE10</recipe>
-                    </activeRecipes>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.openrewrite.recipe</groupId>
-                        <artifactId>rewrite-migrate-java</artifactId>
-                        <version>2.10.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
@@ -351,14 +335,6 @@
                                     <version>${version.cui.portal.core}</version>
                                     <outputDirectory>
                                         ${path.module-default-config.unpack}/portal-metrics-api
-                                    </outputDirectory>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>de.cuioss.portal.client</groupId>
-                                    <artifactId>portal-client-tracing</artifactId>
-                                    <version>${version.cui.portal.core}</version>
-                                    <outputDirectory>
-                                        ${path.module-default-config.unpack}/portal-client-tracing
                                     </outputDirectory>
                                 </artifactItem>
                                 <artifactItem>

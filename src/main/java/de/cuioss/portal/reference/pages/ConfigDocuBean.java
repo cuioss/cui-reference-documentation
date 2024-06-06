@@ -42,7 +42,7 @@ public class ConfigDocuBean {
     private static DefaultConfigSource toDefaultConfigSource(String path) {
         log.info("module default config found: {}", path);
 
-        // path must start with "/" in order to be loaded as classpath resource, see:
+        // path must start with "/" to be loaded as classpath resource, see:
         // com.icw.ehf.cui.dev.ui.components.SourceCodeComponent.resolvePath
         var moduleName = path.substring(RESOURCE_PATH.length() + 1, path.lastIndexOf("/"));
 
