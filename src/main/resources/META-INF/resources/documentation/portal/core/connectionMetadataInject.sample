@@ -1,7 +1,7 @@
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
 import de.icw.cui.portal.configuration.connections.impl.ConnectionMetadata;
-import de.icw.cui.portal.configuration.types.ConfigAsConnectionMetadata;
+import de.cuioss.portal.configuration.types.ConfigAsConnectionMetadata;
 
 @Inject
 @ConfigAsConnectionMetadata(baseName = "my.app.connection", failOnInvalidConfiguration = false)

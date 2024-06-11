@@ -14,10 +14,8 @@
         <h2>Design</h2>
         <p>
             The configuration system is based on the <a
-            href="https://download.eclipse.org/microprofile/microprofile-config-1.3/">
-            Eclipse MicroProfile Config</a>, and provides some extensions. in contrast to the CDI-based Portal,
-            each MP ConfigSource has to be provide via an SPI
-            (<code>org.eclipse.microprofile.config.inject.ConfigProperty</code>).
+            href="https://download.eclipse.org/microprofile/microprofile-config-3.1/">
+            Eclipse MicroProfile Config</a>, and provides some extensions.
         </p>
 
         <h2>Usage</h2>
@@ -31,16 +29,16 @@
             annotations / producers like:
         </p>
         <ul>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsCacheConfig</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsConnectionMetadata</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsFileLoader</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsFileLoaderList</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsFilteredMap</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsList</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsLocale</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsLocaleList</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsPath</code></li>
-            <li><code>de.icw.cui.portal.configuration.types.ConfigAsSet</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsCacheConfig</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsConnectionMetadata</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsFileLoader</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsFileLoaderList</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsFilteredMap</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsList</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsLocale</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsLocaleList</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsPath</code></li>
+            <li><code>de.cuioss.portal.configuration.types.ConfigAsSet</code></li>
         </ul>
 
         <h2>Handling Empty or Missing Values</h2>
@@ -67,8 +65,7 @@
         <p>
             To provide module based default configuration please provide a
             <code>META-INF/microprofile-config.properties</code> file. This configuration is automaticall collected
-            by the MP-Config implementation (SmallRye). In addition, the Portal also collects all
-            <code>META-INF/microprofile-config.yaml</code> files.
+            by the MP-Config implementation (SmallRye).
         </p>
         <p>
             Sometimes it is important to provide an order between the different default configurations, as they
@@ -83,128 +80,23 @@
         <p>
             Here is a list of all our default config sources:
             <ui:repeat value="#{configDocuBean.defaultConfigSources}" var="source">
-                <boot:panel collapsed="true" headerValue="#{source.moduleName}">
+                <boot:panel collapsed="true" headerValue="#{source.name}">
                     <dev:sourceCode enableClipboard="false"
-                                    sourcePath="#{source.path}"
+                                    source="#{source.content}"
                                     type="#{source.lang}"/>
                 </boot:panel>
             </ui:repeat>
         </p>
 
         <h2>Custom Config Sources</h2>
-        <p>
-            To programatically provide a config source the CUI-Portal provides the abstract class
-            <code>de.icw.cui.portal.configuration.source.AbstractPortalConfigSource</code>. The ordinal should be
-            provided as <code>de.icw.cui.portal.configuration.common.PortalPriorities</code> via
-            <code>de.icw.cui.portal.configuration.source.AbstractPortalConfigSource#getPortalPriority()</code>.
-        </p>
-        <h3>Properties Config Source</h3>
-        <p>
-            If the config source is based on a properties file please use
-            <code>de.icw.cui.portal.configuration.source.PropertiesConfigSource</code>.
-        </p>
         <h3>YAML Config Source</h3>
         <p>
-            If the config source is based on a YAML file please use
-            <code>de.icw.cui.portal.configuration.source.yaml.YamlConfigSource</code>. This class is provided via:
-        </p>
-        <pre>
-            &lt;dependency&gt;
-                &lt;groupId&gt;de.icw.cui.portal.configuration&lt;/groupId&gt;
-                &lt;artifactId&gt;portal-configuration-yaml&lt;/artifactId&gt;
-            &lt;/dependency&gt;
-        </pre>
-        <h3>CDI Config Source</h3>
-        <p>
-            If you have to make this config source available to CDI, keep in mind that there actually will be 2
-            instances of this class in the JVM. The first instance will be created by the MP Config SPI loader, the
-            second instance will be created by your CDI implementation.
-            To bridge between the SPI and CDI world, a config source might use a static member field to hold its
-            properties.
-            Also note, that any property served by the CDI config source might not be available to an injection point
-            or programmatically resolved config key due to the late initialization! A
-            <code>NoSuchElementException</code> could be thrown in such a case.
-        </p>
-        <h4>Alternative approachs that didn't work</h4>
-        <p>
-            Using AfterBeanDiscovery to make all MP config sources available to CDI.
-            Reason: The Priority annotation couldn't be resolved.
-        </p>
-        <h3>Caching / Reloading</h3>
-        <p>
-            Each config source is responsible for caching its own properties. If your config source is a
-            <code>FileConfigurationSource</code> you should implement its <code>reload()</code> method which is
-            automatically called on an actual file change.
-        </p>
-        <p>
-            If, after reload, a config change was detected, All other <code>Reloadable</code> config sources are
-            checked whether they contain one of the changed keys as a placeholder. If so, the corresponding key is
-            added to the delta/diff map of the <code>PortalConfigurationChangeEvent</code>, which gets fired at the
-            end of this process.
-            However, placeholder indirections are not tracked! For instance given the following config, the key
-            <code>child.child.key</code> would not be part of the delta map, despite its value might change!
-            <dev:sourceCode type="lang-java" maxLineLength="128" sourcePath="configuration_deltamap_reload.sample" />
-        </p>
-        <p>
-            Notice: Only config sources that implement the <code>FileConfigurationSource</code> interface are reloaded.
-            Config sources implementing <code>de.icw.cui.portal.configuration.Reloadable</code> solely are not!
+            If the config source is based on a YAML file please use the <a href="https://github.com/microprofile-extensions/config-ext/blob/main/README.md">Microprofile-Extensions</a>
         </p>
 
         <h2>Reacting on Changes</h2>
         <p>
-            The CUI-Portal runs a file change observer for each config source that implements the
-            <code>de.icw.cui.portal.configuration.FileConfigurationSource</code> interface. However, classpath files are
-            ommited. If an actual change is detected, a CDI event
-            <code>de.icw.cui.portal.configuration.schedule.FileChangedEvent</code> is fired.
-
-            To catch configuration change events listen to
-            <code>de.icw.cui.portal.configuration.PortalConfigurationChangeEvent</code>. The payload is the a map
-            with the changed key-value entries. Example:
-            <dev:sourceCode type="lang-java" maxLineLength="128"
-                            source="void configurationChangeEventListener(&#64;Observes &#64;PortalConfigurationChangeEvent Map&lt;String, String&gt; deltaMap"/>
-        </p>
-        <p>
-            If you want to listen to a subset of properties only, you can annotate the listener with
-            <code>de.icw.cui.portal.configuration.PortalConfigurationChangeInterceptor</code>
-            and filter / guard the calls with the attributes #key and / or #keyPrefix.
-        </p>
-
-        <h2>Installation Configuration</h2>
-        <p>
-            On assembly level, there is usually an <code>application.yml</code> and an
-            <code>application-production.yml</code> file in the config folder under the current working directory.
-            To change the name or location of the config folder, you must use the VM parameter:
-            <code>portal.configuration.dir</code>, e.g. <code>-Dportal.configuration.dir=../myConfigDir/</code> or
-            provide the corresponding environment variable <code>PORTAL_CONFIGURATION_DIR</code>.
-            The folder must be present on the file system and must have read permissions. It must not be part of the
-            classpath!
-        </p>
-        <p>
-            <em>The <code>portal.configuration.dir</code> property cannot be changed during runtime!</em>
-        </p>
-
-        <h2>Configuration of System Properties</h2>
-        <p>
-            The portal configuration system defines an interface for overwriting system properties. The portal will
-            pick up all corresponding properties and sets them accordingly. For instance setting
-            <code>portal.system_property.jakarta.net.ssl.trustStore=/config/ca.keystore</code>
-            will result in the system property <code>jakarta.net.ssl.trustStore</code> being set to
-            <code>/config/ca.keystore</code>.
-            <em>Caution:</em> The intend of this mechanism are corner-cases and tests. Therefore it should always be the
-            exception and not the standard way to alter system properties with this mechanism.
-        </p>
-        <p>
-            The MP-Config system already has a config sources to provide environment and VM properties to the config
-            system.
-        </p>
-
-        <h2>Configuration Storage</h2>
-        <p>
-            To allow programmatic setting/changing of config properties in a specific config source that config
-            source should implement the <code>de.icw.cui.portal.configuration.PortalConfigurationStorage</code>
-            interface. Example:
-            <dev:sourceCode sourcePath="installation_config_storage.sample"
-                            description="Installation configuration storage example" type="lang-java"/>
+            The previously built-in mechansim is dropped in favor of: <a href="https://github.com/microprofile-extensions/config-ext/blob/main/README.md">Microprofile-Extensions</a>
         </p>
 
         <h2>Configuring Project Stage</h2>
@@ -221,7 +113,8 @@
             <code>com.icw.ehf.cui.portal.configuration.ConfigurationStorage#setConfigurationProperty</code>.
         </p>
         <p>
-            Utilizing the <a href="https://smallrye.io/docs/smallrye-config/interceptors/interceptors.html#profile-interceptor">Smallrye-Config ProfileConfigSourceInterceptor</a>
+            Utilizing the <a
+            href="https://smallrye.io/docs/smallrye-config/interceptors/interceptors.html#profile-interceptor">Smallrye-Config ProfileConfigSourceInterceptor</a>
             , it is possible to set stage specific config properties. Please refer to the
             <a href="https://smallrye.io/docs/smallrye-config/config/profiles.html">SmallRye documentation about profiles</a>.
             In short, if a config key <code>foo</code> is queried, the config system first checks, if there is a
@@ -264,7 +157,7 @@
         <h2>Variable Expansion</h2>
         <p>
             The SmallRye implementation allows for placeholders in a config value like:
-            <code><h:outputText value="key2=\$\{key1:default\}" /></code>. If key1 cannot be resolved a
+            <code><h:outputText value="key2=\$\{key1:default\}"/></code>. If key1 cannot be resolved a
             <code>NoSuchElementException</code> is thrown, if there is no default value.
             More information can be found in
             <a href="https://smallrye.io/docs/smallrye-config/interceptors/interceptors.html#expression-interceptor">

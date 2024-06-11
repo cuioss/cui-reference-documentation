@@ -1,19 +1,21 @@
 package de.cuioss.portal.reference.pages;
 
-import de.cuioss.tools.collect.CollectionLiterals;
-import de.cuioss.tools.io.IOStreams;
 import de.cuioss.tools.logging.CuiLogger;
-import de.cuioss.tools.string.Splitter;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
+import org.primefaces.util.IOUtils;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.ApplicationScoped;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Reads a text file {@code META-INF/modules-default-config/list.txt}, that
@@ -31,68 +33,44 @@ import java.util.List;
 @ToString
 public class ConfigDocuBean {
 
-    private static final CuiLogger log = new CuiLogger(ConfigDocuBean.class);
-
-    private static final String RESOURCE_PATH = "META-INF/modules-default-config/";
-    private static final String RESOURCES_LIST_PATH = RESOURCE_PATH + "list.txt";
+    private static final CuiLogger LOGGER = new CuiLogger(ConfigDocuBean.class);
+    private static final String NAME_KEY = "config_name";
+    private static final String RESOURCE_PATH = "META-INF/microprofile-config.properties";
 
     @Getter
     private List<DefaultConfigSource> defaultConfigSources;
 
-    private static DefaultConfigSource toDefaultConfigSource(String path) {
-        log.info("module default config found: {}", path);
-
-        // path must start with "/" to be loaded as classpath resource, see:
-        // com.icw.ehf.cui.dev.ui.components.SourceCodeComponent.resolvePath
-        var moduleName = path.substring(RESOURCE_PATH.length() + 1, path.lastIndexOf("/"));
-
-        return new DefaultConfigSource(path, moduleName, resolveStyle(path));
-    }
-
-    private static String resolveStyle(String path) {
-        if (null == path) {
-            return null;
-        }
-        if (path.endsWith(".properties")) {
-            return "lang-properties";
-        }
-        if (path.endsWith(".yaml") || path.endsWith(".yml")) {
-            return "lang-yaml";
-        }
-        log.warn("Unknown source path: {}", path);
-        return null;
-    }
-
     /**
-     * Loads all {@code META-INF/microprofile-config.properties} and
-     * {@code META-INF/microprofile-config.yaml}
-     * {@link org.eclipse.microprofile.config.spi.ConfigSource}s.
-     *
-     * @return
+     * Loads all {@code META-INF/microprofile-config.properties} if the properties contain the key {@value NAME_KEY}
      */
     @PostConstruct
     void init() {
-        final List<DefaultConfigSource> sources = new ArrayList<>();
-        try {
-            final var classLoader = Thread.currentThread().getContextClassLoader();
-            try (var is = classLoader.getResourceAsStream(RESOURCES_LIST_PATH)) {
-                final var listFileContent = IOStreams.toString(is);
-                // We are using comma to separate each module config. This is set in
-                // maven-antrun "pathconvert".
-                final var paths = Splitter.on(',').splitToList(listFileContent);
-                paths.stream().map(ConfigDocuBean::toDefaultConfigSource).forEach(sources::add);
-            }
+        defaultConfigSources = new ArrayList<>();
+        final var classLoader = Thread.currentThread().getContextClassLoader();
+        try (var resources = classLoader.resources(RESOURCE_PATH)) {
+            resources.forEach(file -> {
+                Properties properties = new Properties();
+                try {
+                    properties.load(file.openStream());
+                    if (properties.containsKey(NAME_KEY)) {
+                        String name = properties.getProperty(NAME_KEY);
+                        LOGGER.info("Adding properties %s", name);
+                        defaultConfigSources.add(new DefaultConfigSource(file, name, "lang-properties", IOUtils.toString(file.openStream(), StandardCharsets.UTF_8)));
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         } catch (Exception e) {
-            log.error("Could not load default config sources", e);
+            LOGGER.error("Could not load default config sources", e);
         }
-
-        defaultConfigSources = CollectionLiterals.immutableList(sources);
     }
 
     @Value
     public static class DefaultConfigSource {
-        final String path;
-        final String moduleName;
-        final String lang;
+        URL path;
+        String name;
+        String lang;
+        String content;
     }
 }
