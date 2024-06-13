@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
-    xmlns:ui="jakarta.faces.facelets"
+      xmlns:ui="jakarta.faces.facelets"
 >
 <!--
 <documentation>
@@ -27,41 +27,31 @@
 </documentation>
  -->
 <ui:composition template="/templates/master.xhtml">
-   <ui:define name="sidebarLeft">
-      <h:outputStylesheet library="com.icw.portal.css" name="reference_docu.css" />
-      <nav class="sidebar">
-         <h3>Basics</h3>
-         <ul class="sidebar-nav">
-            <li><h:link outcome="portal_architecture">Architecture And Design</h:link></li>
-            <li><h:link outcome="portal_basic_concepts" value="Basic Concepts" /></li>
-            <li><h:link outcome="portal_common_objects" value="Common Objects and Services" /></li>
-            <li><h:link outcome="portal_locale_handling" value="Locale-Handling" /></li>
-            <li><h:link outcome="portal_i18n_messages">i18n, Message Bundle and Message Producer</h:link></li>
-            <li><h:link outcome="portal_resource_bundles">Standard ResourceBundles</h:link></li>
-         </ul>
-         <h3>Advanced Concepts</h3>
-         <ul class="sidebar-nav">
-            <li><h:link outcome="portal_multi_templating" value="Multi-Templating" /></li>
-            <li><h:link outcome="portal_standard_pages">Standard Pages</h:link></li>
-            <li><h:link outcome="portal_dynamic_navigation">Dynamic Navigation Menu</h:link></li>
-            <li><h:link outcome="portal_configuration">Configuration, Customization</h:link></li>
-            <li><h:link outcome="portal_theming_branding">Theming, Branding</h:link></li>
-            <li><h:link outcome="portal_connection_metadata">Connection Metadata</h:link></li>
-            <li><h:link outcome="portal_audit">Audit</h:link></li>
-            <li><h:link outcome="portal_error_handling">Error Handling</h:link></li>
-            <!--             <li>Resource-Handling</li> -->
-            <!--             <li>User Management</li> -->
-            <!--             <li>View Access Control</li> -->
-            <!--             <li>Server Side History</li> -->
-            <!--             <li>Storage Abstraction: Server and client</li> -->
-            <!--             <li>Extended Application Security</li> -->
-            <!--             <li>Test Framework</li> -->
-            <!--             <li>Little Helper</li> -->
-         </ul>
-      </nav>
-   </ui:define>
-   <ui:define name="title">
-		Portal Core
-	</ui:define>
+    <ui:define name="sidebarLeft">
+        <h:outputStylesheet library="com.icw.portal.css" name="reference_docu.css"/>
+        <nav class="sidebar">
+            <h3>Basics</h3>
+            <ul class="sidebar-nav">
+                <li><h:link outcome="portal_architecture">Architecture And Design</h:link></li>
+                <li><h:link outcome="portal_basic_concepts" value="Basic Concepts"/></li>
+                <li><h:link outcome="portal_common_objects" value="Common Objects and Services"/></li>
+                <li><h:link outcome="portal_locale_handling" value="Locale-Handling"/></li>
+                <li><h:link outcome="portal_i18n_messages">i18n, Message Bundle and Message Producer</h:link></li>
+                <li><h:link outcome="portal_resource_bundles">Standard ResourceBundles</h:link></li>
+            </ul>
+            <h3>Advanced Concepts</h3>
+            <ul class="sidebar-nav">
+                <li><h:link outcome="portal_multi_templating" value="Multi-Templating"/></li>
+                <li><h:link outcome="portal_standard_pages">Standard Pages</h:link></li>
+                <li><h:link outcome="portal_dynamic_navigation">Dynamic Navigation Menu</h:link></li>
+                <li><h:link outcome="portal_configuration">Configuration, Customization</h:link></li>
+                <li><h:link outcome="portal_connection_metadata">Connection Metadata</h:link></li>
+                <li><h:link outcome="portal_error_handling">Error Handling</h:link></li>
+            </ul>
+        </nav>
+    </ui:define>
+    <ui:define name="title">
+        Portal Core
+    </ui:define>
 </ui:composition>
 </html>

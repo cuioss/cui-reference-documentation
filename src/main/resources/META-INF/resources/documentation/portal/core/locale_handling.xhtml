@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:boot="https://cuioss.de/jsf/bootstrap"
       xmlns:ui="jakarta.faces.facelets"
@@ -6,50 +7,51 @@
 
 <ui:composition template="/templates/layout_portal_core.xhtml">
 
-   <ui:define name="title">Locale-Handling</ui:define>
+    <ui:define name="title">Locale-Handling</ui:define>
 
-   <ui:define name="content">
-      <h1>Locale-Handling</h1>
-      <h2>Summary</h2>
-      <p>In the portal is a well defined way for dealing with user specific locales. It is easy to use and simple to extend.</p>
-      <h2>Usage</h2>
-      <p>The usage is quite simple:</p>
-      <boot:row>
-         <boot:column size="8">
-            <dev:sourceCode description="Dependent-Scoped Object that represents the client specific locale"
-               source="@Inject%n@PortalLocale%nprivate Locale locale;" type="lang-java" />
-         </boot:column>
-      </boot:row>
-      <p>The same locale is bound to the UI:ViewRoot. This is done in the template technical_root.xhtml</p>
-      <p>In case you want to be notified on changes regarding the locale you can register a listener:</p>
-      <boot:row>
-         <boot:column size="8">
-            <dev:sourceCode source="void actOnLocaleChangeEven(@Observes @LocaleChangeEvent Locale newLocale) {...}"
-               type="lang-java" />
-         </boot:column>
-      </boot:row>
-      <h2>Overwriting Default Behavior</h2>
-      <p>
-         The central interface is
-         <code>com.icw.ehf.cui.portal.cdi.api.locale.LocaleResolverService</code>
-         . The default implementation within the portal is
-         <code>com.icw.ehf.cui.portal.application.locale.impl.PortalLocaleResolverServiceImpl</code>
-         implemented as a Session-Scoped bean. It uses the view handler to determine the current locale, works in the same way
-         as the JSF standard locale resolving.
-      </p>
-      <boot:row>
-         <boot:column size="8">
-            <dev:sourceCode type="lang-java"
-               source="@PortalLocaleResolver%n@Priority(value = PortalPriorities.PORTAL_CORE_LEVEL)%n@Named%n@SessionScoped%npublic class PortalLocaleResolverServiceImpl implements LocaleResolverService, Serializable {" />
-         </boot:column>
-      </boot:row>
-      <p>In case you want to enforce a different behavior you can provide your own implementation:</p>
-      <boot:row>
-         <boot:column size="8">
-            <dev:sourceCode type="lang-java"
-               source="@PortalLocaleResolver%n@Priority(value = PortalPriorities.PORTAL_MODULE_LEVEL)%n@Named%n@Alternative%n@SessionScoped%npublic class MyLocaleResolverServiceImpl implements LocaleResolverService, Serializable {" />
-         </boot:column>
-      </boot:row>
-   </ui:define>
+    <ui:define name="content">
+        <h1>Locale-Handling</h1>
+        <h2>Summary</h2>
+        <p>In the portal is a well defined way for dealing with user specific locales. It is easy to use and simple to extend.</p>
+        <h2>Usage</h2>
+        <p>The usage is quite simple:</p>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode description="Dependent-Scoped Object that represents the client specific locale"
+                                source="@Inject%n@PortalLocale%nprivate Locale locale;" type="lang-java"/>
+            </boot:column>
+        </boot:row>
+        <p>The same locale is bound to the UI:ViewRoot. This is done in the template technical_root.xhtml</p>
+        <p>In case you want to be notified on changes regarding the locale you can register a listener:</p>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode source="void actOnLocaleChangeEven(@Observes @LocaleChangeEvent Locale newLocale) {...}"
+                                type="lang-java"/>
+            </boot:column>
+        </boot:row>
+        <h2>Overwriting Default Behavior</h2>
+        <p>
+            The central interface is
+            <code>de.cuioss.portal.ui.api.locale.LocaleResolverService</code>
+            .<br/>The default implementation within the portal is
+            <code>de.cuioss.portal.ui.runtime.application.locale.impl.PortalLocaleResolverServiceImpl</code>
+            implemented as a Session-Scoped bean.
+            <br/>It uses the view handler to determine the current locale, works in the same way
+            as the JSF standard locale resolving.
+        </p>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode type="lang-java"
+                                source="@PortalLocaleResolver%n@Priority(value = PortalPriorities.PORTAL_CORE_LEVEL)%n@Named%n@SessionScoped%npublic class PortalLocaleResolverServiceImpl implements LocaleResolverService, Serializable {"/>
+            </boot:column>
+        </boot:row>
+        <p>In case you want to enforce a different behavior you can provide your own implementation:</p>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode type="lang-java"
+                                source="@PortalLocaleResolver%n@Priority(value = PortalPriorities.PORTAL_MODULE_LEVEL)%n@Named%n@Alternative%n@SessionScoped%npublic class MyLocaleResolverServiceImpl implements LocaleResolverService, Serializable {"/>
+            </boot:column>
+        </boot:row>
+    </ui:define>
 </ui:composition>
 </html>

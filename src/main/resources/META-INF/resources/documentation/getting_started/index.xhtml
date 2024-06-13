@@ -11,21 +11,9 @@
         <boot:row>
             <boot:column size="12">
                 <h2>Getting Started</h2>
-                <h3>UI Module</h3>
-                <p>Create an ui module like <a
-                        href="https://git.dev.icw.int/projects/LIB/repos/ehf-common-ui/browse/references/portal-sample-module">portal-sample-module</a>.
-                </p>
+
                 <p>Take a look at the <h:link outcome="cui_components">UI components library</h:link></p>
-                <p>This ui module can be tested via maven profile -Pwildfly in a mock deployment in wildfly
-                    controlled by you IDE (Eclipse or IntelliJ).</p>
-                <h3>Assembly</h3>
-                <p>Create an assembly like <a
-                        href="https://git.dev.icw.int/projects/LIB/repos/ehf-common-ui/browse/assemblies/cui-portal-module-sample-assembly">cui-portal-module-sample-assembly</a> that contains the ui module.
-                </p>
-                <p>This assembly should contain a CUI portal authentication module, e.g.
-                    portal-authentication-servlet-container.</p>
-                <p>As default a tanuki based stand alone application including latest tomcat will be created. To
-                    create a docker image just call "mvn clean install -P docker".</p>
+
             </boot:column>
         </boot:row>
     </ui:define>

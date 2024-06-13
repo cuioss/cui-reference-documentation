@@ -50,21 +50,21 @@
         <p>
             Use <code>java.util.Optional</code> as the injection target type.
         </p>
-        <dev:sourceCode type="lang-java"
+        <dev:sourceCode type="java"
                         source="@Inject%n@ConfigProperty(name=&quot;some.property&quot;, defaultValue=&quot;some.value&quot;)%nprivate Optional&lt;String&gt; someProperty;"/>
         <h3>ConfigPropertyNullable</h3>
         <p>
             Instead of <code>org.eclipse.microprofile.config.inject.ConfigProperty</code> use
-            <code>de.icw.cui.portal.configuration.ConfigPropertyNullable</code>. This variant is especially useful
+            <code>de.cuioss.portal.configuration.ConfigPropertyNullable</code>. This variant is especially useful
             when injecting to passivation capable beans, like session scoped or any other serializable bean.
         </p>
-        <dev:sourceCode type="lang-java"
+        <dev:sourceCode type="java"
                         source="@Inject%n@ConfigPropertyNullable(name=&quot;some.property&quot;, defaultValue=&quot;some.value&quot;)%nprivate String someProperty;"/>
 
         <h2>Default Configuration</h2>
         <p>
             To provide module based default configuration please provide a
-            <code>META-INF/microprofile-config.properties</code> file. This configuration is automaticall collected
+            <code>META-INF/microprofile-config.properties</code> file. This configuration is automatically collected
             by the MP-Config implementation (SmallRye).
         </p>
         <p>
@@ -75,7 +75,7 @@
             <code>EnvConfigSource</code> and <code>SysPropConfigSource</code>, which serve environment
             respectivelly JVM variables that should not be "overwritten".
             The default should be 100 +
-            <code>de.icw.cui.portal.configuration.common.PortalPriorities#PORTAL_MODULE_LEVEL</code>.
+            <code>de.cuioss.portal.common.priority.PortalPriorities#PORTAL_MODULE_LEVEL</code>.
         </p>
         <p>
             Here is a list of all our default config sources:
@@ -91,68 +91,26 @@
         <h2>Custom Config Sources</h2>
         <h3>YAML Config Source</h3>
         <p>
-            If the config source is based on a YAML file please use the <a href="https://github.com/microprofile-extensions/config-ext/blob/main/README.md">Microprofile-Extensions</a>
+            If the config source is based on a YAML file please use the <a
+            href="https://github.com/microprofile-extensions/config-ext/blob/main/README.md">Microprofile-Extensions</a>
         </p>
 
         <h2>Reacting on Changes</h2>
         <p>
-            The previously built-in mechansim is dropped in favor of: <a href="https://github.com/microprofile-extensions/config-ext/blob/main/README.md">Microprofile-Extensions</a>
-        </p>
-
-        <h2>Configuring Project Stage</h2>
-        <p>
-            The portal emits a
-            <code>com.icw.ehf.cui.portal.cdi.api.configuration.PortalNotConfiguredException</code>, if
-            <code>portal.configuration.stage=configuration</code> is configured. To handle this event you can simply
-            call <code>event.handled()</code>, if you don't care, or you could redirect to a custom web
-            page in order to do an initial configuration (see Example below).
-            <dev:sourceCode sourcePath="portalnotconfiguredexception_handler.java.part"
-                            description="PortalNotConfiguredException event handler example" type="lang-java"/>
-            After the configuration is completed and you like to switch to production stage, set the key
-            <code>portal.configuration.stage</code> to the value <code>production</code>, by using
-            <code>com.icw.ehf.cui.portal.configuration.ConfigurationStorage#setConfigurationProperty</code>.
-        </p>
-        <p>
-            Utilizing the <a
-            href="https://smallrye.io/docs/smallrye-config/interceptors/interceptors.html#profile-interceptor">Smallrye-Config ProfileConfigSourceInterceptor</a>
-            , it is possible to set stage specific config properties. Please refer to the
-            <a href="https://smallrye.io/docs/smallrye-config/config/profiles.html">SmallRye documentation about profiles</a>.
-            In short, if a config key <code>foo</code> is queried, the config system first checks, if there is a
-            key <code>%test.foo</code>, in case the stage is <code>test</code>.
+            The previously built-in mechansim is dropped in favor of: <a
+            href="https://github.com/microprofile-extensions/config-ext/blob/main/README.md">Microprofile-Extensions</a>
         </p>
 
         <h2>Disabling hostname-verification</h2>
         <p>
             <em>Caution:</em> This feature is solely for development and must not be used in production, because it
             disables security. It can be used for any connection derived by
-            <code>de.icw.cui.portal.rest.RestClientBuilder</code>, e.g.
-            <code>de.icw.cui.portal.valueset.ValueSetClient</code>. The configuration-key is
+            <code>de.cuioss.portal.restclient.CuiRestClientBuilder</code>
+            .The configuration-key is
             <code>baseName.transport.secure.disableHostNameVerification</code>. Setting it to <code>true</code>
             will result in the HostName-verification being disabled for that connection. The portal will log at warn
             level, in order to signal this potentially harmful behavior.
         </p>
-
-        <h2>Order of Configuration Sources</h2>
-        <p>
-            When injecting a configuration key in your source code its value is resolved against multiple configuration
-            sources. Each source has a defined priority/ordinal. Beginning with the highest priority, each source is
-            asked about the configuration key in request and probably a value is returned.
-        </p>
-        <p>The following list contains all configuration sources together with their priority.</p>
-        <ol>
-            <li>SysPropConfigSource [smallrye] (400)</li>
-            <li>EnvConfigSource [smallrye] (300)</li>
-            <li>PortalTestConfiguration [portal-unit-testing-junit5] (220)</li>
-            <li>PortalConfigurationMock [portal-configuration-impl] (210)</li>
-            <li>PortalConfigurationMock [cdi-portal-core-spec/test] (205)</li>
-            <li>PortalConfigurationMock [portal-servlet-core/test] (200)</li>
-            <li>InstallationProductionFileConfigSource [portal-configuration-impl] (155)</li>
-            <li>InstallationFileConfigSource [portal-configuration-impl] (150)</li>
-            <li>microprofile-config.yaml [portal-configuration-impl] (110)</li>
-            <li>microprofile-config.properties [smallrye] (100)</li>
-            <li>ServletConfigSource [resteasy] (60)</li>
-            <li>ServletContextConfigSource [resteasy] (40)</li>
-        </ol>
 
         <h2>Variable Expansion</h2>
         <p>

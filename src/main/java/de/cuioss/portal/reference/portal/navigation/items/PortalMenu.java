@@ -23,13 +23,19 @@ public class PortalMenu extends NavigationMenuItemContainerImpl {
 
     private static final long serialVersionUID = 1452093785009425867L;
 
-    /** The label Key for this component. */
+    /**
+     * The label Key for this component.
+     */
     public static final String LABEL_KEY = "navigation.menue.portal";
 
-    /** The icon for the user. */
+    /**
+     * The icon for the user.
+     */
     public static final String ICON = "cui-icon-kiosk";
 
-    /** The string based id for this menu item. */
+    /**
+     * The string-based id for this menu item.
+     */
     public static final String MENU_ID = "portalContainer";
 
     /**
@@ -60,10 +66,7 @@ public class PortalMenu extends NavigationMenuItemContainerImpl {
         children.add(new NavigationMenuItemSeparatorImpl(i++));
         children.add(new PortalTemplatesMenuItem(i++));
         children.add(new ConnectionMetadataMenuItem(i++));
-        children.add(new AuditMenuItem(i++));
         children.add(new ErrorHandlingMenuItem(i++));
-        children.add(new NavigationMenuItemSeparatorImpl(i++));
-        children.add(new MPRestClientMenuItem(i++));
         super.setChildren(CollectionLiterals.immutableList(children));
     }
 

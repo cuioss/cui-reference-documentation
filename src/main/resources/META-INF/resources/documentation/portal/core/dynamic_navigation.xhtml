@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:boot="https://cuioss.de/jsf/bootstrap"
       xmlns:dev="https://cuioss.de/jsf/dev"
@@ -6,133 +7,91 @@
 
 <ui:composition template="/templates/layout_portal_core.xhtml">
 
-   <ui:define name="title">Dynamic-Navigation Menu</ui:define>
+    <ui:define name="title">Dynamic-Navigation Menu</ui:define>
 
-   <ui:define name="content">
-      <h1>Dynamic-Navigation Menu</h1>
-      <h2>Summary</h2>
-      <p>While the portal itself defines an application in its entirety, the individual modules focus on certain aspects /
-         use-cases. The common ground in the UI is the first-level-menu at the top.</p>
-      <p>The challenge: How to integrate a navigation entry into the navigation bar?</p>
-      <h2>General Design</h2>
-      <h3>Model</h3>
-      <p>cui-core-jsf-bootstrap provides structures for modeling a navigation menu entry. There are 3 different types of
-         menu entries:</p>
-      <ul>
-         <li><code>com.icw.ehf.cui.components.bootstrap.menu.model.NavigationMenuItemContainer</code></li>
-         <li><code>com.icw.ehf.cui.components.bootstrap.menu.model.NavigationMenuItemSingle</code></li>
-         <li><code>com.icw.ehf.cui.components.bootstrap.menu.model.NavigationMenuItemSeparator</code></li>
-      </ul>
-      <p>
-         The 'single' model represents an actual navigation element. The 'container' model allows the additional of child
-         elements, which can be any NavigationMenuItem. The 'separator' model represents a separator element only.
-         For displaying the:
-         <boot:row>
-            <boot:column size="6">
-               <dev:sourceCode source="&lt;boot:navigationMenu modelItems=&quot;&quot; /&gt;" />
-            </boot:column>
-         </boot:row>
-         with 'model' being instances of NavigationMenuItem. In order to work, it can only be used within a bootstrap conform
-         HTML / CSS structure.
-      </p>
-      <h3>Portal</h3>
-      <p>
-         The portal defines implementations for NavigationMenuItemContainer
-         (<code>com.icw.ehf.cui.portal.cdi.api.menu.PortalNavigationMenuItemContainerImpl</code>) and NavigationMenuItemSingle
-         (<code>com.icw.ehf.cui.portal.cdi.api.menu.PortalNavigationMenuItemSingleImpl</code>) which store the label, title and
-         outcome as DTO. The structure of the menu is defined in the application configuration by providing a set of properties
-         for each menu item which is referenced by its id.<br />
-         Example:
-         <boot:column size="6" style="display:none" id="ChangePasswordMenuItem">
-            @Dependent
-            @PortalMenuItem
-            public class ChangePasswordMenuItem extends PortalNavigationMenuItemSingleImpl {
+    <ui:define name="content">
+        <h1>Dynamic-Navigation Menu</h1>
+        <h2>Summary</h2>
+        <p>While the portal itself defines an application in its entirety, the individual modules focus on certain aspects /
+            use-cases. The common ground in the UI is the first-level-menu at the top.</p>
+        <p>The challenge: How to integrate a navigation entry into the navigation bar?</p>
+        <h2>General Design</h2>
+        <h3>Model</h3>
+        <p>portal-ui-api provides structures for modeling a navigation menu entry. There are 3 different types of
+            menu entries:</p>
+        <ul>
+            <li><code>de.cuioss.jsf.api.components.model.menu.NavigationMenuItemContainer</code></li>
+            <li><code>de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingle</code></li>
+            <li><code>de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSeparator</code></li>
+        </ul>
+        <p>
+            The 'single' model represents an actual navigation element. The 'container' model allows the additional of child
+            elements, which can be any NavigationMenuItem. The 'separator' model represents a separator element only.
+            For displaying the:
+            <boot:row>
+                <boot:column size="6">
+                    <dev:sourceCode source="&lt;boot:navigationMenu modelItems=&quot;&quot; /&gt;"/>
+                </boot:column>
+            </boot:row>
+            with 'model' being instances of NavigationMenuItem. In order to work, it can only be used within a bootstrap conform
+            HTML / CSS structure.
+        </p>
+        <h3>Portal</h3>
+        <p>
+            The portal defines implementations for NavigationMenuItemContainer
+            (<code>de.cuioss.portal.ui.api.menu.PortalNavigationMenuItemContainerImpl</code>) and NavigationMenuItemSingle
+            (<code>de.cuioss.portal.ui.api.menu.PortalNavigationMenuItemSingleImpl</code>) which store the label, title and
+            outcome as DTO. The structure of the menu is defined in the application configuration by providing a set of properties
+            for each menu item which is referenced by its id.<br/>
+            Example:
+            <dev:sourceCode sourcePath="ChangePasswordMenuItem.java.sample" type="java"/>
+            and the config:
+            <dev:sourceCode sourcePath="ChangePasswordMenuItem.yaml.sample" type="yaml"/>
+            Due to the hierachic structure a default menu item configuration can be provided in the application and
+            changed in any way in the deployment during runtime.
+        </p>
+        <p>
+            Separators do not need to be implemented as separate objects, just add entries to the config starting with
+            "separator" and followed by a unique id, provide an order and a parent entry and they will be created at
+            runtime.
+        </p>
+        <p>
+            The portal defines the interface
+            <code>de.cuioss.portal.ui.api.menu.NavigationMenuProvider</code>
+            that acts as a producer for all NavigationMenuItems within a portal application.
+        </p>
+        <p>
+            The default implementation in portal-ui-api
+            <code>de.cuioss.portal.ui.runtime.application.menu.NavigationMenuProviderImpl</code>
+            collects all instances of NavigationMenuItem annotated with
+            <code>de.cuioss.portal.ui.api.menu.NavigationMenuItem</code>
+            and creates the menuModel that is referenced in the template "root.xhtml".
+        </p>
+        <p>Building the tree:</p>
+        <ul>
+            <li>Collect all instances of NavigationMenuItem</li>
+            <li>Extract Top Level elements: All NavigationMenuItems that comply to
+                NavigationMenuFilter.isActive(NavigationMenuItem) and where NavigationMenuItem.getParentId() == null
+            </li>
+            <li>Extract Child elements: All NavigationMenuItems that comply to
+                NavigationMenuFilter.isActive(NavigationMenuItem) and where NavigationMenuItem.getParentId() ==
+                NavigationMenuItem.getId() of one of the top-level elements
+            </li>
+        </ul>
+        <p>With this algorithm we can easily setup complex menu structures dynamically.</p>
+        <p>Ordering: Specified by NavigationMenuItem.getOrder(): the number for the ordering for the concrete
+            NavigationMenuItem. The lower the number the higher the element is displayed. Usual range is 1 &lt; getOrder() 50.
+            The number is used implicitly by Comparable.compareTo(Object)</p>
+        <dev:sourceCode description="Sample: de.cuioss.portal.ui.api.menu.items.PreferencesMenuItem"
+                        sourcePath="PreferencesMenuItem.java" type="java"/>
+        <dev:sourceCode description="Usage Within template (extracted from root.xhtml)" type="java"
+                        sourcePath="navigationMenuIntegration.sample"/>
 
-               private static final long serialVersionUID = 6072394396703114742L;
-
-               public ChangePasswordMenuItem() {
-                  super.setId("changePasswordMenuItem");
-                  super.setLabelKey("menu.item.changePassword");
-                  super.setOutcome(ChangePasswordPage.OUTCOME);
-               }
-
-            }
-         </boot:column>
-         <dev:sourceCode sourceContainerId="ChangePasswordMenuItem" />
-         and the config:
-         <boot:column size="6" style="display:none" id="ChangePasswordMenuItemConfig">
-            portal:
-               menu:
-                  changePasswordMenuItem:
-                     order: 2
-                     parent: userMenuItem
-                     enabled: true
-         </boot:column>
-         <dev:sourceCode sourceContainerId="ChangePasswordMenuItemConfig" />
-         Due to the hierachic structure a default menu item configuration can be provided in the application and
-         changed in any way in the deployment during runtime.
-      </p>
-      <p>
-         Separators do not need to be implemented as separate objects, just add entries to the config starting with
-         "separator" and followed by a unique id, provide an order and a parent entry and they will be created at
-         runtime.
-      </p>
-      <p>
-         The portal defines the interface
-         <code>com.icw.ehf.cui.portal.cdi.api.menu.NavigationMenuProvider</code>
-         with the CDI-Type
-         <code>com.icw.ehf.cui.portal.cdi.api.menu.PortalNavigationMenuProvider</code>
-         that acts as a producer for all NavigationMenuItems within a portal application.
-      </p>
-      <p>
-         The default implementation in cdi-portal-core-impl
-         <code>com.icw.ehf.cui.portal.application.menu.NavigationMenuProviderImpl</code>
-         collects all instances of NavigationMenuItem annotated with
-         <code>com.icw.ehf.cui.portal.cdi.api.menu.PortalMenuItem</code>
-         and creates the menuModel that is referenced in the template "root.xhtml".
-      </p>
-      <p>Building the tree:</p>
-      <ul>
-         <li>Collect all instances of NavigationMenuItem that are annotated with PortalMenuItem</li>
-         <li>Inject an instance of NavigationMenuFilter annotated with PortalMenuFilter</li>
-         <li>Extract Top Level elements: All NavigationMenuItems that comply to
-            NavigationMenuFilter.isActive(NavigationMenuItem) and where NavigationMenuItem.getParentId() == null</li>
-         <li>Extract Child elements: All NavigationMenuItems that comply to
-            NavigationMenuFilter.isActive(NavigationMenuItem) and where NavigationMenuItem.getParentId() ==
-            NavigationMenuItem.getId() of one of the top-level elements</li>
-      </ul>
-      <p>With this algorithm we can easily setup complex menu structures dynamically.</p>
-      <p>Ordering: Specified by NavigationMenuItem.getOrder(): the number for the ordering for the concrete
-         NavigationMenuItem. The lower the number the higher the element is displayed. Usual range is 1 &lt; getOrder() 50.
-         The number is used implicitly by Comparable.compareTo(Object)</p>
-      <dev:sourceCode description="Sample: com.icw.ehf.cui.portal.cdi.api.menu.items.PreferencesMenuItem"
-         sourcePath="PreferencesMenuItem.java" />
-      <dev:sourceCode description="Usage Within template (extracted from root.xhtml)"
-         sourcePath="navigationMenuIntegration.sample" />
-
-      <h3>Example</h3>
-      <p>Adding item 'Panel Components' to 'Cui Components' menu</p>
-      <p>Resources base path: /cui-portal-reference/src/main/</p>
-      <ol>
-         <li>Creating new menu item class 'CuiPanelMenuItem'<br />
-            java/com/icw/cui/reference/portal/navigation/items/cui/demo/CuiPanelMenuItem.java
-         </li>
-         <li>Creating web page 'panel.xhtml'<br />
-            resources/META-INF/pages/documentation/cui_components/demo/panel.xhtml
-         </li>
-         <li>Defining label text<br /> resources/com/icw/ehf/cui/reference/i18n/messages.properties
-         </li>
-         <li>Defining navigation<br />
-            resources/META-INF/cui-portal-reference/cui-portal-reference-navigation.faces-config.xml
-         </li>
-         <li>Adding menu item to menu<br /> java/com/icw/cui/reference/portal/navigation/items/CuiComponentsMenu.java
-         </li>
-      </ol>
-
-      <h2>Overwriting NavigationMenuProvider</h2>
-      <p>Like most aspects of the portal NavigationMenuProvider can be simple replaced by using our default mechanics</p>
-      <dev:sourceCode description="Reference Web-UI Portal"
-         source="@PortalNavigationMenuProvider%n@Alternative%n@Priority(PortalPriorities.PORTAL_MODULE_LEVEL)%n@SessionScoped%npublic class ReferenceMenuProvider implements NavigationMenuProvider {" />
-   </ui:define>
+        <h2>Overwriting NavigationMenuProvider</h2>
+        <p>Like most aspects of the portal NavigationMenuProvider can be simple replaced by using our default mechanics</p>
+        <dev:sourceCode description="Reference Web-UI Portal"
+                        source="@Alternative%n@Priority(PortalPriorities.PORTAL_MODULE_LEVEL)%n@SessionScoped%npublic class ReferenceMenuProvider implements NavigationMenuProvider {"
+                        type="java"/>
+    </ui:define>
 </ui:composition>
 </html>

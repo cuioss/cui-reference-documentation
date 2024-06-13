@@ -31,11 +31,8 @@
          are problematic within the CDI-context.</p>
       <h3>Allowed Scopes</h3>
       <dev:sourceCode enableClipboard="false" type="lang-java"
-         source="import jakarta.enterprise.context.ApplicationScoped;%nimport jakarta.enterprise.context.ConversationScoped;%nimport jakarta.enterprise.context.Dependent;%nimport jakarta.enterprise.context.RequestScoped;%nimport jakarta.enterprise.context.SessionScoped;%nimport jakarta.faces.view.ViewScoped;%n%nimport org.apache.deltaspike.core.api.scope.GroupedConversationScoped;%nimport org.apache.deltaspike.core.api.scope.WindowScoped;"></dev:sourceCode>
-      <h3>Discouraged Scopes</h3>
-      <dev:sourceCode enableClipboard="false" type="lang-java"
-         source="import jakarta.faces.bean.ApplicationScoped;%nimport jakarta.faces.bean.NoneScoped;%nimport jakarta.faces.bean.RequestScoped;%nimport jakarta.faces.bean.SessionScoped;%nimport jakarta.faces.bean.ViewScoped;"></dev:sourceCode>
-      <h2>Pitfalls with CDI</h2>
+         source="import jakarta.enterprise.context.ApplicationScoped;%nimport jakarta.enterprise.context.ConversationScoped;%nimport jakarta.enterprise.context.Dependent;%nimport jakarta.enterprise.context.RequestScoped;%nimport jakarta.enterprise.context.SessionScoped;%nimport jakarta.faces.view.ViewScoped;"></dev:sourceCode>
+       <h2>Pitfalls with CDI</h2>
       <p>While the scoping with CDI works quite intuitive there are some cases where unexpected things happen.</p>
       <h3>Invalid nesting</h3>
       <p>It is not allowed to inject beans with a lesser scope than the injection target: If a bean requestBean is
@@ -46,9 +43,6 @@
          calling the provider.get() method. This decouples the state of the object from the client</p>
       <dev:sourceCode type="lang-java" enableClipboard="false"
          source="@Named%n@SessionScoped%npublic class SessionBean {%n   @Inject%n   private Provider&lt;FacesContext&gt; facesContextProvider;%n%n   @PostConstruct%n   public void init() {%n      FacesContext facesContext = facesContextProvider.get();%n   }%n}" />
-      <h3>Dependent Scope</h3>
-      <p>The dependent scope is similar to import jakarta.faces.bean.NoneScoped. For each injection point a new instance of
-         the object will be created</p>
       <h3>Multiple Instances</h3>
       <p>The example above assumes that there is always one instance of the corresponding bean available. For some types of
          objects there may be multiple instance available at runtime. Therefore you can use jakarta.enterprise.inject.Instance
@@ -64,7 +58,7 @@
       <p>A concrete Example: The navigation within the portal is dynamic: You can add individual navigation items or replace
          the NavigationMenuProvider completely:</p>
       <dev:sourceCode type="lang-java" enableClipboard="false"
-         description="com.icw.ehf.cui.portal.application.menu.NavigationMenuProviderImpl form Portal-Core"
+         description="de.cuioss.portal.ui.runtime.application.menu.NavigationMenuProviderImpl form de.cuioss.portal.ui:portal-ui-runtime"
          source="@PortalNavigationMenuProvider%n@Priority(PortalPriorities.PORTAL_CORE_LEVEL)%npublic class NavigationMenuProviderImpl implements NavigationMenuProvider {" />
       <p>Will be replaced by the ReferenceMenuProvider</p>
       <dev:sourceCode type="lang-java" enableClipboard="false"

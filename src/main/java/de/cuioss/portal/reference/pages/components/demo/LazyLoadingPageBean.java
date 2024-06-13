@@ -1,7 +1,7 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import de.cuioss.portal.ui.api.ui.lazyloading.BaseLazyLoadingRequest;
-import de.cuioss.portal.ui.api.ui.lazyloading.LazyLoadingViewController;
+import de.cuioss.portal.ui.api.lazyloading.BaseLazyLoadingRequest;
+import de.cuioss.portal.ui.api.lazyloading.LazyLoadingViewController;
 import de.cuioss.tools.logging.CuiLogger;
 import de.cuioss.uimodel.result.ResultObject;
 import de.cuioss.uimodel.result.ResultState;

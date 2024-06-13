@@ -1,7 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="jakarta.faces.facelets"
-      xmlns:dev="https://cuioss.de/jsf/dev">
+>
 
 <ui:composition template="/templates/layout_portal_core.xhtml">
 
@@ -11,26 +12,20 @@
         <h1>Architecture And Design</h1>
         <h2>Overview</h2>
         <p>The portal is built on a number of technologies and libraries that can be called state-of-the-art
-            regarding JSF based web-development.</p>
-        <h3>Module Structure</h3>
-        <p>
-            There are three modules defined: spec, impl and test. Maven Coordinates:
-            <dev:sourceCode id="mavenCoord" sourcePath="mavencoord.sample" enableClipboard="false" />
-        </p>
+            regarding JSF based web-development... what ever that means ;-)</p>
         <h3>Libraries and Frameworks</h3>
         <ul>
-            <li><a href="https://javaserverfaces-spec-public.java.net">JavaServer Faces 2.3</a>, Implementation: <a
-                href="https://javaserverfaces.java.net">Mojarra</a></li>
-            <li><a href="http://weld.cdi-spec.org">CDI 2.0</a>, Implementation <a
-                href="http://weld.cdi-spec.org/download">Weld</a></li>
-            <li><a href="http://deltaspike.apache.org">Apache Deltaspike</a></li>
+            <li><a href="https://quarkus.io/">Quarkus</a></li>
+            <li><a href="https://github.com/eclipse/microprofile/releases/tag/6.0">microprofile 6.0</a></li>
+            <li><a href="https://github.com/jakartaee/faces/tree/4.0.1-RELEASE">Jakarta Faces 4.0</a>, Implementation:
+                <a
+                    href="https://github.com/apache/myfaces">MyFaces</a></li>
             <li><a href="http://getbootstrap.com">Twitter Bootstrap</a></li>
             <li><a href="http://sass-lang.com">Sass</a></li>
             <li><a href="http://www.primefaces.org">Primefaces</a></li>
             <li><a href="http://showcase.omnifaces.org">Omnifaces</a></li>
             <li><a href="http://www.typescriptlang.org">TypeScript</a></li>
             <li><a href="http://www.w3.org/TR/html5/">HTML 5</a></li>
-            <li><a href="http://jglue.org/cdi-unit">CDI-Unit</a></li>
             <li>And many more ...</li>
         </ul>
     </ui:define>

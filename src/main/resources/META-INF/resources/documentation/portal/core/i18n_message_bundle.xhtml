@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:boot="https://cuioss.de/jsf/bootstrap"
       xmlns:dev="https://cuioss.de/jsf/dev"
@@ -7,60 +8,68 @@
 
 <ui:composition template="/templates/layout_portal_core.xhtml">
 
-   <ui:define name="title">i18n, Message Bundle and Message Producer</ui:define>
+    <ui:define name="title">i18n, Message Bundle and Message Producer</ui:define>
 
-   <ui:define name="content">
-      <h1>i18n, Message Bundle and Message Producer</h1>
-      <h2>Portal Resource-Bundle</h2>
-      <p>
-         The portal approach on Resource Bundle is to integrate all bundles into one at runtime. This simplifies the usages a
-         lot, because the developer does not care where the message actually comes from. The bundle name is 'msgs'. Individual
-         keys are overwritten in the hierarchy. The default ResourceBundles provided by the portal can be found at
-         <h:link outcome="portal_resource_bundles">Standard ResourceBundles</h:link>
-      </p>
-      <boot:row>
-         <boot:column size="8">
-            <dev:sourceCode type="lang-java" description="Injection into Beans"
-               source="@Inject%n@PortalResourceBundle%nprivate ResourceBundle resourceBundle;" />
-         </boot:column>
-      </boot:row>
-      <boot:row>
-         <boot:column size="8">
-            <dev:sourceCode type="lang-html"
-               description="Usage with CUI-Components. You only need to specify the key. All CUI-Components are capable of looking up the value in the Portal Resource Bundle"
-               source="&lt;boot:labeledContainer id=&quot;username&quot; labelKey=&quot;authentication.field.identifier.label&quot;&gt;%n	  &lt;h:inputText id=&quot;input&quot; /&gt;%n&lt;/boot:labeledContainer&gt;" />
-         </boot:column>
-      </boot:row>
+    <ui:define name="content">
+        <h1>i18n, Message Bundle and Message Producer</h1>
+        <h2>Portal Resource-Bundle</h2>
+        <p>
+            The portal approach on Resource Bundle is to integrate all bundles into one at runtime.
+            <br/>This simplifies the usages a
+            lot, because the developer does not care where the message actually comes from.
+            <br/>The bundle name is 'msgs'. Individual
+            keys are overwritten in the hierarchy.
+            <br/>The default ResourceBundles provided by the portal can be found at
+            <h:link outcome="portal_resource_bundles">Standard ResourceBundles</h:link>
+        </p>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode type="lang-java" description="Injection into Beans"
+                                source="@Inject%n@PortalResourceBundle%nprivate ResourceBundle resourceBundle;"/>
+            </boot:column>
+        </boot:row>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode type="lang-html"
+                                description="Usage with CUI-Components. You only need to specify the key. All CUI-Components are capable of looking up the value in the Portal Resource Bundle"
+                                source="&lt;boot:labeledContainer id=&quot;username&quot; labelKey=&quot;authentication.field.identifier.label&quot;&gt;%n	  &lt;h:inputText id=&quot;input&quot; /&gt;%n&lt;/boot:labeledContainer&gt;"/>
+            </boot:column>
+        </boot:row>
 
-      <boot:row>
-         <boot:column size="8">
-            <dev:sourceCode type="lang-html" description="Usage with EL-Expression"
-               source="&lt;h:outputText value=&quot;&#35; {msgs['portal.title']}&quot; /&gt;" />
-         </boot:column>
-      </boot:row>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode type="lang-html" description="Usage with EL-Expression"
+                                source="&lt;h:outputText value=&quot;&#35; {msgs['portal.title']}&quot; /&gt;"/>
+            </boot:column>
+        </boot:row>
 
-      <h2>Adding a ResourceBundle</h2>
-      <p>Usually you work within a concrete ui-module. This is the place where to define the module specific resource bundle</p>
-      <ul>
-         <li>Create the corresponding properties file, e.g. com.icw.ehf.cui.reference.i18n.messages.properties</li>
-         <li>Create the corresponding CDI-locator: <dev:sourceCode type="lang-java"
-               source="@PortalResourceBundleLocator%n@Dependent%n@Priority(PortalPriorities.PORTAL_MODULE_LEVEL)%n@EqualsAndHashCode%n@ToString%npublic class BundleNames implements ResourceBundleLocator {%n%n    @Getter%n    private final List&lt;String&gt; configuredResourceBundles = ImmutableList.of(&quot;com.icw.ehf.cui.reference.i18n.messages&quot;);%n%n}" />
-         </li>
-      </ul>
-      <p>Now the ResourceBundle located and maintained in the module can be accessed using the Portal Resource Bundle.
-         Example see: com.icw.ehf.cui.portal.configuration.bundles.impl.PortalDefaultResourceBundleLocator</p>
-      <h2>Message Producer</h2>
-      <p>The MessageProducer is a shorthand for creating JSFMessages within Java-Code that are displayed to the user. The
-         key-feature is the usage of the Portal Resource-Bundle.</p>
-      <boot:row>
-         <boot:column size="8">
-            <dev:sourceCode description="Dependent-Scoped Object that allows dynamically producing JSFMessages"
-               source="@Inject%n@PortalMessageProducer%nprivate MessageProducer messageProducer;" type="lang-java" />
-            <dev:sourceCode
-               description="Usage is straight forward. The setXXXMessage() methods consume additional parameter as a String ellipsis."
-               source="messageProducer.setGlobalErrorMessage(&quot;authentication.message.login.failure&quot;);" />
-         </boot:column>
-      </boot:row>
-   </ui:define>
+        <h2>Adding a ResourceBundle</h2>
+        <p>Usually you work within a concrete ui-module. This is the place where to define the module specific resource bundle:</p>
+        <ul>
+            <li>Create the properties file, e.g. de.cuioss.portal.reference.i18n.reference.properties</li>
+            <li>Create the CDI-locator:</li>
+        </ul>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode type="lang-java"
+                                source="@ApplicationScoped%n@Priority(PortalPriorities.PORTAL_MODULE_LEVEL)%n@EqualsAndHashCode%n@ToString%npublic class BundleNames implements ResourceBundleLocator {%n%n      private static final String PATH = &quot;de.cuioss.portal.reference.i18n.reference&quot;;%n      @Override%n      public Optional&lt;String&gt; getBundlePath() {%n            return Optional.of(PATH);%n   }%n%n}"/>
+            </boot:column>
+        </boot:row>
+        <p>Now the ResourceBundle is located and maintained in the module but can be accessed using the Portal Resource Bundle.
+            Example see: de.cuioss.portal.ui.runtime.application.bundle.PortalDefaultResourceBundleLocator</p>
+        <h2>Message Producer</h2>
+        <p>The MessageProducer is a shorthand for creating JSFMessages within Java-Code that are displayed to the user. The
+            key-feature is the usage of the Portal Resource-Bundle.</p>
+        <boot:row>
+            <boot:column size="8">
+                <dev:sourceCode description="RequestScoped Object that allows dynamically producing JSFMessages"
+                                source="@Inject%n@PortalMessageProducer%nprivate MessageProducer messageProducer;"
+                                type="lang-java"/>
+                <dev:sourceCode
+                    description="Usage is straight forward. The setXXXMessage() methods consume additional parameter as a String ellipsis."
+                    source="messageProducer.setGlobalErrorMessage(&quot;authentication.message.login.failure&quot;);"/>
+            </boot:column>
+        </boot:row>
+    </ui:define>
 </ui:composition>
 </html>

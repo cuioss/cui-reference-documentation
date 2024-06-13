@@ -32,8 +32,7 @@ public class ReferenceTemplates implements StaticTemplateDescriptor {
     private static final long serialVersionUID = 1933293647595996193L;
 
     @Getter
-    private final List<String> handledTemplates = immutableList("layout_portal_core.xhtml",
-        "layout_portal_clients.xhtml", "layout_portal_labeledContainer.xhtml");
+    private final List<String> handledTemplates = immutableList("layout_portal_core.xhtml", "layout_portal_labeledContainer.xhtml");
 
     private static final String PATH = "classpath:META-INF/templates/reference";
 

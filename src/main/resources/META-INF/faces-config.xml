@@ -295,14 +295,6 @@
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
-            <from-outcome>portal_audit</from-outcome>
-            <to-view-id>/documentation/portal/core/audit.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
             <from-outcome>portal_error_handling</from-outcome>
             <to-view-id>/documentation/portal/core/error_handling.xhtml</to-view-id>
             <redirect/>
