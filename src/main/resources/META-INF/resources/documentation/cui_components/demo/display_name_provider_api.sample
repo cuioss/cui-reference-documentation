@@ -1,8 +1,3 @@
-package com.icw.ehf.cui.common.nameprovider;
- 
- /*
- * @param <T> bounded content parameter
- */
 public interface IDisplayNameProvider<T> extends Serializable {
  
     /**

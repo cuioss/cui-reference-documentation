@@ -14,6 +14,7 @@ import lombok.ToString;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +29,7 @@ public class LazyLoadingPageBean extends BaseLazyLoadingRequest<List<String>> im
     @Serial
     private static final long serialVersionUID = 1825207529119003900L;
 
-    private static final CuiLogger log = new CuiLogger(LazyLoadingPageBean.class);
+    private static final CuiLogger LOGGER = new CuiLogger(LazyLoadingPageBean.class);
 
     @Inject
     LazyLoadingViewController viewController;
@@ -43,12 +44,14 @@ public class LazyLoadingPageBean extends BaseLazyLoadingRequest<List<String>> im
 
     @Override
     public ResultObject<List<String>> backendRequest() {
+        LOGGER.info("Entering BackendRequest at %s", LocalDateTime.now());
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
-            log.error("interrupted: ", e);
+            LOGGER.error("interrupted: ", e);
             Thread.currentThread().interrupt();
         }
+        LOGGER.info("Leaving BackendRequest at %s", LocalDateTime.now());
         return new ResultObject<>(mutableList("A", "B", "C"), ResultState.VALID);
     }
 

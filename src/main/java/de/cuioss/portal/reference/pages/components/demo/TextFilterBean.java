@@ -1,6 +1,7 @@
 package de.cuioss.portal.reference.pages.components.demo;
 
-import de.cuioss.test.generator.internal.net.java.quickcheck.generator.PrimitiveGenerators;
+import de.cuioss.test.generator.domain.FullNameGenerator;
+import de.cuioss.test.generator.impl.CollectionGenerator;
 import de.cuioss.tools.string.MoreStrings;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
@@ -14,6 +15,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
@@ -38,10 +40,8 @@ public class TextFilterBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        int sampleSize = PrimitiveGenerators.integers(4, 10).next();
-        for (var i = 0; i < sampleSize; i++) {
-            sampleContent.add(PrimitiveGenerators.letterStrings(5, 20).next());
-        }
+        var generator = new CollectionGenerator<String>(new FullNameGenerator(Locale.ENGLISH), 4, 10);
+        sampleContent.addAll(generator.set());
     }
 
     public void clearFilter() {
