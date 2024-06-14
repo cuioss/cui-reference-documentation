@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 
-@SuppressWarnings("javadoc")
 @ViewScoped
 @Named
 @ToString

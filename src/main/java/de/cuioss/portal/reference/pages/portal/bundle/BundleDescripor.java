@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +20,7 @@ import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 @ToString
 public class BundleDescripor implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -3666995381280916356L;
 
     @Getter

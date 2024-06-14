@@ -4,6 +4,8 @@ import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingleImpl;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the mime-type-icon menu.
  *
@@ -13,6 +15,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class MimeTypeIconMenuItem extends NavigationMenuItemSingleImpl {
 
+    @Serial
     private static final long serialVersionUID = -8355845325661800964L;
 
     private static final Integer ORDER = 30;

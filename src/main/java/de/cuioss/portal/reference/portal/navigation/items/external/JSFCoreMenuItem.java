@@ -4,6 +4,8 @@ import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingleImpl;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the mojarra-core menu.
  *
@@ -13,6 +15,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class JSFCoreMenuItem extends NavigationMenuItemSingleImpl {
 
+    @Serial
     private static final long serialVersionUID = -2631323736244851020L;
 
     private static final Integer ORDER = 40;

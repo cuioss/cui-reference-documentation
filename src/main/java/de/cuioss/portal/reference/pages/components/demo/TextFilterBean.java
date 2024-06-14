@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 
 import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 
-@SuppressWarnings("javadoc")
 @Named
 @ViewScoped
 @ToString
@@ -32,7 +31,7 @@ public class TextFilterBean implements Serializable {
     @Setter
     private String filter;
 
-    private List<String> sampleContent = mutableList();
+    private final List<String> sampleContent = mutableList();
 
     @Getter
     private List<String> content = Collections.emptyList();

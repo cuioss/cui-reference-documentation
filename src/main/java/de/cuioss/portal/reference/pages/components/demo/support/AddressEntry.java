@@ -5,6 +5,7 @@ import de.cuioss.uimodel.model.conceptkey.ConceptKeyType;
 import de.cuioss.uimodel.nameprovider.IDisplayNameProvider;
 import lombok.*;
 
+import java.io.Serial;
 import java.util.Optional;
 import java.util.SortedSet;
 import java.util.UUID;
@@ -22,9 +23,9 @@ import static java.util.Objects.isNull;
 @AllArgsConstructor
 @ToString(exclude = "id", doNotUseGetters = true)
 @EqualsAndHashCode(exclude = "id", doNotUseGetters = true)
-@SuppressWarnings("javadoc")
 public class AddressEntry implements IDisplayNameProvider<String>, Comparable<AddressEntry> {
 
+    @Serial
     private static final long serialVersionUID = 3999901193271748149L;
 
     private final String organization;

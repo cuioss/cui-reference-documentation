@@ -3,6 +3,8 @@ package de.cuioss.portal.reference.portal.navigation.items.portal;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the "Connection Metadata" menu-item.
  *
@@ -12,6 +14,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class ConnectionMetadataMenuItem extends PortalBaseMenuItem {
 
+    @Serial
     private static final long serialVersionUID = 4023392122979460944L;
 
     /** The string based id for this menu item. */

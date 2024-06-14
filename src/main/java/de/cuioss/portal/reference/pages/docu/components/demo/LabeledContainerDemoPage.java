@@ -8,19 +8,21 @@ import org.primefaces.model.DualListModel;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 
-@SuppressWarnings("javadoc")
 @Named
 @ApplicationScoped
 @EqualsAndHashCode
 @ToString
 public class LabeledContainerDemoPage implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -5911089483400770358L;
 
     @Getter
@@ -62,6 +64,6 @@ public class LabeledContainerDemoPage implements Serializable {
      * Store data
      */
     public void storeData() {
-        //
+        // Your data can be stored here
     }
 }

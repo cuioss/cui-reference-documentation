@@ -12,7 +12,6 @@ import java.util.List;
 
 import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 
-@SuppressWarnings("javadoc")
 @ViewScoped
 @Named
 @ToString

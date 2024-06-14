@@ -7,6 +7,7 @@ import de.cuioss.tools.collect.CollectionLiterals;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import static java.util.Collections.sort;
 @ToString(callSuper = true)
 public class PrimefacesMenu extends NavigationMenuItemContainerImpl {
 
+    @Serial
     private static final long serialVersionUID = 2201988986700729036L;
 
     /** The label Key for this component. */

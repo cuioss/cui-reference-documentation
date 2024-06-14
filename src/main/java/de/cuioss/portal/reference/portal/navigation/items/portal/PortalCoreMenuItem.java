@@ -6,6 +6,7 @@ import de.cuioss.tools.collect.CollectionLiterals;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @ToString(callSuper = true)
 public class PortalCoreMenuItem extends NavigationMenuItemContainerImpl {
 
+    @Serial
     private static final long serialVersionUID = -283980253229892078L;
 
     private static final Integer ORDER = 25;

@@ -49,8 +49,8 @@ public class CuiTagResolver implements Serializable {
         cuiBootstrapTagLib = LibraryTagLib.CUI_BOOTSTRAP.load();
         omniTagLib = LibraryTagLib.OMNI_FACES.load();
         primeTagLib = LibraryTagLib.PRIME_FACES.load();
-        jsfHtmlTagLib = LibraryTagLib.MY_FACES.load();
-        jsfCoreTagLib = LibraryTagLib.MY_FACES.load();
+        jsfHtmlTagLib = LibraryTagLib.FACES_HTML.load();
+        jsfCoreTagLib = LibraryTagLib.FACES_CORE.load();
 
     }
 

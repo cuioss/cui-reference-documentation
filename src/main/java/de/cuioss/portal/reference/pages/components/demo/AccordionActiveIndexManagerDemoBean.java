@@ -10,17 +10,19 @@ import lombok.ToString;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 
 import static de.cuioss.tools.collect.CollectionLiterals.immutableList;
 
-@SuppressWarnings("javadoc")
 @Named
 @SessionScoped
 @EqualsAndHashCode
 @ToString
 public class AccordionActiveIndexManagerDemoBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 8968258971793284937L;
 
     @Getter

@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +26,7 @@ public class MimeTypeIconsPageBean implements Serializable {
     /**
      * serial version UID
      */
+    @Serial
     private static final long serialVersionUID = -6584517051621040849L;
 
     @Getter

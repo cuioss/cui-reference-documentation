@@ -7,7 +7,6 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.validator.FacesValidator;
 
 
-@SuppressWarnings({"javadoc"})
 @FacesValidator("demo.EditableDataListValidator")
 public class EditableDataListValidator extends AbstractValidator<EditableDataListModel<?>> {
 

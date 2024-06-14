@@ -4,6 +4,8 @@ import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingleImpl;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the CUI Panel Components menu.
  *
@@ -13,6 +15,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class CuiPanelMenuItem extends NavigationMenuItemSingleImpl {
 
+    @Serial
     private static final long serialVersionUID = 1452093785009425867L;
 
     /** The label Key for this component. */

@@ -4,6 +4,8 @@ import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingleImpl;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the JqPlot menu item.
  */
@@ -11,6 +13,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class JqPlotMenuItem extends NavigationMenuItemSingleImpl {
 
+    @Serial
     private static final long serialVersionUID = 16094524036295055L;
 
     /** The label value for this component. */

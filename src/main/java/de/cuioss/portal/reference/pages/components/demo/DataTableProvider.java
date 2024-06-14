@@ -7,6 +7,8 @@ import lombok.ToString;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +17,9 @@ import java.util.List;
 @SessionScoped
 @EqualsAndHashCode
 @ToString
-@SuppressWarnings("javadoc")
 public class DataTableProvider implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -2113180124386077469L;
 
     private final List<Entry> content = new ArrayList<>();
@@ -42,6 +44,7 @@ public class DataTableProvider implements Serializable {
     @Data
     public class Entry implements Serializable {
 
+        @Serial
         private static final long serialVersionUID = -1610924280129397035L;
 
         private final String column1;

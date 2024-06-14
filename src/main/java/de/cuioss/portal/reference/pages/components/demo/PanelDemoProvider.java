@@ -9,6 +9,8 @@ import lombok.ToString;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,6 +28,7 @@ public class PanelDemoProvider implements Serializable {
 
     private static final CuiLogger log = new CuiLogger(PanelDemoProvider.class);
 
+    @Serial
     private static final long serialVersionUID = 260766844925472554L;
 
     @Getter

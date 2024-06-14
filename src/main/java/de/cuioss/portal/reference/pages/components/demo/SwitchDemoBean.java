@@ -16,7 +16,6 @@ import lombok.ToString;
 import java.io.Serial;
 import java.io.Serializable;
 
-@SuppressWarnings("javadoc")
 @SessionScoped
 @Named
 @EqualsAndHashCode

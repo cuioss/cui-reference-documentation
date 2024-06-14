@@ -4,6 +4,8 @@ import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSeparatorImpl;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the Cui-Components-Demo menu.
  */
@@ -11,6 +13,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class MenuItemSeparator extends NavigationMenuItemSeparatorImpl {
 
+    @Serial
     private static final long serialVersionUID = -8355845325661800964L;
 
     /** The string based id for this menu item. */

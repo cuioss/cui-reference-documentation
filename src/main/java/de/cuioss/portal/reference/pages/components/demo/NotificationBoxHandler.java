@@ -7,10 +7,11 @@ import lombok.ToString;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
-@SuppressWarnings("javadoc")
 @Named
 @SessionScoped
 @EqualsAndHashCode
@@ -19,6 +20,7 @@ public class NotificationBoxHandler implements Serializable {
 
     private static final CuiLogger log = new CuiLogger(NotificationBoxHandler.class);
 
+    @Serial
     private static final long serialVersionUID = 4046443512030148754L;
 
     private final SortedSet<Date> dismissCalls = new TreeSet<>(Comparator.comparingLong(Date::getTime));

@@ -4,6 +4,8 @@ import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingleImpl;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the primefaces tree menu.
  */
@@ -11,6 +13,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class PrimefacesTreeMenuItem extends NavigationMenuItemSingleImpl {
 
+    @Serial
     private static final long serialVersionUID = -5972678239435482932L;
 
     /** The label Key for this component. */

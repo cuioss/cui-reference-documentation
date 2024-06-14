@@ -4,6 +4,8 @@ import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingleImpl;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the GuardedInput menu item.
  *
@@ -12,6 +14,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class CuiInputGuardedMenuItem extends NavigationMenuItemSingleImpl {
 
+    @Serial
     private static final long serialVersionUID = 1524857964753377586L;
 
     /** The label Key for this component. */

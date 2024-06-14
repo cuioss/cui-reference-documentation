@@ -5,6 +5,8 @@ import de.cuioss.portal.configuration.PortalConfigurationKeys;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the Icon top-level menu.
  *
@@ -14,6 +16,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class GettingStartedMenu extends NavigationMenuItemSingleImpl {
 
+    @Serial
     private static final long serialVersionUID = 1452093785009425867L;
 
     /** The label Key for this component. */

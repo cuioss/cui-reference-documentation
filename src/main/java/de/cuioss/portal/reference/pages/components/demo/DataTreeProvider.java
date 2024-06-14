@@ -9,6 +9,8 @@ import org.primefaces.model.TreeNode;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 
 @Named
@@ -17,6 +19,7 @@ import java.io.Serializable;
 @ToString
 public class DataTreeProvider implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 5441089632173462843L;
 
     public static final String DRIVE = "drive";

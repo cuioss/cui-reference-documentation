@@ -10,6 +10,8 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ import java.util.List;
 @ToString
 public class PortalTemplateBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 638283726301069378L;
 
     private static final String TEMPLATE_BASE_PATH = "/META-INF/templates/portal/";

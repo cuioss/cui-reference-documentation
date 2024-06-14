@@ -32,6 +32,6 @@ public class AddressGenerator implements TypedGenerator<Address> {
     }
 
     private String getAddressLine() {
-        return new StringBuilder().append(STREET_NAMES.next()).append(" ").append(STREET_NUMBERS.next()).toString();
+        return STREET_NAMES.next() + " " + STREET_NUMBERS.next();
     }
 }

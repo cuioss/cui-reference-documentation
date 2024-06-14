@@ -5,23 +5,25 @@ import lombok.ToString;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
-@SuppressWarnings("javadoc")
 @Named
 @RequestScoped
 @ToString
 @EqualsAndHashCode
 public class AddressPageBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 6996292920006494613L;
 
-    private AddressFormat usFormat = new AddressFormat();
+    private final AddressFormat usFormat = new AddressFormat();
 
-    private AddressFormat deFormat = new AddressFormat();
+    private final AddressFormat deFormat = new AddressFormat();
 
-    private Address data = new Address();
+    private final Address data = new Address();
 
     /**
      * Constructor.

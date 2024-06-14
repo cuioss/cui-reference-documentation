@@ -7,6 +7,8 @@ import lombok.ToString;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 
 @Named
@@ -15,6 +17,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class CuiIconComponentsPageBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -3502943895881268139L;
 
     @Getter

@@ -7,6 +7,8 @@ import org.primefaces.model.DefaultScheduleModel;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -16,10 +18,11 @@ import static de.cuioss.test.generator.Generators.letterStrings;
 @SessionScoped
 public class SchedulerBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -7706563327276592213L;
 
     @Getter
-    private DefaultScheduleModel schedule = new DefaultScheduleModel();
+    private final DefaultScheduleModel schedule = new DefaultScheduleModel();
 
     @PostConstruct
     public void init() {

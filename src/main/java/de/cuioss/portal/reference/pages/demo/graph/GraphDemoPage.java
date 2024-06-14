@@ -20,12 +20,15 @@ import lombok.Setter;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 
 @Named
 @SessionScoped
 public class GraphDemoPage implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 6009604591051816282L;
 
     @Getter

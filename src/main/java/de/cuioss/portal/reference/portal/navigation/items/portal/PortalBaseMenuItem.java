@@ -5,6 +5,8 @@ import de.cuioss.jsf.api.components.model.menu.NavigationMenuItemSingleImpl;
 import jakarta.faces.context.FacesContext;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serial;
+
 /**
  * Base class for Portal-menue-Items The assumption is, that
  * {@link #getOutcome()} represents a view (implicit navigation). If so the
@@ -16,9 +18,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class PortalBaseMenuItem extends NavigationMenuItemSingleImpl {
 
+    @Serial
     private static final long serialVersionUID = -4707337520204816491L;
 
-    @SuppressWarnings("javadoc")
     public PortalBaseMenuItem(Integer order) {
         super(order);
     }

@@ -6,6 +6,7 @@ import de.cuioss.uimodel.nameprovider.DisplayName;
 import de.cuioss.uimodel.nameprovider.IDisplayNameProvider;
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Map;
 public class AddressFormat implements Serializable {
 
     /** serial version UID */
+    @Serial
     private static final long serialVersionUID = 1779888605668368374L;
 
     private String pattern;

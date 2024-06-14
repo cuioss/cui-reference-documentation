@@ -3,6 +3,8 @@ package de.cuioss.portal.reference.portal.navigation.items.portal;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * Represents the "Standard ResourceBundles" menu-item.
  *
@@ -12,6 +14,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class PortalResourceBundlesMenuItem extends PortalBaseMenuItem {
 
+    @Serial
     private static final long serialVersionUID = -283980253229892078L;
 
     /** The label Key for this component. */

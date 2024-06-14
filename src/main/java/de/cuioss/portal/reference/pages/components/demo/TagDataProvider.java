@@ -46,6 +46,7 @@ import static de.cuioss.tools.collect.CollectionLiterals.immutableSet;
 @ToString
 public class TagDataProvider implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -3513331142570721330L;
 
     private static final CuiLogger log = new CuiLogger(TagDataProvider.class);

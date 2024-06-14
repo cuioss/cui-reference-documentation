@@ -14,6 +14,7 @@ import lombok.NonNull;
 import lombok.ToString;
 import lombok.experimental.Delegate;
 
+import java.io.Serial;
 import java.util.Locale;
 
 /**
@@ -26,6 +27,7 @@ import java.util.Locale;
 @EqualsAndHashCode(of = "delegateAddress", callSuper = false)
 public class AddressConceptKey extends BaseConceptKeyType {
 
+    @Serial
     private static final long serialVersionUID = -4182574259666973191L;
 
     @Delegate
@@ -80,6 +82,7 @@ public class AddressConceptKey extends BaseConceptKeyType {
 
     protected static class AddressConceptCategory extends BaseConceptCategory {
 
+        @Serial
         private static final long serialVersionUID = -4046478743136916740L;
     }
 

@@ -11,6 +11,7 @@ import de.cuioss.tools.collect.CollectionLiterals;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.List;
 @ToString(callSuper = true)
 public class ExternalComponentsMenu extends NavigationMenuItemContainerImpl {
 
+    @Serial
     private static final long serialVersionUID = -8071397946025081002L;
 
     /** The label Key for this component. */

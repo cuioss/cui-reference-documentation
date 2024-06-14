@@ -15,17 +15,19 @@ import lombok.ToString;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("javadoc")
 @Named
 @SessionScoped
 @EqualsAndHashCode(exclude = { "addressModel" })
 @ToString
 public class EditableDataListDemoPageBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -1027942011407811630L;
 
     @Getter
@@ -102,6 +104,7 @@ public class EditableDataListDemoPageBean implements Serializable {
     @ToString(callSuper = true)
     public class DemoEditableDataListModel extends AbstractEditableDataListModel<Address> {
 
+        @Serial
         private static final long serialVersionUID = 6032708148974857517L;
 
         private final List<Address> addresses;

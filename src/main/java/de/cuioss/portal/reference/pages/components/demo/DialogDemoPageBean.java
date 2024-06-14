@@ -7,9 +7,10 @@ import lombok.ToString;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 
-@SuppressWarnings("javadoc")
 @Named
 @SessionScoped
 @EqualsAndHashCode
@@ -18,6 +19,7 @@ public class DialogDemoPageBean implements Serializable {
 
     private static final CuiLogger log = new CuiLogger(DialogDemoPageBean.class);
 
+    @Serial
     private static final long serialVersionUID = 3744529779452625817L;
 
     @Getter

@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("javadoc")
 public class IconExtractor {
 
     private final MessageProducer messageProducer;

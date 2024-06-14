@@ -8,18 +8,20 @@ import lombok.ToString;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
 import static de.cuioss.tools.collect.CollectionLiterals.mutableList;
 
-@SuppressWarnings("javadoc")
 @Named
 @SessionScoped
 @EqualsAndHashCode
 @ToString
 public class TypewatchHandlerBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1077509491729857258L;
 
     @Getter
@@ -27,7 +29,7 @@ public class TypewatchHandlerBean implements Serializable {
     private String input;
 
     @Getter
-    private List<String> entries = mutableList();
+    private final List<String> entries = mutableList();
 
     public void listener() {
         if (!MoreStrings.isEmpty(input)) {

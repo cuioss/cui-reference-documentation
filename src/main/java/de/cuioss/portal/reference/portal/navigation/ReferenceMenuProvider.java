@@ -100,7 +100,7 @@ public class ReferenceMenuProvider implements NavigationMenuProvider {
     @Override
     public Optional<NavigationMenuItemContainer> getContainerMenuItemById(String id) {
         var item = getMenuItemById(id);
-        if (!item.isPresent() || !(item.get() instanceof NavigationMenuItemContainer)) {
+        if (item.isEmpty() || !(item.get() instanceof NavigationMenuItemContainer)) {
             return Optional.empty();
         }
         return Optional.of((NavigationMenuItemContainer) item.get());

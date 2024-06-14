@@ -12,6 +12,7 @@ import org.jdom2.output.XMLOutputter;
 
 import javax.xml.XMLConstants;
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,6 +35,7 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class TemplateDescriptor implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 4592575935978094487L;
 
     private static final String NO_DECRIPTION_FOUND = "No decription found";

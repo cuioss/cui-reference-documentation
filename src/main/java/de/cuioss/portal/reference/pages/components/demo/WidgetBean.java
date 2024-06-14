@@ -15,7 +15,6 @@ import lombok.ToString;
 import java.io.Serial;
 import java.security.SecureRandom;
 
-@SuppressWarnings("javadoc")
 @Named
 @ViewScoped
 @ToString(of = {"content"}, callSuper = true)
@@ -25,7 +24,7 @@ public class WidgetBean extends BaseLazyLoadingWidget<String> {
     @Serial
     private static final long serialVersionUID = 6027808398818076494L;
 
-    private static SecureRandom random = new SecureRandom();
+    private static final SecureRandom random = new SecureRandom();
 
     @Override
     public LabeledKey getTitle() {
