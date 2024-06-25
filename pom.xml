@@ -6,7 +6,7 @@
     <parent>
         <groupId>de.cuioss</groupId>
         <artifactId>cui-parent-pom</artifactId>
-        <version>0.7.1</version>
+        <version>0.7.2</version>
         <relativePath/>
     </parent>
     <groupId>de.cuioss.portal.quarkus</groupId>
@@ -32,7 +32,7 @@
         <system>GitHub Issues</system>
     </issueManagement>
     <properties>
-        <version.cui.parent>0.7.1</version.cui.parent>
+        <version.cui.parent>0.7.2</version.cui.parent>
         <version.cui.jsf.components>1.0.0-SNAPSHOT</version.cui.jsf.components>
         <version.cui.portal.core>1.0.0-SNAPSHOT</version.cui.portal.core>
         <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
@@ -75,6 +75,12 @@
                 <version>${version.cui.parent}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- With a restaesy update an invalide version (3.2.0) of this was introduced -> TemporaryFix -->
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jandex</artifactId>
+                <version>3.1.8</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
