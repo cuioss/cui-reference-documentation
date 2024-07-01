@@ -3,8 +3,7 @@
                 xmlns:f="jakarta.faces.core"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:boot="https://cuioss.de/jsf/bootstrap"
-                xmlns:cc="jakarta.faces.composite/components/cc"
-                xmlns:ref_dev="jakarta.faces.composite/development"
+                xmlns:reference="jakarta.faces.composite/reference"
                 xmlns:cui-composite="jakarta.faces.composite/cui-bootstrap-composite"
                 xmlns:dev="https://cuioss.de/jsf/dev">
     <ui:define name="metadata">
@@ -19,7 +18,7 @@
             Lazy Loading
             <boot:icon icon="cui-icon-refresh"/>
         </h2>
-        <ref_dev:cui_comp_meta name="lazyLoading"/>
+        <reference:cui_comp_meta name="lazyLoading"/>
         <h3>Sample with lazy loading page</h3>
 
         <boot:row>
@@ -53,30 +52,33 @@
                                     type="lang-java" description="Bean:"/>
                 </boot:panel>
             </boot:column>
-            <boot:column id="lazyLoadingColumn" size="4">
-                <cc:list_example id="shouldBeHide"
-                                 list="#{encapsulateLazyLoadingPageBean.content}"
-                                 rendered="#{encapsulateLazyLoadingPageBean.parentContainerRendered}"/>
+            <h:form id="lazyLoadingCommandsForm">
+                <boot:column id="lazyLoadingColumn" size="4">
+                    <reference:list_example id="shouldBeHidden"
+                                            list="#{encapsulateLazyLoadingPageBean.content}"
+                                            rendered="#{encapsulateLazyLoadingPageBean.parentContainerRendered}"/>
 
-                <h:panelGroup id="alternativeText" layout="block"
-                              rendered="#{not encapsulateLazyLoadingPageBean.parentContainerRendered}">
-                    <h:outputText value="LazyLoading component in CC is hidden"/>
-                </h:panelGroup>
-            </boot:column>
+                    <h:panelGroup id="alternativeText" layout="block"
+                                  rendered="#{not encapsulateLazyLoadingPageBean.parentContainerRendered}">
+                        <h:outputText value="LazyLoading component in CC is hidden"/>
+                    </h:panelGroup>
+                </boot:column>
 
-            <boot:column size="2" id="lazyLoadingCommands">
-                <h:commandLink value="Display Composite Component"
-                               rendered="#{not encapsulateLazyLoadingPageBean.parentContainerRendered}"
-                               actionListener="#{encapsulateLazyLoadingPageBean.switchOverParentContainerRendered}">
-                    <p:ajax process="@this" update="lazyLoadingColumn lazyLoadingCommands"/>
-                </h:commandLink>
+                <boot:column size="2" id="lazyLoadingCommands">
 
-                <h:commandLink value="Hide Composite Component"
-                               rendered="#{encapsulateLazyLoadingPageBean.parentContainerRendered}"
-                               actionListener="#{encapsulateLazyLoadingPageBean.switchOverParentContainerRendered}">
-                    <p:ajax process="@this" update="lazyLoadingColumn lazyLoadingCommands"/>
-                </h:commandLink>
-            </boot:column>
+                    <boot:commandButton labelValue="Display Composite Component"
+                                        rendered="#{not encapsulateLazyLoadingPageBean.parentContainerRendered}"
+                                        actionListener="#{encapsulateLazyLoadingPageBean.switchOverParentContainerRendered}">
+                        <p:ajax process="@form" update="@form"/>
+                    </boot:commandButton>
+
+                    <boot:commandButton labelValue="Hide Composite Component"
+                                        rendered="#{encapsulateLazyLoadingPageBean.parentContainerRendered}"
+                                        actionListener="#{encapsulateLazyLoadingPageBean.switchOverParentContainerRendered}">
+                        <p:ajax process="@form" update="@form"/>
+                    </boot:commandButton>
+                </boot:column>
+            </h:form>
         </boot:row>
 
         <h3>Sample with multiple lazy loading structures</h3>

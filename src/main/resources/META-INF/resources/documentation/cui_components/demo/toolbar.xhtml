@@ -1,5 +1,5 @@
 <ui:composition template="/templates/master.xhtml" xmlns:ui="jakarta.faces.facelets"
-                xmlns:ref_dev="jakarta.faces.composite/development"
+                xmlns:reference="jakarta.faces.composite/reference"
                 xmlns:dev="https://cuioss.de/jsf/dev"
                 xmlns:boot="https://cuioss.de/jsf/bootstrap">
     <ui:define name="title">boot:toolbar</ui:define>
@@ -7,7 +7,7 @@
 
         <h2 id="cui_toolbar">boot:toolbar</h2>
 
-        <ref_dev:cui_comp_meta name="toolbar"/>
+        <reference:cui_comp_meta name="toolbar"/>
 
         <h3>Sample pin to Top</h3>
         <boot:row>
