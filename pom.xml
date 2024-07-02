@@ -76,12 +76,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- With a resteasy update an invalid version (3.2.0) of this was introduced -> Temporary Fix -->
-            <dependency>
-                <groupId>org.jboss</groupId>
-                <artifactId>jandex</artifactId>
-                <version>3.1.8</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -111,10 +105,6 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-health</artifactId>
         </dependency>
-        <!--     <dependency>
-                <groupId>io.quarkiverse.primefaces</groupId>
-                <artifactId>quarkus-primefaces-extensions</artifactId>
-            </dependency-->
         <dependency>
             <groupId>io.quarkiverse.omnifaces</groupId>
             <artifactId>quarkus-omnifaces</artifactId>
@@ -133,13 +123,6 @@
             <artifactId>myfaces-impl</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- <dependency>
-            <groupId>org.apache.myfaces.core.extensions.quarkus</groupId>
-            <artifactId>myfaces-quarkus-deployment</artifactId>
-        </dependency> !-->
-        <!-- Provided jakarta ee -->
-        <!-- needed for unit testing -->
-        <!-- jakarta ee -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
