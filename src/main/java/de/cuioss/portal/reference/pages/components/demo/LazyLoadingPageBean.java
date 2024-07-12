@@ -37,9 +37,9 @@ public class LazyLoadingPageBean extends BaseLazyLoadingRequest<List<String>> im
     @Getter
     private List<String> content;
 
-    public String initViewAction() {
+    public void startInitialize() {
+        LOGGER.info("Executing startInitialize");
         viewController.startRequest(this);
-        return null;
     }
 
     @Override

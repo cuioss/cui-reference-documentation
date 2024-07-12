@@ -1,14 +1,12 @@
 <ui:composition template="/templates/master.xhtml" xmlns:ui="jakarta.faces.facelets"
                 xmlns:h="jakarta.faces.html"
                 xmlns:f="jakarta.faces.core"
-                xmlns:p="http://primefaces.org/ui"
                 xmlns:boot="https://cuioss.de/jsf/bootstrap"
                 xmlns:reference="jakarta.faces.composite/reference"
-                xmlns:cui-composite="jakarta.faces.composite/cui-bootstrap-composite"
+                xmlns:p="http://primefaces.org/ui"
                 xmlns:dev="https://cuioss.de/jsf/dev">
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewAction action="#{lazyLoadingPageBean.initViewAction}"/>
             <f:viewAction action="#{encapsulateLazyLoadingPageBean.initViewAction}"/>
         </f:metadata>
     </ui:define>
@@ -31,7 +29,9 @@
             </boot:column>
             <boot:column size="6">
                 <h:panelGroup id="sample" layout="block">
-                    <boot:lazyLoading id="test" viewModel="#{lazyLoadingPageBean.viewModel}">
+                    <boot:lazyLoading id="test" viewModel="#{lazyLoadingPageBean.viewModel}"
+                                      actionListener="#{lazyLoadingPageBean.viewModel.processAction}"
+                                      startInitialize="#{lazyLoadingPageBean.startInitialize()}">
                         <ul>
                             <ui:repeat value="#{lazyLoadingPageBean.content}" var="line">
                                 <li><h:outputText value="#{line}"/></li>
@@ -41,7 +41,6 @@
                 </h:panelGroup>
             </boot:column>
         </boot:row>
-
         <h3>Sample lazy loading structures encapsulates in CC</h3>
 
         <boot:row>
@@ -94,6 +93,7 @@
             <boot:column size="6">
                 <h:panelGroup id="sampleMultiple" layout="block">
                     <boot:lazyLoading id="testMultiple" viewModel="#{multipleLazyLoadingPageBean.viewModel}"
+                                      actionListener="#{multipleLazyLoadingPageBean.viewModel.processAction}"
                                       startInitialize="#{multipleLazyLoadingPageBean.initViewAction()}">
                         <h:form>
                             <boot:row>
@@ -110,6 +110,7 @@
                                 </boot:column>
                                 <boot:column size="6">
                                     <boot:lazyLoading id="lazyLoading"
+                                                      actionListener="#{multipleLazyLoadingPageBean.viewModel.processAction}"
                                                       initialized="#{multipleLazyLoadingPageBean.selected eq null}">
                                         <h:outputText value="#{multipleLazyLoadingPageBean.selected}"
                                                       rendered="#{multipleLazyLoadingPageBean.selected ne null}"/>
@@ -169,12 +170,12 @@
                 </boot:panel>
             </boot:column>
             <boot:column size="6">
-                <cui-composite:widget model="#{widgetBean}">
+                <boot:widget model="#{widgetBean}">
                     <ui:repeat begin="0" end="#{widgetBean.repeats}">
                         <h:outputText value="#{widgetBean.content}"/>
                         <hr/>
                     </ui:repeat>
-                </cui-composite:widget>
+                </boot:widget>
             </boot:column>
         </boot:row>
 
