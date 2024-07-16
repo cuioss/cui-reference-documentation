@@ -1,6 +1,6 @@
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
-import de.icw.cui.portal.configuration.connections.impl.ConnectionMetadata;
+import de.cuioss.portal.configuration.connections.impl.ConnectionMetadata
 import de.cuioss.portal.configuration.types.ConfigAsConnectionMetadata;
 
 @Inject

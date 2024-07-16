@@ -29,7 +29,7 @@ public class CuiIconsOverviewPageBean implements Serializable {
 
     private static final String RESOURCE_NAME = "icons.css";
 
-    private static final String LIBRARY_NAME = "com.icw.portal.css";
+    private static final String LIBRARY_NAME = "de.cuioss.portal.css";
 
     private static final String DUPLICATE_WARN_MSG_KEY = "java.CuiIconsOverviewPageBean.warning.duplicate.style";
 
@@ -45,13 +45,6 @@ public class CuiIconsOverviewPageBean implements Serializable {
     @Getter
     private List<String> data;
 
-    /**
-     * This intiializer is used to insert the new cui-icon those already generated
-     * with IcoMoon application from Google. To create a new cui-icon read the Wiki
-     * page: https://wiki.icw.int/display/DOC/Web+Font+Icons The icons.css will be
-     * tested if there is a duplicated cui-icon therefore an error message will be
-     * shown in the cui_icon.jsf including the duplicated icons.
-     */
     @PostConstruct
     public void initBean() {
         data = new IconExtractor(CSS_BEFORE, CUI_ICON_PREFIX, DUPLICATE_WARN_MSG_KEY, facesContext, messageProducer)
