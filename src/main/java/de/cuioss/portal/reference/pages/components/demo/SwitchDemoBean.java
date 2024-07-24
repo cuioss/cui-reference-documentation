@@ -4,6 +4,7 @@ import de.cuioss.jsf.api.application.message.MessageProducer;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.event.AbortProcessingException;
+import jakarta.faces.event.AjaxBehaviorEvent;
 import jakarta.faces.event.ValueChangeEvent;
 import jakarta.faces.event.ValueChangeListener;
 import jakarta.inject.Inject;
@@ -59,7 +60,7 @@ public class SwitchDemoBean implements Serializable, ValueChangeListener {
             FacesMessage.SEVERITY_INFO);
     }
 
-    public void ajaxValueChangeListener() {
+    public void ajaxValueChangeListener(AjaxBehaviorEvent notUse) {
         messageProducer.addGlobalMessage("AjaxBehaviorEvent fired. New Value: " + switchFAjaxListener.toString(),
             FacesMessage.SEVERITY_INFO);
     }
