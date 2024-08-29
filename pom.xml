@@ -6,7 +6,7 @@
     <parent>
         <groupId>de.cuioss</groupId>
         <artifactId>cui-parent-pom</artifactId>
-        <version>0.7.3</version>
+        <version>0.7.6</version>
         <relativePath/>
     </parent>
     <groupId>de.cuioss.portal.quarkus</groupId>
@@ -32,7 +32,7 @@
         <system>GitHub Issues</system>
     </issueManagement>
     <properties>
-        <version.cui.parent>0.7.3</version.cui.parent>
+        <version.cui.parent>0.7.6</version.cui.parent>
         <version.cui.jsf.components>1.0.0-SNAPSHOT</version.cui.jsf.components>
         <version.cui.portal.core>1.0.0-SNAPSHOT</version.cui.portal.core>
         <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
@@ -210,12 +210,8 @@
         <!-- Portal-Core -->
         <!-- Configuration -->
         <dependency>
-            <groupId>de.cuioss.portal.configuration</groupId>
-            <artifactId>portal-configuration-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.configuration</groupId>
-            <artifactId>portal-configuration-impl</artifactId>
+            <groupId>de.cuioss.portal.core</groupId>
+            <artifactId>portal-configuration</artifactId>
         </dependency>
         <!-- Authentication -->
         <dependency>
