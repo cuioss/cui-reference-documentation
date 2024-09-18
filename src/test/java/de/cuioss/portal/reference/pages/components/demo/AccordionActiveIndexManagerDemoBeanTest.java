@@ -13,6 +13,6 @@ class AccordionActiveIndexManagerDemoBeanTest extends AbstractPageBeanTest<Accor
 
     @Inject
     @Getter
-    private AccordionActiveIndexManagerDemoBean underTest;
+    AccordionActiveIndexManagerDemoBean underTest;
 
 }

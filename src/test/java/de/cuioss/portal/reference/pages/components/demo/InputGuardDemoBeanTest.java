@@ -19,6 +19,5 @@ class InputGuardDemoBeanTest extends AbstractPageBeanTest<InputGuardDemoBean> {
 
     @Inject
     @Getter
-    private InputGuardDemoBean underTest;
-
+    InputGuardDemoBean underTest;
 }

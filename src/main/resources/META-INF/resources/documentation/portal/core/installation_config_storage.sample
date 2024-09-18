@@ -7,7 +7,7 @@ class AppConfigStore implements ConfigurationStorage {
 class MyApp {
     @Inject
     @PortalConfigurationStorage
-    private ConfigurationStorage configurationStorage;
+    ConfigurationStorage configurationStorage;
 
     public void saveSettings() {
         final Map<String, String> properties = new HashMap<>();

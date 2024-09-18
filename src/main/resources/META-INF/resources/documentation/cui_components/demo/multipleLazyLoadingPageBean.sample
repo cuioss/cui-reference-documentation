@@ -10,7 +10,7 @@ public class MultipleLazyLoadingPageBean extends BaseLazyLoadingRequest<List<Str
     private static final CuiLogger log = new CuiLogger(MultipleLazyLoadingPageBean.class);
 
     @Inject
-    private LazyLoadingViewController viewController;
+    LazyLoadingViewController viewController;
 
     @Getter
     private List<String> content;

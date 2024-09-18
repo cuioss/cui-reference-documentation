@@ -16,7 +16,7 @@ class EditableDataListDemoPageBeanTest extends AbstractPageBeanTest<EditableData
 
     @Inject
     @Getter
-    private EditableDataListDemoPageBean underTest;
+    EditableDataListDemoPageBean underTest;
 
     @Test
     void shouldHaveModel() {

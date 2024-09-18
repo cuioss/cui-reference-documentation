@@ -24,7 +24,7 @@ import de.cuioss.portal.ui.test.mocks.PortalLocaleProducerMock;
 class ReferenceBundleTest {
 
     @Inject
-    private ResourceBundleWrapper bundleWrapper;
+    ResourceBundleWrapper bundleWrapper;
 
     @Test
     void shouldProvideKey() {

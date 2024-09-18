@@ -11,5 +11,5 @@ class NotificationBoxHandlerTest extends AbstractPageBeanTest<NotificationBoxHan
 
     @Inject
     @Getter
-    private NotificationBoxHandler underTest;
+    NotificationBoxHandler underTest;
 }
