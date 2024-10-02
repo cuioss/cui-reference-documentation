@@ -11,5 +11,5 @@ class DataTreeProviderTest extends AbstractPageBeanTest<DataTreeProvider> {
 
     @Inject
     @Getter
-    private DataTreeProvider underTest;
+    DataTreeProvider underTest;
 }

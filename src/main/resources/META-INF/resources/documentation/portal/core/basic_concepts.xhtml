@@ -38,11 +38,11 @@
       <p>It is not allowed to inject beans with a lesser scope than the injection target: If a bean requestBean is
          Request-Scoped you must not be injected into a Session-Scoped bean.</p>
       <dev:sourceCode description="Wrong. Will lead to unexpected results" type="lang-java" enableClipboard="false"
-         source="@Named%n@SessionScoped%npublic class SessionBean {%n   @Inject%n   private FacesContext facesContext;" />
+         source="@Named%n@SessionScoped%npublic class SessionBean {%n   @Inject%n   FacesContext facesContext;" />
       <p>For Problems like this CDI has the concept of jakarta.inject.Provider. In essence the evaluation will be done while
          calling the provider.get() method. This decouples the state of the object from the client</p>
       <dev:sourceCode type="lang-java" enableClipboard="false"
-         source="@Named%n@SessionScoped%npublic class SessionBean {%n   @Inject%n   private Provider&lt;FacesContext&gt; facesContextProvider;%n%n   @PostConstruct%n   public void init() {%n      FacesContext facesContext = facesContextProvider.get();%n   }%n}" />
+         source="@Named%n@SessionScoped%npublic class SessionBean {%n   @Inject%n   Provider&lt;FacesContext&gt; facesContextProvider;%n%n   @PostConstruct%n   public void init() {%n      FacesContext facesContext = facesContextProvider.get();%n   }%n}" />
       <h3>Multiple Instances</h3>
       <p>The example above assumes that there is always one instance of the corresponding bean available. For some types of
          objects there may be multiple instance available at runtime. Therefore you can use jakarta.enterprise.inject.Instance

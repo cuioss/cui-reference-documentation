@@ -11,6 +11,6 @@ class DataTableProviderTest extends AbstractPageBeanTest<DataTableProvider> {
 
     @Inject
     @Getter
-    private DataTableProvider underTest;
+    DataTableProvider underTest;
 
 }

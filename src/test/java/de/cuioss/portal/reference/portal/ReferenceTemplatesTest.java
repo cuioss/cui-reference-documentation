@@ -18,7 +18,7 @@ class ReferenceTemplatesTest implements ShouldBeNotNull<ReferenceTemplates> {
     @Inject
     @PortalTemplateDescriptor
     @Getter
-    private ReferenceTemplates underTest;
+    ReferenceTemplates underTest;
 
     @Test
     void templatesShoultBeAccessible() {

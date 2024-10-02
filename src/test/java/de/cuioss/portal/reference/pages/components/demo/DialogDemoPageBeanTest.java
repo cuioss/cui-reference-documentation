@@ -16,7 +16,7 @@ class DialogDemoPageBeanTest extends AbstractPageBeanTest<DialogDemoPageBean> {
 
     @Inject
     @Getter
-    private DialogDemoPageBean underTest;
+    DialogDemoPageBean underTest;
 
     @Test
     void shouldInitData() {

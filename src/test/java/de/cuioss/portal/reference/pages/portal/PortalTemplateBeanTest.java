@@ -15,7 +15,7 @@ class PortalTemplateBeanTest extends AbstractPageBeanTest<PortalTemplateBean> {
 
     @Inject
     @Getter
-    private PortalTemplateBean underTest;
+    PortalTemplateBean underTest;
 
     @Test
     void shouldProvideContent() {

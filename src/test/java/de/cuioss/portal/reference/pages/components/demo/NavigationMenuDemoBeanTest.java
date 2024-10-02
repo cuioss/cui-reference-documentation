@@ -16,6 +16,5 @@ class NavigationMenuDemoBeanTest extends AbstractPageBeanTest<NavigationMenuDemo
 
     @Inject
     @Getter
-    private NavigationMenuDemoBean underTest;
-
+    NavigationMenuDemoBean underTest;
 }

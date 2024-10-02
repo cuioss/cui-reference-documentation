@@ -11,6 +11,5 @@ class PanelDemoProviderTest extends AbstractPageBeanTest<PanelDemoProvider> {
 
     @Inject
     @Getter
-    private PanelDemoProvider underTest;
-
+    PanelDemoProvider underTest;
 }
