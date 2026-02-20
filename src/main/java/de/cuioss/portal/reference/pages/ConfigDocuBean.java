@@ -1,3 +1,18 @@
+/*
+ * Copyright © 2025 CUI-OpenSource-Software (info@cuioss.de)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.cuioss.portal.reference.pages;
 
 import de.cuioss.tools.logging.CuiLogger;
@@ -11,6 +26,7 @@ import lombok.Value;
 import org.primefaces.util.IOUtils;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -54,15 +70,17 @@ public class ConfigDocuBean {
                     properties.load(file.openStream());
                     if (properties.containsKey(NAME_KEY)) {
                         String name = properties.getProperty(NAME_KEY);
+                        // cui-rewrite:disable CuiLogRecordPatternRecipe
                         LOGGER.info("Adding properties %s", name);
                         defaultConfigSources.add(new DefaultConfigSource(file, name, "lang-properties", IOUtils.toString(file.openStream(), StandardCharsets.UTF_8)));
                     }
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    throw new UncheckedIOException(e);
                 }
             });
-        } catch (Exception e) {
-            LOGGER.error("Could not load default config sources", e);
+        } catch (UncheckedIOException e) {
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.error(e, "Could not load default config sources");
         }
     }
 

@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [ 17,21,23 ]
+        version: [ 21,25 ]
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
       - name: Set up JDK 17 for Sonar-build
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
 
@@ -71,7 +71,7 @@ jobs:
       - name: Set up JDK 17 for snapshot release
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           server-id: sonatype-nexus-snapshots
           server-username: MAVEN_USERNAME

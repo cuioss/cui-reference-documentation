@@ -1,9 +1,24 @@
+/*
+ * Copyright © 2025 CUI-OpenSource-Software (info@cuioss.de)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.cuioss.portal.reference.pages.components.demo.support;
 
 import de.cuioss.jsf.api.security.SanitizedIDNInternetAddress;
 import de.cuioss.tools.string.Joiner;
 import de.cuioss.tools.string.MoreStrings;
-import de.cuioss.uimodel.model.conceptkey.AugmentationKeyConstans;
+import de.cuioss.uimodel.model.conceptkey.AugmentationKeyConstants;
 import de.cuioss.uimodel.model.conceptkey.ConceptKeyType;
 import de.cuioss.uimodel.model.conceptkey.impl.BaseConceptCategory;
 import de.cuioss.uimodel.model.conceptkey.impl.BaseConceptKeyType;
@@ -15,6 +30,8 @@ import lombok.ToString;
 import lombok.experimental.Delegate;
 
 import java.io.Serial;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Locale;
 
 /**
@@ -46,7 +63,7 @@ public class AddressConceptKey extends BaseConceptKeyType {
      *                     null
      */
     public AddressConceptKey(@NonNull final AddressEntry addressEntry) {
-        super(new AddressConceptCategory());
+        super(Collections.emptySet(), new HashMap<>(), new AddressConceptCategory());
         delegateAddress = addressEntry;
         identifier = Joiner.on("").skipNulls().join(delegateAddress.getMailAddress(), delegateAddress.getId());
         labelResolver = createResolver();
@@ -61,7 +78,7 @@ public class AddressConceptKey extends BaseConceptKeyType {
      */
     public AddressConceptKey(final AddressEntry addressEntry, final boolean undefined) {
         this(addressEntry);
-        super.set(AugmentationKeyConstans.UNDEFINED_VALUE, Boolean.toString(undefined));
+        super.set(AugmentationKeyConstants.UNDEFINED_VALUE, Boolean.toString(undefined));
     }
 
     private I18nDisplayNameProvider createResolver() {

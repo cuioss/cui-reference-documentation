@@ -1,3 +1,18 @@
+/*
+ * Copyright © 2025 CUI-OpenSource-Software (info@cuioss.de)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.cuioss.portal.reference.pages.portal;
 
 import de.cuioss.tools.io.IOStreams;
@@ -77,7 +92,7 @@ public class TemplateDescriptor implements Serializable {
             description = NO_DECRIPTION_FOUND;
             sections = Collections.emptyList();
         } else {
-            final var wrappedComment = wrappDescription(comments.iterator().next());
+            final var wrappedComment = wrappDescription(comments.getFirst());
             description = extractDescription(wrappedComment);
             sections = extractSections(wrappedComment);
         }
@@ -117,7 +132,7 @@ public class TemplateDescriptor implements Serializable {
         }
         final var commentString = comment.getText().trim();
         if (commentString.startsWith(DOCUMENTATION_START_ELEMENT)
-                && commentString.endsWith(DOCUMENTATION_END_ELEMENT)) {
+            && commentString.endsWith(DOCUMENTATION_END_ELEMENT)) {
             Document document = null;
             try (var inputStream = IOStreams.toInputStream(commentString)) {
                 document = secureSaxBuilder().build(inputStream);
@@ -138,7 +153,7 @@ public class TemplateDescriptor implements Serializable {
         final List<Section> result = new ArrayList<>();
         for (final Element extractedSection : extractedSections) {
             result.add(new Section(extractedSection.getChildText(TITLE_ELEMENT),
-                    new XMLOutputter().outputString(extractedSection.getChild(BODY_ELEMENT).getContent())));
+                new XMLOutputter().outputString(extractedSection.getChild(BODY_ELEMENT).getContent())));
         }
         return result;
     }

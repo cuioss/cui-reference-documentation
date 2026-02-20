@@ -1,3 +1,18 @@
+/*
+ * Copyright © 2025 CUI-OpenSource-Software (info@cuioss.de)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.cuioss.portal.reference.pages.components.demo;
 
 import de.cuioss.jsf.api.application.message.MessageProducer;
@@ -10,7 +25,7 @@ import de.cuioss.test.generator.Generators;
 import de.cuioss.test.generator.domain.NameGenerators;
 import de.cuioss.tools.logging.CuiLogger;
 import de.cuioss.tools.string.Joiner;
-import de.cuioss.uimodel.model.conceptkey.AugmentationKeyConstans;
+import de.cuioss.uimodel.model.conceptkey.AugmentationKeyConstants;
 import de.cuioss.uimodel.model.conceptkey.ConceptCategory;
 import de.cuioss.uimodel.model.conceptkey.ConceptKeyType;
 import de.cuioss.uimodel.model.conceptkey.impl.ConceptKeyTypeImpl;
@@ -49,7 +64,7 @@ public class TagDataProvider implements Serializable {
     @Serial
     private static final long serialVersionUID = -3513331142570721330L;
 
-    private static final CuiLogger log = new CuiLogger(TagDataProvider.class);
+    private static final CuiLogger LOGGER = new CuiLogger(TagDataProvider.class);
 
     @Inject
     MessageProducer messageProducer;
@@ -88,7 +103,7 @@ public class TagDataProvider implements Serializable {
         @Override
         public ConceptKeyType createUndefinedConceptKey(final String value) {
             return ConceptKeyTypeImpl.builder().identifier(value).labelResolver(new I18nDisplayNameProvider(value))
-                .category(this).augmentation(AugmentationKeyConstans.UNDEFINED_VALUE, Boolean.TRUE.toString())
+                .category(this).augmentation(AugmentationKeyConstants.UNDEFINED_VALUE, Boolean.TRUE.toString())
                 .build();
         }
     };
@@ -116,7 +131,8 @@ public class TagDataProvider implements Serializable {
     }
 
     public List<String> getFirstNames() {
-        log.info("Available firstnames : {}", firstNames);
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Available firstnames : %s", firstNames);
         return firstNames;
     }
 
@@ -127,7 +143,8 @@ public class TagDataProvider implements Serializable {
      *                     element
      */
     public void disposeListener(final ModelPayloadEvent disposeEvent) {
-        log.info("Dispose : {}", disposeEvent.getModel());
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Dispose : %s", disposeEvent.getModel());
         firstNames.remove(disposeEvent.getModel());
         messageProducer.addGlobalMessage("Disposed=" + disposeEvent.getModel(), FacesMessage.SEVERITY_INFO);
     }
@@ -158,7 +175,7 @@ public class TagDataProvider implements Serializable {
     public void validate(final FacesContext context, final UIComponent component, final Object value) {
         if (null != value) {
             final var items = (Set<ConceptKeyType>) value;
-            final Set<String> blacklist = immutableSet(firstNames.get(0), firstNames.get(1));
+            final Set<String> blacklist = immutableSet(firstNames.getFirst(), firstNames.get(1));
             if (items.stream().anyMatch(c -> blacklist.contains(c.getIdentifier()))) {
                 throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Don't add any of: " + blacklist, "Don't add any of: " + blacklist));
