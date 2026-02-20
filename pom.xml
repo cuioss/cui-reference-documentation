@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.cuioss</groupId>
-        <artifactId>cui-parent-pom</artifactId>
+        <artifactId>cui-java-parent</artifactId>
         <version>1.4.4</version>
         <relativePath/>
     </parent>
@@ -32,11 +32,14 @@
         <system>GitHub Issues</system>
     </issueManagement>
     <properties>
+    <maven.compiler.release>21</maven.compiler.release>
         <version.cui.jsf.components>1.0.0</version.cui.jsf.components>
         <version.cui.portal.core>1.4.0</version.cui.portal.core>
         <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
         <version.quarkus>3.32.0</version.quarkus>
-        <maven.jar.plugin.version>3.5.0</maven.jar.plugin.version>
+        <maven.jar.plugin.automatic.module.name>
+            de.cuioss.portal.reference.documentation
+        </maven.jar.plugin.automatic.module.name>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -154,6 +157,7 @@
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
+      <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.config</groupId>
@@ -296,64 +300,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/log4j2.xml</exclude>
-                        <!-- Exclude eclipse workspace files -->
-                        <exclude>**/*.jsfdia</exclude>
-                    </excludes>
-                    <archive>
-                        <index>true</index>
-                        <manifest>
-                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                        </manifest>
-                        <manifestEntries>
-                            <Build-Time>${maven.build.timestamp}</Build-Time>
-                            <Build-User>${user.name}</Build-User>
-                            <Build-Maven>Maven ${maven.version}</Build-Maven>
-                            <Build-Java>${java.version}</Build-Java>
-                            <Build-OS>${os.name}</Build-OS>
-                            <Build-Number>${buildNumber}</Build-Number>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
             </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>
-                                            org.apache.maven.plugins
-                                        </groupId>
-                                        <artifactId>
-                                            maven-antrun-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [3.1.0,)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>run</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore/>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 </project>
