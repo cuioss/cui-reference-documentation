@@ -10,7 +10,7 @@ import de.cuioss.test.generator.Generators;
 import de.cuioss.test.generator.domain.NameGenerators;
 import de.cuioss.tools.logging.CuiLogger;
 import de.cuioss.tools.string.Joiner;
-import de.cuioss.uimodel.model.conceptkey.AugmentationKeyConstans;
+import de.cuioss.uimodel.model.conceptkey.AugmentationKeyConstants;
 import de.cuioss.uimodel.model.conceptkey.ConceptCategory;
 import de.cuioss.uimodel.model.conceptkey.ConceptKeyType;
 import de.cuioss.uimodel.model.conceptkey.impl.ConceptKeyTypeImpl;
@@ -88,7 +88,7 @@ public class TagDataProvider implements Serializable {
         @Override
         public ConceptKeyType createUndefinedConceptKey(final String value) {
             return ConceptKeyTypeImpl.builder().identifier(value).labelResolver(new I18nDisplayNameProvider(value))
-                .category(this).augmentation(AugmentationKeyConstans.UNDEFINED_VALUE, Boolean.TRUE.toString())
+                .category(this).augmentation(AugmentationKeyConstants.UNDEFINED_VALUE, Boolean.TRUE.toString())
                 .build();
         }
     };

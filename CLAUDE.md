@@ -12,6 +12,8 @@ A Quarkus-based JSF web application serving as the **CUI Portal Reference Docume
 # Build and run tests
 ./mvnw verify
 
+./mvnw clean install -Ppre-commit
+
 # Run locally in dev mode (hot-reload)
 ./mvnw quarkus:dev
 

@@ -6,7 +6,7 @@
     <parent>
         <groupId>de.cuioss</groupId>
         <artifactId>cui-parent-pom</artifactId>
-        <version>0.8.3</version>
+        <version>1.4.4</version>
         <relativePath/>
     </parent>
     <groupId>de.cuioss.portal.quarkus</groupId>
@@ -32,10 +32,11 @@
         <system>GitHub Issues</system>
     </issueManagement>
     <properties>
-        <version.cui.parent>0.8.3</version.cui.parent>
-        <version.cui.jsf.components>1.0.0-SNAPSHOT</version.cui.jsf.components>
-        <version.cui.portal.core>1.0.0</version.cui.portal.core>
+        <version.cui.jsf.components>1.0.0</version.cui.jsf.components>
+        <version.cui.portal.core>1.4.0</version.cui.portal.core>
         <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
+        <version.quarkus>3.32.0</version.quarkus>
+        <maven.jar.plugin.version>3.5.0</maven.jar.plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -72,6 +73,13 @@
             <dependency>
                 <groupId>de.cuioss</groupId>
                 <artifactId>java-ee-10-bom</artifactId>
+                <version>${version.cui.parent}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.cuioss</groupId>
+                <artifactId>quarkus-bom</artifactId>
                 <version>${version.cui.parent}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -274,9 +282,21 @@
             <plugin>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
+                <version>${version.quarkus}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>generate-code</goal>
+                            <goal>generate-code-tests</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven.jar.plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>**/log4j2.xml</exclude>

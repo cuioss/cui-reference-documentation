@@ -1,7 +1,7 @@
 package de.cuioss.portal.reference.pages.demo;
 
+import de.cuioss.test.generator.Generators;
 import de.cuioss.test.generator.TypedGenerator;
-import de.cuioss.test.generator.internal.net.java.quickcheck.generator.PrimitiveGenerators;
 
 import static de.cuioss.test.generator.Generators.fixedValues;
 import static de.cuioss.test.generator.Generators.integers;
@@ -27,7 +27,7 @@ public class AddressGenerator implements TypedGenerator<Address> {
         address.setCity(CITIES.next());
         address.setStreet(getAddressLine());
         address.setLine1(getAddressLine());
-        address.setEditable(PrimitiveGenerators.booleans().next());
+        address.setEditable(Generators.booleans().next());
         return address;
     }
 

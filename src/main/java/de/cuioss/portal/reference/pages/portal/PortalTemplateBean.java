@@ -1,7 +1,7 @@
 package de.cuioss.portal.reference.pages.portal;
 
 import de.cuioss.portal.ui.api.templating.PortalTemplateDescriptor;
-import de.cuioss.portal.ui.runtime.application.templating.PortalTemplates;
+import de.cuioss.portal.ui.runtime.application.templating.PortalCoreTemplates;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -33,7 +33,7 @@ public class PortalTemplateBean implements Serializable {
 
     @Inject
     @PortalTemplateDescriptor
-    PortalTemplates portalTemplates;
+    PortalCoreTemplates portalTemplates;
 
     @Getter
     private List<TemplateDescriptor> templateDescriptor;
