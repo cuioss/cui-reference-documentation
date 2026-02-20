@@ -16,7 +16,7 @@ maven-build:
 
 sonar:
   project-key: cuioss_cui-reference-documentation
-  enabled: true
+  enabled: false
   skip-on-dependabot: true
 
 pages:
