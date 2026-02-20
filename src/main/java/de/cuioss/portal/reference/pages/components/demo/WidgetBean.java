@@ -57,6 +57,8 @@ public class WidgetBean extends BaseLazyLoadingWidget<String> {
     @Getter
     private int repeats;
 
+    // ResultObject is deprecated but still required by BaseLazyLoadingWidget API
+    @SuppressWarnings("deprecation")
     @Override
     public ResultObject<String> backendRequest() {
         if (random.nextInt() % 3 != 0) {

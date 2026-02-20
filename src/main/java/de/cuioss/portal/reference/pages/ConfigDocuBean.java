@@ -26,6 +26,7 @@ import lombok.Value;
 import org.primefaces.util.IOUtils;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -69,15 +70,17 @@ public class ConfigDocuBean {
                     properties.load(file.openStream());
                     if (properties.containsKey(NAME_KEY)) {
                         String name = properties.getProperty(NAME_KEY);
-                        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Adding properties %s", name);
+                        // cui-rewrite:disable CuiLogRecordPatternRecipe
+                        LOGGER.info("Adding properties %s", name);
                         defaultConfigSources.add(new DefaultConfigSource(file, name, "lang-properties", IOUtils.toString(file.openStream(), StandardCharsets.UTF_8)));
                     }
                 } catch (IOException e) {
-                    /*~~(TODO: Throw specific not RuntimeException. Suppress: // cui-rewrite:disable InvalidExceptionUsageRecipe)~~>*/throw new RuntimeException(e);
+                    throw new UncheckedIOException(e);
                 }
             });
-        } /*~~(TODO: Catch specific not Exception. Suppress: // cui-rewrite:disable InvalidExceptionUsageRecipe)~~>*/catch (Exception e) {
-            /*~~(TODO: ERROR needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.error(e, "Could not load default config sources");
+        } catch (UncheckedIOException e) {
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.error(e, "Could not load default config sources");
         }
     }
 

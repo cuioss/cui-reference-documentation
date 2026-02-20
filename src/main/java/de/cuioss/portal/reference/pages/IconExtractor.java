@@ -65,7 +65,8 @@ public class IconExtractor {
                 addIconsToDataList(splitted, data);
             }
         } catch (final IOException e) {
-            /*~~(TODO: ERROR needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.error(e, "IOException");
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.error(e, "IOException");
         }
 
         return data;
@@ -98,6 +99,7 @@ public class IconExtractor {
     private void warnOnDuplicate(final FacesContext context, final String styleClass) {
         final var errorMessage = messageProducer.getErrorMessageFor(warnOnDuplicateMessageKey, styleClass);
         context.addMessage(null, errorMessage);
-        /*~~(TODO: WARN needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.warn("Duplicate icon style for %s found", styleClass);
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.warn("Duplicate icon style for %s found", styleClass);
     }
 }

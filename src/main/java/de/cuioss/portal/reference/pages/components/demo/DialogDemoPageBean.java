@@ -55,7 +55,8 @@ public class DialogDemoPageBean implements Serializable {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            /*~~(TODO: ERROR needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.error(e, "Error loading lazy dialog content");
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.error(e, "Error loading lazy dialog content");
             Thread.currentThread().interrupt();
         }
         lazyLoadingDialogContentAvailable = true;

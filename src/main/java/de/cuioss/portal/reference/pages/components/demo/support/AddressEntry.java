@@ -31,7 +31,7 @@ import static java.util.Objects.isNull;
 /**
  * Represents an Address that can be used in conjunction with provider search
  * and email-addressing. It provides at least an email-address
- * ({@link #getMailAddress()}) and an unique identifier ({@link #getId()})
+ * ({@code mailAddress}) and a unique identifier ({@code id})
  */
 @Value
 @Builder
@@ -72,7 +72,7 @@ public class AddressEntry implements IDisplayNameProvider<String>, Comparable<Ad
     private final String id = UUID.randomUUID().toString();
 
     /**
-     * @return the displayed {@link #getPersonName()} and {@link #getOrganization()}
+     * @return the displayed {@code personName} and {@code organization}
      */
     public String buildPersonal() {
         var personal = Optional.ofNullable(personNameWithTitle).orElse(personName);

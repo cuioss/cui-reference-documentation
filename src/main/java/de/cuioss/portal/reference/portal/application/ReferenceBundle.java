@@ -64,7 +64,8 @@ public class ReferenceBundle implements ResourceBundleLocator {
             LOGGER.debug("Successfully loaded %s '%s' for '%s'", getClass().getName(), PATH, locale);
             return loadedBundle;
         } catch (MissingResourceException e) {
-            /*~~(TODO: WARN needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.warn(e, "Unable to load %s '%s' for '%s'".formatted(getClass().getName(), PATH, locale));
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.warn(e, "Unable to load %s '%s' for '%s'".formatted(getClass().getName(), PATH, locale));
             return Optional.empty();
         }
     }

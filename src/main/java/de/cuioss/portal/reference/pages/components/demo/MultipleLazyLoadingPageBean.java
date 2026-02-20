@@ -60,12 +60,15 @@ public class MultipleLazyLoadingPageBean extends BaseLazyLoadingRequest<List<Str
         return null;
     }
 
+    // ResultObject is deprecated but still required by LazyLoadingRequest API
+    @SuppressWarnings("deprecation")
     @Override
     public ResultObject<List<String>> backendRequest() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            /*~~(TODO: ERROR needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.error(e, "interrupted: ");
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.error(e, "interrupted: ");
             Thread.currentThread().interrupt();
         }
         return new ResultObject<>(mutableList("A", "B", "C"), ResultState.VALID);

@@ -53,20 +53,26 @@ public class LazyLoadingPageBean extends BaseLazyLoadingRequest<List<String>> im
     private List<String> content;
 
     public void startInitialize() {
-        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Executing startInitialize");
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Executing startInitialize");
         viewController.startRequest(this);
     }
 
+    // ResultObject is deprecated but still required by LazyLoadingRequest API
+    @SuppressWarnings("deprecation")
     @Override
     public ResultObject<List<String>> backendRequest() {
-        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Entering BackendRequest at %s", LocalDateTime.now());
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Entering BackendRequest at %s", LocalDateTime.now());
         try {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
-            /*~~(TODO: ERROR needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.error(e, "interrupted: ");
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.error(e, "interrupted: ");
             Thread.currentThread().interrupt();
         }
-        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Leaving BackendRequest at %s", LocalDateTime.now());
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Leaving BackendRequest at %s", LocalDateTime.now());
         return new ResultObject<>(mutableList("A", "B", "C"), ResultState.VALID);
     }
 

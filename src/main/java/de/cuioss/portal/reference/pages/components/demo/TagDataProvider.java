@@ -131,7 +131,8 @@ public class TagDataProvider implements Serializable {
     }
 
     public List<String> getFirstNames() {
-        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Available firstnames : %s", firstNames);
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Available firstnames : %s", firstNames);
         return firstNames;
     }
 
@@ -142,7 +143,8 @@ public class TagDataProvider implements Serializable {
      *                     element
      */
     public void disposeListener(final ModelPayloadEvent disposeEvent) {
-        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Dispose : %s", disposeEvent.getModel());
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Dispose : %s", disposeEvent.getModel());
         firstNames.remove(disposeEvent.getModel());
         messageProducer.addGlobalMessage("Disposed=" + disposeEvent.getModel(), FacesMessage.SEVERITY_INFO);
     }

@@ -59,20 +59,24 @@ public class EncapsulateLazyLoadingPageBean implements Serializable {
     }
 
     public void initialize() {
-        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Entering initialize at %s", LocalDateTime.now());
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Entering initialize at %s", LocalDateTime.now());
         try {
             TimeUnit.SECONDS.sleep(3);
             Preconditions.checkState(parentContainerRendered, "In case parent CC isn't rendered, this code shouldn't be invoked, otherwise wrong behaviour");
         } catch (InterruptedException e) {
-            /*~~(TODO: ERROR needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.error(e, "interrupted: ");
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.error(e, "interrupted: ");
             Thread.currentThread().interrupt();
         }
-        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Leaving initialize at %s", LocalDateTime.now());
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Leaving initialize at %s", LocalDateTime.now());
         this.content = mutableList("A", "B", "C");
     }
 
     public void switchOverParentContainerRendered() {
-        /*~~(TODO: INFO needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.info("Entering switchOverParentContainerRendered at %s", LocalDateTime.now());
+        // cui-rewrite:disable CuiLogRecordPatternRecipe
+        LOGGER.info("Entering switchOverParentContainerRendered at %s", LocalDateTime.now());
         this.parentContainerRendered = !parentContainerRendered;
     }
 }

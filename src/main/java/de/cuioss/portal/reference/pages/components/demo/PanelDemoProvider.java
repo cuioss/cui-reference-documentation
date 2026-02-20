@@ -61,7 +61,8 @@ public class PanelDemoProvider implements Serializable {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            /*~~(TODO: ERROR needs LogRecord. Suppress: // cui-rewrite:disable CuiLogRecordPatternRecipe)~~>*/LOGGER.error(e, "Delayed data delivery interrupted");
+            // cui-rewrite:disable CuiLogRecordPatternRecipe
+            LOGGER.error(e, "Delayed data delivery interrupted");
             Thread.currentThread().interrupt();
         }
         LOGGER.debug("Delivering delayed data.");
