@@ -284,6 +284,42 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>quarkus-plugin-matches-bom</id>
+                        <phase>validate</phase>
+                        <goals><goal>enforce</goal></goals>
+                        <configuration>
+                            <rules>
+                                <!-- version.quarkus drives quarkus-maven-plugin, a build
+                                     extension resolved before dependency management applies.
+                                     The Quarkus *artifacts* come from the imported
+                                     de.cuioss:quarkus-bom, which carries its own
+                                     version.quarkus. Maven cannot propagate that property
+                                     out of an imported BOM, so the two are independent
+                                     inputs and can drift apart - this project once ran
+                                     plugin 3.38.0 against BOM-supplied 3.39.0, which is how
+                                     the augmentation outage began.
+                                     requireSameVersions compares everything matched in one
+                                     block against a single version, so listing the plugin
+                                     and quarkus-core together asserts exactly that they
+                                     agree. -->
+                                <requireSameVersions>
+                                    <plugins>
+                                        <plugin>io.quarkus:quarkus-maven-plugin</plugin>
+                                    </plugins>
+                                    <dependencies>
+                                        <dependency>io.quarkus:quarkus-core</dependency>
+                                    </dependencies>
+                                </requireSameVersions>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
                 <version>${version.quarkus}</version>
