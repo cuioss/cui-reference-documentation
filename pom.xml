@@ -1,299 +1,305 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>de.cuioss</groupId>
-        <artifactId>cui-java-parent</artifactId>
-        <version>1.5.9</version>
-        <relativePath/>
-    </parent>
-    <groupId>de.cuioss.portal.quarkus</groupId>
-    <artifactId>cui-reference-documentation</artifactId>
-    <name>Cui Reference Documentation</name>
-    <version>1.0.0-SNAPSHOT</version>
-    <description>Quarkus powered Reference documentation
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>de.cuioss</groupId>
+    <artifactId>cui-java-parent</artifactId>
+    <version>1.5.9</version>
+    <relativePath/>
+  </parent>
+  <groupId>de.cuioss.portal.quarkus</groupId>
+  <artifactId>cui-reference-documentation</artifactId>
+  <name>Cui Reference Documentation</name>
+  <version>1.0.0-SNAPSHOT</version>
+  <description>Quarkus powered Reference documentation
     </description>
-    <packaging>jar</packaging>
+  <packaging>jar</packaging>
+  <!-- Must be declared: <inceptionYear> is inherited, and the license plugin binds
+         the copyright ${year} to it. Without this, this project would report
+         cui-parent-pom's 2022 and restamp every header on each -Ppre-commit run. -->
+  <inceptionYear>2023</inceptionYear>
+  <url>https://github.com/cuioss/cui-reference-documentation/</url>
+  <scm>
     <url>https://github.com/cuioss/cui-reference-documentation/</url>
-    <scm>
-        <url>https://github.com/cuioss/cui-reference-documentation/</url>
-        <connection>
-            scm:git:https://github.com/cuioss/cui-reference-documentation.git
+    <connection>
+      scm:git:https://github.com/cuioss/cui-reference-documentation.git
         </connection>
-        <developerConnection>
-            scm:git:https://github.com/cuioss/cui-reference-documentation/
+    <developerConnection>
+      scm:git:https://github.com/cuioss/cui-reference-documentation/
         </developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-    <issueManagement>
-        <url>https://github.com/cuioss/cui-reference-documentation/issues</url>
-        <system>GitHub Issues</system>
-    </issueManagement>
-    <properties>
+    <tag>HEAD</tag>
+  </scm>
+  <issueManagement>
+    <url>https://github.com/cuioss/cui-reference-documentation/issues</url>
+    <system>GitHub Issues</system>
+  </issueManagement>
+  <properties>
     <maven.compiler.release>21</maven.compiler.release>
-        <version.cui.jsf.components>1.0.0</version.cui.jsf.components>
-        <version.cui.portal.core>1.4.0</version.cui.portal.core>
-        <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
-        <version.quarkus>3.39.0</version.quarkus>
-        <maven.jar.plugin.automatic.module.name>
-            de.cuioss.portal.reference.documentation
+    <version.cui.jsf.components>1.0.0</version.cui.jsf.components>
+    <version.cui.portal.core>1.4.0</version.cui.portal.core>
+    <version.cui.portal.ui>1.0.0-SNAPSHOT</version.cui.portal.ui>
+    <version.quarkus>3.39.0</version.quarkus>
+    <maven.jar.plugin.automatic.module.name>
+      de.cuioss.portal.reference.documentation
         </maven.jar.plugin.automatic.module.name>
-    </properties>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>de.cuioss.portal.ui</groupId>
-                <artifactId>bom</artifactId>
-                <version>${version.cui.portal.ui}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>de.cuioss</groupId>
-                <artifactId>java-ee-orthogonal</artifactId>
-                <version>${version.cui.parent}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>de.cuioss.jsf</groupId>
-                <artifactId>bom</artifactId>
-                <version>${version.cui.jsf.components}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>de.cuioss.portal</groupId>
-                <artifactId>bom</artifactId>
-                <version>${version.cui.portal.core}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!-- Incoming -->
-            <dependency>
-                <groupId>de.cuioss</groupId>
-                <artifactId>java-ee-10-bom</artifactId>
-                <version>${version.cui.parent}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>de.cuioss</groupId>
-                <artifactId>quarkus-bom</artifactId>
-                <version>${version.cui.parent}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+  </properties>
+  <dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <!-- This is needed, because otherwise undertow fails -->
-        <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.ui</groupId>
-            <artifactId>portal-ui-quarkus-extension</artifactId>
-        </dependency>
-        <!-- Quarkus -->
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-jackson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-hibernate-validator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-health</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkiverse.omnifaces</groupId>
-            <artifactId>quarkus-omnifaces</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.myfaces.core.extensions.quarkus</groupId>
-            <artifactId>myfaces-quarkus</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.myfaces.core</groupId>
-            <artifactId>myfaces-api</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.myfaces.core</groupId>
-            <artifactId>myfaces-impl</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.websocket</groupId>
-            <artifactId>jakarta.websocket-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.el</groupId>
-            <artifactId>jakarta.el-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.enterprise</groupId>
-            <artifactId>jakarta.enterprise.cdi-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-      <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.microprofile.config</groupId>
-            <artifactId>microprofile-config-api</artifactId>
-        </dependency>
-        <!-- Module specific -->
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <classifier>jakarta</classifier>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.ui</groupId>
-            <artifactId>portal-ui-bootstrap-page-templates</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.jsf</groupId>
-            <artifactId>cui-jsf-bootstrap</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.jsf</groupId>
-            <artifactId>cui-jsf-core-components</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.jsf</groupId>
-            <artifactId>cui-jsf-bootstrap-css</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.jsf</groupId>
-            <artifactId>cui-jsf-jqplot</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.test</groupId>
-            <artifactId>cui-test-generator</artifactId>
-            <scope>compile</scope>
-        </dependency>
+      <dependency>
+        <groupId>de.cuioss.portal.ui</groupId>
+        <artifactId>bom</artifactId>
+        <version>${version.cui.portal.ui}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>de.cuioss</groupId>
+        <artifactId>java-ee-orthogonal</artifactId>
+        <version>${version.cui.parent}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>de.cuioss.jsf</groupId>
+        <artifactId>bom</artifactId>
+        <version>${version.cui.jsf.components}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>de.cuioss.portal</groupId>
+        <artifactId>bom</artifactId>
+        <version>${version.cui.portal.core}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
 
-        <!-- To be moved to parent pom -->
-        <!-- Portal-UI -->
-        <dependency>
-            <groupId>de.cuioss.portal.ui</groupId>
-            <artifactId>portal-ui-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.ui</groupId>
-            <artifactId>portal-ui-runtime</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.ui</groupId>
-            <artifactId>portal-ui-errorpages</artifactId>
-        </dependency>
-
-
-        <!-- Portal-Core -->
-        <!-- Configuration -->
-        <dependency>
-            <groupId>de.cuioss.portal.core</groupId>
-            <artifactId>portal-configuration</artifactId>
-        </dependency>
-        <!-- Authentication -->
-        <dependency>
-            <groupId>de.cuioss.portal.authentication</groupId>
-            <artifactId>portal-authentication-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.authentication</groupId>
-            <artifactId>portal-authentication-mock</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- Portal-Core-Servlet -->
-        <dependency>
-            <groupId>de.cuioss.portal.core</groupId>
-            <artifactId>portal-core</artifactId>
-        </dependency>
-        <!-- Mirco-Profile -->
-        <dependency>
-            <groupId>de.cuioss.portal.mirco-profile</groupId>
-            <artifactId>portal-mp-rest-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.mirco-profile</groupId>
-            <artifactId>portal-metrics-api</artifactId>
-        </dependency>
-
-        <!-- Cui JSF Components -->
-        <dependency>
-            <groupId>de.cuioss.jsf</groupId>
-            <artifactId>cui-jsf-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.cuioss.jsf</groupId>
-            <artifactId>cui-jsf-dev</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.jsf</groupId>
-            <artifactId>cui-javascript</artifactId>
-        </dependency>
-
-        <!-- Unit testing -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.test</groupId>
-            <artifactId>portal-core-unit-testing</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.portal.ui</groupId>
-            <artifactId>portal-ui-unit-testing</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.cuioss.test</groupId>
-            <artifactId>cui-jsf-test-basic</artifactId>
-        </dependency>
+      <!-- Incoming -->
+      <dependency>
+        <groupId>de.cuioss</groupId>
+        <artifactId>java-ee-10-bom</artifactId>
+        <version>${version.cui.parent}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>de.cuioss</groupId>
+        <artifactId>quarkus-bom</artifactId>
+        <version>${version.cui.parent}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>quarkus-plugin-matches-bom</id>
-                        <phase>validate</phase>
-                        <goals><goal>enforce</goal></goals>
-                        <configuration>
-                            <rules>
-                                <!-- version.quarkus drives quarkus-maven-plugin, a build
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+    <!-- This is needed, because otherwise undertow fails -->
+    <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.portal.ui</groupId>
+      <artifactId>portal-ui-quarkus-extension</artifactId>
+    </dependency>
+    <!-- Quarkus -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-validator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-health</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkiverse.omnifaces</groupId>
+      <artifactId>quarkus-omnifaces</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.myfaces.core.extensions.quarkus</groupId>
+      <artifactId>myfaces-quarkus</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-impl</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.websocket</groupId>
+      <artifactId>jakarta.websocket-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.el</groupId>
+      <artifactId>jakarta.el-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.enterprise</groupId>
+      <artifactId>jakarta.enterprise.cdi-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.microprofile.config</groupId>
+      <artifactId>microprofile-config-api</artifactId>
+    </dependency>
+    <!-- Module specific -->
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <classifier>jakarta</classifier>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.portal.ui</groupId>
+      <artifactId>portal-ui-bootstrap-page-templates</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.jsf</groupId>
+      <artifactId>cui-jsf-bootstrap</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.jsf</groupId>
+      <artifactId>cui-jsf-core-components</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.jsf</groupId>
+      <artifactId>cui-jsf-bootstrap-css</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.jsf</groupId>
+      <artifactId>cui-jsf-jqplot</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.test</groupId>
+      <artifactId>cui-test-generator</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- To be moved to parent pom -->
+    <!-- Portal-UI -->
+    <dependency>
+      <groupId>de.cuioss.portal.ui</groupId>
+      <artifactId>portal-ui-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.portal.ui</groupId>
+      <artifactId>portal-ui-runtime</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.portal.ui</groupId>
+      <artifactId>portal-ui-errorpages</artifactId>
+    </dependency>
+
+
+    <!-- Portal-Core -->
+    <!-- Configuration -->
+    <dependency>
+      <groupId>de.cuioss.portal.core</groupId>
+      <artifactId>portal-configuration</artifactId>
+    </dependency>
+    <!-- Authentication -->
+    <dependency>
+      <groupId>de.cuioss.portal.authentication</groupId>
+      <artifactId>portal-authentication-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.portal.authentication</groupId>
+      <artifactId>portal-authentication-mock</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Portal-Core-Servlet -->
+    <dependency>
+      <groupId>de.cuioss.portal.core</groupId>
+      <artifactId>portal-core</artifactId>
+    </dependency>
+    <!-- Mirco-Profile -->
+    <dependency>
+      <groupId>de.cuioss.portal.mirco-profile</groupId>
+      <artifactId>portal-mp-rest-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.portal.mirco-profile</groupId>
+      <artifactId>portal-metrics-api</artifactId>
+    </dependency>
+
+    <!-- Cui JSF Components -->
+    <dependency>
+      <groupId>de.cuioss.jsf</groupId>
+      <artifactId>cui-jsf-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>de.cuioss.jsf</groupId>
+      <artifactId>cui-jsf-dev</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.jsf</groupId>
+      <artifactId>cui-javascript</artifactId>
+    </dependency>
+
+    <!-- Unit testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.portal.test</groupId>
+      <artifactId>portal-core-unit-testing</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.portal.ui</groupId>
+      <artifactId>portal-ui-unit-testing</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.cuioss.test</groupId>
+      <artifactId>cui-jsf-test-basic</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>quarkus-plugin-matches-bom</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <!-- version.quarkus drives quarkus-maven-plugin, a build
                                      extension resolved before dependency management applies.
                                      The Quarkus *artifacts* come from the imported
                                      de.cuioss:quarkus-bom, which carries its own
@@ -306,37 +312,49 @@
                                      block against a single version, so listing the plugin
                                      and quarkus-core together asserts exactly that they
                                      agree. -->
-                                <requireSameVersions>
-                                    <plugins>
-                                        <plugin>io.quarkus:quarkus-maven-plugin</plugin>
-                                    </plugins>
-                                    <dependencies>
-                                        <dependency>io.quarkus:quarkus-core</dependency>
-                                    </dependencies>
-                                </requireSameVersions>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-maven-plugin</artifactId>
-                <version>${version.quarkus}</version>
-                <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build</goal>
-                            <goal>generate-code</goal>
-                            <goal>generate-code-tests</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+                <requireSameVersions>
+                  <plugins>
+                    <plugin>io.quarkus:quarkus-maven-plugin</plugin>
+                  </plugins>
+                  <dependencies>
+                    <dependency>io.quarkus:quarkus-core</dependency>
+                  </dependencies>
+                </requireSameVersions>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-maven-plugin</artifactId>
+        <version>${version.quarkus}</version>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <goals>
+              <goal>build</goal>
+              <goal>generate-code</goal>
+              <goal>generate-code-tests</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
