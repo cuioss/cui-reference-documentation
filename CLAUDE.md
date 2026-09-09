@@ -12,6 +12,8 @@ A Quarkus-based JSF web application serving as the **CUI Portal Reference Docume
 # Build and run tests
 ./mvnw verify
 
+# Auto-fixes: license headers plus every configured OpenRewrite recipe
+# (modernization, not just formatting) - review what it changed and commit it
 ./mvnw clean install -Ppre-commit
 
 # Run locally in dev mode (hot-reload)
