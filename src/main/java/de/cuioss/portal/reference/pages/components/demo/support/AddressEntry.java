@@ -18,7 +18,13 @@ package de.cuioss.portal.reference.pages.components.demo.support;
 import de.cuioss.tools.string.MoreStrings;
 import de.cuioss.uimodel.model.conceptkey.ConceptKeyType;
 import de.cuioss.uimodel.nameprovider.IDisplayNameProvider;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.Singular;
+import lombok.ToString;
+import lombok.Value;
 
 import java.io.Serial;
 import java.util.Optional;
